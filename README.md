@@ -1,6 +1,6 @@
 # Claude Cookbook
 
-This cookbook contains recipes for making cool stuff with [Claude](https://claude.ai). So far, all the recipes live in Jupyter notebooks. You'll need an Anthropic API key, which you can apply for [here](https://www.anthropic.com/earlyaccess).
+This cookbook contains recipes in the form of Jupyter notebooks for using [Claude](https://claude.ai) in neat and effective ways. You'll need an Anthropic API key, which you can apply for [here](https://www.anthropic.com/earlyaccess).
 
 ## Recipes
 
