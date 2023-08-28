@@ -4,6 +4,6 @@ This cookbook contains recipes in the form of Jupyter notebooks for using [Claud
 
 # Recipes
 
-[Long Context: Q&A](https://github.com/anthropics/anthropic-cookbook/blob/main/long_context/mc_qa.ipynb)\
-[Long Context: Wikipedia Search](https://github.com/anthropics/anthropic-cookbook/blob/main/long_context/wikipedia-search-cookbook.ipynb)\
-[Long Context: PDF "Upload" and Summarization](https://github.com/anthropics/anthropic-cookbook/blob/main/long_context/pdf_upload_summarization.ipynb)\
+- [Long Context: Q&A](https://github.com/anthropics/anthropic-cookbook/blob/main/long_context/mc_qa.ipynb)
+- [Long Context: Wikipedia Search](https://github.com/anthropics/anthropic-cookbook/blob/main/long_context/wikipedia-search-cookbook.ipynb)
+- [Long Context: PDF "Upload" and Summarization](https://github.com/anthropics/anthropic-cookbook/blob/main/long_context/pdf_upload_summarization.ipynb)
