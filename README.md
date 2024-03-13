@@ -13,7 +13,7 @@ While the code examples are primarily written in Python, the concepts can be ada
 Looking for more resources to enhance your experience with Claude and AI assistants? Check out these helpful links:
 
 - [Anthropic developer documentation](https://docs.anthropic.com/claude/docs/guide-to-anthropics-prompt-engineering-resources)
-- [Anthropic support docs](support.anthropic.com)
+- [Anthropic support docs](https://support.anthropic.com)
 - [Anthropic Discord community](https://www.anthropic.com/discord)
 
 ## Contributing
