@@ -2,6 +2,7 @@ import os
 import numpy as np
 import voyageai
 import pickle
+import json
 
 class VectorDB:
     def __init__(self, api_key=None):
@@ -31,8 +32,7 @@ class VectorDB:
         result = [
             self.client.embed(
                 texts[i : i + batch_size],
-                model="voyage-large-2-instruct",
-                input_type="document",
+                model="voyage-2"
             ).embeddings
             for i in range(0, len(texts), batch_size)
         ]
@@ -40,7 +40,6 @@ class VectorDB:
         # Flatten the embeddings
         self.embeddings = [embedding for batch in result for embedding in batch]
         self.metadata = [item for item in data]
-        self.save_db()
         # Save the vector database to disk
         print("Vector database loaded and saved.")
 
@@ -49,7 +48,7 @@ class VectorDB:
         if query in self.query_cache:
             query_embedding = self.query_cache[query]
         else:
-            query_embedding = self.client.embed([query], model="voyage-large-2-instruct", input_type="query").embeddings[0]
+            query_embedding = self.client.embed([query], model="voyage-2").embeddings[0]
             self.query_cache[query] = query_embedding
 
         if not self.embeddings:
@@ -71,14 +70,6 @@ class VectorDB:
                     break
         
         return top_examples
-    
-    def save_db(self):
-        data = {
-            "embeddings": self.embeddings,
-            "metadata": self.metadata
-        }
-        with open(self.db_path, "wb") as file:
-            pickle.dump(data, file)
 
     def load_db(self):
         if not os.path.exists(self.db_path):
@@ -88,3 +79,4 @@ class VectorDB:
             data = pickle.load(file)
         self.embeddings = data["embeddings"]
         self.metadata = data["metadata"]
+        self.query_cache = json.loads(data["query_cache"])

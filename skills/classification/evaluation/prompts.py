@@ -1,5 +1,5 @@
 from vectordb import VectorDB
-
+import textwrap
 vectordb = VectorDB()
 # Load the vector database
 vectordb.load_db()
@@ -55,62 +55,91 @@ categories = """<category>
     </content> 
 </category>"""
 
+
+def simple_classify(context: dict):
+    X = context['vars']['text']
+    prompt = textwrap.dedent("""
+    You will classify a customer support ticket into one of the following categories:
+    <categories>
+        {{categories}}
+    </categories>
+
+    Here is the customer support ticket:
+    <ticket>
+        {{ticket}}
+    </ticket>
+
+    Respond with just the label of the category between category tags.
+    """).replace("{{categories}}", categories).replace("{{ticket}}", X)
+    return prompt
+
+
+
 def rag_classify(context: dict):
     X = context['vars']['text']
-    rag = vectordb.search(X,25)
+    rag = vectordb.search(X,5)
     rag_string = ""
     for example in rag:
-        rag_string += f"""
+        rag_string += textwrap.dedent(f"""
         <example>
             <query>
-                {example["metadata"]["text"]}
+                "{example["metadata"]["text"]}"
             </query>
             <label>
                 {example["metadata"]["label"]}
             </label>
         </example>
-        """
-    prompt = """
-    You are an accurate classifier.
-    Given a query, classify it into one of the provided labels.
-    <query>
-        <QUERY>
-    </query>
+        """)
+    prompt = textwrap.dedent("""
+    You will classify a customer support ticket into one of the following categories:
+    <categories>
+        {{categories}}
+    </categories>
 
-    <labels>
-        <LABELS>
-    </labels>
+    Here is the customer support ticket:
+    <ticket>
+        {{ticket}}
+    </ticket>
 
     Use the following examples to help you classify the query:
     <examples>
-        <RAG>
+        {{examples}}
     </examples>
 
     Respond with just the label of the category between category tags.
-    """.replace("<LABELS>", categories).replace("<QUERY>", X).replace("<RAG>", rag_string)
+    """).replace("{{categories}}", categories).replace("{{ticket}}", X).replace("{{examples}}", rag_string)
     return prompt
 
 
 def rag_chain_of_thought_classify(context: dict):
     X = context['vars']['text']
-    rag = vectordb.search(X,25)
+    rag = vectordb.search(X,5)
     rag_string = ""
     for example in rag:
-        rag_string += f'<example>\n<query>\n"{example["metadata"]["text"]}"\n</query>\n<label>\n{example["metadata"]["label"]}\n</label>\n</example>\n'
-    prompt = """
-    You are an accurate classifier.
-    Given a query, classify it into one of the provided labels.
-    <query>
-        <QUERY>
-    </query>
+        rag_string += textwrap.dedent(f"""
+        <example>
+            <query>
+                "{example["metadata"]["text"]}"
+            </query>
+            <label>
+                {example["metadata"]["label"]}
+            </label>
+        </example>
+        """)
+    prompt = textwrap.dedent("""
+    You will classify a customer support ticket into one of the following categories:
+    <categories>
+        {{categories}}
+    </categories>
 
-    <labels>
-        <LABELS>
-    </labels>
+    Here is the customer support ticket:
+    <ticket>
+        {{ticket}}
+    </ticket>
 
     Use the following examples to help you classify the query:
     <examples>
-        <RAG>
+        {{examples}}
     </examples>
 
     First you will think step-by-step about the problem in scratchpad tags.
@@ -121,5 +150,5 @@ def rag_chain_of_thought_classify(context: dict):
         <scratchpad>Your thoughts and analysis go here</scratchpad>
         <category>The category label you chose goes here</category>
     </response>
-    """.replace("<LABELS>", categories).replace("<QUERY>", X).replace("<RAG>", rag_string)
+    """).replace("{{categories}}", categories).replace("{{ticket}}", X).replace("{{examples}}", rag_string)
     return prompt

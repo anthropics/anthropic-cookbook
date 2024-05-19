@@ -2,7 +2,7 @@ description: 'Classification'
 
 # Prompts defined in the prompts.py file
 prompts: 
-  - prompt.txt
+  - prompts.py:simple_classify
   - prompts.py:rag_classify
   - prompts.py:rag_chain_of_thought_classify
 
