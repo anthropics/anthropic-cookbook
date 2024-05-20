@@ -4,7 +4,7 @@ Welcome to the Skills section of the Anthropic Cookbook! This directory contains
 
 ## Guides
 
-- **[Classification with Claude](classification-guide.ipynb)**: Discover how Claude can revolutionize classification tasks, especially in scenarios with complex business rules and limited training data. This guide walks you through data preparation, prompt engineering with retrieval-augmented generation (RAG), testing, and evaluation.
+- **[Classification with Claude](./classification/guide.ipynb)**: Discover how Claude can revolutionize classification tasks, especially in scenarios with complex business rules and limited training data. This guide walks you through data preparation, prompt engineering with retrieval-augmented generation (RAG), testing, and evaluation.
 
 
 ## Getting Started
