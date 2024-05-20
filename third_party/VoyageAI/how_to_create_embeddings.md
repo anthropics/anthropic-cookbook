@@ -206,8 +206,7 @@ The output would be the 5th document, which is indeed the most relevant to the q
 Apple’s conference call to discuss fourth fiscal quarter results and business updates is scheduled for Thursday, November 2, 2023 at 2:00 p.m. PT / 5:00 p.m. ET.
 ```
 
-If you are looking for a detailed set of cookbooks on how to do RAG with embeddings, including vector databases, check out our RAG cookbook.
-> ANTHROPIC TEAM to add link to RAG cookbook once Alex finishes it.
+If you are looking for a detailed set of cookbooks on how to do RAG with embeddings, including vector databases, check out our [RAG cookbook](https://github.com/anthropics/anthropic-cookbook/blob/main/third_party/Pinecone/rag_using_pinecone.ipynb).
 
 ## Frequently Asked Questions
 ### How do I calculate the distance between two embedding vectors?
