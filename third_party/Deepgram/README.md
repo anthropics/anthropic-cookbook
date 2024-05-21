@@ -2,7 +2,6 @@
 
 [Deepgram](https://deepgram.com/) is a foundational AI company providing the speech-to-text, text-to-speech, text-to-text and language intelligence capabilities you need to make your data readable and actionable by human or machines.
 
-* The [Livestream Audio Notebook](./livestream_audio.ipynb) allows you to transcribe live streaming audio using Deepgram.
 * The [Pre-Recorded Audio Notebook](./prerecorded_audio.ipynb) allows you to transcribe pre-recorded audio using Deepgram.
 
 # More about Deepgram
