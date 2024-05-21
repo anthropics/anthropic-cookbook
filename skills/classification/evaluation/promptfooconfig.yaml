@@ -1,0 +1,57 @@
+description: 'Classification'
+
+# Prompts defined in the prompts.py file
+prompts: 
+  - prompts.py:simple_classify
+  - prompts.py:rag_classify
+  - prompts.py:rag_chain_of_thought_classify
+
+providers:
+  - id: anthropic:messages:claude-3-haiku-20240307
+    label: "Haiku: T-0.0"
+    config:
+      max_tokens: 4096
+      temperature: 0
+  - id: anthropic:messages:claude-3-haiku-20240307
+    label: "Haiku: T-0.2"
+    config:
+      max_tokens: 4096
+      temperature: 0.2
+  - id: anthropic:messages:claude-3-haiku-20240307
+    label: "Haiku: T-0.4"
+    config:
+      max_tokens: 4096
+      temperature: 0.4
+  - id: anthropic:messages:claude-3-haiku-20240307
+    label: "Haiku: T-0.6"
+    config:
+      max_tokens: 4096
+      temperature: 0.6
+  - id: anthropic:messages:claude-3-haiku-20240307
+    label: "Haiku: T-0.8"
+    config:
+      max_tokens: 4096
+      temperature: 0.8
+      
+
+# Read more about why we use defaultTest here: https://www.promptfoo.dev/docs/configuration/guide/#tools-and-functions:~:text=Use-,defaultTest,-apply%20a%20transform
+defaultTest:
+  options:
+    transform: file://transform.py
+  assert:
+  - type: icontains-any
+    value:
+      - 'Billing Inquiries'
+      - 'Policy Administration'
+      - 'Claims Assistance'
+      - 'Coverage Explanations'
+      - 'Quotes and Proposals'
+      - 'Account Management'
+      - 'Billing Disputes'
+      - 'Claims Disputes'
+      - 'Policy Comparisons'
+      - 'General Inquiries'
+
+tests: dataset.csv
+
+outputPath: ../data/results.csv
