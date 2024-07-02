@@ -6,6 +6,8 @@ Welcome to the Skills section of the Anthropic Cookbook! This directory contains
 
 - **[Classification with Claude](./classification/guide.ipynb)**: Discover how Claude can revolutionize classification tasks, especially in scenarios with complex business rules and limited training data. This guide walks you through data preparation, prompt engineering with retrieval-augmented generation (RAG), testing, and evaluation.
 
+- **[Citations with Claude](./citations/guide.ipynb)**: Learn how to leverage Claude for accurate and verifiable information retrieval. This guide demonstrates how to implement citations in two key scenarios: Q&A over a help center and extracting quotes from large documents. You'll explore prompt engineering techniques, post-processing methods, and strategies for creating user-friendly, interactive experiences with cited information.
+
 
 ## Getting Started
 
