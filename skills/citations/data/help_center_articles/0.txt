@@ -1,0 +1,2 @@
+title: How to Change Your Password
+To change your password, log in to your PetWorld account and navigate to the "Account Settings" page. Click on the "Security" tab, then select "Change Password." Enter your current password, then type your new password twice to confirm. Make sure your new password is at least 8 characters long and includes a mix of uppercase and lowercase letters, numbers, and symbols. Click "Save Changes" to update your password. For security reasons, you'll be logged out and need to sign in again with your new password.
