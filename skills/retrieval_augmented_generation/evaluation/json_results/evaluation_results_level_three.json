@@ -1,0 +1,1 @@
+{"name": "Summary Indexing + Re-Ranking", "average_precision": 0.45666666666666667, "average_recall": 0.7208333333333333, "average_f1": 0.5459047619047619, "average_mrr": 0.895, "end_to_end_accuracy": 0.86}
