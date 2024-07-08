@@ -37,7 +37,7 @@ The evaluation is orchestrated by the `promptfooconfig.yaml` file. In this file 
 
 To get started with Promptfoo open your terminal and navigate to this directory (`./evaluation`).
 
-Before running your evaluation you must define the following enviroment variables:
+Before running your evaluation you must define the following environment variables:
 
 `export ANTHROPIC_API_KEY=YOUR_API_KEY`  
 `export VOYAGE_API_KEY=YOUR_API_KEY`
