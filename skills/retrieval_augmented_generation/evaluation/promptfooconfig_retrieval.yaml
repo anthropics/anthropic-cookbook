@@ -8,4 +8,4 @@ providers: [
   'python:provider_retrieval.py:retrieve_level_three'
   ]
 
-tests: retrieval_dataset.csv
+tests: promptfoo_datasets/retrieval_dataset.csv

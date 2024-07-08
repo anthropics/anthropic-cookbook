@@ -19,4 +19,4 @@ providers:
       max_tokens: 2500
       temperature: 0
 
-tests: end_to_end_dataset.csv
+tests: promptfoo_datasets/end_to_end_dataset.csv
