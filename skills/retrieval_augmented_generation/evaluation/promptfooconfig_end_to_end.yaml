@@ -1,0 +1,22 @@
+# Learn more about building a configuration: https://promptfoo.dev/docs/configuration/guide
+description: "End to End Performance - Base Eval"
+
+prompts: 
+  - prompts.py:answer_query_base
+  - prompts.py:answer_query_level_two
+  - prompts.py:answer_query_level_three
+
+providers:
+  - id: anthropic:messages:claude-3-haiku-20240307
+    label: "Haiku: T-0.0"
+    config:
+      max_tokens: 2500
+      temperature: 0
+
+  - id: anthropic:messages:claude-3-5-sonnet-20240620
+    label: "3.5 Sonnet: T-0.0"
+    config:
+      max_tokens: 2500
+      temperature: 0
+
+tests: promptfoo_datasets/end_to_end_dataset.csv

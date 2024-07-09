@@ -1,0 +1,11 @@
+# Learn more about building a configuration: https://promptfoo.dev/docs/configuration/guide
+description: "Retrieval - Base Eval"
+
+prompts: ['{{ query }}']
+providers: [
+  'python:provider_retrieval.py:retrieve_base',
+  'python:provider_retrieval.py:retrieve_level_two',
+  'python:provider_retrieval.py:retrieve_level_three'
+  ]
+
+tests: promptfoo_datasets/retrieval_dataset.csv
