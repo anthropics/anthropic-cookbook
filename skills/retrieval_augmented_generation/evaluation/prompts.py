@@ -73,7 +73,7 @@ def answer_query_level_two(context):
     return prompt
 
 # Initialize the VectorDB
-db_rerank = SummaryIndexedVectorDB("anthropic_docs_summaries")
+db_rerank = SummaryIndexedVectorDB("anthropic_docs_rerank")
 # Load the Anthropic documentation
 with open("../data/anthropic_summary_indexed_docs.json", 'r') as f:
     anthropic_docs_summaries = json.load(f)
