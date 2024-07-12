@@ -23,7 +23,7 @@ def _retrieve_base(query, db):
 
 def answer_query_base(context):
     input_query = context['vars']['query']
-    documents, context = _retrieve_base(input_query, db)
+    documents, document_context = _retrieve_base(input_query, db)
     prompt = f"""
     You have been tasked with helping us to answer the following query: 
     <query>
@@ -31,7 +31,7 @@ def answer_query_base(context):
     </query>
     You have access to the following documents which are meant to provide context as you answer the query:
     <documents>
-    {context}
+    {document_context}
     </documents>
     Please remain faithful to the underlying context, and only deviate from it if you are 100% sure that you know the answer already. 
     Answer the question now, and avoid providing preamble such as 'Here is the answer', etc
@@ -56,7 +56,7 @@ def retrieve_level_two(query):
 
 def answer_query_level_two(context):
     input_query = context['vars']['query']
-    documents, context = retrieve_level_two(input_query)
+    documents, document_context = retrieve_level_two(input_query)
     prompt = f"""
     You have been tasked with helping us to answer the following query: 
     <query>
@@ -64,7 +64,7 @@ def answer_query_level_two(context):
     </query>
     You have access to the following documents which are meant to provide context as you answer the query:
     <documents>
-    {context}
+    {document_context}
     </documents>
     Please remain faithful to the underlying context, and only deviate from it if you are 100% sure that you know the answer already. 
     Answer the question now, and avoid providing preamble such as 'Here is the answer', etc
@@ -73,7 +73,7 @@ def answer_query_level_two(context):
     return prompt
 
 # Initialize the VectorDB
-db_rerank = SummaryIndexedVectorDB("anthropic_docs_summaries")
+db_rerank = SummaryIndexedVectorDB("anthropic_docs_rerank")
 # Load the Anthropic documentation
 with open("../data/anthropic_summary_indexed_docs.json", 'r') as f:
     anthropic_docs_summaries = json.load(f)
@@ -162,7 +162,7 @@ def _retrieve_advanced(query: str, k: int = 3, initial_k: int = 20) -> Tuple[Lis
 # The answer_query_advanced function remains unchanged
 def answer_query_level_three(context):
     input_query = context['vars']['query']
-    documents, context = _retrieve_advanced(input_query)
+    documents, document_context = _retrieve_advanced(input_query)
     prompt = f"""
     You have been tasked with helping us to answer the following query: 
     <query>
@@ -170,7 +170,7 @@ def answer_query_level_three(context):
     </query>
     You have access to the following documents which are meant to provide context as you answer the query:
     <documents>
-    {context}
+    {document_context}
     </documents>
     Please remain faithful to the underlying context, and only deviate from it if you are 100% sure that you know the answer already. 
     Answer the question now, and avoid providing preamble such as 'Here is the answer', etc
