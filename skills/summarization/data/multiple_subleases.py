@@ -1,3 +1,5 @@
+# All of these sublease agreements were created by Claude.
+
 document1 = """
 COMMERCIAL SUBLEASE AGREEMENT
 
