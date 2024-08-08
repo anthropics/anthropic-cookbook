@@ -1,0 +1,41 @@
+Description: Sublease Agreement Summary: Blue Coat Systems to Infoblox Inc. This document summarizes a sublease agreement for office space in Sunnyvale, California, between Blue Coat Systems and Infoblox Inc., subject to the master lease with Sunnyvale VIII Trust.
+
+<parties_involved>
+- Sublessor: Blue Coat Systems (formerly CacheFlow Inc.), a Delaware corporation
+- Sublessee: Infoblox Inc., a Delaware corporation
+- Original Lessor: Sunnyvale VIII Trust, a Maryland business trust
+</parties_involved>
+
+<property_details>
+- Address: 475-477 Potrero Avenue, Sunnyvale, California
+- Description: Approximately 45,823 square feet of space
+- Permitted use: General office use, research and development, and other legal related uses
+</property_details>
+
+<term_and_rent>
+- Start date: October 7, 2004 (Commencement Date)
+- Rent Commencement Date: October 15, 2004
+- End date: June 30, 2006
+- Monthly rent: $23,827.96
+- Security deposit: $23,827.96
+- Additional security: Letter of Credit for $37,000
+</term_and_rent>
+
+<responsibilities>
+- Utilities: Sublessee responsible for utilities and janitorial costs
+- Maintenance and repairs: Sublessee to keep premises in the same condition as received, ordinary wear and tear excepted
+- Operating expenses: Sublessor responsible for all other operating expenses under the Master Lease
+</responsibilities>
+
+<consent_and_notices>
+- Landlord's consent: Required and obtained from Sunnyvale VIII Trust
+- Notice requirements: Written notices to be served personally or sent by prepaid, first-class certified mail or commercial overnight delivery service
+</consent_and_notices>
+
+<special_provisions>
+- Furniture: Sublessee has use of existing furniture, fixtures, and equipment (FF&E) at no additional cost
+- Parking: Sublessee has the right to use all parking spaces associated with the premises as specified in the Master Lease
+- Subletting restrictions: Sublessee may not assign or sublet without prior written consent from both Sublessor and Master Lessor
+- Signage: Sublessee may place signs on or about the premises in compliance with the Master Lease
+- Insurance: Sublessee required to provide insurance as described in the Master Lease, including additional insureds
+</special_provisions>
