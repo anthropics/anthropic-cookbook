@@ -36,11 +36,15 @@ def llm_eval(summary, input):
     
     Provide a score for each criterion in JSON format. Here is the format you should follow always:
 
+    <json>
+    {{
     "conciseness": <number>,
     "accuracy": <number>,
     "completeness": <number>,
     "clarity": <number>,
     "explanation": <string>,
+    }}
+    </json>
 
     Original Text: {input}
     
@@ -51,10 +55,18 @@ def llm_eval(summary, input):
     response = client.messages.create(
         model="claude-3-5-sonnet-20240620",
         max_tokens=1000,
-        temperature=0.2,
+        temperature=0,
         messages=[
-            {"role": "user", "content": prompt}
-        ]
+            {
+                "role": "user",
+                "content": prompt
+            },
+            {
+                "role": "assistant",
+                "content": "<json>" 
+            }
+        ],
+        stop_sequences=["</json>"]
     )
     
     evaluation = json.loads(response.content[0].text)

@@ -58,7 +58,9 @@ ground_truth,input,[3.0 Haiku] prompts.py:basic_summarize,[3.0 Haiku] prompts.py
 - Holdover: Rent at twice the amount of monthly rent payable before termination of sublease
 - Broker participation: Parties warrant no broker involvement except as specified
 
-</special provisions>","Exhibit 10.32
+</special provisions>","Source: https://www.sec.gov/Archives/edgar/data/1045425/000119312507044370/dex1032.htm 
+
+Exhibit 10.32
 
 SUBLEASE AGREEMENT
 
@@ -1198,58 +1200,80 @@ Name:	 		 		 	Name:
 Title:	 	Secretary	 		 	Title:	 	
  
 
-47","[FAIL] (1.22)
+47","[PASS] (1.51)
 
-Average score is below threshold
----
-Here are the main ideas and key details from the text in bullet points:
+  Here is a summary of the key points from the legal document:
 
-- Sublease agreement between Cohen Brothers, LLC (Sublessor) and Taberna Capital Management, LLC (Sublessee) for a portion of premises originally leased from Brandywine Cira, L.P. (Master Lessor)
-- Sublease is for 2,000 square feet of office space at 2929 Arch Street, Suite 1703, Philadelphia, PA 19104
-- Initial term is 5 years, from April 1, 2024 to March 31, 2029
-- Monthly rent ranges from $5,750 to $6,223.33 over the term
-- Sublessee responsible for pro rata share of Sublessor's Allocated Share of Recognized Expenses
-- Sublessee required to maintain all insurance as required by the Tenant under the Master Lease
-- Sublease prohibits assignment or subletting without Sublessor's prior written consent
-- Detailed events of default and remedies specified
-- Holdover rent is twice the amount of monthly rent payable before termination
-- No broker involvement except as specified
-
-Fail Reason: Average score is below threshold","[FAIL] (1.23)
-
-Average score is below threshold
----
-<parties involved>
+- Parties Involved:
 - Sublessor: Cohen Brothers, LLC d/b/a Cohen & Company
 - Sublessee: Taberna Capital Management, LLC
+- Original Lessor: Brandywine Cira, L.P.
+
+- Property Details:
+- Address: 2929 Arch Street, Suite 1703, Philadelphia, PA 19104
+- 2,000 square feet of office space, part of a larger 13,777 square foot master premises
+- Permitted use: General office use
+
+- Term and Rent:
+- Start date: April 1, 2024
+- End date: March 31, 2029 (5-year term)
+- Monthly rent ranging from $5,750 to $6,223.33
+- Additional rent: Pro rata share of Sublessor's Allocated Share of Recognized Expenses
+- Option to extend: Parties may renew on similar terms if Sublessor renews the Master Lease
+
+- Responsibilities:
+- Utilities, maintenance, and repairs not explicitly specified
+- Sublessee required to maintain insurance as required by Tenant under Master Lease
+
+- Consent and Notices:
+- Landlord's consent required for sublease
+- Written notices to be delivered by specified methods
+
+- Special Provisions:
+- Furniture and services: Sublessee has access to certain shared amenities
+- Assignment and subletting: Prohibited without Sublessor's prior written consent
+- Damage and destruction: Not explicitly addressed
+- Default: Detailed events of default and remedies specified
+- Holdover: Rent at twice the amount of monthly rent payable before termination
+- Broker participation: Parties warrant no broker involvement except as specified
+
+</summary>
+
+  Pass Reason: All assertions passed","[FAIL] (1.27)
+
+Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
+---
+<parties involved>
+- Parties: Cohen Brothers, LLC d/b/a Cohen & Company (Sublessor) and Taberna Capital Management, LLC (Sublessee)
 </parties involved>
 
 <main subject matter>
-This is a commercial sublease agreement for a portion of office premises originally leased by the Sublessor from the Master Lessor, Brandywine Cira, L.P.
+- Sublease of 2,000 square feet of office space at 2929 Arch Street, Suite 1703, Philadelphia, PA 19104, which is part of a larger 13,777 square foot master premises originally leased by Sublessor from Brandywine Cira, L.P. (Master Lessor).
 </main subject matter>
 
 <key terms and conditions>
-- 5-year initial term from April 1, 2024 to March 31, 2029
-- Monthly rent ranging from $5,750 to $6,223.33
-- Sublessee to pay pro rata share of Sublessor's Allocated Share of Recognized Expenses as additional rent
-- Sublessee required to maintain insurance as required under the Master Lease
-- Sublease subject to terms and conditions of the Master Lease
-- Sublease may be renewed if Sublessor renews the Master Lease
+- Term: 5 years, starting April 1, 2024
+- Rent: Monthly rent ranging from $5,750 to $6,223.33, plus pro rata share of Sublessor's Allocated Share of Recognized Expenses
+- Sublessee responsible for maintaining all insurance required of Tenant under the Master Lease
+- Sublease subject to terms of Master Lease, with Sublessee assuming Tenant's obligations
 - Subletting or assignment prohibited without Sublessor's prior written consent
 </key terms and conditions>
 
 <important dates or deadlines>
 - Commencement Date: April 1, 2024
-- Expiration Date: March 31, 2029
+- Expiration Date: March 31, 2029 (end of 5-year term)
+- Option to extend: Parties may renew on similar terms if Sublessor renews the Master Lease
 </important dates or deadlines>
 
 <unusual or notable clauses>
+- Sublessee has access to file space, printers, copiers, kitchen, conference room facilities, and receptionist and secretarial services
 - Detailed events of default and remedies specified, including Sublessor's right to confess judgment against Sublessee
 - Holdover rent at twice the amount of monthly rent payable before termination of sublease
-- Parties warrant no broker involvement except as specified
 </unusual or notable clauses>
 
-Fail Reason: Average score is below threshold","[PASS] (1.63)
+</summary>
+
+Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[PASS] (1.63)
 
     <parties involved>
 - Sublessor: Cohen Brothers, LLC d/b/a Cohen & Company
@@ -1267,11 +1291,11 @@ Fail Reason: Average score is below threshold","[PASS] (1.63)
 - Start date: April 1, 2024
 - End date: March 31, 2029 (5-year term)
 - Monthly rent:
-• Months 1-12: $5,750.00
-• Months 13-24: $5,865.00
-• Months 25-36: $5,981.67
-• Months 37-48: $6,101.67
-• Months 49-60: $6,223.33
+- Months 1-12: $5,750.00
+- Months 13-24: $5,865.00
+- Months 25-36: $5,981.67
+- Months 37-48: $6,101.67
+- Months 49-60: $6,223.33
 - Security deposit: Not specified
 - Option to extend: Parties may renew on similar terms if Sublessor renews the Master Lease
 - Additional rent: Pro rata share of Sublessor's Allocated Share of Recognized Expenses
@@ -1298,94 +1322,96 @@ Fail Reason: Average score is below threshold","[PASS] (1.63)
 - Broker participation: Parties warrant no broker involvement except as specified
 </special provisions>
 
-    Pass Reason: All assertions passed","[FAIL] (1.23)
+</summary>
 
-    Average score is below threshold
+    Pass Reason: All assertions passed","[FAIL] (1.30)
+
+    Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
-Here's a summary of the key points from the sublease agreement in bullet form:
+Here is a summary of the key points from the sublease agreement:
 
-• Parties:
+<summary>
+
+Description: This is a commercial sublease agreement between Cohen Brothers, LLC d/b/a Cohen & Company (Sublessor) and Taberna Capital Management, LLC (Sublessee) for a portion of office space originally leased from Brandywine Cira, L.P. (Master Lessor). The sublease is for a 5-year initial term.
+
+Key details:
+
+• Parties: 
 - Sublessor: Cohen Brothers, LLC d/b/a Cohen & Company
 - Sublessee: Taberna Capital Management, LLC
-- Original Lessor: Brandywine Cira, L.P.
+- Master Lessor: Brandywine Cira, L.P.
 
 • Property:
 - Address: 2929 Arch Street, Suite 1703, Philadelphia, PA 19104
-- Space: 2,000 sq ft of a larger 13,777 sq ft master premises
-- Use: General office use (implied)
+- Space: 2,000 square feet of a larger 13,777 square foot master premises
+- Use: Likely general office use (not explicitly stated)
 
-• Term:
-- 5 years from April 1, 2024 to March 31, 2029
-- Option to renew if Sublessor renews Master Lease
-
-• Rent:
-- Monthly rent increases annually:
-  Year 1: $5,750.00
-  Year 2: $5,865.00
-  Year 3: $5,981.67
-  Year 4: $6,101.67
-  Year 5: $6,223.33
+• Term and Rent:
+- Term: 5 years from April 1, 2024 to March 31, 2029
+- Monthly rent:
+Months 1-12: $5,750.00
+Months 13-24: $5,865.00
+Months 25-36: $5,981.67
+Months 37-48: $6,101.67
+Months 49-60: $6,223.33
 - Additional rent: Pro rata share of Sublessor's expenses
+- Renewal: Possible if Sublessor renews Master Lease
 
 • Key Provisions:
-- Sublessee gets access to shared office amenities
-- Sublessee must maintain insurance per Master Lease requirements
-- No assignment/subletting without Sublessor consent
-- Detailed default and remedies clauses
-- Holdover rent at 2x normal rate
-- Notices must be in writing via specified methods
+- Insurance: Sublessee must maintain insurance required by Master Lease
+- Assignment/Subletting: Prohibited without Sublessor's consent
+- Holdover: Rent doubles if Sublessee remains after lease end
+- Furniture/Services: Sublessee has access to office equipment and services
+- Landlord consent: Required for sublease to be effective
+- Notices: Must be in writing and delivered by specified methods
 
-• Special Notes:
-- Landlord consent required for sublease to be effective
-- No broker involvement except as specified
-- Security deposit amount not specified
-- Some responsibilities (utilities, maintenance, repairs) not explicitly addressed
+• Not Specified:
+- Security deposit amount
+- Specific maintenance/repair responsibilities
+- Utility payment responsibilities
+- Damage/destruction provisions
 
-This summary captures the main points of the sublease agreement, focusing on the parties involved, property details, lease terms, rent structure, and key provisions.
+</summary>
 
-    Fail Reason: Average score is below threshold","[FAIL] (1.26)
+    Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.28)
 
 Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
 Here is a summary of the key aspects of the sublease agreement:
 
-<parties involved>
+<summary>
+
+1. Parties involved:
 - Sublessor: Cohen Brothers, LLC d/b/a Cohen & Company
 - Sublessee: Taberna Capital Management, LLC 
 - Original lessor (Landlord): Brandywine Cira, L.P.
-</parties involved>
 
-<main subject matter>
-This is a sublease agreement for a portion of office space originally leased by Cohen Brothers from Brandywine Cira, L.P. Cohen Brothers is subleasing 2,000 square feet of their larger 13,777 square foot premises to Taberna Capital Management.
-</main subject matter>
+2. Main subject matter:
+Sublease of 2,000 square feet of office space, part of a larger 13,777 square foot master premises located at 2929 Arch Street, Suite 1703, Philadelphia, PA 19104.
 
-<key terms and conditions>
-- Premises: 2,000 sq ft of office space at 2929 Arch Street, Suite 1703, Philadelphia, PA 19104
+3. Key terms and conditions:
 - Term: 5 years, from April 1, 2024 to March 31, 2029
 - Rent: Monthly rent starting at $5,750 and increasing annually
-- Use: Not explicitly stated, but likely general office use
-- Insurance: Sublessee must maintain insurance as required in the Master Lease
+- Use: Not explicitly stated, but likely general office use as per the master lease
+- Insurance: Sublessee required to maintain all insurance as required by the Tenant under the Master Lease
 - Assignment/Subletting: Prohibited without Sublessor's prior written consent
-- Access to shared amenities: File space, printers, copiers, kitchen, conference rooms, reception services
-- Additional rent: Pro rata share of Sublessor's expenses from Master Lease
-</key terms and conditions>
+- Additional rent: Sublessee to pay pro rata share of Sublessor's Allocated Share of Recognized Expenses
 
-<important dates or deadlines>
-- Commencement Date: April 1, 2024
-- Expiration Date: March 31, 2029
-</important dates or deadlines>
+4. Important dates or deadlines:
+- Commencement date: April 1, 2024
+- Expiration date: March 31, 2029
 
-<unusual or notable clauses>
-- Renewal option: Parties may renew on similar terms if Sublessor renews the Master Lease
-- Holdover rent: Twice the monthly rent if Sublessee remains in possession after lease expiration
-- No broker involvement warranted by parties except as specified
-- Detailed default provisions and remedies specified
-- Sublease effectiveness contingent on Landlord's consent
-</unusual or notable clauses>
+5. Unusual or notable clauses:
+- Furniture and services: Sublessee has access to file space, printers, copiers, kitchen, conference room facilities, and receptionist and secretarial services
+- Holdover: Rent at twice the amount of monthly rent payable before termination of sublease if Sublessee remains in possession after lease expiration
+- Option to extend: Parties may renew on similar terms if Sublessor renews the Master Lease
+- Landlord's consent required for sublease to be effective
 
-Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[PASS] (1.60)
+</summary>
 
-    Here is a summary of the key aspects of the sublease agreement:
+Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[PASS] (1.61)
+
+    Here is a summary of the sublease agreement:
 
 <parties involved>
 - Sublessor: Cohen Brothers, LLC d/b/a Cohen & Company
@@ -1396,7 +1422,7 @@ Fail Reason: Expected output to contain all of ""parties involved, property deta
 <property details>
 - Address: 2929 Arch Street, Suite 1703, Philadelphia, PA 19104
 - Description: 2,000 square feet of office space, part of a larger 13,777 square foot master premises
-- Permitted use: General office use and storage incidental thereto
+- Permitted use: General office use and storage incidental thereto (as specified in the master lease)
 </property details>
 
 <term and rent>
@@ -1414,8 +1440,8 @@ Fail Reason: Expected output to contain all of ""parties involved, property deta
 
 <responsibilities>
 - Utilities: Sublessee responsible for electricity charges based on consumption
-- Maintenance: Not explicitly specified
-- Repairs: Sublessee responsible for non-structural repairs necessitated by Tenant's actions or neglect
+- Maintenance: Not explicitly specified in the sublease summary
+- Repairs: Not explicitly specified in the sublease summary
 - Insurance: Sublessee required to maintain all insurance as required by the Tenant under the Master Lease
 </responsibilities>
 
@@ -1426,12 +1452,12 @@ Fail Reason: Expected output to contain all of ""parties involved, property deta
 
 <special provisions>
 - Furniture and services: Sublessee has access to file space, printers, copiers, kitchen, conference room facilities, and receptionist and secretarial services
-- Parking: Not specified
 - Assignment and subletting: Prohibited without Sublessor's prior written consent
-- Damage and destruction: Addressed in Master Lease provisions incorporated by reference
-- Default: Detailed events of default and remedies specified
 - Holdover: Rent at twice the amount of monthly rent payable before termination of sublease
+- Broker participation: Parties warrant no broker involvement except as specified
 </special provisions>
+
+</summary>
 
     Pass Reason: All assertions passed"
 "Description: This is a commercial sublease agreement between KaloBios Pharmaceuticals, Inc. (Sublandlord) and Compugen, Inc. (Subtenant) for a portion of premises originally leased from Britannia Pointe Grand Limited Partnership (Master Landlord). The sublease is for office and laboratory space with a term ending on June 30, 2014.
@@ -1488,7 +1514,9 @@ Fail Reason: Expected output to contain all of ""parties involved, property deta
 - Alterations: Require prior written consent of Sublandlord and Master Landlord
 - Assignment and subletting: Prohibited without prior written consent of Sublandlord and Master Landlord
 
-</special provisions>","EX-10.30 15 d380427dex1030.htm SUBLEASE AGREEMENT
+</special provisions>","Source: https://www.sec.gov/Archives/edgar/data/1293310/000119312512306440/d380427dex1030.htm 
+
+EX-10.30 15 d380427dex1030.htm SUBLEASE AGREEMENT
 Exhibit 10.30
 
 SUBLEASE AGREEMENT
@@ -1779,98 +1807,82 @@ By:	 	David W. Pritchard	 		 	By:	 	Anat Cohen-Dayag
 Its:	 	Chief Executive Officer	 		 	Its:	 	President & CEO
  
 
-16","[FAIL] (1.24)
+16","[FAIL] (1.23)
 
 Average score is below threshold
 ---
-Here are the key points from the sublease agreement in bullet form:
+Here is a summary of the key points from the sublease agreement:
 
-Main Parties:
-- Sublandlord: KaloBios Pharmaceuticals, Inc.
-- Subtenant: Compugen, Inc.
-- Master Landlord: Britannia Pointe Grand Limited Partnership
+Main Points:
 
-Property Details:
-- Address: 260 East Grand Avenue, San Francisco, CA
-- Size: Approximately 4,410 square feet on the first floor
-- Permitted Use: As allowed in the Master Lease
-
-Lease Terms:
-- Commencement Date: Upon Master Landlord's consent and delivery of possession
-- Expiration Date: June 30, 2014
-- No option to extend
-
-Rent:
-- Monthly Base Rent: $19,845
-- Security Deposit: $39,690
+- This is a sublease agreement between KaloBios Pharmaceuticals, Inc. (Sublandlord) and Compugen, Inc. (Subtenant) for office and laboratory space.
+- The subleased premises are approximately 4,410 square feet on the first floor of a building located at 260 East Grand Avenue, San Francisco.
+- The sublease term is from the commencement date (upon Master Landlord's consent) to June 30, 2014.
+- The monthly base rent is $19,845.
+- Subtenant must provide a security deposit of $39,690.
+- Subtenant has no option to extend the sublease term.
 
 Key Responsibilities:
-- Subtenant responsible for interior maintenance, repairs, and insurance
-- Sublandlord responsible for building systems and structure
 
-Other Key Provisions:
-- Sublandlord to provide certain services (utilities, janitorial, etc.)
-- Subtenant may use existing furniture, to be returned in same condition
-- Subtenant has non-exclusive use of 10 parking spaces
-- Subtenant responsible for proper handling and disposal of hazardous materials
-- Alterations and assignments/subletting require prior written consent
-- Notices to be delivered in writing to specified addresses
+- Subtenant is responsible for interior maintenance, repairs, and compliance with the terms of the Master Lease.
+- Sublandlord is responsible for building systems, structure, and obtaining Master Landlord's performance of obligations.
+- Subtenant must maintain insurance as required in the Master Lease.
+
+Special Provisions:
+
+- Sublandlord will provide certain services to Subtenant, including utilities, janitorial, and hazardous materials storage.
+- Subtenant may use certain furniture in the subleased premises.
+- Subtenant has non-exclusive use of 10 parking spaces.
+- Alterations and assignments/subletting require prior written consent of Sublandlord and Master Landlord.
+- Subtenant is responsible for proper handling and disposal of hazardous materials.
+
+</summary>
 
 Fail Reason: Average score is below threshold","[PASS] (1.65)
 
 <parties involved>
-
 - Sublessor: KaloBios Pharmaceuticals, Inc.
-- Sublessee: Compugen, Inc.
+- Sublessee: Compugen, Inc. 
 - Original lessor: Britannia Pointe Grand Limited Partnership
-
 </parties involved>
 
 <property details>
-
 - Address: 260 East Grand Avenue, San Francisco, CA
 - Description: Approximately 4,410 square feet of space on the first floor
 - Permitted use: Those purposes permitted in the Master Lease
-
 </property details>
 
 <term and rent>
-
 - Start date: Upon Master Landlord's consent and delivery of possession
 - End date: June 30, 2014
 - Monthly rent: $19,845.00 per month
 - Security deposit: $39,690.00
 - Option to extend: None
 - Additional rent: Subtenant's pro rata share of Operating Expenses
-
 </term and rent>
 
 <responsibilities>
-
 - Utilities: Included in Base Rent
 - Maintenance: Subtenant responsible for interior maintenance and repairs
 - Repairs: Subtenant responsible for interior repairs; Sublandlord responsible for building systems and structure
 - Insurance: Subtenant required to maintain insurance as described in the Master Lease
-
 </responsibilities>
 
 <consent and notices>
-
 - Landlord's consent: Required for sublease to be effective
 - Notice requirements: Written notices to be delivered personally, by certified mail, or commercial overnight delivery service to specified addresses
-
 </consent and notices>
 
 <special provisions>
-
 - Services provided by Sublandlord: Includes utilities, garbage, janitorial, building maintenance, RO/DI water system, hazardous materials storage, shipping/receiving
 - Furniture: Subtenant may use certain furniture and fixtures, to be returned in same condition
 - Parking: Non-exclusive use of 10 parking spaces
 - Hazardous Materials: Subtenant responsible for proper handling and disposal
 - Alterations: Require prior written consent of Sublandlord and Master Landlord
 - Assignment and subletting: Prohibited without prior written consent of Sublandlord and Master Landlord
-
 </special provisions>
+
+</summary>
 
 Pass Reason: All assertions passed","[PASS] (1.64)
 
@@ -1915,74 +1927,83 @@ Pass Reason: All assertions passed","[PASS] (1.64)
 - Assignment and subletting: Prohibited without prior written consent of Sublandlord and Master Landlord
 </special provisions>
 
-Pass Reason: All assertions passed","[FAIL] (1.22)
+</summary>
 
-    Average score is below threshold
----
-Here's a summary of the key points from the sublease agreement in bullet form:
-
-• Parties:
-- Sublandlord: KaloBios Pharmaceuticals, Inc.
-- Subtenant: Compugen, Inc.
-- Master Landlord: Britannia Pointe Grand Limited Partnership
-
-• Property:
-- 4,410 sq ft on first floor at 260 East Grand Ave, San Francisco, CA
-
-• Term:
-- Start: Upon Master Landlord's consent and delivery of possession
-- End: June 30, 2014
-- No option to extend
-
-• Rent:
-- $19,845 per month
-- Security deposit: $39,690
-
-• Key Responsibilities:
-- Subtenant responsible for interior maintenance/repairs
-- Sublandlord responsible for building systems and structure
-- Subtenant must maintain insurance per Master Lease
-
-• Special Provisions:
-- Sublandlord provides utilities, janitorial, building maintenance, etc.
-- Subtenant may use certain furniture/fixtures
-- 10 non-exclusive parking spaces for Subtenant
-- Subtenant responsible for hazardous materials handling
-- Alterations require Sublandlord and Master Landlord consent
-- Assignment/subletting prohibited without prior consent
-
-• Other:
-- Master Landlord's consent required for sublease to be effective
-- Specific notice requirements outlined
-- Subtenant has no right to holdover after lease expiration
-
-    Fail Reason: Average score is below threshold","[FAIL] (1.23)
+Pass Reason: All assertions passed","[FAIL] (1.21)
 
 Average score is below threshold
 ---
-Here's a summary of the key aspects of the sublease agreement:
+Here is a summary of the key points from the sublease agreement:
+
+<summary>
+
+• Parties: KaloBios Pharmaceuticals, Inc. (Sublandlord) and Compugen, Inc. (Subtenant)
+
+• Property: Approximately 4,410 sq ft on first floor at 260 East Grand Ave, San Francisco, CA
+
+• Term: From Master Landlord's consent/delivery to June 30, 2014
+
+• Rent: $19,845 per month
+
+• Security Deposit: $39,690
+
+• Use: As permitted in Master Lease 
+
+• Subordinate to Master Lease between Britannia Pointe Grand Limited Partnership and Sublandlord
+
+• Subtenant assumes Sublandlord's obligations under Master Lease for subleased premises
+
+• Sublandlord to provide utilities, janitorial, maintenance, and other services included in rent
+
+• Subtenant responsible for interior maintenance/repairs; Sublandlord for building systems/structure
+
+• Alterations require consent of Sublandlord and Master Landlord
+
+• Assignment/subletting prohibited without Sublandlord and Master Landlord consent
+
+• Subtenant to maintain insurance per Master Lease requirements
+
+• 10 non-exclusive parking spaces provided
+
+• Subtenant may use existing furniture, to be returned in same condition
+
+• Subtenant responsible for proper handling/disposal of hazardous materials
+
+• Holdover rent at 150% of last month's rent
+
+• Attorneys' fees to prevailing party in any dispute
+
+• Sublease contingent on Master Landlord's consent
+
+</summary>
+
+Fail Reason: Average score is below threshold","[FAIL] (1.23)
+
+Average score is below threshold
+---
+Here is a summary of the key aspects of the sublease agreement:
+
+<summary>
 
 1. Parties involved:
 • Sublandlord: KaloBios Pharmaceuticals, Inc.
-• Subtenant: Compugen, Inc.
+• Subtenant: Compugen, Inc. 
 • Master Landlord: Britannia Pointe Grand Limited Partnership
 
 2. Main subject matter:
-• Sublease of approximately 4,410 square feet of office and laboratory space
+• Sublease of approximately 4,410 square feet of office/lab space
 • Located at 260 East Grand Avenue, San Francisco, CA
-• First floor of the building
+• For purposes permitted in the Master Lease
 
 3. Key terms and conditions:
 • Term: From Commencement Date to June 30, 2014
 • Monthly rent: $19,845.00
 • Security deposit: $39,690.00
-• Use: As permitted in the Master Lease
-• Subtenant responsible for interior maintenance and repairs
-• Sublandlord provides utilities, janitorial, building maintenance, and other services
-• Subtenant may use certain furniture and fixtures
-• 10 non-exclusive parking spaces provided
-• Alterations require prior written consent
-• Assignment and subletting prohibited without prior consent
+• Subtenant responsible for interior maintenance/repairs
+• Sublandlord provides utilities, janitorial, building maintenance, etc.
+• Subtenant required to maintain insurance per Master Lease
+• Alterations require prior consent of Sublandlord and Master Landlord
+• Assignment/subletting prohibited without prior consent
 
 4. Important dates or deadlines:
 • Commencement Date: Upon Master Landlord's consent and delivery of possession
@@ -1990,16 +2011,17 @@ Here's a summary of the key aspects of the sublease agreement:
 • No option to extend
 
 5. Unusual or notable clauses:
-• Sublease subordinate to Master Lease
+• Subtenant may use certain existing furniture/fixtures
+• Non-exclusive use of 10 parking spaces provided
 • Sublandlord provides hazardous materials storage, but Subtenant responsible for disposal
-• Subtenant indemnifies Sublandlord for hazardous materials claims
-• Holdover rent at 150% of monthly rent
-• Subtenant has no right to terminate in case of damage, destruction, or condemnation
-• Specific provisions for handling building contaminants and biologicals
+• Detailed provisions on handling of hazardous materials and building contaminants
+• Subtenant indemnifies Sublandlord for claims related to Subtenant's hazardous materials use
 
-Fail Reason: Average score is below threshold","[PASS] (1.63)
+</summary>
 
-Here is a summary of the key aspects of the sublease agreement:
+Fail Reason: Average score is below threshold","[PASS] (1.64)
+
+Here is a summary of the sublease agreement:
 
 <parties involved>
 - Sublessor: KaloBios Pharmaceuticals, Inc.
@@ -2018,6 +2040,7 @@ Here is a summary of the key aspects of the sublease agreement:
 - End date: June 30, 2014
 - Monthly rent: $19,845.00 per month
 - Security deposit: $39,690.00
+- Option to extend: None
 </term and rent>
 
 <responsibilities>
@@ -2040,6 +2063,8 @@ Here is a summary of the key aspects of the sublease agreement:
 - Alterations: Require prior written consent of Sublandlord and Master Landlord
 - Assignment and subletting: Prohibited without prior written consent of Sublandlord and Master Landlord
 </special provisions>
+
+</summary>
 
 Pass Reason: All assertions passed"
 "Description: This is a commercial sublease agreement between Cutter & Buck Inc. (Sublandlord) and Tableau Software, Inc. (Subtenant) for a portion of premises originally leased from Fremont Lake Union Center LLC (Landlord). The sublease is for office space with a term from June 1, 2012 to July 31, 2017.
@@ -2101,7 +2126,9 @@ Pass Reason: All assertions passed"
 - Right of First Offer: Subtenant has right of first offer on additional space in the Premises that becomes available during the Term
 - Furniture: Subtenant may use certain existing furniture in the Subleased Premises
 
-</special provisions>","EX-10.16 16 d469057dex1016.htm SUBLEASE AGREEMENT
+</special provisions>","Source: https://www.sec.gov/Archives/edgar/data/1303652/000119312513138700/d469057dex1016.htm
+
+EX-10.16 16 d469057dex1016.htm SUBLEASE AGREEMENT
 Exhibit 10.16
 
 SUBLEASE AGREEMENT
@@ -3647,22 +3674,23 @@ All planned subtenant improvements are within, to and servicing the Subleased Pr
 
  
 
-76","[FAIL] (1.18)
+76","[FAIL] (1.19)
 
 Average score is below threshold
 ---
-Here are the main ideas and key details from the text in bullet points:
+Here is a summary of the key details from the legal document:
 
-- Sublease agreement between Cutter & Buck Inc. (Sublandlord) and Tableau Software, Inc. (Subtenant) for office space in the Plaza Building
-- Subleased Premises: Approximately 6,697 rentable square feet of space in Suite 230
-- Term: June 1, 2012 to July 31, 2017
-- Rent: Starts at $25,113.75/month, increases annually
-- Security deposit: $84,800.76
-- Subtenant responsible for maintenance, repairs, and insurance within Subleased Premises
-- Landlord's consent required for sublease to be effective
-- Subtenant has right of first offer on additional space in the Premises
-- Subtenant may use certain existing furniture in the Subleased Premises
-- Alterations and assignment/subletting require prior written consent of Sublandlord and Landlord
+Main Points:
+- This is a sublease agreement between Cutter & Buck Inc. (Sublandlord) and Tableau Software, Inc. (Subtenant) for office space at 701 North 34th Street, Suite 230, Seattle, WA.
+- The subleased premises is approximately 6,697 rentable square feet on the second floor.
+- The sublease term is from June 1, 2012 to July 31, 2017.
+- Subtenant will pay monthly rent ranging from $25,113.75 to $28,266.92, plus a security deposit of $84,800.76.
+- Subtenant is responsible for maintenance, repairs, and insurance within the subleased premises.
+- Landlord's consent is required for the sublease to be effective.
+- Subtenant has a right of first offer on additional space that becomes available during the term.
+- Subtenant may use certain existing furniture in the subleased premises.
+
+</summary>
 
 Fail Reason: Average score is below threshold","[PASS] (1.66)
 
@@ -3713,6 +3741,8 @@ Fail Reason: Average score is below threshold","[PASS] (1.66)
 - Furniture: Subtenant may use certain existing furniture in the Subleased Premises
 </special provisions>
 
+</summary>
+
     Pass Reason: All assertions passed","[PASS] (1.66)
 
     <parties involved>
@@ -3737,7 +3767,6 @@ Fail Reason: Average score is below threshold","[PASS] (1.66)
 • June 1, 2015 – May 31, 2016: $27,440.96
 • June 1, 2016 – July 31, 2017: $28,266.92
 - Security deposit: $84,800.76
-- Option to extend: None
 - Additional rent: Subtenant's Percentage Share of Operating Costs and Applicable Additional Rent
 </term and rent>
 
@@ -3762,101 +3791,95 @@ Fail Reason: Average score is below threshold","[PASS] (1.66)
 - Furniture: Subtenant may use certain existing furniture in the Subleased Premises
 </special provisions>
 
-    Pass Reason: All assertions passed","[FAIL] (1.23)
+    Pass Reason: All assertions passed","[FAIL] (1.24)
 
-    Average score is below threshold
+Average score is below threshold
 ---
-Here is a summary of the key points from the sublease agreement in bullet form:
+Here is a summary of the key points from the sublease agreement:
 
-• Parties:
-- Sublandlord: Cutter & Buck Inc.
-- Subtenant: Tableau Software, Inc.
-- Original Landlord: Fremont Lake Union Center LLC
+<summary>
 
-• Property:
+Parties:
+- Sublessor: Cutter & Buck Inc.
+- Sublessee: Tableau Software, Inc.
+- Original Lessor: Fremont Lake Union Center LLC
+
+Property:
 - Address: 701 North 34th Street, Suite 230, Seattle, WA 98103
-- Size: Approximately 6,697 rentable square feet on second floor
-- Permitted use: General office purposes
+- Size: Approximately 6,697 rentable square feet on the second floor
+- Use: General office purposes
 
-• Term:
-- Start: June 1, 2012 (or no later than July 1, 2012)
+Term and Rent:
+- Start: June 1, 2012 (no later than July 1, 2012)
 - End: July 31, 2017
-- No option to extend
-
-• Rent:
-- Monthly base rent starting at $25,113.75, increasing annually
-- Additional rent: Subtenant's share of operating costs and other charges
+- Monthly rent: Starts at $25,113.75, increases annually
 - Security deposit: $84,800.76
+- Additional rent: Subtenant's share of operating costs
 
-• Key Responsibilities:
+Key Provisions:
+- Utilities included in base rent
 - Subtenant responsible for non-structural repairs/maintenance within premises
-- Subtenant must maintain required insurance
-- Sublandlord responsible for structural elements and building systems
-
-• Other Provisions:
+- Subtenant required to maintain insurance per Master Lease
 - Landlord's consent required for sublease to be effective
-- Subtenant gets non-exclusive use of 15 parking spaces
-- Alterations require prior consent
-- Assignment/subletting generally prohibited without consent
+- Subtenant has use of 15 parking spaces at specified rates
+- Alterations require prior written consent
+- Assignment/subletting prohibited without consent, except for Permitted Transfers
 - Subtenant has right of first offer on additional available space
 - Subtenant may use certain existing furniture
 
-• Notices must be in writing and delivered via specified methods to designated addresses
+</summary>
 
-    Fail Reason: Average score is below threshold","[FAIL] (1.41)
+Fail Reason: Average score is below threshold","[FAIL] (1.28)
 
-    Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
+Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
 Here is a summary of the key aspects of the sublease agreement:
 
+<summary>
+
 <parties involved>
 - Sublessor: Cutter & Buck Inc.
-- Sublessee: Tableau Software, Inc.
+- Sublessee: Tableau Software, Inc. 
 - Original lessor: Fremont Lake Union Center LLC
 </parties involved>
 
 <property details>
 - Address: 701 North 34th Street, Suite 230, Seattle, WA 98103
-- Description: Approximately 6,697 rentable square feet of space on the second floor
-- Permitted use: General office purposes as permitted under the Master Lease
+- Description: Approximately 6,697 rentable square feet of office space on the second floor
+- Permitted use: General office purposes
 </property details>
 
 <term and rent>
-- Start date: June 1, 2012 (or as soon thereafter as Sublandlord can deliver possession, but no later than July 1, 2012)
-- End date: July 31, 2017
-- Monthly rent:
-• June 1, 2012 – May 31, 2013: $25,113.75
-• June 1, 2013 – May 31, 2014: $25,867.16
-• June 1, 2014 – May 31, 2015: $26,642.90
-• June 1, 2015 – May 31, 2016: $27,440.96
-• June 1, 2016 – July 31, 2017: $28,266.92
+- Term: June 1, 2012 - July 31, 2017
+- Monthly base rent: Starts at $25,113.75, increases annually
 - Security deposit: $84,800.76
-- Additional rent: Subtenant's Percentage Share of Operating Costs and Applicable Additional Rent
+- Additional rent: Subtenant's share of operating costs and other applicable charges
 </term and rent>
 
 <key terms and conditions>
-- Utilities: Included in Base Rent
-- Maintenance: Subtenant responsible for non-structural repairs and maintenance within Subleased Premises
-- Repairs: Subtenant responsible for repairs within Subleased Premises; Sublandlord responsible for structural elements and building systems
-- Insurance: Subtenant required to maintain insurance as described in the Master Lease
-- Parking: Non-exclusive use of 15 parking spaces at specified rates
-- Alterations: Require prior written consent of Sublandlord and Landlord
-- Assignment and subletting: Prohibited without prior written consent of Sublandlord and Landlord, except for Permitted Transfers
+- Utilities included in base rent
+- Subtenant responsible for non-structural repairs and maintenance within premises
+- Subtenant required to maintain insurance per Master Lease
+- Alterations require prior consent of Sublandlord and Landlord
+- Assignment/subletting prohibited without prior consent, except for Permitted Transfers
+- Subtenant has right of first offer on additional available space during term
 </key terms and conditions>
 
-<important dates or deadlines>
-- Commencement Date: June 1, 2012 (or as soon thereafter as Sublandlord can deliver possession, but no later than July 1, 2012)
-- Expiration Date: July 31, 2017
-</important dates or deadlines>
+<important dates/deadlines>
+- Commencement date: June 1, 2012 (or when premises delivered, no later than July 1, 2012)
+- Expiration date: July 31, 2017
+</important dates/deadlines>
 
 <notable clauses>
-- Right of First Offer: Subtenant has right of first offer on additional space in the Premises that becomes available during the Term
-- Landlord's consent: Required for sublease to be effective
-- Furniture: Subtenant may use certain existing furniture in the Subleased Premises
-- Signage: Building-standard suite entry signage allowed, subject to Landlord's approval
+- Parking: Non-exclusive use of 15 spaces at specified rates
+- Signage: Building-standard suite entry signage allowed with approval
+- Furniture: Subtenant may use certain existing furniture in premises
+- Landlord's consent required for sublease to be effective
 </notable clauses>
 
-    Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[PASS] (1.66)
+</summary>
+
+Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[PASS] (1.65)
 
     Here is a summary of the key aspects of the sublease agreement:
 
@@ -3882,7 +3905,6 @@ Here is a summary of the key aspects of the sublease agreement:
 • June 1, 2015 – May 31, 2016: $27,440.96
 • June 1, 2016 – July 31, 2017: $28,266.92
 - Security deposit: $84,800.76
-- Additional rent: Subtenant's Percentage Share of Operating Costs and Applicable Additional Rent
 </term and rent>
 
 <responsibilities>
@@ -3905,6 +3927,8 @@ Here is a summary of the key aspects of the sublease agreement:
 - Right of First Offer: Subtenant has right of first offer on additional space in the Premises that becomes available during the Term
 - Furniture: Subtenant may use certain existing furniture in the Subleased Premises
 </special provisions>
+
+</summary>
 
     Pass Reason: All assertions passed"
 "Description: Sublease Agreement Summary: Blue Coat Systems to Infoblox Inc. This document summarizes a sublease agreement for office space in Sunnyvale, California, between Blue Coat Systems and Infoblox Inc., subject to the master lease with Sunnyvale VIII Trust.
@@ -3947,7 +3971,9 @@ Here is a summary of the key aspects of the sublease agreement:
 - Subletting restrictions: Sublessee may not assign or sublet without prior written consent from both Sublessor and Master Lessor
 - Signage: Sublessee may place signs on or about the premises in compliance with the Master Lease
 - Insurance: Sublessee required to provide insurance as described in the Master Lease, including additional insureds
-</special_provisions>","EX-10.4 5 dex104.htm COMMERCIAL SUBLEASE AGREEMENT
+</special_provisions>","Source: https://www.sec.gov/Archives/edgar/data/1095600/000119312504210218/dex104.htm
+
+EX-10.4 5 dex104.htm COMMERCIAL SUBLEASE AGREEMENT
 Exhibit 10.4
 
  
@@ -4780,37 +4806,62 @@ Blue Coat Systems (Cacheflow)/Infoblox Sublease Consent
 
  
 
-5","[FAIL] (1.21)
-
-Average score is below threshold
----
-Here are the key points summarized in bullet points:
-
-Main Ideas:
-- Sublease agreement between Blue Coat Systems (sublessor) and Infoblox Inc. (sublessee) for office space in Sunnyvale, CA
-- Sublease is subject to the master lease between Blue Coat Systems (lessee) and Sunnyvale VIII Trust (landlord)
-- Sublessee assumes certain obligations of the lessee under the master lease
-
-Key Details:
-- Property details: 45,823 sq ft of space at 475-477 Potrero Ave, Sunnyvale, CA
-- Lease term: October 7, 2004 - June 30, 2006
-- Rent: $23,827.96/month
-- Security deposit: $23,827.96
-- Additional security: $37,000 letter of credit
-- Sublessee responsible for utilities and janitorial, sublessor responsible for other operating expenses
-- Sublessee has use of existing furniture, fixtures, and equipment
-- Sublessee has right to use all parking spaces
-- Subletting/assignment requires consent from sublessor and landlord
-- Sublessee required to maintain insurance with landlord and sublessor as additional insureds
-
-Fail Reason: Average score is below threshold","[FAIL] (1.32)
+5","[FAIL] (1.42)
 
 Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
-Here is a summary of the key aspects of the legal document:
+Here is a summary of the key points from the legal document:
 
 <parties_involved>
-- Sublessor: Blue Coat Systems, a Delaware corporation
+- Sublessor: Blue Coat Systems (formerly CacheFlow Inc.), a Delaware corporation
+- Sublessee: Infoblox Inc., a Delaware corporation
+- Original Lessor: Sunnyvale VIII Trust, a Maryland business trust
+</parties_involved>
+
+<property_details>
+- Address: 475-477 Potrero Avenue, Sunnyvale, California
+- Size: Approximately 45,823 square feet of space
+- Permitted use: General office use, research and development, and other legal related uses
+</property_details>
+
+<term_and_rent>
+- Commencement Date: October 7, 2004
+- Rent Commencement Date: October 15, 2004
+- Expiration Date: June 30, 2006
+- Monthly rent: $23,827.96
+- Security deposit: $23,827.96
+- Additional security: Letter of Credit for $37,000
+</term_and_rent>
+
+<responsibilities>
+- Utilities and janitorial: Sublessee responsible
+- Maintenance and repairs: Sublessee to keep premises in same condition as received, ordinary wear and tear excepted
+- Operating expenses: Sublessor responsible for all other operating expenses under the Master Lease
+</responsibilities>
+
+<consent_and_notices>
+- Landlord's consent: Required and obtained from Sunnyvale VIII Trust
+- Notice requirements: Written notices to be served personally or sent by certified mail or overnight delivery
+</consent_and_notices>
+
+<special_provisions>
+- Furniture: Sublessee has use of existing furniture, fixtures, and equipment (FF&E) at no additional cost
+- Parking: Sublessee has right to use all parking spaces associated with the premises
+- Subletting restrictions: Sublessee may not assign or sublet without prior written consent from Sublessor and Master Lessor
+- Signage: Sublessee may place signs in compliance with Master Lease
+- Insurance: Sublessee required to provide insurance as described in Master Lease, including additional insureds
+</special_provisions>
+
+</summary>
+
+Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.36)
+
+Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
+---
+Here is a summary of the key aspects of the sublease agreement:
+
+<parties_involved>
+- Sublessor: Blue Coat Systems (formerly CacheFlow Inc.), a Delaware corporation
 - Sublessee: Infoblox Inc., a Delaware corporation
 - Original Lessor: Sunnyvale VIII Trust, a Maryland business trust
 </parties_involved>
@@ -4820,14 +4871,14 @@ This document summarizes a sublease agreement for office space in Sunnyvale, Cal
 </main_subject_matter>
 
 <key_terms_and_conditions>
-- Commencement Date: October 7, 2004
-- Rent Commencement Date: October 15, 2004
-- Expiration Date: June 30, 2006
-- Monthly Rent: $23,827.96
-- Security Deposit: $23,827.96
-- Additional Security: Letter of Credit for $37,000
-- Sublessee responsible for utilities and janitorial costs, Sublessor responsible for other operating expenses
-- Sublessee must maintain premises in same condition as received, ordinary wear and tear excepted
+- Address: 475-477 Potrero Avenue, Sunnyvale, California (approximately 45,823 square feet)
+- Permitted use: General office use, research and development, and other legal related uses
+- Term: October 7, 2004 (Commencement Date) to June 30, 2006
+- Monthly rent: $23,827.96
+- Security deposit: $23,827.96
+- Additional security: Letter of Credit for $37,000
+- Utilities and janitorial costs are Sublessee's responsibility, other operating expenses are Sublessor's responsibility
+- Sublessee must maintain the premises in the same condition as received, ordinary wear and tear excepted
 </key_terms_and_conditions>
 
 <important_dates_or_deadlines>
@@ -4841,6 +4892,7 @@ This document summarizes a sublease agreement for office space in Sunnyvale, Cal
 - Sublessee may not assign or sublet without prior written consent from both Sublessor and Master Lessor
 - Sublessee may place signs on or about the premises in compliance with the Master Lease
 - Sublessee required to provide insurance as described in the Master Lease, including additional insureds
+- Landlord's consent is required and was obtained from Sunnyvale VIII Trust
 </unusual_or_notable_clauses>
 
 Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.46)
@@ -4848,7 +4900,7 @@ Fail Reason: Expected output to contain all of ""parties involved, property deta
 Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
 <parties_involved>
-- Sublessor: Blue Coat Systems, a Delaware corporation
+- Sublessor: Blue Coat Systems (formerly CacheFlow Inc.), a Delaware corporation
 - Sublessee: Infoblox Inc., a Delaware corporation
 - Original Lessor: Sunnyvale VIII Trust, a Maryland business trust
 </parties_involved>
@@ -4860,7 +4912,7 @@ Expected output to contain all of ""parties involved, property details, term and
 </property_details>
 
 <term_and_rent>
-- Start date: October 7, 2004 (Commencement Date)
+- Start date: October 7, 2004 (Commencement Date) 
 - Rent Commencement Date: October 15, 2004
 - End date: June 30, 2006
 - Monthly rent: $23,827.96
@@ -4887,18 +4939,20 @@ Expected output to contain all of ""parties involved, property details, term and
 - Insurance: Sublessee required to provide insurance as described in the Master Lease, including additional insureds
 </special_provisions>
 
-Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.27)
+</summary>
 
-Average score is below threshold
+Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.28)
+
+Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
-Here are the key points summarized from the sublease agreement:
+Here is a summary of the key points from the sublease agreement between Blue Coat Systems and Infoblox Inc.:
 
 • Parties:
 - Sublessor: Blue Coat Systems (formerly CacheFlow Inc.), a Delaware corporation
-- Sublessee: Infoblox Inc., a Delaware corporation
+- Sublessee: Infoblox Inc., a Delaware corporation 
 - Master Lessor: Sunnyvale VIII Trust, a Maryland business trust
 
-• Property:
+• Property: 
 - 475-477 Potrero Avenue, Sunnyvale, California
 - Approximately 45,823 square feet of office space
 
@@ -4908,72 +4962,84 @@ Here are the key points summarized from the sublease agreement:
 - Expiration Date: June 30, 2006
 
 • Rent and Security:
-- Monthly rent: $23,827.96
-- Security deposit: $23,827.96
+- Monthly Base Rent: $23,827.96
+- Security Deposit: $23,827.96
 - Additional Letter of Credit: $37,000
 
 • Use: General office, research and development, and other legal related uses
 
-• Key Responsibilities:
-- Sublessee pays utilities and janitorial costs
-- Sublessee maintains premises in same condition, normal wear excepted
-- Sublessor responsible for other operating expenses under Master Lease
-
-• Special Provisions:
+• Key Provisions:
+- Sublessee responsible for utilities and janitorial costs
+- Sublessee to maintain premises in same condition, normal wear excepted
 - Sublessee has use of existing furniture and equipment at no extra cost
 - Sublessee has right to use all associated parking spaces
-- Subletting requires consent of Sublessor and Master Lessor
-- Sublessee may place compliant signage 
-- Sublessee must provide required insurance coverage
+- Sublessee may place signage in compliance with Master Lease
+- Subletting/assignment requires consent of Sublessor and Master Lessor
+- Sublessee must provide insurance per Master Lease requirements
 
-• Consent: Master Lessor's consent obtained for this sublease
+• Consent: 
+- Master Lessor's consent required and obtained
 
-• Notices: To be served personally or sent by certified mail/overnight delivery
+• Notices:
+- To be sent via certified mail or commercial overnight delivery
 
-Fail Reason: Average score is below threshold","[FAIL] (1.29)
+This sublease is subject to all terms of the Master Lease between Blue Coat Systems and Sunnyvale VIII Trust, except as specifically modified in the sublease agreement.
+
+</summary>
+
+Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.34)
 
 Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
-Here's a summary of the key aspects of the legal document:
+Here is a summary of the key aspects of the sublease agreement:
 
-1. Parties involved:
+<parties_involved>
 - Sublessor: Blue Coat Systems (formerly CacheFlow Inc.), a Delaware corporation
-- Sublessee: Infoblox Inc., a Delaware corporation
+- Sublessee: Infoblox Inc., a Delaware corporation 
 - Master Lessor: Sunnyvale VIII Trust, a Maryland business trust
+</parties_involved>
 
-2. Main subject matter:
+<main_subject_matter>
 - Sublease of approximately 45,823 square feet of office space at 475-477 Potrero Avenue, Sunnyvale, California
+- Permitted use: General office use, research and development, and other legal related uses
+</main_subject_matter>
 
-3. Key terms and conditions:
+<key_terms_and_conditions>
 - Term: October 7, 2004 (Commencement Date) to June 30, 2006
-- Rent: $23,827.96 per month, starting October 15, 2004
-- Security deposit: $23,827.96 plus a Letter of Credit for $37,000
-- Use: General office, research and development, and other legal related uses
+- Monthly rent: $23,827.96
+- Security deposit: $23,827.96 cash plus $37,000 Letter of Credit
 - Sublessee responsible for utilities and janitorial costs
-- Sublessee to maintain premises in same condition as received
-- Sublessee has use of existing furniture, fixtures, and equipment at no additional cost
+- Sublessor responsible for other operating expenses under Master Lease
+- Sublessee to maintain premises in same condition as received, normal wear excepted
+- Sublessee has use of existing furniture, fixtures and equipment at no extra cost
 - Sublessee has right to use all associated parking spaces
+- Sublessee may place signage in compliance with Master Lease
+- Sublessee must provide insurance as required in Master Lease
+</key_terms_and_conditions>
 
-4. Important dates or deadlines:
+<important_dates_or_deadlines>
 - Commencement Date: October 7, 2004
-- Rent Commencement Date: October 15, 2004
+- Rent Commencement Date: October 15, 2004 
 - Expiration Date: June 30, 2006
+</important_dates_or_deadlines>
 
-5. Unusual or notable clauses:
-- Sublease is subordinate to the Master Lease
-- Sublessee required to provide insurance as per Master Lease, including additional insureds
-- Sublessee may place signs on premises in compliance with Master Lease
-- Sublessee may not assign or sublet without prior written consent from both Sublessor and Master Lessor
-- Master Lessor's consent required and obtained for this sublease
-- Detailed provisions for communication between parties, including Sublessee acting as Sublessor's agent for certain matters
+<unusual_or_notable_clauses>
+- Sublease requires consent of Master Lessor (Sunnyvale VIII Trust)
+- Sublessee has no option to extend the sublease term
+- Sublessee may not assign or further sublet without consent of both Sublessor and Master Lessor
+- Detailed provisions for Letter of Credit as additional security
+- Extensive list of furniture, fixtures and equipment included in sublease
+</unusual_or_notable_clauses>
+
+</summary>
 
 Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[PASS] (1.65)
 
-Here is a summary of the key aspects of the sublease agreement:
+Here is a summary of the sublease agreement:
 
 <parties involved>
 - Sublessor: Blue Coat Systems (formerly CacheFlow Inc.), a Delaware corporation
-- Sublessee: Infoblox Inc., a Delaware corporation
+- Sublessee: Infoblox Inc., a Delaware corporation 
 - Original Lessor: Sunnyvale VIII Trust, a Maryland business trust
 </parties involved>
 
@@ -5050,7 +5116,9 @@ Pass Reason: All assertions passed"
 - Subletting restrictions: Sublessee may not assign or sublet without prior written consent from both Sublessor and Master Lessor
 - Signage: Not specified in the sublease agreement
 - Insurance: Sublessee required to maintain comprehensive general liability insurance with $10,000,000 per occurrence limit
-</special_provisions>","EX-10.4 5 dex104.htm OFFICE SUB-LEASE AGREEMENT
+</special_provisions>","Source: https://www.sec.gov/Archives/edgar/data/1129425/000119312505215661/dex104.htm
+
+EX-10.4 5 dex104.htm OFFICE SUB-LEASE AGREEMENT
 Exhibit 10.4
 
  
@@ -6292,73 +6360,51 @@ IN WITNESS WHEREOF, I hereunto set my hand and official seal.
  	 	My Commission Expires:	  	11-01-05
  
 
- 	 	Page 18","[FAIL] (1.20)
+ 	 	Page 18","[PASS] (1.53)
 
-Average score is below threshold
----
-Here are the key points summarized in bullet points:
+Here is a summary of the key points from the sublease agreement:
 
-- Sublease agreement between ConocoPhillips Company (Sublessor) and ZymoGenetics, Inc. (Sublessee) for office space in Seattle, WA
-- Premises: Approximately 7,128 rentable square feet on the 2nd floor of the 1144 Eastlake Building
-- Term: Starts on the later of October 1, 2005 or date Sublessor delivers the premises, ends October 31, 2008
-- Rent: Monthly base rent ranging from $0 to $15,117.30, plus Sublessee's pro-rata share of expenses
-- Sublessee responsible for utilities, maintenance/repairs of interior/non-structural portions
-- Sublease subject to and subordinate to the master lease between Sublessor and Landlord (1144 Eastlake LLC)
-- Sublessee cannot assign or sublet without prior written consent from Sublessor and Landlord
-- Sublessee required to maintain $10 million general liability insurance
-- Landlord's consent to the sublease obtained
+Parties Involved:
+- Sublessor: ConocoPhillips Company, a Delaware corporation
+- Sublessee: ZymoGenetics, Inc., a Washington corporation 
+- Original Lessor: 1144 Eastlake LLC, a Washington limited liability company
 
-Fail Reason: Average score is below threshold","[FAIL] (1.38)
+Property Details:
+- Address: 1144 Eastlake Avenue E, Seattle, Washington 98109
+- Approximately 7,128 rentable square feet of space on the 2nd floor (Suite 201) of the building
+- Permitted use: General business office use
 
-    Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
+Term and Rent:
+- Lease term: Later of October 1, 2005 or date Sublessor delivers premises, to October 31, 2008
+- Monthly rent: Varies from $13,929.30 to $15,117.30 depending on lease period
+- Security deposit: None initially, but Sublessor may require $20,000 deposit if Sublessee defaults
+
+Responsibilities:
+- Utilities: Sublessee responsible
+- Maintenance and repairs: Sublessee responsible for interior, non-structural portions
+- Operating expenses: Sublessee pays pro-rata share exceeding 2005 base year costs
+
+Consent and Notices:
+- Landlord's consent: Required and obtained from 1144 Eastlake LLC
+- Notice requirements: Written notices to specified addresses for each party
+
+Special Provisions:
+- Furniture: Sublessee has use of existing furniture, fixtures, and equipment
+- Parking: 14 stalls in building, plus 3 additional nearby stalls
+- Subletting restrictions: Sublessee may not assign or sublet without prior consent
+- Insurance: Sublessee required to maintain $10M general liability coverage
+
+</summary>
+
+Pass Reason: All assertions passed","[FAIL] (1.46)
+
+Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
 Here is a summary of the key aspects of the legal document:
 
 <parties_involved>
-- Parties involved:
 - Sublessor: ConocoPhillips Company, a Delaware corporation
-- Sublessee: ZymoGenetics, Inc., a Washington corporation
-- Original Lessor: 1144 Eastlake LLC, a Washington limited liability company
-</parties_involved>
-
-<main_subject_matter>
-- Main subject matter: Sublease agreement for office space in Seattle, Washington, between ConocoPhillips Company and ZymoGenetics, Inc., subject to the master lease with 1144 Eastlake LLC.
-</main_subject_matter>
-
-<key_terms_and_conditions>
-- Key terms and conditions:
-- Sublease Premises: Approximately 7,128 rentable square feet of space on the 2nd floor (Suite 201) of the Building
-- Permitted use: General business office use
-- Sublease term: Later of October 1, 2005, or date Sublessor delivers the Sublease Premises, to October 31, 2008
-- Monthly rent: Varies by period (e.g., $13,929.30 from 12/1/05 to 10/31/06)
-- Security deposit: None initially; $20,000 may be required if Sublessee defaults
-- Utilities and operating expenses: Sublessee responsible
-- Maintenance and repairs: Sublessee responsible for interior, non-structural portions of the Premises
-- Subletting restrictions: Sublessee may not assign or sublet without prior written consent from both Sublessor and Master Lessor
-</key_terms_and_conditions>
-
-<important_dates_and_deadlines>
-- Important dates or deadlines:
-- Start date: Later of October 1, 2005, or date Sublessor delivers the Sublease Premises
-- End date: October 31, 2008
-</important_dates_and_deadlines>
-
-<unusual_or_notable_clauses>
-- Unusual or notable clauses:
-- Furniture: Sublessee has use of existing furniture, fixtures, and equipment at no additional cost
-- Parking: Sublessee entitled to use 14 parking stalls in the Building and 3 additional stalls either in the Building or nearby surface lots
-- Insurance: Sublessee required to maintain comprehensive general liability insurance with $10,000,000 per occurrence limit
-</unusual_or_notable_clauses>
-
-    Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.46)
-
-Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
----
-Here is a summary of the key aspects of the sublease agreement:
-
-<parties_involved>
-- Sublessor: ConocoPhillips Company, a Delaware corporation
-- Sublessee: ZymoGenetics, Inc., a Washington corporation
+- Sublessee: ZymoGenetics, Inc., a Washington corporation 
 - Original Lessor: 1144 Eastlake LLC, a Washington limited liability company
 </parties_involved>
 
@@ -6398,8 +6444,6 @@ Fail Reason: Expected output to contain all of ""parties involved, property deta
 
 Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
-Here is a summary of the key points from the sublease agreement between ConocoPhillips Company and ZymoGenetics, Inc.:
-
 <parties_involved>
 - Sublessor: ConocoPhillips Company, a Delaware corporation
 - Sublessee: ZymoGenetics, Inc., a Washington corporation
@@ -6415,7 +6459,101 @@ Here is a summary of the key points from the sublease agreement between ConocoPh
 <term_and_rent>
 - Start date: Later of October 1, 2005, or date Sublessor delivers the Sublease Premises
 - End date: October 31, 2008
-- Monthly rent: Varies by period (e.g., $13,929.30 from 12/1/05 to 10/31/06)
+- Monthly rent: Varies by period (e.g., $13,929.30 from 12/1/05 to 10/31/06) 
+- Security deposit: None initially; $20,000 may be required if Sublessee defaults
+</term_and_rent>
+
+<responsibilities>
+- Utilities: Sublessee responsible for utilities
+- Maintenance and repairs: Sublessee responsible for interior, non-structural portions of the Premises
+- Operating expenses: Sublessee pays pro-rata share of expenses exceeding base year (2005) costs
+</responsibilities>
+
+<consent_and_notices>
+- Landlord's consent: Required and obtained from 1144 Eastlake LLC
+- Notice requirements: Written notices to be sent to specified addresses for each party
+</consent_and_notices>
+
+<special_provisions>
+- Furniture: Sublessee has use of existing furniture, fixtures, and equipment at no additional cost
+- Parking: Sublessee entitled to use 14 parking stalls in the Building and 3 additional stalls either in the Building or nearby surface lots
+- Subletting restrictions: Sublessee may not assign or sublet without prior written consent from both Sublessor and Master Lessor
+- Signage: Not specified in the sublease agreement
+- Insurance: Sublessee required to maintain comprehensive general liability insurance with $10,000,000 per occurrence limit
+</special_provisions>
+</summary>
+
+Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.40)
+
+Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
+---
+Here is a summary of the key points from the sublease agreement:
+
+<summary>
+
+Description: Sublease Agreement between ConocoPhillips Company (Sublessor) and ZymoGenetics, Inc. (Sublessee) for office space in Seattle, Washington, subject to the master lease with 1144 Eastlake LLC.
+
+<parties_involved>
+- Sublessor: ConocoPhillips Company, a Delaware corporation
+- Sublessee: ZymoGenetics, Inc., a Washington corporation 
+- Original Lessor: 1144 Eastlake LLC, a Washington limited liability company
+</parties_involved>
+
+<property_details>
+- Address: 1144 Eastlake Avenue E, Seattle, Washington 98109
+- Description: Approximately 7,128 rentable square feet on the 2nd floor (Suite 201)
+- Permitted use: General business office use
+</property_details>
+
+<term_and_rent>
+- Start date: Later of October 1, 2005 or date Sublessor delivers the Premises
+- End date: October 31, 2008 
+- Monthly rent: Varies by period (e.g. $13,929.30 from 12/1/05 to 10/31/06)
+- Security deposit: None initially; $20,000 may be required if Sublessee defaults
+</term_and_rent>
+
+<responsibilities>
+- Utilities: Sublessee responsible
+- Maintenance: Sublessee responsible for interior, non-structural portions
+- Operating expenses: Sublessee pays pro-rata share exceeding base year (2005) costs
+</responsibilities>
+
+<consent_and_notices>
+- Landlord's consent: Required and obtained from 1144 Eastlake LLC
+- Notices: To be sent in writing to specified addresses for each party
+</consent_and_notices>
+
+<special_provisions>
+- Furniture: Sublessee may use existing furniture and equipment at no extra cost
+- Parking: 14 stalls in Building, 3 additional stalls in Building or nearby lots
+- Subletting: Requires prior written consent from Sublessor and Master Lessor
+- Insurance: Sublessee must maintain $10,000,000 general liability coverage
+</special_provisions>
+
+</summary>
+
+Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.46)
+
+Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
+---
+Here is a summary of the sublease agreement between ConocoPhillips Company and ZymoGenetics, Inc.:
+
+<parties_involved>
+- Sublessor: ConocoPhillips Company, a Delaware corporation
+- Sublessee: ZymoGenetics, Inc., a Washington corporation 
+- Original Lessor/Landlord: 1144 Eastlake LLC, a Washington limited liability company
+</parties_involved>
+
+<property_details>
+- Address: 1144 Eastlake Avenue E, Seattle, Washington 98109
+- Description: Approximately 7,128 rentable square feet of space on the 2nd floor (Suite 201) of the Building
+- Permitted use: General business office use
+</property_details>
+
+<term_and_rent>
+- Start date: Later of October 1, 2005, or date Sublessor delivers the Sublease Premises
+- End date: October 31, 2008 
+- Monthly rent: Varies by period (e.g. $13,929.30 from 12/1/05 to 10/31/06)
 - Security deposit: None initially; $20,000 may be required if Sublessee defaults
 </term_and_rent>
 
@@ -6437,50 +6575,11 @@ Here is a summary of the key points from the sublease agreement between ConocoPh
 - Insurance: Sublessee required to maintain comprehensive general liability insurance with $10,000,000 per occurrence limit
 </special_provisions>
 
-Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.28)
-
-Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
----
-Here is a summary of the key aspects of the sublease agreement:
-
-<parties_involved>
-- Sublessor: ConocoPhillips Company, a Delaware corporation
-- Sublessee: ZymoGenetics, Inc., a Washington corporation 
-- Original Lessor/Landlord: 1144 Eastlake LLC, a Washington limited liability company
-</parties_involved>
-
-<main_subject_matter>
-Sublease of office space at 1144 Eastlake Avenue E, Seattle, Washington 98109
-</main_subject_matter>
-
-<key_terms_and_conditions>
-- Premises: Approximately 7,128 rentable square feet on 2nd floor (Suite 201)
-- Term: Later of October 1, 2005 or delivery date to October 31, 2008
-- Base Rent: Varies by period (e.g. $13,929.30/month from 12/1/05 to 10/31/06)
-- Security Deposit: None initially; $20,000 may be required if Sublessee defaults
-- Use: General business office
-- Operating Expenses: Sublessee pays pro-rata share exceeding 2005 base year costs
-- Maintenance: Sublessee responsible for interior, non-structural portions
-- Insurance: Sublessee required to maintain $10M general liability coverage
-- Parking: 14 stalls in Building + 3 additional stalls in Building or nearby lots
-- Assignment/Subletting: Requires consent of Sublessor and Master Lessor
-</key_terms_and_conditions>
-
-<important_dates>
-- Commencement: Later of October 1, 2005 or date premises delivered
-- Expiration: October 31, 2008
-</important_dates>
-
-<unusual_or_notable_clauses>
-- Furniture: Sublessee has use of existing furniture/fixtures at no additional cost
-- Holdover: 175% of rent if Sublessee fails to vacate at end of term
-- Early Termination: Not specified in summary
-- Signage Rights: Not specified in summary
-</unusual_or_notable_clauses>
+</summary>
 
 Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[PASS] (1.65)
 
-Here is a summary of the key aspects of the sublease agreement:
+Here is a summary of the sublease agreement between ConocoPhillips Company and ZymoGenetics, Inc.:
 
 <parties involved>
 - Sublessor: ConocoPhillips Company, a Delaware corporation
@@ -6497,7 +6596,7 @@ Here is a summary of the key aspects of the sublease agreement:
 <term and rent>
 - Start date: Later of October 1, 2005, or date Sublessor delivers the Sublease Premises
 - End date: October 31, 2008
-- Monthly rent: Varies by period (e.g., $13,929.30 from 12/1/05 to 10/31/06)
+- Monthly rent: Varies by period (e.g. $13,929.30 from 12/1/05 to 10/31/06)
 - Security deposit: None initially; $20,000 may be required if Sublessee defaults
 </term and rent>
 
@@ -6516,9 +6615,9 @@ Here is a summary of the key aspects of the sublease agreement:
 - Furniture: Sublessee has use of existing furniture, fixtures, and equipment at no additional cost
 - Parking: Sublessee entitled to use 14 parking stalls in the Building and 3 additional stalls either in the Building or nearby surface lots
 - Subletting restrictions: Sublessee may not assign or sublet without prior written consent from both Sublessor and Master Lessor
-- Signage: Not specified in the sublease agreement
 - Insurance: Sublessee required to maintain comprehensive general liability insurance with $10,000,000 per occurrence limit
 </special provisions>
+</summary>
 
 Pass Reason: All assertions passed"
 "Description: Workrise Technologies Inc. to CS Disco, Inc. This sublease is for office space in Austin, Texas between Workrise Technologies Inc. as Sublessor and CS Disco, Inc. as Sublessee. Key details include:
@@ -6559,7 +6658,9 @@ Pass Reason: All assertions passed"
 - Subletting restrictions: Sublessee may not assign or sublet without prior written consent from Sublessor and Master Landlord
 - Signage: Sublessee has right to install building standard suite identification signage, subject to approvals
 - Insurance: Sublessee required to maintain commercial general liability insurance with $3,000,000 per occurrence limit
-</special_provisions>","EX-10.1 2 congresslease.htm EX-10.1
+</special_provisions>","Source: https://www.sec.gov/Archives/edgar/data/1625641/000162564122000099/congresslease.htm
+
+EX-10.1 2 congresslease.htm EX-10.1
 
 
 
@@ -7334,43 +7435,88 @@ List of Omitted Schedules/Exhibits:
 Exhibit B. Copy of Floor Plan(s) of Subleased Premises
 Exhibit C. Office Furniture List
 Exhibit D. Form of Bill of Sale
-Exhibit E. Planned Door System Repair","[FAIL] (1.26)
+Exhibit E. Planned Door System Repair","[PASS] (1.60)
 
-  Average score is below threshold
----
-Here are the key points summarized in bullet points:
+Here is a summary of the key details from the sublease agreement:
 
-Main Ideas:
-- Workrise Technologies Inc. (Sublessor) is subleasing office space at 111 Congress Avenue, Austin, Texas to CS Disco, Inc. (Sublessee)
-- The subleased premises consist of 46,250 rentable square feet on the 6th and 9th floors of the building
-- The sublease term is from the Effective Date through July 31, 2028
+Parties Involved:
+- Sublessor: Workrise Technologies Inc., a Delaware corporation
+- Sublessee: CS Disco, Inc., a Delaware corporation
+- Original Lessor: Cousins - One Congress Plaza LLC
 
-Key Details:
-- Rent:
-- Basic Rental starts at $167,657.67 per month, with increases over the term
-- Sublessee also pays pro-rata share of operating expenses
-- Security Deposit: $306,714.58 cash deposit plus $500,000 letter of credit
+Property Details:
+- Address: 111 Congress Avenue, Austin, Texas 78701
+- Description: 46,250 rentable square feet on the 6th floor (Suite 600) and 9th floor (Suite 900) of the Building
 - Permitted Use: General business office use
-- Responsibilities:
-- Sublessee responsible for utilities, interior repairs/maintenance
-- Sublessee pays pro-rata share of operating expenses
-- Consent and Notices:
-- Requires consent from Master Landlord (Cousins - One Congress Plaza LLC)
-- Specific notice requirements and addresses
-- Special Provisions:
-- Sublessee purchases existing furniture/fixtures for $10
-- Sublessee obligated to rent 68 unreserved and 2 reserved parking permits
-- Restrictions on subletting/assignment
-- Sublessee has right to install building standard signage
-- Sublessee required to maintain $3M general liability insurance
 
-  Fail Reason: Average score is below threshold","[FAIL] (1.46)
+Term and Rent:
+- Start Date: The later of the Effective Date or date premises are delivered
+- End Date: July 31, 2028
+- Monthly Rent: Varies by period, starting at $167,657.67 per month
+- Security Deposit: $306,714.58 cash deposit plus $500,000 letter of credit
+
+Responsibilities:
+- Utilities: Sublessee responsible
+- Maintenance and Repairs: Sublessee responsible for non-structural interior
+- Operating Expenses: Sublessee pays pro-rata share exceeding base year costs
+
+Consent and Notices:
+- Landlord's Consent: Required from Master Landlord (Cousins - One Congress Plaza LLC)
+- Notice Requirements: Written notices to specified addresses for each party
+
+Special Provisions:
+- Furniture: Sublessee to purchase existing furniture and fixtures for $10
+- Parking: Sublessee obligated to rent 68 unreserved and 2 reserved permits
+- Subletting Restrictions: Sublessee may not assign or sublet without prior consent
+- Signage: Sublessee has right to install building standard suite signage
+- Insurance: Sublessee required to maintain $3,000,000 per occurrence liability coverage
+</summary>
+
+Pass Reason: All assertions passed","[FAIL] (1.30)
+
+Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
+---
+Here is a summary of the key aspects of the sublease agreement:
+
+<parties_involved>
+- Sublessor: Workrise Technologies Inc., a Delaware corporation
+- Sublessee: CS Disco, Inc., a Delaware corporation
+- Original Lessor: Cousins - One Congress Plaza LLC
+</parties_involved>
+
+<main_subject_matter>
+This is a sublease agreement for 46,250 rentable square feet of office space on the 6th and 9th floors of the building located at 111 Congress Avenue, Austin, Texas 78701.
+</main_subject_matter>
+
+<key_terms_and_conditions>
+- Term: Commences on the later of the Effective Date or date premises are delivered, and expires on July 31, 2028.
+- Rent: Monthly base rent starts at $167,657.67 and increases annually. Sublessee also pays a pro-rata share of operating expenses.
+- Security Deposit: $306,714.58 cash deposit plus $500,000 letter of credit.
+- Permitted Use: General business office use.
+- Subletting/Assignment: Requires prior written consent from Sublessor and Master Landlord.
+</key_terms_and_conditions>
+
+<important_dates_or_deadlines>
+- Commencement Date: The later of the Effective Date or date premises are delivered.
+- Expiration Date: July 31, 2028.
+</important_dates_or_deadlines>
+
+<unusual_or_notable_clauses>
+- Furniture: Sublessee to purchase existing furniture and fixtures for $10.
+- Parking: Sublessee obligated to rent 68 unreserved and 2 reserved parking permits.
+- Signage: Sublessee has right to install building standard suite identification signage, subject to approvals.
+- Insurance: Sublessee required to maintain $3,000,000 per occurrence commercial general liability insurance.
+</unusual_or_notable_clauses>
+
+</summary>
+
+Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.46)
 
 Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
 <parties_involved>
 - Sublessor: Workrise Technologies Inc., a Delaware corporation
-- Sublessee: CS Disco, Inc., a Delaware corporation 
+- Sublessee: CS Disco, Inc., a Delaware corporation
 - Original Lessor: Cousins - One Congress Plaza LLC
 </parties_involved>
 
@@ -7405,228 +7551,65 @@ Expected output to contain all of ""parties involved, property details, term and
 - Signage: Sublessee has right to install building standard suite identification signage, subject to approvals
 - Insurance: Sublessee required to maintain commercial general liability insurance with $3,000,000 per occurrence limit
 </special_provisions>
+</summary>
 
-Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.46)
+Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (0.00)
+
+API call error: Number of request tokens has exceeded your per-minute rate limit (https://docs.anthropic.com/en/api/rate-limits); see the response headers for current usage. Please reduce the prompt length or the maximum tokens requested, or try again later. You may also contact sales at https://www.anthropic.com/contact-sales to discuss your options for a rate limit increase., status 429, type rate_limit_error
+---
+API call error: Number of request tokens has exceeded your per-minute rate limit (https://docs.anthropic.com/en/api/rate-limits); see the response headers for current usage. Please reduce the prompt length or the maximum tokens requested, or try again later. You may also contact sales at https://www.anthropic.com/contact-sales to discuss your options for a rate limit increase., status 429, type rate_limit_error","[FAIL] (1.33)
 
 Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
+Here is a summary of the key aspects of the sublease agreement:
+
+<summary>
+
 <parties_involved>
 - Sublessor: Workrise Technologies Inc., a Delaware corporation
 - Sublessee: CS Disco, Inc., a Delaware corporation
-- Original Lessor: Cousins - One Congress Plaza LLC
-</parties_involved>
-
-<property_details>
-- Address: 111 Congress Avenue, Austin, Texas 78701
-- Description: 46,250 rentable square feet on the 6th floor (Suite 600) and 9th floor (Suite 900) of the Building
-- Permitted use: General business office use
-</property_details>
-
-<term_and_rent>
-- Start date: The later of the Effective Date or date premises are delivered
-- End date: July 31, 2028
-- Monthly rent: Varies by period, starting at $167,657.67 per month
-- Security deposit: $306,714.58 cash deposit plus $500,000 letter of credit
-</term_and_rent>
-
-<responsibilities>
-- Utilities: Sublessee responsible for utilities
-- Maintenance and repairs: Sublessee responsible for non-structural interior repairs and maintenance
-- Operating expenses: Sublessee pays pro-rata share of expenses exceeding base year costs
-</responsibilities>
-
-<consent_and_notices>
-- Landlord's consent: Required from Master Landlord (Cousins - One Congress Plaza LLC)
-- Notice requirements: Written notices to specified addresses for each party
-</consent_and_notices>
-
-<special_provisions>
-- Furniture: Sublessee to purchase existing furniture and fixtures for $10
-- Parking: Sublessee obligated to rent 68 unreserved and 2 reserved parking permits
-- Subletting restrictions: Sublessee may not assign or sublet without prior written consent from Sublessor and Master Landlord
-- Signage: Sublessee has right to install building standard suite identification signage, subject to approvals
-- Insurance: Sublessee required to maintain commercial general liability insurance with $3,000,000 per occurrence limit
-</special_provisions>
-
-Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (0.55)
-
-  Error running Python script: anthropic.RateLimitError: Error code: 429 - {'type': 'error', 'error': {'type': 'rate_limit_error', 'message': 'Number of request tokens has exceeded your per-minute rate limit (https://docs.anthropic.com/en/api/rate-limits); see the response headers for current usage. Please reduce the prompt length or the maximum tokens requested, or try again later. You may also contact sales at https://www.anthropic.com/contact-sales to discuss your options for a rate limit increase.'}}
-Stack Trace: Error: anthropic.RateLimitError: Error code: 429 - {'type': 'error', 'error': {'type': 'rate_limit_error', 'message': 'Number of request tokens has exceeded your per-minute rate limit (https://docs.anthropic.com/en/api/rate-limits); see the response headers for current usage. Please reduce the prompt length or the maximum tokens requested, or try again later. You may also contact sales at https://www.anthropic.com/contact-sales to discuss your options for a rate limit increase.'}}
-at PythonShell.parseError (/Users/alexander/.npm/_npx/81bbc6515d992ace/node_modules/python-shell/index.js:303:21)
-at terminateIfNeeded (/Users/alexander/.npm/_npx/81bbc6515d992ace/node_modules/python-shell/index.js:193:32)
-at ChildProcess.<anonymous> (/Users/alexander/.npm/_npx/81bbc6515d992ace/node_modules/python-shell/index.js:185:13)
-at ChildProcess.emit (node:events:520:28)
-at ChildProcess._handle.onexit (node:internal/child_process:294:12)
---Python Traceback: --
-File ""/Users/alexander/.npm/_npx/81bbc6515d992ace/node_modules/promptfoo/dist/src/python/wrapper.py"", line 34, in <module>
-  result = call_method(script_path, method_name, *data)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-File ""/Users/alexander/.npm/_npx/81bbc6515d992ace/node_modules/promptfoo/dist/src/python/wrapper.py"", line 24, in call_method
-  return method_to_call(*args)
-         ^^^^^^^^^^^^^^^^^^^^^
-File ""/Users/alexander/code/anthropic-cookbook/skills/summarization/evaluation/custom_evals/llm_eval.py"", line 67, in get_assert
-  score, evaluation = llm_eval(output, input)
-                      ^^^^^^^^^^^^^^^^^^^^^^^
-File ""/Users/alexander/code/anthropic-cookbook/skills/summarization/evaluation/custom_evals/llm_eval.py"", line 50, in llm_eval
-  response = client.messages.create(
-             ^^^^^^^^^^^^^^^^^^^^^^^
-File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_utils/_utils.py"", line 277, in wrapper
-  return func(*args, **kwargs)
-         ^^^^^^^^^^^^^^^^^^^^^
-File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/resources/messages.py"", line 906, in create
-  return self._post(
-         ^^^^^^^^^^^
-File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1239, in post
-  return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
-                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 921, in request
-  return self._request(
-         ^^^^^^^^^^^^^^
-File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1004, in _request
-  return self._retry_request(
-         ^^^^^^^^^^^^^^^^^^^^
-File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1052, in _retry_request
-  return self._request(
-         ^^^^^^^^^^^^^^
-File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1004, in _request
-  return self._retry_request(
-         ^^^^^^^^^^^^^^^^^^^^
-File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1052, in _retry_request
-  return self._request(
-         ^^^^^^^^^^^^^^
-File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1019, in _request
-  raise self._make_status_error_from_response(err.response) from None
----
-Here is a summary of the key points from the sublease agreement:
-
-Description: Sublease agreement for office space in Austin, Texas between Workrise Technologies Inc. as Sublessor and CS Disco, Inc. as Sublessee.
-
-<parties_involved>
-- Sublessor: Workrise Technologies Inc., a Delaware corporation
-- Sublessee: CS Disco, Inc., a Delaware corporation 
 - Original Lessor/Master Landlord: Cousins - One Congress Plaza LLC
 </parties_involved>
 
 <property_details>
-- Address: 111 Congress Avenue, Austin, Texas 78701
+- Address: 111 Congress Avenue, Austin, Texas 78701 
 - Description: 46,250 rentable square feet on the 6th floor (Suite 600) and 9th floor (Suite 900) of the Building
 - Permitted use: General office purposes
 </property_details>
 
 <term_and_rent>
-- Start date: Later of Effective Date or date premises are delivered
-- End date: July 31, 2028
-- Monthly rent: Varies by period, starting at $167,657.67 per month
-- Security deposit: $306,714.58 cash deposit
+- Commencement Date: The later of the Effective Date or date premises are delivered
+- Expiration Date: July 31, 2028
+- Base Rent: Varies by period, starting at $167,657.67 per month
+- Security Deposit: $306,714.58 cash deposit
+- Letter of Credit: $500,000
 </term_and_rent>
 
-<responsibilities>
-- Utilities: Sublessee responsible for utilities
-- Maintenance and repairs: Sublessee responsible for non-structural interior repairs and maintenance
-- Operating expenses: Sublessee pays pro-rata share of expenses
-</responsibilities>
-
-<consent_and_notices>
-- Landlord's consent: Required from Master Landlord 
-- Notice requirements: Written notices to specified addresses for each party
-</consent_and_notices>
-
-<special_provisions>
-- Furniture: Sublessee to purchase existing furniture and fixtures for $10
-- Parking: Sublessee obligated to rent 68 unreserved and 2 reserved parking permits
-- Subletting restrictions: Sublessee may not assign or sublet without prior written consent from Sublessor and Master Landlord
-- Signage: Sublessee has right to install building standard suite identification signage, subject to approvals
-- Insurance: Sublessee required to maintain commercial general liability insurance with $3,000,000 per occurrence limit
-</special_provisions>
-
-  Fail Reason: Error running Python script: anthropic.RateLimitError: Error code: 429 - {'type': 'error', 'error': {'type': 'rate_limit_error', 'message': 'Number of request tokens has exceeded your per-minute rate limit (https://docs.anthropic.com/en/api/rate-limits); see the response headers for current usage. Please reduce the prompt length or the maximum tokens requested, or try again later. You may also contact sales at https://www.anthropic.com/contact-sales to discuss your options for a rate limit increase.'}}
-Stack Trace: Error: anthropic.RateLimitError: Error code: 429 - {'type': 'error', 'error': {'type': 'rate_limit_error', 'message': 'Number of request tokens has exceeded your per-minute rate limit (https://docs.anthropic.com/en/api/rate-limits); see the response headers for current usage. Please reduce the prompt length or the maximum tokens requested, or try again later. You may also contact sales at https://www.anthropic.com/contact-sales to discuss your options for a rate limit increase.'}}
-at PythonShell.parseError (/Users/alexander/.npm/_npx/81bbc6515d992ace/node_modules/python-shell/index.js:303:21)
-at terminateIfNeeded (/Users/alexander/.npm/_npx/81bbc6515d992ace/node_modules/python-shell/index.js:193:32)
-at ChildProcess.<anonymous> (/Users/alexander/.npm/_npx/81bbc6515d992ace/node_modules/python-shell/index.js:185:13)
-at ChildProcess.emit (node:events:520:28)
-at ChildProcess._handle.onexit (node:internal/child_process:294:12)
---Python Traceback: --
-File ""/Users/alexander/.npm/_npx/81bbc6515d992ace/node_modules/promptfoo/dist/src/python/wrapper.py"", line 34, in <module>
-  result = call_method(script_path, method_name, *data)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-File ""/Users/alexander/.npm/_npx/81bbc6515d992ace/node_modules/promptfoo/dist/src/python/wrapper.py"", line 24, in call_method
-  return method_to_call(*args)
-         ^^^^^^^^^^^^^^^^^^^^^
-File ""/Users/alexander/code/anthropic-cookbook/skills/summarization/evaluation/custom_evals/llm_eval.py"", line 67, in get_assert
-  score, evaluation = llm_eval(output, input)
-                      ^^^^^^^^^^^^^^^^^^^^^^^
-File ""/Users/alexander/code/anthropic-cookbook/skills/summarization/evaluation/custom_evals/llm_eval.py"", line 50, in llm_eval
-  response = client.messages.create(
-             ^^^^^^^^^^^^^^^^^^^^^^^
-File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_utils/_utils.py"", line 277, in wrapper
-  return func(*args, **kwargs)
-         ^^^^^^^^^^^^^^^^^^^^^
-File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/resources/messages.py"", line 906, in create
-  return self._post(
-         ^^^^^^^^^^^
-File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1239, in post
-  return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
-                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 921, in request
-  return self._request(
-         ^^^^^^^^^^^^^^
-File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1004, in _request
-  return self._retry_request(
-         ^^^^^^^^^^^^^^^^^^^^
-File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1052, in _retry_request
-  return self._request(
-         ^^^^^^^^^^^^^^
-File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1004, in _request
-  return self._retry_request(
-         ^^^^^^^^^^^^^^^^^^^^
-File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1052, in _retry_request
-  return self._request(
-         ^^^^^^^^^^^^^^
-File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1019, in _request
-  raise self._make_status_error_from_response(err.response) from None","[FAIL] (1.35)
-
-Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
----
-Here is a summary of the key aspects of the sublease agreement:
-
-<parties_involved>
-- Sublessor: Workrise Technologies Inc., a Delaware corporation
-- Sublessee: CS Disco, Inc., a Delaware corporation
-- Original Landlord: Cousins - One Congress Plaza LLC
-</parties_involved>
-
-<main_subject_matter>
-Sublease of office space at 111 Congress Avenue, Austin, Texas 78701. The subleased premises consist of 46,250 rentable square feet on the 6th floor (Suite 600) and 9th floor (Suite 900) of the building.
-</main_subject_matter>
-
 <key_terms_and_conditions>
-- Term: From Commencement Date through July 31, 2028
-- Base Rent: Varies by period, starting at $167,657.67 per month
-- Security Deposit: $306,714.58 cash deposit plus $500,000 letter of credit
-- Use: General office purposes only
-- Operating Expenses: Sublessee pays pro-rata share of expenses exceeding base year costs
-- Maintenance: Sublessee responsible for non-structural interior repairs and maintenance
-- Utilities: Sublessee responsible for utilities
-- Parking: Sublessee obligated to rent 68 unreserved and 2 reserved parking permits
-- Insurance: Sublessee required to maintain commercial general liability insurance with $3,000,000 per occurrence limit
+- Sublessee responsible for utilities and pro-rata share of operating expenses
+- Sublessee responsible for non-structural interior repairs and maintenance
+- Sublessee required to maintain $3,000,000 commercial general liability insurance
+- Subletting/assignment requires prior written consent from Sublessor and Master Landlord
+- Sublessee has right to install building standard signage, subject to approvals
+- Sublessee to purchase existing furniture and fixtures for $10
+- Sublessee obligated to rent 68 unreserved and 2 reserved parking permits
 </key_terms_and_conditions>
 
 <important_dates_or_deadlines>
-- Commencement Date: The later of the Effective Date or date premises are delivered
-- Expiration Date: July 31, 2028
-- Rent Abatement Period: First 3 full calendar months of the lease term
+- Master Landlord consent required for sublease to take full effect
+- Rent abatement for first 3 full calendar months of lease term
+- Sublessee access to premises begins on Commencement Date
 </important_dates_or_deadlines>
 
 <unusual_or_notable_clauses>
-- Furniture: Sublessee to purchase existing furniture and fixtures for $10
-- Right of First Refusal: Sublessee has ROFR on additional space Sublessor may offer for sublease
-- Signage Rights: Sublessee has right to install building standard suite identification signage, subject to approvals
-- Subletting Restrictions: Sublessee may not assign or sublet without prior written consent from Sublessor and Master Landlord
-- Confidentiality: Terms of sublease to remain confidential
+- Right of first refusal for Sublessee on additional space Sublessor may offer for sublease
+- Confidentiality requirements regarding terms of sublease
+- Waiver of certain rights under Texas property and tax codes
 </unusual_or_notable_clauses>
 
-Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.41)
+</summary>
+
+Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.40)
 
 Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
@@ -7634,7 +7617,7 @@ Here is a summary of the key aspects of the sublease agreement:
 
 <parties_involved>
 - Sublessor: Workrise Technologies Inc., a Delaware corporation
-- Sublessee: CS Disco, Inc., a Delaware corporation
+- Sublessee: CS Disco, Inc., a Delaware corporation 
 - Original Lessor: Cousins - One Congress Plaza LLC (""Landlord"" or ""Master Landlord"")
 </parties_involved>
 
@@ -7652,23 +7635,25 @@ Here is a summary of the key aspects of the sublease agreement:
 </term_and_rent>
 
 <responsibilities>
-- Utilities: Sublessee responsible for utilities and other charges incurred
-- Maintenance and repairs: Sublessee responsible for maintaining Demised Premises in good condition and repair, except for normal wear and tear
-- Operating expenses: Sublessee pays pro-rata share of operating expenses as Additional Rental
+- Utilities: Sublessee responsible for utilities and other charges allocable to the Subleased Premises
+- Maintenance and repairs: Sublessee responsible for keeping Demised Premises in good condition and repair, except for normal wear and tear
+- Operating expenses: Sublessee pays pro-rata share of Forecast Additional Rental and Additional Rental
 </responsibilities>
 
 <consent_and_notices>
-- Landlord's consent: Required from Master Landlord (Cousins - One Congress Plaza LLC)
+- Landlord's consent: Required from Master Landlord 
 - Notice requirements: Written notices to specified addresses for each party
 </consent_and_notices>
 
 <special_provisions>
-- Furniture: Sublessee to purchase existing furniture and fixtures (FFE) for $10
+- Furniture: Sublessee to purchase existing furniture, fixtures and equipment (FFE) for $10
 - Parking: Sublessee obligated to rent 68 unreserved and 2 reserved parking permits
 - Subletting restrictions: Sublessee may not assign or sublet without prior written consent from Sublessor and Master Landlord
 - Signage: Sublessee has right to install building standard suite identification signage, subject to approvals
 - Insurance: Sublessee required to maintain commercial general liability insurance with $3,000,000 per occurrence limit
 </special_provisions>
+
+</summary>
 
 Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions"""
 "Description: This description summarizes a sublease agreement between Crown Plaza Executive Suites Corporation (Sublessor) and Future Canada China Environment Inc. (Sublessee) for a small office space in Bellingham, Washington. The sublease is for a one-year term, from March 2008 to February 2009, for Suite 437 on the 4th floor of the Crown Plaza Building.
@@ -7711,7 +7696,9 @@ Fail Reason: Expected output to contain all of ""parties involved, property deta
 - Insurance: Sublessee required to maintain $1,000,000 liability insurance
 - Additional person charge: $95/month for each full-time equivalent person beyond the first occupant
 - Telecommunications: Sublessee must purchase telephone and internet services from Sublessor
-</special_provisions>","EX-10.1 6 exh101.htm OFFICE LEASE
+</special_provisions>","Source: https://www.sec.gov/Archives/edgar/data/1430286/000100201408000262/exh101.htm
+
+EX-10.1 6 exh101.htm OFFICE LEASE
 Exhibit 10.1
 
  
@@ -8209,50 +8196,58 @@ My Commission Expires 09/07/2011
 Sublessee's Initials: JC
 Sublessor's Initials: MLS
 
--15-","[FAIL] (1.31)
-
-  Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
----
-Here are the key points from the text in bullet form:
-
-Main Ideas:
-- This is a sublease agreement between Crown Plaza Executive Suites Corporation (Sublessor) and Future Canada China Environment Inc. (Sublessee)
-- The sublease is for Suite 437 on the 4th floor of the Crown Plaza Building in Bellingham, Washington
-- The sublease term is 1 year, from March 1, 2008 to February 28, 2009
-
-Key Details:
-- Parties Involved:
-- Sublessor: Crown Plaza Executive Suites Corporation
-- Sublessee: Future Canada China Environment Inc., Jessica Chiang (personal guarantor)
-- Original Lessor: Crown Plaza Corporation
-- Property Details:
-- Address: 114 W. Magnolia Street, Suite 437, Bellingham, WA 98225
-- Permitted Use: General office use only
-- Rent and Term:
-- Monthly Rent: $595.00
-- Security Deposit: $595.00 ($110 retained for carpet/painting)
-- Sublease Term: 1 year (March 1, 2008 - February 28, 2009)
-- Responsibilities:
-- Utilities: Sublessor provides for common areas, Sublessee responsible for telephone
-- Maintenance: Sublessee responsible for cleaning, Sublessor for structural repairs
-- Operating Expenses: Sublessor pays property taxes
-- Consent and Notices:
-- Landlord's consent required for assignment, subletting, alterations
-- Written notices required to specified addresses
-- Special Provisions:
-- No parking facilities provided
-- No assignment or subletting without Sublessor approval
-- Signage requires Sublessor consent
-- Sublessee must maintain $1M liability insurance
-- $95/month charge for each additional full-time occupant
-- Sublessee must purchase telecom services from Sublessor
-
-  Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.44)
+-15-","[FAIL] (1.44)
 
 Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
-Here is a summary of the key aspects of the legal document:
+Here is a summary of the key details from the legal document:
 
+<parties_involved>
+- Sublessor: Crown Plaza Executive Suites Corporation
+- Sublessee: Future Canada China Environment Inc., Jessica Chiang (also listed as personal guarantor)
+- Original Lessor: Crown Plaza Corporation (mentioned as landlord in master lease)
+</parties_involved>
+
+<property_details>
+- Address: 114 W. Magnolia Street, Suite 437, Bellingham, Washington 98225
+- Description: Suite 437 on the 4th floor of the Crown Plaza Building
+- Permitted use: General office use only
+</property_details>
+
+<term_and_rent>
+- Start date: March 1, 2008
+- End date: February 28, 2009 
+- Monthly rent: $595.00
+- Security deposit: $595.00 (with $110 retained for carpet care and painting at termination)
+</term_and_rent>
+
+<responsibilities>
+- Utilities: Sublessor provides utilities for common areas; Sublessee responsible for telephone service
+- Maintenance and repairs: Sublessee responsible for keeping premises neat and clean; Sublessor responsible for structural repairs and maintenance
+- Operating expenses: Not explicitly stated, but Sublessor pays property taxes
+</responsibilities>
+
+<consent_and_notices>
+- Landlord's consent: Required for any assignment, subletting, or alterations
+- Notice requirements: Written notices to specified addresses for each party
+</consent_and_notices>
+
+<special_provisions>
+- Furniture: Not specified
+- Parking: No parking facilities provided by Sublessor
+- Subletting restrictions: No assignment or subletting without prior written approval from Sublessor
+- Signage: Requires Sublessor's written consent
+- Insurance: Sublessee required to maintain $1,000,000 liability insurance
+- Additional person charge: $95/month for each full-time equivalent person beyond the first occupant
+- Telecommunications: Sublessee must purchase telephone and internet services from Sublessor
+</special_provisions>
+
+</summary>
+
+Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.44)
+
+Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
+---
 <parties_involved>
 - Sublessor: Crown Plaza Executive Suites Corporation
 - Sublessee: Future Canada China Environment Inc., Jessica Chiang (also listed as personal guarantor)
@@ -8337,124 +8332,86 @@ Expected output to contain all of ""parties involved, property details, term and
 - Telecommunications: Sublessee must purchase telephone and internet services from Sublessor
 </special_provisions>
 
-Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.34)
+</summary>
 
-Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
+Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (0.00)
+
+API call error: Number of request tokens has exceeded your per-minute rate limit (https://docs.anthropic.com/en/api/rate-limits); see the response headers for current usage. Please reduce the prompt length or the maximum tokens requested, or try again later. You may also contact sales at https://www.anthropic.com/contact-sales to discuss your options for a rate limit increase., status 429, type rate_limit_error
 ---
-Here's a summary of the key points from the sublease agreement:
-
-<parties_involved>
-- Sublessor: Crown Plaza Executive Suites Corporation
-- Sublessee: Future Canada China Environment Inc., Jessica Chiang (also personal guarantor)
-- Original Lessor: Crown Plaza Corporation (landlord in master lease)
-</parties_involved>
-
-<property_details>
-- Address: 114 W. Magnolia Street, Suite 437, Bellingham, Washington 98225
-- Description: Suite 437 on 4th floor of Crown Plaza Building
-- Permitted use: General office use only
-</property_details>
-
-<term_and_rent>
-- Start date: March 1, 2008
-- End date: February 28, 2009
-- Monthly rent: $595.00
-- Security deposit: $595.00 ($110 retained for carpet care/painting at termination)
-</term_and_rent>
-
-<responsibilities>
-- Utilities: Sublessor provides for common areas; Sublessee responsible for telephone
-- Maintenance: Sublessee keeps premises neat/clean; Sublessor handles structural repairs
-- Taxes: Sublessor pays property taxes
-</responsibilities>
-
-<consent_and_notices>
-- Landlord consent required for assignment, subletting, alterations
-- Written notices to specified addresses for each party
-</consent_and_notices>
-
-<special_provisions>
-- Parking: Not provided by Sublessor
-- Subletting: No assignment/subletting without Sublessor's written approval
-- Signage: Requires Sublessor's written consent
-- Insurance: Sublessee must maintain $1,000,000 liability insurance
-- Additional occupants: $95/month per full-time equivalent beyond first person
-- Telecommunications: Sublessee must use Sublessor's phone/internet services
-</special_provisions>
-
-Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.32)
-
-Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
----
-Here is a summary of the key aspects of the legal document:
-
-1. Parties involved:
-- Sublessor: Crown Plaza Executive Suites Corporation
-- Sublessee: Future Canada China Environment Inc., Jessica Chiang (also listed as personal guarantor)
-- Original Lessor: Crown Plaza Corporation (mentioned as landlord in master lease)
-
-2. Main subject matter:
-- Sublease of office space (Suite 437) on the 4th floor of the Crown Plaza Building at 114 W. Magnolia Street, Bellingham, Washington 98225
-- Permitted use: General office use only
-
-3. Key terms and conditions:
-- Term: One year (March 1, 2008 to February 28, 2009)
-- Monthly rent: $595.00
-- Security deposit: $595.00 (with $110 retained for carpet care and painting at termination)
-- Utilities: Sublessor provides utilities for common areas; Sublessee responsible for telephone service
-- Maintenance: Sublessee responsible for keeping premises neat and clean; Sublessor responsible for structural repairs and maintenance
-- Insurance: Sublessee required to maintain $1,000,000 liability insurance
-- No assignment or subletting without prior written approval from Sublessor
-- Sublessee must purchase telephone and internet services from Sublessor
-
-4. Important dates or deadlines:
-- Commencement date: March 1, 2008
-- Termination date: February 28, 2009
-
-5. Unusual or notable clauses:
-- Additional person charge: $95/month for each full-time equivalent person beyond the first occupant
-- No parking facilities provided by Sublessor
-- Sublessee agrees not to hire Sublessor's employees/staff during employment and for 180 days after
-- Sublessee must use Sublessor as sole provider of telecommunication services including internet access
-- Personal guarantee by Jessica Chiang for all liabilities of Sublessee under the sublease
-
-Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.44)
+API call error: Number of request tokens has exceeded your per-minute rate limit (https://docs.anthropic.com/en/api/rate-limits); see the response headers for current usage. Please reduce the prompt length or the maximum tokens requested, or try again later. You may also contact sales at https://www.anthropic.com/contact-sales to discuss your options for a rate limit increase., status 429, type rate_limit_error","[FAIL] (1.31)
 
 Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
 Here is a summary of the key aspects of the sublease agreement:
 
-<parties_involved>
+<summary>
+
+1. Parties involved:
+• Sublessor: Crown Plaza Executive Suites Corporation
+• Sublessee: Future Canada China Environment Inc., Jessica Chiang (also listed as personal guarantor)
+• Original Lessor: Crown Plaza Corporation (mentioned as landlord in master lease)
+
+2. Main subject matter:
+• Sublease of Suite 437 on the 4th floor of the Crown Plaza Building at 114 W. Magnolia Street, Bellingham, Washington 98225
+• Permitted use: General office use only
+
+3. Key terms and conditions:
+• Term: One year, from March 1, 2008 to February 28, 2009
+• Monthly rent: $595.00
+• Security deposit: $595.00 (with $110 retained for carpet care and painting at termination)
+• Utilities: Sublessor provides utilities for common areas; Sublessee responsible for telephone service
+• Maintenance: Sublessee responsible for keeping premises neat and clean; Sublessor responsible for structural repairs and maintenance
+• Insurance: Sublessee required to maintain $1,000,000 liability insurance
+• No assignment or subletting without prior written approval from Sublessor
+• Sublessee must purchase telephone and internet services from Sublessor
+
+4. Important dates or deadlines:
+• Commencement date: March 1, 2008
+• Termination date: February 28, 2009
+
+5. Unusual or notable clauses:
+• Additional person charge: $95/month for each full-time equivalent person beyond the first occupant
+• No parking facilities provided by Sublessor
+• Sublessee agrees not to hire Sublessor's employees/staff during employment and for 180 days after
+• Personal guarantee by Jessica Chiang for all liabilities of Sublessee
+
+</summary>
+
+Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[PASS] (1.63)
+
+Here is a summary of the sublease agreement:
+
+<parties involved>
 - Sublessor: Crown Plaza Executive Suites Corporation
 - Sublessee: Future Canada China Environment Inc., Jessica Chiang (also listed as personal guarantor)
 - Original Lessor: Crown Plaza Corporation (mentioned as landlord in master lease)
-</parties_involved>
+</parties involved>
 
-<property_details>
+<property details>
 - Address: 114 W. Magnolia Street, Suite 437, Bellingham, Washington 98225
 - Description: Suite 437 on the 4th floor of the Crown Plaza Building
 - Permitted use: General office use only
-</property_details>
+</property details>
 
-<term_and_rent>
+<term and rent>
 - Start date: March 1, 2008
 - End date: February 28, 2009 
 - Monthly rent: $595.00
 - Security deposit: $595.00 (with $110 retained for carpet care and painting at termination)
-</term_and_rent>
+</term and rent>
 
 <responsibilities>
 - Utilities: Sublessor provides utilities for common areas; Sublessee responsible for telephone service
-- Maintenance and repairs: Sublessee responsible for keeping premises neat and clean; Sublessor responsible for structural repairs and maintenance
+- Maintenance: Sublessee responsible for keeping premises neat and clean; Sublessor responsible for structural repairs and maintenance
 - Operating expenses: Not explicitly stated, but Sublessor pays property taxes
 </responsibilities>
 
-<consent_and_notices>
+<consent and notices>
 - Landlord's consent: Required for any assignment, subletting, or alterations
 - Notice requirements: Written notices to specified addresses for each party
-</consent_and_notices>
+</consent and notices>
 
-<special_provisions>
+<special provisions>
 - Furniture: Not specified
 - Parking: No parking facilities provided by Sublessor
 - Subletting restrictions: No assignment or subletting without prior written approval from Sublessor
@@ -8462,9 +8419,9 @@ Here is a summary of the key aspects of the sublease agreement:
 - Insurance: Sublessee required to maintain $1,000,000 liability insurance
 - Additional person charge: $95/month for each full-time equivalent person beyond the first occupant
 - Telecommunications: Sublessee must purchase telephone and internet services from Sublessor
-</special_provisions>
+</special provisions>
 
-Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions"""
+Pass Reason: All assertions passed"
 "Description: Commercial sublease agreement for office and light manufacturing space in Dublin, CA
 <parties_involved>
 Sublessor: The Titan Corporation, a Delaware corporation
@@ -8508,7 +8465,9 @@ Parking: Not specified
 Subletting Restrictions: Subtenant prohibited from assigning or subletting without prior written consent of Master Landlord and Sublandlord
 Insurance: Subtenant required to obtain insurance as specified in Section 4.04 of the Master Lease
 Alterations: Subtenant prohibited from making alterations without prior written consent of Master Landlord and Sublandlord
-</special_provisions>","SUBLEASE AGREEMENT
+</special_provisions>","Source: https://www.sec.gov/Archives/edgar/data/32258/000003225802000065/sl_dublin2.pdf
+
+SUBLEASE AGREEMENT
 THIS SUBLEASE AGREEMENT (“Sublease”) is entered into as of this 2nd day of August,
 2002, by and between The Titan Corporation, a Delaware corporation (“Sublandlord”), and SureBeam
 Corporation, a Delaware corporation (“Subtenant”).
@@ -8850,66 +8809,96 @@ U:\EDGAR\8k Cr with SureBeam\Sublease6780 sierra court suite rq l.docW:\realesta
 EXHIBIT A
 DESCRIPTION OF PREMISES
 [See attached.]
-\\\MC - 83591/38 - #205675 v1","[FAIL] (1.26)
-
-Average score is below threshold
----
-Here are the main ideas and key details from the text in bullet points:
-
-- Sublease agreement between The Titan Corporation (Sublandlord) and SureBeam Corporation (Subtenant) for office and light manufacturing space in Dublin, CA
-- Sublandlord is the tenant under the original Master Lease with B/G Management (Landlord)
-- Subleased Premises: Approximately 35,825 rentable square feet, known as Suites R, Q, L, and O
-- Permitted Use: General office and light electronic manufacturing
-- Sublease Term: August 2, 2002 to January 31, 2005
-- Base Rent: $25,534.57/month initially, escalating to $26,378.69/month from 8/1/03 and $27,350.65/month from 8/1/04
-- Security Deposit: As set forth in Master Lease
-- Subtenant responsible for utilities, maintenance, and repairs of Subleased Premises
-- Sublandlord not responsible for repairs to building structure, major systems, or exterior
-- Landlord's consent required for sublease
-- Subletting and alterations prohibited without prior written consent of Landlord and Sublandlord
-- Subtenant required to obtain insurance as specified in Master Lease
-
-Fail Reason: Average score is below threshold","[FAIL] (1.26)
+\\\MC - 83591/38 - #205675 v1","[FAIL] (1.40)
 
   Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
-Here is a summary of the key aspects of the legal document:
+Here is a summary of the key points from the sublease agreement:
 
-<parties_involved>
+- Parties Involved:
 - Sublandlord: The Titan Corporation, a Delaware corporation
 - Subtenant: SureBeam Corporation, a Delaware corporation
 - Original Landlord: B/G Management
+
+- Property Details:
+- Address: 6780 Sierra Court, Suite R, Q, L, and O, Dublin, CA
+- Size: Approximately 35,825 rentable square feet
+- Permitted Use: General office and light electronic manufacturing
+
+- Lease Terms:
+- Commencement Date: August 2, 2002
+- Expiration Date: January 31, 2005
+- Monthly Base Rent:
+    - $25,534.57 initially
+    - $26,378.69 from 8/1/03
+    - $27,350.65 from 8/1/04
+- Security Deposit: As set forth in Section 3.03 of the Master Lease
+
+- Responsibilities:
+- Utilities: Subtenant responsible for any increases or added costs arising from their tenancy
+- Maintenance: Subtenant responsible for maintenance and repair of the Subleased Premises
+- Repairs: Sublandlord not responsible for repairs to building structure, major systems, or exterior
+
+- Consent and Notices:
+- Landlord's Consent: Required for sublease
+- Notice Requirements:
+    - To Sublandlord: The Titan Corporation, 3033 Science Park Road, San Diego, CA 92122
+    - To Subtenant: SureBeam Corporation, 9276 Scranton Road, Suite 600, San Diego, CA 92121
+
+- Special Provisions:
+- Subletting Restrictions: Subtenant prohibited from assigning or subletting without prior written consent
+- Insurance: Subtenant required to obtain insurance as specified in Section 4.04 of the Master Lease
+- Alterations: Subtenant prohibited from making alterations without prior written consent
+</summary>
+
+  Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.45)
+
+  Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
+---
+<parties_involved>
+- Sublessor: The Titan Corporation, a Delaware corporation
+- Sublessee: SureBeam Corporation, a Delaware corporation
+- Original Lessor: B/G Management
 </parties_involved>
 
-<main_subject_matter>
-- Sublease agreement for office and light manufacturing space located at 6780 Sierra Court, Suite R, Q, L, and O, Dublin, CA
-</main_subject_matter>
+<property_details>
+- Address: 6780 Sierra Court, Suite R, Q, L, and O, Dublin, CA
+- Description: Approximately 35,825 rentable square feet
+- Permitted Use: General office and light electronic manufacturing
+</property_details>
 
-<key_terms_and_conditions>
+<term_and_rent>
 - Commencement Date: August 2, 2002
 - Expiration Date: January 31, 2005
-- Base Rent: 
-- $25,534.57 per month initially
-- $26,378.69 per month from 8/1/03
-- $27,350.65 per month from 8/1/04
+- Monthly Base Rent:
+- $25,534.57 initially
+- $26,378.69 from 8/1/03
+- $27,350.65 from 8/1/04
 - Security Deposit: As set forth in Section 3.03 of the Master Lease
-- Subtenant responsible for utilities, maintenance, and repairs
-- Subletting and alterations require prior written consent of Master Landlord and Sublandlord
-- Subtenant required to obtain insurance as specified in Master Lease
-</key_terms_and_conditions>
+</term_and_rent>
 
-<important_dates_and_deadlines>
-- Commencement Date: August 2, 2002
-- Expiration Date: January 31, 2005
-- Rent increases on 8/1/03 and 8/1/04
-</important_dates_and_deadlines>
+<responsibilities>
+- Utilities: Subtenant responsible for any increases or added costs arising from their tenancy
+- Maintenance: Subtenant responsible for maintenance and repair of the Subleased Premises
+- Repairs: Sublandlord not responsible for repairs to building structure, major systems, or exterior
+</responsibilities>
 
-<unusual_or_notable_clauses>
-- Sublandlord has the right to amend the Master Lease without Subtenant's consent, as long as it does not adversely affect Subtenant's operations
-- Subtenant only entitled to half the cure period for defaults under the Master Lease
-- Subtenant required to indemnify Sublandlord for any losses or liabilities arising from Subtenant's acts or omissions
-- Termination of the Master Lease will also terminate this Sublease
-</unusual_or_notable_clauses>
+<consent_and_notices>
+- Landlord's Consent: Required for sublease (consent form included)
+- Notice Requirements:
+- To Sublandlord: The Titan Corporation, 3033 Science Park Road, San Diego, CA 92122
+- To Subtenant: SureBeam Corporation, 9276 Scranton Road, Suite 600, San Diego, CA 92121
+</consent_and_notices>
+
+<special_provisions>
+- Furniture: Not specified
+- Parking: Not specified
+- Subletting Restrictions: Subtenant prohibited from assigning or subletting without prior written consent of Master Landlord and Sublandlord
+- Insurance: Subtenant required to obtain insurance as specified in Section 4.04 of the Master Lease
+- Alterations: Subtenant prohibited from making alterations without prior written consent of Master Landlord and Sublandlord
+</special_provisions>
+
+</summary>
 
   Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.46)
 
@@ -8957,12 +8946,13 @@ Here is a summary of the key aspects of the legal document:
 - Insurance: Subtenant required to obtain insurance as specified in Section 4.04 of the Master Lease
 - Alterations: Subtenant prohibited from making alterations without prior written consent of Master Landlord and Sublandlord
 </special_provisions>
+</summary>
 
-  Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.27)
+  Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.29)
 
-    Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
+Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
-Here are the key points summarized from the sublease agreement:
+Here is a summary of the key points from the sublease agreement:
 
 • Parties:
 - Sublandlord: The Titan Corporation (Delaware corporation)
@@ -8974,76 +8964,85 @@ Here are the key points summarized from the sublease agreement:
 - Size: Approximately 35,825 rentable square feet
 - Permitted Use: General office and light electronic manufacturing
 
-• Term and Rent:
+• Term:
 - Commencement Date: August 2, 2002
 - Expiration Date: January 31, 2005
-- Initial Base Rent: $25,534.57 per month, with scheduled increases
 
-• Key Responsibilities:
-- Subtenant responsible for utilities increases, maintenance, and repairs
-- Sublandlord not responsible for building structure, major systems, or exterior repairs
+• Rent:
+- Initial Base Rent: $25,534.57 per month
+- Increases to $26,378.69/month on 8/1/03 and $27,350.65/month on 8/1/04
+- Subtenant responsible for any increases in rent or costs arising from their tenancy
 
-• Important Provisions:
-- Subtenant must obtain insurance as specified in Master Lease
-- Alterations require prior written consent from Master Landlord and Sublandlord
-- Subletting/assignment prohibited without prior consent
+• Key Provisions:
+- Subtenant takes premises ""as is"" 
+- Subtenant responsible for maintenance and repairs
+- Sublandlord not responsible for building structure/systems repairs
+- Subtenant must obtain insurance per Master Lease requirements
+- Subtenant prohibited from assigning/subletting without prior consent
+- Alterations require prior written consent
 - Subtenant must comply with all Master Lease terms
+- Sublease terminates if Master Lease terminates
 
-• Security Deposit: As set forth in Master Lease
+• Consent:
+- Master Landlord's consent required (consent form included)
 
 • Notices:
-- To Sublandlord: The Titan Corporation, San Diego, CA
-- To Subtenant: SureBeam Corporation, San Diego, CA
+- To Sublandlord: The Titan Corporation, 3033 Science Park Road, San Diego, CA 92122
+- To Subtenant: SureBeam Corporation, 9276 Scranton Road, Suite 600, San Diego, CA 92121
 
-• Landlord's consent required (consent form included)
+</summary>
 
-• Governed by California law
-
-    Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.26)
+Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.26)
 
     Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
-Here is a summary of the key aspects of the legal document:
+Here is a summary of the key aspects of the sublease agreement:
+
+<summary>
 
 1. Parties involved:
-- Sublandlord: The Titan Corporation, a Delaware corporation
-- Subtenant: SureBeam Corporation, a Delaware corporation
-- Master Landlord: B/G Management
+• Sublandlord: The Titan Corporation (a Delaware corporation)
+• Subtenant: SureBeam Corporation (a Delaware corporation)
+• Master Landlord: B/G Management
 
 2. Main subject matter:
-- Sublease of office and light manufacturing space located at 6780 Sierra Court, Suite R, Q, L, and O, Dublin, CA
-- Approximately 35,825 rentable square feet
+• Sublease of office and light manufacturing space located at 6780 Sierra Court, Suite R, Q, L, and O, Dublin, CA
+• Approximately 35,825 rentable square feet
 
 3. Key terms and conditions:
-- Permitted Use: General office and light electronic manufacturing
-- Term: August 2, 2002 to January 31, 2005
-- Base Rent: 
-$25,534.57 per month initially
-$26,378.69 per month from 8/1/03
-$27,350.65 per month from 8/1/04
-- Subtenant responsible for utilities increases and maintenance/repairs of Subleased Premises
-- Subtenant required to obtain insurance as specified in Master Lease
-- Alterations prohibited without prior written consent of Master Landlord and Sublandlord
-- Assignment and subletting prohibited without prior consent
+• Permitted Use: General office and light electronic manufacturing
+• Term: August 2, 2002 to January 31, 2005
+• Base Rent: 
+- $25,534.57 per month initially
+- $26,378.69 per month from 8/1/03
+- $27,350.65 per month from 8/1/04
+• Subtenant responsible for utilities increases and maintenance/repairs of subleased premises
+• Subtenant required to obtain insurance as specified in Master Lease
+• Alterations prohibited without prior written consent of Master Landlord and Sublandlord
+• Subletting/assignment prohibited without prior written consent
+• Security deposit required (amount not specified)
 
 4. Important dates or deadlines:
-- Commencement Date: August 2, 2002
-- Expiration Date: January 31, 2005
+• Commencement Date: August 2, 2002
+• Expiration Date: January 31, 2005
+• Rent increases on August 1, 2003 and August 1, 2004
 
 5. Unusual or notable clauses:
-- Subtenant takes premises in ""as is"" condition
-- Sublandlord has no responsibility for repairs to building structure, major systems, or exterior
-- Subtenant only entitled to one-half of cure period for defaults specified in Master Lease
-- Sublease terminates if Master Lease terminates for any reason
-- Subtenant must comply with all terms of Master Lease
+• Subtenant takes premises in ""as is"" condition
+• Sublandlord has no responsibility for repairs to building structure, major systems, or exterior
+• Subtenant indemnifies Sublandlord against various liabilities and losses
+• Sublease terminates if Master Lease terminates for any reason
+• Subtenant only entitled to half the cure period for defaults as provided in Master Lease
 
-    Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[PASS] (1.64)
+</summary>
 
-    Here is a summary of the key aspects of the sublease agreement:
+    Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[PASS] (1.63)
+
+    Here is a summary of the sublease agreement:
 
 <parties involved>
 - Sublessor: The Titan Corporation, a Delaware corporation
-- Sublessee: SureBeam Corporation, a Delaware corporation
+- Sublessee: SureBeam Corporation, a Delaware corporation 
 - Original Lessor: B/G Management
 </parties involved>
 
@@ -9057,9 +9056,9 @@ $27,350.65 per month from 8/1/04
 - Start Date: August 2, 2002
 - End Date: January 31, 2005
 - Monthly Base Rent:
-$25,534.57 initially
-$26,378.69 from 8/1/03
-$27,350.65 from 8/1/04
+• $25,534.57 initially
+• $26,378.69 from 8/1/03
+• $27,350.65 from 8/1/04
 - Security Deposit: As set forth in Section 3.03 of the Master Lease
 </term and rent>
 
@@ -9072,8 +9071,8 @@ $27,350.65 from 8/1/04
 <consent and notices>
 - Landlord's Consent: Required for sublease (consent form included)
 - Notice Requirements:
-To Sublandlord: The Titan Corporation, 3033 Science Park Road, San Diego, CA 92122
-To Subtenant: SureBeam Corporation, 9276 Scranton Road, Suite 600, San Diego, CA 92121
+• To Sublandlord: The Titan Corporation, 3033 Science Park Road, San Diego, CA 92122
+• To Subtenant: SureBeam Corporation, 9276 Scranton Road, Suite 600, San Diego, CA 92121
 </consent and notices>
 
 <special provisions>
@@ -9083,6 +9082,8 @@ To Subtenant: SureBeam Corporation, 9276 Scranton Road, Suite 600, San Diego, CA
 - Insurance: Subtenant required to obtain insurance as specified in Section 4.04 of the Master Lease
 - Alterations: Subtenant prohibited from making alterations without prior written consent of Master Landlord and Sublandlord
 </special provisions>
+
+</summary>
 
     Pass Reason: All assertions passed"
 "Description: Commercial sublease agreement for data center space in Santa Clara, CA
@@ -9131,7 +9132,9 @@ To Subtenant: SureBeam Corporation, 9276 Scranton Road, Suite 600, San Diego, CA
   - Accompanying agreements include Employee Covenants Agreement, Master Service Agreement, and Conduits Agreement
   - Provisions for transitioning existing customer contracts
   - Sublandlord retains certain rights for point of presence and conduits
-</special_provisions>","Exhibit 10.95
+</special_provisions>","Source: https://investor.equinix.com/sec-filings/all-sec-filings/content/0001193125-04-035568/dex1095.htm
+
+Exhibit 10.95
 
  
 
@@ -9432,33 +9435,11 @@ By:
 
 Name: Renee F. Lanam
 
-Title: CFO","[FAIL] (1.18)
-
-    Average score is below threshold
----
-Here are the key points summarized in bullet points:
-
-Main Ideas:
-- This is a sublease agreement for 160,000 sq ft of commercial space in Santa Clara, CA
-- The sublessor is Sprint Communications Company, L.P. and the subtenant is Equinix Operating Co., Inc.
-- The original lessor is Duane Raymond, LLC
-
-Key Details:
-- Term: December 1, 2003 to September 29, 2014
-- Monthly Base Rent: 
-- First 2 years: [CONFIDENTIAL AMOUNT] 
-- Remainder of term: [CONFIDENTIAL AMOUNT]
-- Subtenant responsible for maintenance, repairs, and utilities
-- Landlord's consent required for sublease
-- Restrictions on subletting or assigning the sublease
-- Accompanying agreements include Employee Covenants, Master Service, and Conduits Agreements
-- Provisions for transitioning existing customer contracts
-
-    Fail Reason: Average score is below threshold","[FAIL] (1.27)
+Title: CFO","[FAIL] (1.49)
 
     Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
-Here is a summary of the key aspects of the legal document:
+Here is a summary of the key details from the sublease agreement:
 
 <parties_involved>
 - Sublessor: Sprint Communications Company, L.P., a Delaware limited partnership
@@ -9466,37 +9447,161 @@ Here is a summary of the key aspects of the legal document:
 - Original Lessor: Duane Raymond, LLC, a California limited liability company
 </parties_involved>
 
-<main_subject_matter>
-- Sublease agreement for 160,000 square feet of data center space located at 1350 Duane Avenue, Santa Clara, California.
-</main_subject_matter>
+<property_details>
+- Address: 1350 Duane Avenue, Santa Clara, California
+- Description: 160,000 square feet of space in and around the building
+- Permitted Use: As specified in the Master Lease (not explicitly stated in sublease)
+</property_details>
 
-<key_terms_and_conditions>
-- Term: December 1, 2003 to September 29, 2014
-- Monthly Base Rent: 
+<term_and_rent>
+- Start Date: December 1, 2003 (referred to as ""Closing Date"" and ""Commencement Date"") 
+- End Date: September 29, 2014
+- Monthly Base Rent:
 - First 2 years: [CONFIDENTIAL AMOUNT] payable by Sublandlord under Master Lease
 - Remainder of term: [CONFIDENTIAL AMOUNT] payable by Sublandlord under Master Lease
-- Subtenant responsible for utilities, maintenance, and repairs as required by Master Lease
-- Subletting and assignment restricted, requiring consent of Master Landlord and Sublandlord
-- Subtenant required to maintain insurance as specified in Master Lease
-- Accompanying agreements include Employee Covenants, Master Service, and Conduits Agreements
-</key_terms_and_conditions>
+- Security Deposit: Not specified
+</term_and_rent>
 
-<important_dates_or_deadlines>
-- Closing Date/Commencement Date: December 1, 2003
-- Deadline for Closing Date: December 1, 2003 (or later date as mutually agreed)
-</important_dates_or_deadlines>
+<responsibilities>
+- Utilities: Subtenant responsible for any increases or added costs arising from their tenancy
+- Maintenance: Subtenant responsible for maintenance and repair of the Subleased Premises as required by Master Lease
+- Repairs: Sublandlord not responsible for repairs to building structure, major systems, or exterior
+</responsibilities>
 
-<unusual_or_notable_clauses>
-- Provisions for transitioning existing customer contracts, with Sublandlord retaining IP transport revenue
+<consent_and_notices>
+- Landlord's Consent: Required for sublease (consent form included as Exhibit C)
+- Notice Requirements:
+- To Sublandlord: Sprint Communications Company, L.P., 6200 Sprint Parkway, KSOPHF 0302-3B679, Overland Park, KS 66251
+- To Subtenant: Equinix Operating Co., Inc., 301 Velocity Way, 5th Floor, Foster City, CA 94404
+</consent_and_notices>
+
+<special_provisions>
+- Furniture: Not specified
+- Parking: Subtenant has right to use Tenant's Allocated Parking Stalls within the Project
+- Subletting Restrictions: Subtenant prohibited from assigning or subletting without prior written consent of Master Landlord and Sublandlord
+- Insurance: Subtenant required to maintain insurance as specified in Section 9.1 of the Master Lease
+- Alterations: Subtenant prohibited from making alterations without prior written consent of Master Landlord and Sublandlord
+- Other:
+- Accompanying agreements include Employee Covenants Agreement, Master Service Agreement, and Conduits Agreement
+- Provisions for transitioning existing customer contracts
 - Sublandlord retains certain rights for point of presence and conduits
-- Mutual waiver of claims for property damage covered by insurance
-- Confidentiality requirements for non-public information
-</unusual_or_notable_clauses>
+</special_provisions>
+
+</summary>
 
     Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.49)
 
     Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
+<parties_involved>
+- Sublessor: Sprint Communications Company, L.P., a Delaware limited partnership
+- Sublessee: Equinix Operating Co., Inc., a Delaware corporation
+- Original Lessor: Duane Raymond, LLC, a California limited liability company
+</parties_involved>
+
+<property_details>
+- Address: 1350 Duane Avenue, Santa Clara, California
+- Description: 160,000 square feet of space in and around the building
+- Permitted Use: As specified in the Master Lease (not explicitly stated in sublease)
+</property_details>
+
+<term_and_rent>
+- Start Date: December 1, 2003 (referred to as ""Closing Date"" and ""Commencement Date"") 
+- End Date: September 29, 2014
+- Monthly Base Rent:
+- First 2 years: [CONFIDENTIAL AMOUNT] payable by Sublandlord under Master Lease
+- Remainder of term: [CONFIDENTIAL AMOUNT] payable by Sublandlord under Master Lease
+- Security Deposit: Not specified
+</term_and_rent>
+
+<responsibilities>
+- Utilities: Subtenant responsible for any increases or added costs arising from their tenancy
+- Maintenance: Subtenant responsible for maintenance and repair of the Subleased Premises as required by Master Lease
+- Repairs: Sublandlord not responsible for repairs to building structure, major systems, or exterior
+</responsibilities>
+
+<consent_and_notices>
+- Landlord's Consent: Required for sublease (consent form included as Exhibit C)
+- Notice Requirements:
+- To Sublandlord: Sprint Communications Company, L.P., 6200 Sprint Parkway, KSOPHF 0302-3B679, Overland Park, KS 66251
+- To Subtenant: Equinix Operating Co., Inc., 301 Velocity Way, 5th Floor, Foster City, CA 94404
+</consent_and_notices>
+
+<special_provisions>
+- Furniture: Not specified
+- Parking: Subtenant has right to use Tenant's Allocated Parking Stalls within the Project
+- Subletting Restrictions: Subtenant prohibited from assigning or subletting without prior written consent of Master Landlord and Sublandlord
+- Insurance: Subtenant required to maintain insurance as specified in Section 9.1 of the Master Lease
+- Alterations: Subtenant prohibited from making alterations without prior written consent of Master Landlord and Sublandlord
+- Other:
+- Accompanying agreements include Employee Covenants Agreement, Master Service Agreement, and Conduits Agreement
+- Provisions for transitioning existing customer contracts
+- Sublandlord retains certain rights for point of presence and conduits
+</special_provisions>
+
+</summary>
+
+    Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.49)
+
+    Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
+---
+<parties_involved>
+- Sublessor: Sprint Communications Company, L.P., a Delaware limited partnership
+- Sublessee: Equinix Operating Co., Inc., a Delaware corporation
+- Original Lessor: Duane Raymond, LLC, a California limited liability company
+</parties_involved>
+
+<property_details>
+- Address: 1350 Duane Avenue, Santa Clara, California
+- Description: 160,000 square feet of space in and around the building
+- Permitted Use: As specified in the Master Lease (not explicitly stated in sublease)
+</property_details>
+
+<term_and_rent>
+- Start Date: December 1, 2003 (referred to as ""Closing Date"" and ""Commencement Date"") 
+- End Date: September 29, 2014
+- Monthly Base Rent:
+- First 2 years: [CONFIDENTIAL AMOUNT] payable by Sublandlord under Master Lease
+- Remainder of term: [CONFIDENTIAL AMOUNT] payable by Sublandlord under Master Lease
+- Security Deposit: Not specified
+</term_and_rent>
+
+<responsibilities>
+- Utilities: Subtenant responsible for any increases or added costs arising from their tenancy
+- Maintenance: Subtenant responsible for maintenance and repair of the Subleased Premises as required by Master Lease
+- Repairs: Sublandlord not responsible for repairs to building structure, major systems, or exterior
+</responsibilities>
+
+<consent_and_notices>
+- Landlord's Consent: Required for sublease (consent form included as Exhibit C)
+- Notice Requirements:
+- To Sublandlord: Sprint Communications Company, L.P., 6200 Sprint Parkway, KSOPHF 0302-3B679, Overland Park, KS 66251
+- To Subtenant: Equinix Operating Co., Inc., 301 Velocity Way, 5th Floor, Foster City, CA 94404
+</consent_and_notices>
+
+<special_provisions>
+- Furniture: Not specified
+- Parking: Subtenant has right to use Tenant's Allocated Parking Stalls within the Project
+- Subletting Restrictions: Subtenant prohibited from assigning or subletting without prior written consent of Master Landlord and Sublandlord
+- Insurance: Subtenant required to maintain insurance as specified in Section 9.1 of the Master Lease
+- Alterations: Subtenant prohibited from making alterations without prior written consent of Master Landlord and Sublandlord
+- Other:
+- Accompanying agreements include Employee Covenants Agreement, Master Service Agreement, and Conduits Agreement
+- Provisions for transitioning existing customer contracts
+- Sublandlord retains certain rights for point of presence and conduits
+</special_provisions>
+</summary>
+
+    Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.49)
+
+    Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
+---
+Here is a summary of the key points from the sublease agreement:
+
+<summary>
+
+Description: Commercial sublease agreement for data center space in Santa Clara, CA
+
 <parties_involved>
 - Sublessor: Sprint Communications Company, L.P., a Delaware limited partnership
 - Sublessee: Equinix Operating Co., Inc., a Delaware corporation
@@ -9543,13 +9648,15 @@ Here is a summary of the key aspects of the legal document:
 - Sublandlord retains certain rights for point of presence and conduits
 </special_provisions>
 
-    Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.49)
+</summary>
+
+    Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.48)
 
     Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
-Here is a summary of the key points from the sublease agreement:
+Here is a summary of the key aspects of the sublease agreement:
 
-Description: Commercial sublease agreement for data center space in Santa Clara, CA
+<summary>
 
 <parties_involved>
 - Sublessor: Sprint Communications Company, L.P., a Delaware limited partnership
@@ -9586,7 +9693,6 @@ Description: Commercial sublease agreement for data center space in Santa Clara,
 </consent_and_notices>
 
 <special_provisions>
-- Furniture: Not specified
 - Parking: Subtenant has right to use Tenant's Allocated Parking Stalls within the Project
 - Subletting Restrictions: Subtenant prohibited from assigning or subletting without prior written consent of Master Landlord and Sublandlord
 - Insurance: Subtenant required to maintain insurance as specified in Section 9.1 of the Master Lease
@@ -9597,49 +9703,9 @@ Description: Commercial sublease agreement for data center space in Santa Clara,
 - Sublandlord retains certain rights for point of presence and conduits
 </special_provisions>
 
-    Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.25)
+</summary>
 
-    Average score is below threshold
----
-Here is a summary of the key aspects of the legal document:
-
-<parties_involved>
-- Sublessor: Sprint Communications Company, L.P., a Delaware limited partnership
-- Sublessee: Equinix Operating Co., Inc., a Delaware corporation 
-- Original Lessor: Duane Raymond, LLC, a California limited liability company
-</parties_involved>
-
-<main_subject_matter>
-Sublease of 160,000 square feet of data center space at 1350 Duane Avenue, Santa Clara, California
-</main_subject_matter>
-
-<key_terms_and_conditions>
-- Term: December 1, 2003 to September 29, 2014
-- Monthly Base Rent: 
-- First 2 years: [CONFIDENTIAL AMOUNT] of Master Lease rent
-- Remainder of term: [CONFIDENTIAL AMOUNT] of Master Lease rent
-- Subtenant responsible for Additional Rent and other charges as specified in Master Lease
-- Subtenant must maintain insurance per Master Lease requirements
-- Subletting/assignment requires consent of both Sublandlord and Master Landlord
-- Subtenant assumes most obligations of Sublandlord under Master Lease
-</key_terms_and_conditions>
-
-<important_dates_or_deadlines>
-- Commencement Date: December 1, 2003 
-- Expiration Date: September 29, 2014
-- Closing Date: December 1, 2003
-</important_dates_or_deadlines>
-
-<unusual_or_notable_clauses>
-- Accompanying agreements include Employee Covenants Agreement, Master Service Agreement, and Conduits Agreement
-- Provisions for transitioning existing customer contracts from Sublandlord to Subtenant
-- Sublandlord retains certain rights for point of presence and conduits
-- Subtenant has option to enter into new direct lease with Master Landlord
-- Detailed indemnification and waiver of claims provisions
-- Confidentiality requirements regarding terms of sublease
-</unusual_or_notable_clauses>
-
-    Fail Reason: Average score is below threshold","[FAIL] (1.49)
+    Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.49)
 
     Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
@@ -9690,5 +9756,7 @@ Here is a summary of the key aspects of the sublease agreement:
 - Provisions for transitioning existing customer contracts
 - Sublandlord retains certain rights for point of presence and conduits
 </special_provisions>
+
+</summary>
 
     Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions"""
