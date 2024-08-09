@@ -1,6 +1,14 @@
 
 # Evaluations with Promptfoo
 
+### A Note on This Evaluation Suite
+
+1) Be sure to follow the instructions below - specifically the pre-requisites about required packages.
+
+2) Running the full eval suite may require higher than normal rate limits. Consider only running a subset of tests in promptfoo.
+
+3) Not every test will pass out of the box - we've designed the evaluation to be moderately challenging.
+
 ### Pre-requisities 
 To use Promptfoo you will need to have node.js & npm installed on your system. For more information follow [this guide](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)  
 
@@ -9,6 +17,11 @@ You can install promptfoo using npm or run it directly using npx. In this guide 
 *Note: For this example you will not need to run `npx promptfoo@latest init` there is already an initialized `promptfooconfig.yaml` file in this directory*  
 
 See the official docs [here](https://www.promptfoo.dev/docs/getting-started)  
+
+#### NOTE - Additional Deps
+For this example you will need to install the following dependencies in order for our custom_evals to run properly.
+
+`pip install nltk rouge-score`
 
 ### Getting Started
 

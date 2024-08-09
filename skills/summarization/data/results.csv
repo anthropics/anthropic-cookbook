@@ -1324,7 +1324,7 @@ Fail Reason: Expected output to contain all of ""parties involved, property deta
 
 </summary>
 
-    Pass Reason: All assertions passed","[FAIL] (1.30)
+    Pass Reason: All assertions passed","[FAIL] (1.32)
 
     Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
@@ -1344,32 +1344,28 @@ Key details:
 • Property:
 - Address: 2929 Arch Street, Suite 1703, Philadelphia, PA 19104
 - Space: 2,000 square feet of a larger 13,777 square foot master premises
-- Use: Likely general office use (not explicitly stated)
+- Use: General office use (implied)
 
 • Term and Rent:
-- Term: 5 years from April 1, 2024 to March 31, 2029
+- Start date: April 1, 2024
+- End date: March 31, 2029 (5-year term)
 - Monthly rent:
 Months 1-12: $5,750.00
 Months 13-24: $5,865.00
 Months 25-36: $5,981.67
 Months 37-48: $6,101.67
 Months 49-60: $6,223.33
-- Additional rent: Pro rata share of Sublessor's expenses
+- Additional rent: Pro rata share of Sublessor's Allocated Share of Recognized Expenses
 - Renewal: Possible if Sublessor renews Master Lease
 
 • Key Provisions:
-- Insurance: Sublessee must maintain insurance required by Master Lease
-- Assignment/Subletting: Prohibited without Sublessor's consent
-- Holdover: Rent doubles if Sublessee remains after lease end
-- Furniture/Services: Sublessee has access to office equipment and services
+- Insurance: Sublessee must maintain insurance as required by Master Lease
+- Assignment/Subletting: Prohibited without Sublessor's prior written consent
 - Landlord consent: Required for sublease to be effective
-- Notices: Must be in writing and delivered by specified methods
+- Holdover: Rent doubles if Sublessee remains after lease termination
+- Amenities: Sublessee has access to file space, office equipment, kitchen, conference rooms, and receptionist/secretarial services
 
-• Not Specified:
-- Security deposit amount
-- Specific maintenance/repair responsibilities
-- Utility payment responsibilities
-- Damage/destruction provisions
+• Notices: Must be in writing and delivered by registered/certified mail, overnight courier, or hand delivery
 
 </summary>
 
@@ -1409,7 +1405,7 @@ Sublease of 2,000 square feet of office space, part of a larger 13,777 square fo
 
 </summary>
 
-Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[PASS] (1.61)
+Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[PASS] (1.60)
 
     Here is a summary of the sublease agreement:
 
@@ -1434,7 +1430,7 @@ Fail Reason: Expected output to contain all of ""parties involved, property deta
 • Months 25-36: $5,981.67
 • Months 37-48: $6,101.67
 • Months 49-60: $6,223.33
-- Security deposit: $0
+- Security deposit: $0 (as specified in the master lease summary)
 - Additional rent: Pro rata share of Sublessor's Allocated Share of Recognized Expenses
 </term and rent>
 
@@ -1452,9 +1448,9 @@ Fail Reason: Expected output to contain all of ""parties involved, property deta
 
 <special provisions>
 - Furniture and services: Sublessee has access to file space, printers, copiers, kitchen, conference room facilities, and receptionist and secretarial services
+- Parking: Not specified
 - Assignment and subletting: Prohibited without Sublessor's prior written consent
 - Holdover: Rent at twice the amount of monthly rent payable before termination of sublease
-- Broker participation: Parties warrant no broker involvement except as specified
 </special provisions>
 
 </summary>
@@ -1965,9 +1961,9 @@ Here is a summary of the key points from the sublease agreement:
 
 • 10 non-exclusive parking spaces provided
 
-• Subtenant may use existing furniture, to be returned in same condition
+• Subtenant may use certain existing furniture/fixtures
 
-• Subtenant responsible for proper handling/disposal of hazardous materials
+• Subtenant responsible for proper handling of hazardous materials
 
 • Holdover rent at 150% of last month's rent
 
@@ -1991,31 +1987,31 @@ Here is a summary of the key aspects of the sublease agreement:
 • Master Landlord: Britannia Pointe Grand Limited Partnership
 
 2. Main subject matter:
-• Sublease of approximately 4,410 square feet of office/lab space
-• Located at 260 East Grand Avenue, San Francisco, CA
-• For purposes permitted in the Master Lease
+• Sublease of approximately 4,410 square feet of office/lab space on the first floor at 260 East Grand Avenue, San Francisco, CA
 
 3. Key terms and conditions:
-• Term: From Commencement Date to June 30, 2014
+• Term: From Commencement Date (upon Master Landlord consent and delivery of premises) to June 30, 2014
 • Monthly rent: $19,845.00
 • Security deposit: $39,690.00
+• Use: As permitted in Master Lease
 • Subtenant responsible for interior maintenance/repairs
-• Sublandlord provides utilities, janitorial, building maintenance, etc.
+• Sublandlord provides utilities, janitorial, building maintenance, and other services
 • Subtenant required to maintain insurance per Master Lease
 • Alterations require prior consent of Sublandlord and Master Landlord
 • Assignment/subletting prohibited without prior consent
 
 4. Important dates or deadlines:
-• Commencement Date: Upon Master Landlord's consent and delivery of possession
+• Commencement Date: Upon Master Landlord consent and delivery of premises
 • Expiration Date: June 30, 2014
 • No option to extend
 
 5. Unusual or notable clauses:
 • Subtenant may use certain existing furniture/fixtures
 • Non-exclusive use of 10 parking spaces provided
-• Sublandlord provides hazardous materials storage, but Subtenant responsible for disposal
-• Detailed provisions on handling of hazardous materials and building contaminants
-• Subtenant indemnifies Sublandlord for claims related to Subtenant's hazardous materials use
+• Detailed provisions for handling of hazardous materials
+• Sublandlord indemnifies Subtenant for pre-existing hazardous materials
+• Holdover rent at 150% of last monthly rent
+• No broker commissions owed
 
 </summary>
 
@@ -2063,8 +2059,6 @@ Here is a summary of the sublease agreement:
 - Alterations: Require prior written consent of Sublandlord and Master Landlord
 - Assignment and subletting: Prohibited without prior written consent of Sublandlord and Master Landlord
 </special provisions>
-
-</summary>
 
 Pass Reason: All assertions passed"
 "Description: This is a commercial sublease agreement between Cutter & Buck Inc. (Sublandlord) and Tableau Software, Inc. (Subtenant) for a portion of premises originally leased from Fremont Lake Union Center LLC (Landlord). The sublease is for office space with a term from June 1, 2012 to July 31, 2017.
@@ -3791,9 +3785,56 @@ Fail Reason: Average score is below threshold","[PASS] (1.66)
 - Furniture: Subtenant may use certain existing furniture in the Subleased Premises
 </special provisions>
 
-    Pass Reason: All assertions passed","[FAIL] (1.24)
+</summary>
 
-Average score is below threshold
+    Pass Reason: All assertions passed","[FAIL] (0.34)
+
+  Error running Python script: anthropic.RateLimitError: Error code: 429 - {'type': 'error', 'error': {'type': 'rate_limit_error', 'message': 'Number of request tokens has exceeded your per-minute rate limit (https://docs.anthropic.com/en/api/rate-limits); see the response headers for current usage. Please reduce the prompt length or the maximum tokens requested, or try again later. You may also contact sales at https://www.anthropic.com/contact-sales to discuss your options for a rate limit increase.'}}
+Stack Trace: Error: anthropic.RateLimitError: Error code: 429 - {'type': 'error', 'error': {'type': 'rate_limit_error', 'message': 'Number of request tokens has exceeded your per-minute rate limit (https://docs.anthropic.com/en/api/rate-limits); see the response headers for current usage. Please reduce the prompt length or the maximum tokens requested, or try again later. You may also contact sales at https://www.anthropic.com/contact-sales to discuss your options for a rate limit increase.'}}
+at PythonShell.parseError (/Users/sflamini/.npm/_npx/81bbc6515d992ace/node_modules/python-shell/index.js:303:21)
+at terminateIfNeeded (/Users/sflamini/.npm/_npx/81bbc6515d992ace/node_modules/python-shell/index.js:193:32)
+at ChildProcess.<anonymous> (/Users/sflamini/.npm/_npx/81bbc6515d992ace/node_modules/python-shell/index.js:185:13)
+at ChildProcess.emit (node:events:519:28)
+at ChildProcess._handle.onexit (node:internal/child_process:294:12)
+--Python Traceback: --
+File ""/Users/sflamini/.npm/_npx/81bbc6515d992ace/node_modules/promptfoo/dist/src/python/wrapper.py"", line 34, in <module>
+  result = call_method(script_path, method_name, *data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File ""/Users/sflamini/.npm/_npx/81bbc6515d992ace/node_modules/promptfoo/dist/src/python/wrapper.py"", line 24, in call_method
+  return method_to_call(*args)
+         ^^^^^^^^^^^^^^^^^^^^^
+File ""/Users/sflamini/code/internal/summary-guide-brick/anthropic-cookbook/skills/summarization/evaluation/custom_evals/llm_eval.py"", line 80, in get_assert
+  score, evaluation = llm_eval(output, input)
+                      ^^^^^^^^^^^^^^^^^^^^^^^
+File ""/Users/sflamini/code/internal/summary-guide-brick/anthropic-cookbook/skills/summarization/evaluation/custom_evals/llm_eval.py"", line 55, in llm_eval
+  response = client.messages.create(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_utils/_utils.py"", line 277, in wrapper
+  return func(*args, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^
+File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/resources/messages.py"", line 906, in create
+  return self._post(
+         ^^^^^^^^^^^
+File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1239, in post
+  return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 921, in request
+  return self._request(
+         ^^^^^^^^^^^^^^
+File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1004, in _request
+  return self._retry_request(
+         ^^^^^^^^^^^^^^^^^^^^
+File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1052, in _retry_request
+  return self._request(
+         ^^^^^^^^^^^^^^
+File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1004, in _request
+  return self._retry_request(
+         ^^^^^^^^^^^^^^^^^^^^
+File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1052, in _retry_request
+  return self._request(
+         ^^^^^^^^^^^^^^
+File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1019, in _request
+  raise self._make_status_error_from_response(err.response) from None
 ---
 Here is a summary of the key points from the sublease agreement:
 
@@ -3829,7 +3870,52 @@ Key Provisions:
 
 </summary>
 
-Fail Reason: Average score is below threshold","[FAIL] (1.28)
+  Fail Reason: Error running Python script: anthropic.RateLimitError: Error code: 429 - {'type': 'error', 'error': {'type': 'rate_limit_error', 'message': 'Number of request tokens has exceeded your per-minute rate limit (https://docs.anthropic.com/en/api/rate-limits); see the response headers for current usage. Please reduce the prompt length or the maximum tokens requested, or try again later. You may also contact sales at https://www.anthropic.com/contact-sales to discuss your options for a rate limit increase.'}}
+Stack Trace: Error: anthropic.RateLimitError: Error code: 429 - {'type': 'error', 'error': {'type': 'rate_limit_error', 'message': 'Number of request tokens has exceeded your per-minute rate limit (https://docs.anthropic.com/en/api/rate-limits); see the response headers for current usage. Please reduce the prompt length or the maximum tokens requested, or try again later. You may also contact sales at https://www.anthropic.com/contact-sales to discuss your options for a rate limit increase.'}}
+at PythonShell.parseError (/Users/sflamini/.npm/_npx/81bbc6515d992ace/node_modules/python-shell/index.js:303:21)
+at terminateIfNeeded (/Users/sflamini/.npm/_npx/81bbc6515d992ace/node_modules/python-shell/index.js:193:32)
+at ChildProcess.<anonymous> (/Users/sflamini/.npm/_npx/81bbc6515d992ace/node_modules/python-shell/index.js:185:13)
+at ChildProcess.emit (node:events:519:28)
+at ChildProcess._handle.onexit (node:internal/child_process:294:12)
+--Python Traceback: --
+File ""/Users/sflamini/.npm/_npx/81bbc6515d992ace/node_modules/promptfoo/dist/src/python/wrapper.py"", line 34, in <module>
+  result = call_method(script_path, method_name, *data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File ""/Users/sflamini/.npm/_npx/81bbc6515d992ace/node_modules/promptfoo/dist/src/python/wrapper.py"", line 24, in call_method
+  return method_to_call(*args)
+         ^^^^^^^^^^^^^^^^^^^^^
+File ""/Users/sflamini/code/internal/summary-guide-brick/anthropic-cookbook/skills/summarization/evaluation/custom_evals/llm_eval.py"", line 80, in get_assert
+  score, evaluation = llm_eval(output, input)
+                      ^^^^^^^^^^^^^^^^^^^^^^^
+File ""/Users/sflamini/code/internal/summary-guide-brick/anthropic-cookbook/skills/summarization/evaluation/custom_evals/llm_eval.py"", line 55, in llm_eval
+  response = client.messages.create(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_utils/_utils.py"", line 277, in wrapper
+  return func(*args, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^
+File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/resources/messages.py"", line 906, in create
+  return self._post(
+         ^^^^^^^^^^^
+File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1239, in post
+  return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 921, in request
+  return self._request(
+         ^^^^^^^^^^^^^^
+File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1004, in _request
+  return self._retry_request(
+         ^^^^^^^^^^^^^^^^^^^^
+File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1052, in _retry_request
+  return self._request(
+         ^^^^^^^^^^^^^^
+File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1004, in _request
+  return self._retry_request(
+         ^^^^^^^^^^^^^^^^^^^^
+File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1052, in _retry_request
+  return self._request(
+         ^^^^^^^^^^^^^^
+File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1019, in _request
+  raise self._make_status_error_from_response(err.response) from None","[FAIL] (1.28)
 
 Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
@@ -3879,9 +3965,56 @@ Here is a summary of the key aspects of the sublease agreement:
 
 </summary>
 
-Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[PASS] (1.65)
+Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (0.75)
 
-    Here is a summary of the key aspects of the sublease agreement:
+    Error running Python script: anthropic.RateLimitError: Error code: 429 - {'type': 'error', 'error': {'type': 'rate_limit_error', 'message': 'Number of request tokens has exceeded your per-minute rate limit (https://docs.anthropic.com/en/api/rate-limits); see the response headers for current usage. Please reduce the prompt length or the maximum tokens requested, or try again later. You may also contact sales at https://www.anthropic.com/contact-sales to discuss your options for a rate limit increase.'}}
+Stack Trace: Error: anthropic.RateLimitError: Error code: 429 - {'type': 'error', 'error': {'type': 'rate_limit_error', 'message': 'Number of request tokens has exceeded your per-minute rate limit (https://docs.anthropic.com/en/api/rate-limits); see the response headers for current usage. Please reduce the prompt length or the maximum tokens requested, or try again later. You may also contact sales at https://www.anthropic.com/contact-sales to discuss your options for a rate limit increase.'}}
+  at PythonShell.parseError (/Users/sflamini/.npm/_npx/81bbc6515d992ace/node_modules/python-shell/index.js:303:21)
+  at terminateIfNeeded (/Users/sflamini/.npm/_npx/81bbc6515d992ace/node_modules/python-shell/index.js:193:32)
+  at ChildProcess.<anonymous> (/Users/sflamini/.npm/_npx/81bbc6515d992ace/node_modules/python-shell/index.js:185:13)
+  at ChildProcess.emit (node:events:519:28)
+  at ChildProcess._handle.onexit (node:internal/child_process:294:12)
+  --Python Traceback: --
+  File ""/Users/sflamini/.npm/_npx/81bbc6515d992ace/node_modules/promptfoo/dist/src/python/wrapper.py"", line 34, in <module>
+    result = call_method(script_path, method_name, *data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/sflamini/.npm/_npx/81bbc6515d992ace/node_modules/promptfoo/dist/src/python/wrapper.py"", line 24, in call_method
+    return method_to_call(*args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/sflamini/code/internal/summary-guide-brick/anthropic-cookbook/skills/summarization/evaluation/custom_evals/llm_eval.py"", line 80, in get_assert
+    score, evaluation = llm_eval(output, input)
+                        ^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/sflamini/code/internal/summary-guide-brick/anthropic-cookbook/skills/summarization/evaluation/custom_evals/llm_eval.py"", line 55, in llm_eval
+    response = client.messages.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_utils/_utils.py"", line 277, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/resources/messages.py"", line 906, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1239, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 921, in request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1004, in _request
+    return self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1052, in _retry_request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1004, in _request
+    return self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1052, in _retry_request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1019, in _request
+    raise self._make_status_error_from_response(err.response) from None
+---
+Here is a summary of the key aspects of the sublease agreement:
 
 <parties involved>
 - Sublessor: Cutter & Buck Inc.
@@ -3930,7 +4063,52 @@ Fail Reason: Expected output to contain all of ""parties involved, property deta
 
 </summary>
 
-    Pass Reason: All assertions passed"
+    Fail Reason: Error running Python script: anthropic.RateLimitError: Error code: 429 - {'type': 'error', 'error': {'type': 'rate_limit_error', 'message': 'Number of request tokens has exceeded your per-minute rate limit (https://docs.anthropic.com/en/api/rate-limits); see the response headers for current usage. Please reduce the prompt length or the maximum tokens requested, or try again later. You may also contact sales at https://www.anthropic.com/contact-sales to discuss your options for a rate limit increase.'}}
+Stack Trace: Error: anthropic.RateLimitError: Error code: 429 - {'type': 'error', 'error': {'type': 'rate_limit_error', 'message': 'Number of request tokens has exceeded your per-minute rate limit (https://docs.anthropic.com/en/api/rate-limits); see the response headers for current usage. Please reduce the prompt length or the maximum tokens requested, or try again later. You may also contact sales at https://www.anthropic.com/contact-sales to discuss your options for a rate limit increase.'}}
+  at PythonShell.parseError (/Users/sflamini/.npm/_npx/81bbc6515d992ace/node_modules/python-shell/index.js:303:21)
+  at terminateIfNeeded (/Users/sflamini/.npm/_npx/81bbc6515d992ace/node_modules/python-shell/index.js:193:32)
+  at ChildProcess.<anonymous> (/Users/sflamini/.npm/_npx/81bbc6515d992ace/node_modules/python-shell/index.js:185:13)
+  at ChildProcess.emit (node:events:519:28)
+  at ChildProcess._handle.onexit (node:internal/child_process:294:12)
+  --Python Traceback: --
+  File ""/Users/sflamini/.npm/_npx/81bbc6515d992ace/node_modules/promptfoo/dist/src/python/wrapper.py"", line 34, in <module>
+    result = call_method(script_path, method_name, *data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/sflamini/.npm/_npx/81bbc6515d992ace/node_modules/promptfoo/dist/src/python/wrapper.py"", line 24, in call_method
+    return method_to_call(*args)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/sflamini/code/internal/summary-guide-brick/anthropic-cookbook/skills/summarization/evaluation/custom_evals/llm_eval.py"", line 80, in get_assert
+    score, evaluation = llm_eval(output, input)
+                        ^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/sflamini/code/internal/summary-guide-brick/anthropic-cookbook/skills/summarization/evaluation/custom_evals/llm_eval.py"", line 55, in llm_eval
+    response = client.messages.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_utils/_utils.py"", line 277, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/resources/messages.py"", line 906, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1239, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 921, in request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1004, in _request
+    return self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1052, in _retry_request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1004, in _request
+    return self._retry_request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1052, in _retry_request
+    return self._request(
+           ^^^^^^^^^^^^^^
+  File ""/opt/homebrew/Caskroom/miniforge/base/envs/py311/lib/python3.11/site-packages/anthropic/_base_client.py"", line 1019, in _request
+    raise self._make_status_error_from_response(err.response) from None"
 "Description: Sublease Agreement Summary: Blue Coat Systems to Infoblox Inc. This document summarizes a sublease agreement for office space in Sunnyvale, California, between Blue Coat Systems and Infoblox Inc., subject to the master lease with Sunnyvale VIII Trust.
 
 <parties_involved>
@@ -4854,7 +5032,7 @@ Here is a summary of the key points from the legal document:
 
 </summary>
 
-Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.36)
+Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.30)
 
 Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
@@ -4867,32 +5045,29 @@ Here is a summary of the key aspects of the sublease agreement:
 </parties_involved>
 
 <main_subject_matter>
-This document summarizes a sublease agreement for office space in Sunnyvale, California, between Blue Coat Systems and Infoblox Inc., subject to the master lease with Sunnyvale VIII Trust.
+- Sublease of approximately 45,823 square feet of office space located at 475-477 Potrero Avenue, Sunnyvale, California.
 </main_subject_matter>
 
 <key_terms_and_conditions>
-- Address: 475-477 Potrero Avenue, Sunnyvale, California (approximately 45,823 square feet)
-- Permitted use: General office use, research and development, and other legal related uses
-- Term: October 7, 2004 (Commencement Date) to June 30, 2006
-- Monthly rent: $23,827.96
-- Security deposit: $23,827.96
-- Additional security: Letter of Credit for $37,000
-- Utilities and janitorial costs are Sublessee's responsibility, other operating expenses are Sublessor's responsibility
-- Sublessee must maintain the premises in the same condition as received, ordinary wear and tear excepted
+- Term: Commences on October 7, 2004 and ends on June 30, 2006.
+- Rent: $23,827.96 per month, starting on October 15, 2004.
+- Security Deposit: $23,827.96.
+- Additional Security: $37,000 Letter of Credit.
+- Sublessee responsible for utilities and janitorial costs, Sublessor responsible for other operating expenses.
+- Sublessee must maintain the premises in the same condition as received, ordinary wear and tear excepted.
 </key_terms_and_conditions>
 
 <important_dates_or_deadlines>
-- Commencement Date: October 7, 2004
-- Rent Commencement Date: October 15, 2004
-- Expiration Date: June 30, 2006
+- Commencement Date: October 7, 2004 (upon full execution and delivery of the sublease, security deposit, and letter of credit).
+- Rent Commencement Date: October 15, 2004.
+- Expiration Date: June 30, 2006.
 </important_dates_or_deadlines>
 
 <unusual_or_notable_clauses>
-- Sublessee has use of existing furniture, fixtures, and equipment (FF&E) at no additional cost
-- Sublessee may not assign or sublet without prior written consent from both Sublessor and Master Lessor
-- Sublessee may place signs on or about the premises in compliance with the Master Lease
-- Sublessee required to provide insurance as described in the Master Lease, including additional insureds
-- Landlord's consent is required and was obtained from Sunnyvale VIII Trust
+- Sublessee has use of existing furniture, fixtures, and equipment (FF&E) at no additional cost.
+- Sublessee may not assign or sublet without prior written consent from both Sublessor and Master Lessor.
+- Sublessee may place signs on the premises in compliance with the Master Lease.
+- Sublessee required to provide insurance as described in the Master Lease, including additional insureds.
 </unusual_or_notable_clauses>
 
 Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.46)
@@ -4987,7 +5162,7 @@ This sublease is subject to all terms of the Master Lease between Blue Coat Syst
 
 </summary>
 
-Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.34)
+Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.33)
 
 Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
@@ -5000,36 +5175,36 @@ Here is a summary of the key aspects of the sublease agreement:
 </parties_involved>
 
 <main_subject_matter>
-- Sublease of approximately 45,823 square feet of office space at 475-477 Potrero Avenue, Sunnyvale, California
-- Permitted use: General office use, research and development, and other legal related uses
+Sublease of approximately 45,823 square feet of office space located at 475-477 Potrero Avenue, Sunnyvale, California.
 </main_subject_matter>
 
 <key_terms_and_conditions>
 - Term: October 7, 2004 (Commencement Date) to June 30, 2006
-- Monthly rent: $23,827.96
+- Rent: $23,827.96 per month, starting October 15, 2004
 - Security deposit: $23,827.96 cash plus $37,000 Letter of Credit
-- Sublessee responsible for utilities and janitorial costs
-- Sublessor responsible for other operating expenses under Master Lease
-- Sublessee to maintain premises in same condition as received, normal wear excepted
-- Sublessee has use of existing furniture, fixtures and equipment at no extra cost
-- Sublessee has right to use all associated parking spaces
-- Sublessee may place signage in compliance with Master Lease
-- Sublessee must provide insurance as required in Master Lease
+- Use: General office, research and development, and other legal related uses
+- Utilities: Sublessee responsible for utilities and janitorial costs
+- Maintenance: Sublessee to keep premises in same condition as received
+- Furniture: Sublessee has use of existing furniture and equipment at no extra cost
+- Parking: Sublessee has right to use all associated parking spaces
+- Insurance: Sublessee required to provide insurance per Master Lease terms
+- Signage: Allowed in compliance with Master Lease
+- Assignment/Subletting: Requires consent of Sublessor and Master Lessor
 </key_terms_and_conditions>
 
-<important_dates_or_deadlines>
+<important_dates>
 - Commencement Date: October 7, 2004
 - Rent Commencement Date: October 15, 2004 
 - Expiration Date: June 30, 2006
-</important_dates_or_deadlines>
+</important_dates>
 
-<unusual_or_notable_clauses>
-- Sublease requires consent of Master Lessor (Sunnyvale VIII Trust)
-- Sublessee has no option to extend the sublease term
-- Sublessee may not assign or further sublet without consent of both Sublessor and Master Lessor
-- Detailed provisions for Letter of Credit as additional security
-- Extensive list of furniture, fixtures and equipment included in sublease
-</unusual_or_notable_clauses>
+<notable_clauses>
+- Sublease is subordinate to Master Lease
+- Sublessee has no option to extend
+- Sublessor not obligated to exercise any extension options under Master Lease
+- Landlord's consent required and obtained from Sunnyvale VIII Trust
+- Sublessee required to provide $37,000 Letter of Credit as additional security
+</notable_clauses>
 
 </summary>
 
@@ -6491,7 +6666,7 @@ Here is a summary of the key points from the sublease agreement:
 
 <summary>
 
-Description: Sublease Agreement between ConocoPhillips Company (Sublessor) and ZymoGenetics, Inc. (Sublessee) for office space in Seattle, Washington, subject to the master lease with 1144 Eastlake LLC.
+Description: Sublease Agreement between ConocoPhillips Company and ZymoGenetics, Inc. for office space in Seattle, Washington, subject to the master lease with 1144 Eastlake LLC.
 
 <parties_involved>
 - Sublessor: ConocoPhillips Company, a Delaware corporation
@@ -6507,13 +6682,13 @@ Description: Sublease Agreement between ConocoPhillips Company (Sublessor) and Z
 
 <term_and_rent>
 - Start date: Later of October 1, 2005 or date Sublessor delivers the Premises
-- End date: October 31, 2008 
+- End date: October 31, 2008
 - Monthly rent: Varies by period (e.g. $13,929.30 from 12/1/05 to 10/31/06)
 - Security deposit: None initially; $20,000 may be required if Sublessee defaults
 </term_and_rent>
 
 <responsibilities>
-- Utilities: Sublessee responsible
+- Utilities: Sublessee responsible 
 - Maintenance: Sublessee responsible for interior, non-structural portions
 - Operating expenses: Sublessee pays pro-rata share exceeding base year (2005) costs
 </responsibilities>
@@ -6524,7 +6699,7 @@ Description: Sublease Agreement between ConocoPhillips Company (Sublessor) and Z
 </consent_and_notices>
 
 <special_provisions>
-- Furniture: Sublessee may use existing furniture and equipment at no extra cost
+- Furniture: Sublessee has use of existing furniture and equipment at no extra cost
 - Parking: 14 stalls in Building, 3 additional stalls in Building or nearby lots
 - Subletting: Requires prior written consent from Sublessor and Master Lessor
 - Insurance: Sublessee must maintain $10,000,000 general liability coverage
@@ -6577,49 +6752,51 @@ Here is a summary of the sublease agreement between ConocoPhillips Company and Z
 
 </summary>
 
-Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[PASS] (1.65)
+Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.45)
 
-Here is a summary of the sublease agreement between ConocoPhillips Company and ZymoGenetics, Inc.:
+Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
+---
+Here is a summary of the sublease agreement:
 
-<parties involved>
+<parties_involved>
 - Sublessor: ConocoPhillips Company, a Delaware corporation
 - Sublessee: ZymoGenetics, Inc., a Washington corporation 
 - Original Lessor: 1144 Eastlake LLC, a Washington limited liability company
-</parties involved>
+</parties_involved>
 
-<property details>
+<property_details>
 - Address: 1144 Eastlake Avenue E, Seattle, Washington 98109
 - Description: Approximately 7,128 rentable square feet of space on the 2nd floor (Suite 201) of the Building
 - Permitted use: General business office use
-</property details>
+</property_details>
 
-<term and rent>
+<term_and_rent>
 - Start date: Later of October 1, 2005, or date Sublessor delivers the Sublease Premises
 - End date: October 31, 2008
-- Monthly rent: Varies by period (e.g. $13,929.30 from 12/1/05 to 10/31/06)
+- Monthly rent: Varies by period (e.g., $13,929.30 from 12/1/05 to 10/31/06)
 - Security deposit: None initially; $20,000 may be required if Sublessee defaults
-</term and rent>
+</term_and_rent>
 
 <responsibilities>
-- Utilities: Sublessee responsible for utilities
+- Utilities: Sublessee responsible for utilities as part of operating expenses
 - Maintenance and repairs: Sublessee responsible for interior, non-structural portions of the Premises
 - Operating expenses: Sublessee pays pro-rata share of expenses exceeding base year (2005) costs
 </responsibilities>
 
-<consent and notices>
+<consent_and_notices>
 - Landlord's consent: Required and obtained from 1144 Eastlake LLC
 - Notice requirements: Written notices to be sent to specified addresses for each party
-</consent and notices>
+</consent_and_notices>
 
-<special provisions>
-- Furniture: Sublessee has use of existing furniture, fixtures, and equipment at no additional cost
+<special_provisions>
+- Furniture: Sublessee has use of existing furniture, fixtures, and equipment listed in Exhibit ""DD"" at no additional cost
 - Parking: Sublessee entitled to use 14 parking stalls in the Building and 3 additional stalls either in the Building or nearby surface lots
 - Subletting restrictions: Sublessee may not assign or sublet without prior written consent from both Sublessor and Master Lessor
 - Insurance: Sublessee required to maintain comprehensive general liability insurance with $10,000,000 per occurrence limit
-</special provisions>
+</special_provisions>
 </summary>
 
-Pass Reason: All assertions passed"
+Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions"""
 "Description: Workrise Technologies Inc. to CS Disco, Inc. This sublease is for office space in Austin, Texas between Workrise Technologies Inc. as Sublessor and CS Disco, Inc. as Sublessee. Key details include:
 
 <parties_involved>
@@ -7472,7 +7649,7 @@ Special Provisions:
 - Insurance: Sublessee required to maintain $3,000,000 per occurrence liability coverage
 </summary>
 
-Pass Reason: All assertions passed","[FAIL] (1.30)
+Pass Reason: All assertions passed","[FAIL] (1.27)
 
 Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
@@ -7493,19 +7670,20 @@ This is a sublease agreement for 46,250 rentable square feet of office space on 
 - Rent: Monthly base rent starts at $167,657.67 and increases annually. Sublessee also pays a pro-rata share of operating expenses.
 - Security Deposit: $306,714.58 cash deposit plus $500,000 letter of credit.
 - Permitted Use: General business office use.
-- Subletting/Assignment: Requires prior written consent from Sublessor and Master Landlord.
+- Sublessee responsible for utilities, interior repairs/maintenance, and obtaining Landlord's consent for any alterations.
 </key_terms_and_conditions>
 
 <important_dates_or_deadlines>
 - Commencement Date: The later of the Effective Date or date premises are delivered.
 - Expiration Date: July 31, 2028.
+- Abatement Period: Rent abated for first 3 full calendar months.
 </important_dates_or_deadlines>
 
 <unusual_or_notable_clauses>
-- Furniture: Sublessee to purchase existing furniture and fixtures for $10.
-- Parking: Sublessee obligated to rent 68 unreserved and 2 reserved parking permits.
-- Signage: Sublessee has right to install building standard suite identification signage, subject to approvals.
-- Insurance: Sublessee required to maintain $3,000,000 per occurrence commercial general liability insurance.
+- Sublessee has right of first refusal on any additional space Sublessor offers to sublet.
+- Sublessee must purchase existing furniture and fixtures for $10.
+- Sublessee obligated to rent 68 unreserved and 2 reserved parking permits.
+- Restrictions on subletting or assignment without prior written consent.
 </unusual_or_notable_clauses>
 
 </summary>
@@ -7557,7 +7735,7 @@ Fail Reason: Expected output to contain all of ""parties involved, property deta
 
 API call error: Number of request tokens has exceeded your per-minute rate limit (https://docs.anthropic.com/en/api/rate-limits); see the response headers for current usage. Please reduce the prompt length or the maximum tokens requested, or try again later. You may also contact sales at https://www.anthropic.com/contact-sales to discuss your options for a rate limit increase., status 429, type rate_limit_error
 ---
-API call error: Number of request tokens has exceeded your per-minute rate limit (https://docs.anthropic.com/en/api/rate-limits); see the response headers for current usage. Please reduce the prompt length or the maximum tokens requested, or try again later. You may also contact sales at https://www.anthropic.com/contact-sales to discuss your options for a rate limit increase., status 429, type rate_limit_error","[FAIL] (1.33)
+API call error: Number of request tokens has exceeded your per-minute rate limit (https://docs.anthropic.com/en/api/rate-limits); see the response headers for current usage. Please reduce the prompt length or the maximum tokens requested, or try again later. You may also contact sales at https://www.anthropic.com/contact-sales to discuss your options for a rate limit increase., status 429, type rate_limit_error","[FAIL] (1.34)
 
 Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
@@ -7580,7 +7758,7 @@ Here is a summary of the key aspects of the sublease agreement:
 <term_and_rent>
 - Commencement Date: The later of the Effective Date or date premises are delivered
 - Expiration Date: July 31, 2028
-- Base Rent: Varies by period, starting at $167,657.67 per month
+- Base Rental: Varies by period, starting at $167,657.67 per month
 - Security Deposit: $306,714.58 cash deposit
 - Letter of Credit: $500,000
 </term_and_rent>
@@ -7588,28 +7766,28 @@ Here is a summary of the key aspects of the sublease agreement:
 <key_terms_and_conditions>
 - Sublessee responsible for utilities and pro-rata share of operating expenses
 - Sublessee responsible for non-structural interior repairs and maintenance
-- Sublessee required to maintain $3,000,000 commercial general liability insurance
 - Subletting/assignment requires prior written consent from Sublessor and Master Landlord
-- Sublessee has right to install building standard signage, subject to approvals
 - Sublessee to purchase existing furniture and fixtures for $10
 - Sublessee obligated to rent 68 unreserved and 2 reserved parking permits
+- Sublessee has right to install building standard suite identification signage, subject to approvals
+- Sublessee required to maintain commercial general liability insurance with $3,000,000 per occurrence limit
 </key_terms_and_conditions>
 
 <important_dates_or_deadlines>
-- Master Landlord consent required for sublease to take full effect
-- Rent abatement for first 3 full calendar months of lease term
-- Sublessee access to premises begins on Commencement Date
+- Commencement Date: As defined above
+- Expiration Date: July 31, 2028
+- Rent Abatement Period: First 3 full calendar months of Lease Term (subject to no default)
 </important_dates_or_deadlines>
 
 <unusual_or_notable_clauses>
-- Right of first refusal for Sublessee on additional space Sublessor may offer for sublease
-- Confidentiality requirements regarding terms of sublease
-- Waiver of certain rights under Texas property and tax codes
+- Right of First Refusal: Sublessee has ROFR on any additional space Sublessor offers for sublease during the term
+- Early Access: Sublessee permitted access to premises beginning on Commencement Date for improvements/furniture installation without paying Base Rental
+- Holdover: 150% of last month's rent if Sublessee remains in possession after lease expiration
 </unusual_or_notable_clauses>
 
 </summary>
 
-Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.40)
+Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.43)
 
 Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
@@ -7618,35 +7796,35 @@ Here is a summary of the key aspects of the sublease agreement:
 <parties_involved>
 - Sublessor: Workrise Technologies Inc., a Delaware corporation
 - Sublessee: CS Disco, Inc., a Delaware corporation 
-- Original Lessor: Cousins - One Congress Plaza LLC (""Landlord"" or ""Master Landlord"")
+- Original Lessor: Cousins - One Congress Plaza LLC
 </parties_involved>
 
 <property_details>
 - Address: 111 Congress Avenue, Austin, Texas 78701
-- Description: 46,250 rentable square feet total, consisting of the entire 6th floor (Suite 600, 23,108 sq ft) and entire 9th floor (Suite 900, 23,142 sq ft) of the Building
+- Description: 46,250 rentable square feet on the 6th floor (Suite 600) and 9th floor (Suite 900) of the Building
 - Permitted use: Executive, general administrative and office space purposes
 </property_details>
 
 <term_and_rent>
-- Start date: The later of the Effective Date or date premises are delivered (Commencement Date)
+- Start date: The later of the Effective Date or date premises are delivered
 - End date: July 31, 2028
 - Monthly rent: Varies by period, starting at $167,657.67 per month
 - Security deposit: $306,714.58 cash deposit
 </term_and_rent>
 
 <responsibilities>
-- Utilities: Sublessee responsible for utilities and other charges allocable to the Subleased Premises
-- Maintenance and repairs: Sublessee responsible for keeping Demised Premises in good condition and repair, except for normal wear and tear
-- Operating expenses: Sublessee pays pro-rata share of Forecast Additional Rental and Additional Rental
+- Utilities: Sublessee responsible for utilities and other charges incurred
+- Maintenance and repairs: Sublessee responsible for keeping premises in good condition and repair, except for normal wear and tear
+- Operating expenses: Sublessee pays pro-rata share of operating expenses
 </responsibilities>
 
 <consent_and_notices>
-- Landlord's consent: Required from Master Landlord 
+- Landlord's consent: Required from Master Landlord (Cousins - One Congress Plaza LLC)
 - Notice requirements: Written notices to specified addresses for each party
 </consent_and_notices>
 
 <special_provisions>
-- Furniture: Sublessee to purchase existing furniture, fixtures and equipment (FFE) for $10
+- Furniture: Sublessee to purchase existing furniture and fixtures for $10
 - Parking: Sublessee obligated to rent 68 unreserved and 2 reserved parking permits
 - Subletting restrictions: Sublessee may not assign or sublet without prior written consent from Sublessor and Master Landlord
 - Signage: Sublessee has right to install building standard suite identification signage, subject to approvals
@@ -8334,11 +8512,59 @@ Expected output to contain all of ""parties involved, property details, term and
 
 </summary>
 
-Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (0.00)
+Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.47)
 
-API call error: Number of request tokens has exceeded your per-minute rate limit (https://docs.anthropic.com/en/api/rate-limits); see the response headers for current usage. Please reduce the prompt length or the maximum tokens requested, or try again later. You may also contact sales at https://www.anthropic.com/contact-sales to discuss your options for a rate limit increase., status 429, type rate_limit_error
+Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
-API call error: Number of request tokens has exceeded your per-minute rate limit (https://docs.anthropic.com/en/api/rate-limits); see the response headers for current usage. Please reduce the prompt length or the maximum tokens requested, or try again later. You may also contact sales at https://www.anthropic.com/contact-sales to discuss your options for a rate limit increase., status 429, type rate_limit_error","[FAIL] (1.31)
+Here is a summary of the key points from the sublease agreement:
+
+<summary>
+
+Description: This document outlines a sublease agreement between Crown Plaza Executive Suites Corporation (Sublessor) and Future Canada China Environment Inc. (Sublessee) for an office space in Bellingham, Washington. The sublease is for a one-year term.
+
+<parties_involved>
+- Sublessor: Crown Plaza Executive Suites Corporation
+- Sublessee: Future Canada China Environment Inc., Jessica Chiang (also listed as personal guarantor)
+- Original Lessor: Crown Plaza Corporation (mentioned as landlord in master lease)
+</parties_involved>
+
+<property_details>
+- Address: 114 W. Magnolia Street, Suite 437, Bellingham, Washington 98225
+- Description: Suite 437 on the 4th floor of the Crown Plaza Building
+- Permitted use: General office use only
+</property_details>
+
+<term_and_rent>
+- Start date: March 1, 2008
+- End date: February 28, 2009 
+- Monthly rent: $595.00
+- Security deposit: $595.00 (with $110 retained for carpet care and painting at termination)
+</term_and_rent>
+
+<responsibilities>
+- Utilities: Sublessor provides utilities for common areas; Sublessee responsible for telephone service
+- Maintenance and repairs: Sublessee responsible for keeping premises neat and clean; Sublessor responsible for structural repairs and maintenance
+- Operating expenses: Not explicitly stated, but Sublessor pays property taxes
+</responsibilities>
+
+<consent_and_notices>
+- Landlord's consent: Required for any assignment, subletting, or alterations
+- Notice requirements: Written notices to specified addresses for each party
+</consent_and_notices>
+
+<special_provisions>
+- Furniture: Not specified
+- Parking: No parking facilities provided by Sublessor
+- Subletting restrictions: No assignment or subletting without prior written approval from Sublessor
+- Signage: Requires Sublessor's written consent
+- Insurance: Sublessee required to maintain $1,000,000 liability insurance
+- Additional person charge: $95/month for each full-time equivalent person beyond the first occupant
+- Telecommunications: Sublessee must purchase telephone and internet services from Sublessor
+</special_provisions>
+
+</summary>
+
+Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[FAIL] (1.31)
 
 Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""
 ---
@@ -8974,21 +9200,22 @@ Here is a summary of the key points from the sublease agreement:
 - Subtenant responsible for any increases in rent or costs arising from their tenancy
 
 • Key Provisions:
-- Subtenant takes premises ""as is"" 
+- Subtenant takes premises ""as is""
 - Subtenant responsible for maintenance and repairs
 - Sublandlord not responsible for building structure/systems repairs
 - Subtenant must obtain insurance per Master Lease requirements
-- Subtenant prohibited from assigning/subletting without prior consent
-- Alterations require prior written consent
+- No assignment or subletting without Sublandlord and Master Landlord consent
+- No alterations without Sublandlord and Master Landlord consent
 - Subtenant must comply with all Master Lease terms
 - Sublease terminates if Master Lease terminates
 
-• Consent:
-- Master Landlord's consent required (consent form included)
+• Security Deposit: As specified in Master Lease
 
 • Notices:
 - To Sublandlord: The Titan Corporation, 3033 Science Park Road, San Diego, CA 92122
 - To Subtenant: SureBeam Corporation, 9276 Scranton Road, Suite 600, San Diego, CA 92121
+
+• Requires Master Landlord's consent (consent form included)
 
 </summary>
 
@@ -9036,13 +9263,13 @@ Here is a summary of the key aspects of the sublease agreement:
 
 </summary>
 
-    Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[PASS] (1.63)
+    Fail Reason: Expected output to contain all of ""parties involved, property details, term and rent, responsibilities, consent and notices, special provisions""","[PASS] (1.64)
 
-    Here is a summary of the sublease agreement:
+    Here is a summary of the key aspects of the sublease agreement:
 
 <parties involved>
 - Sublessor: The Titan Corporation, a Delaware corporation
-- Sublessee: SureBeam Corporation, a Delaware corporation 
+- Sublessee: SureBeam Corporation, a Delaware corporation
 - Original Lessor: B/G Management
 </parties involved>
 
@@ -9056,9 +9283,9 @@ Here is a summary of the key aspects of the sublease agreement:
 - Start Date: August 2, 2002
 - End Date: January 31, 2005
 - Monthly Base Rent:
-• $25,534.57 initially
-• $26,378.69 from 8/1/03
-• $27,350.65 from 8/1/04
+$25,534.57 initially
+$26,378.69 from 8/1/03
+$27,350.65 from 8/1/04
 - Security Deposit: As set forth in Section 3.03 of the Master Lease
 </term and rent>
 
@@ -9071,8 +9298,8 @@ Here is a summary of the key aspects of the sublease agreement:
 <consent and notices>
 - Landlord's Consent: Required for sublease (consent form included)
 - Notice Requirements:
-• To Sublandlord: The Titan Corporation, 3033 Science Park Road, San Diego, CA 92122
-• To Subtenant: SureBeam Corporation, 9276 Scranton Road, Suite 600, San Diego, CA 92121
+To Sublandlord: The Titan Corporation, 3033 Science Park Road, San Diego, CA 92122
+To Subtenant: SureBeam Corporation, 9276 Scranton Road, Suite 600, San Diego, CA 92121
 </consent and notices>
 
 <special provisions>
@@ -9082,8 +9309,6 @@ Here is a summary of the key aspects of the sublease agreement:
 - Insurance: Subtenant required to obtain insurance as specified in Section 4.04 of the Master Lease
 - Alterations: Subtenant prohibited from making alterations without prior written consent of Master Landlord and Sublandlord
 </special provisions>
-
-</summary>
 
     Pass Reason: All assertions passed"
 "Description: Commercial sublease agreement for data center space in Santa Clara, CA
