@@ -1,0 +1,170 @@
+- vars:
+    input: file://../data/sample-lease1.txt
+    ground_truth: file://../data/sample-lease1-summary.txt
+  assert:
+    - type: icontains-all
+      value:
+        - 'parties involved'
+        - 'property details'
+        - 'term and rent'
+        - 'responsibilities'
+        - 'consent and notices'
+        - 'special provisions'
+    - type: python
+      value: file://custom_evals/llm_eval.py
+    - type: python
+      value: file://custom_evals/rouge_eval.py
+    - type: python
+      value: file://custom_evals/bleu_eval.py
+
+- vars:
+    input: file://../data/sample-lease2.txt
+    ground_truth: file://../data/sample-lease2-summary.txt
+  assert:
+    - type: icontains-all
+      value:
+        - 'parties involved'
+        - 'property details'
+        - 'term and rent'
+        - 'responsibilities'
+        - 'consent and notices'
+        - 'special provisions'
+    - type: python
+      value: file://custom_evals/llm_eval.py
+    - type: python
+      value: file://custom_evals/rouge_eval.py
+    - type: python
+      value: file://custom_evals/bleu_eval.py
+
+- vars:
+    input: file://../data/sample-lease3.txt
+    ground_truth: file://../data/sample-lease3-summary.txt
+  assert:
+    - type: icontains-all
+      value:
+        - 'parties involved'
+        - 'property details'
+        - 'term and rent'
+        - 'responsibilities'
+        - 'consent and notices'
+        - 'special provisions'
+    - type: python
+      value: file://custom_evals/llm_eval.py
+    - type: python
+      value: file://custom_evals/rouge_eval.py
+    - type: python
+      value: file://custom_evals/bleu_eval.py
+
+- vars:
+    input: file://../data/sample-lease4.txt
+    ground_truth: file://../data/sample-lease4-summary.txt
+  assert:
+    - type: icontains-all
+      value:
+        - 'parties involved'
+        - 'property details'
+        - 'term and rent'
+        - 'responsibilities'
+        - 'consent and notices'
+        - 'special provisions'
+    - type: python
+      value: file://custom_evals/llm_eval.py
+    - type: python
+      value: file://custom_evals/rouge_eval.py
+    - type: python
+      value: file://custom_evals/bleu_eval.py
+
+- vars:
+    input: file://../data/sample-lease5.txt
+    ground_truth: file://../data/sample-lease5-summary.txt
+  assert:
+    - type: icontains-all
+      value:
+        - 'parties involved'
+        - 'property details'
+        - 'term and rent'
+        - 'responsibilities'
+        - 'consent and notices'
+        - 'special provisions'
+    - type: python
+      value: file://custom_evals/llm_eval.py
+    - type: python
+      value: file://custom_evals/rouge_eval.py
+    - type: python
+      value: file://custom_evals/bleu_eval.py
+
+- vars:
+    input: file://../data/sample-lease6.txt
+    ground_truth: file://../data/sample-lease6-summary.txt
+  assert:
+    - type: icontains-all
+      value:
+        - 'parties involved'
+        - 'property details'
+        - 'term and rent'
+        - 'responsibilities'
+        - 'consent and notices'
+        - 'special provisions'
+    - type: python
+      value: file://custom_evals/llm_eval.py
+    - type: python
+      value: file://custom_evals/rouge_eval.py
+    - type: python
+      value: file://custom_evals/bleu_eval.py
+
+- vars:
+    input: file://../data/sample-lease7.txt
+    ground_truth: file://../data/sample-lease7-summary.txt
+  assert:
+    - type: icontains-all
+      value:
+        - 'parties involved'
+        - 'property details'
+        - 'term and rent'
+        - 'responsibilities'
+        - 'consent and notices'
+        - 'special provisions'
+    - type: python
+      value: file://custom_evals/llm_eval.py
+    - type: python
+      value: file://custom_evals/rouge_eval.py
+    - type: python
+      value: file://custom_evals/bleu_eval.py
+
+- vars:
+    input: file://../data/sample-lease8.txt
+    ground_truth: file://../data/sample-lease8-summary.txt
+  assert:
+    - type: icontains-all
+      value:
+        - 'parties involved'
+        - 'property details'
+        - 'term and rent'
+        - 'responsibilities'
+        - 'consent and notices'
+        - 'special provisions'
+    - type: python
+      value: file://custom_evals/llm_eval.py
+    - type: python
+      value: file://custom_evals/rouge_eval.py
+    - type: python
+      value: file://custom_evals/bleu_eval.py
+
+- vars:
+    input: file://../data/sample-lease9.txt
+    ground_truth: file://../data/sample-lease9-summary.txt
+  assert:
+    - type: icontains-all
+      value:
+        - 'parties involved'
+        - 'property details'
+        - 'term and rent'
+        - 'responsibilities'
+        - 'consent and notices'
+        - 'special provisions'
+    - type: python
+      value: file://custom_evals/llm_eval.py
+    - type: python
+      value: file://custom_evals/rouge_eval.py
+    - type: python
+      value: file://custom_evals/bleu_eval.py

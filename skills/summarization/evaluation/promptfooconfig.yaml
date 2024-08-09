@@ -1,0 +1,33 @@
+description: 'Summarization Evaluation'
+
+prompts:
+  - prompts.py:basic_summarize
+  - prompts.py:guided_legal_summary
+  - prompts.py:summarize_long_document
+
+providers:
+  - id: anthropic:messages:claude-3-haiku-20240307
+    label: "3.0 Haiku"
+    config:
+      max_tokens: 4096
+      temperature: 0
+  - id: anthropic:messages:claude-3-5-sonnet-20240620
+    label: "3.5 Sonnet"
+    config:
+      max_tokens: 4096
+      temperature: 0
+
+defaultTest:
+  assert:
+    - type: not-contains-any
+      value: 
+        - "I am an AI"
+        - "As an AI language model"
+        - "I'm an AI assistant"
+        - "I am a chatbot"
+
+tests: tests.yaml
+
+outputPath: ../data/results.csv
+
+evaluateOptions.showProgressBar: true

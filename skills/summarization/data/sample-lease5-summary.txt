@@ -1,0 +1,39 @@
+Description: Sublease Agreement Summary: ConocoPhillips Company to ZymoGenetics, Inc. This document summarizes a sublease agreement for office space in Seattle, Washington, between ConocoPhillips Company and ZymoGenetics, Inc., subject to the master lease with 1144 Eastlake LLC.
+
+<parties_involved>
+- Sublessor: ConocoPhillips Company, a Delaware corporation
+- Sublessee: ZymoGenetics, Inc., a Washington corporation
+- Original Lessor: 1144 Eastlake LLC, a Washington limited liability company
+</parties_involved>
+
+<property_details>
+- Address: 1144 Eastlake Avenue E, Seattle, Washington 98109
+- Description: Approximately 7,128 rentable square feet of space on the 2nd floor (Suite 201) of the Building
+- Permitted use: General business office use
+</property_details>
+
+<term_and_rent>
+- Start date: Later of October 1, 2005, or date Sublessor delivers the Sublease Premises
+- End date: October 31, 2008
+- Monthly rent: Varies by period (e.g., $13,929.30 from 12/1/05 to 10/31/06)
+- Security deposit: None initially; $20,000 may be required if Sublessee defaults
+</term_and_rent>
+
+<responsibilities>
+- Utilities: Sublessee responsible for utilities
+- Maintenance and repairs: Sublessee responsible for interior, non-structural portions of the Premises
+- Operating expenses: Sublessee pays pro-rata share of expenses exceeding base year (2005) costs
+</responsibilities>
+
+<consent_and_notices>
+- Landlord's consent: Required and obtained from 1144 Eastlake LLC
+- Notice requirements: Written notices to be sent to specified addresses for each party
+</consent_and_notices>
+
+<special_provisions>
+- Furniture: Sublessee has use of existing furniture, fixtures, and equipment at no additional cost
+- Parking: Sublessee entitled to use 14 parking stalls in the Building and 3 additional stalls either in the Building or nearby surface lots
+- Subletting restrictions: Sublessee may not assign or sublet without prior written consent from both Sublessor and Master Lessor
+- Signage: Not specified in the sublease agreement
+- Insurance: Sublessee required to maintain comprehensive general liability insurance with $10,000,000 per occurrence limit
+</special_provisions>

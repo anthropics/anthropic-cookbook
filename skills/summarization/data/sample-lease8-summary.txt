@@ -1,0 +1,44 @@
+Description: Commercial sublease agreement for office and light manufacturing space in Dublin, CA
+<parties_involved>
+Sublessor: The Titan Corporation, a Delaware corporation
+Sublessee: SureBeam Corporation, a Delaware corporation
+Original Lessor: B/G Management
+</parties_involved>
+
+<property_details>
+Address: 6780 Sierra Court, Suite R, Q, L, and O, Dublin, CA
+Description: Approximately 35,825 rentable square feet
+Permitted Use: General office and light electronic manufacturing
+</property_details>
+
+<term_and_rent>
+Start Date: August 2, 2002
+End Date: January 31, 2005
+Monthly Base Rent:
+$25,534.57 initially
+$26,378.69 from 8/1/03
+$27,350.65 from 8/1/04
+Security Deposit: As set forth in Section 3.03 of the Master Lease
+</term_and_rent>
+
+<responsibilities>
+- Utilities: Subtenant responsible for any increases or added costs arising from their tenancy
+- Maintenance: Subtenant responsible for maintenance and repair of the Subleased Premises
+- Repairs: Sublandlord not responsible for repairs to building structure, major systems, or exterior
+</responsibilities>
+<consent_and_notices>
+
+Landlord's Consent: Required for sublease (consent form included)
+Notice Requirements:
+
+To Sublandlord: The Titan Corporation, 3033 Science Park Road, San Diego, CA 92122
+To Subtenant: SureBeam Corporation, 9276 Scranton Road, Suite 600, San Diego, CA 92121
+</consent_and_notices>
+
+<special_provisions>
+Furniture: Not specified
+Parking: Not specified
+Subletting Restrictions: Subtenant prohibited from assigning or subletting without prior written consent of Master Landlord and Sublandlord
+Insurance: Subtenant required to obtain insurance as specified in Section 4.04 of the Master Lease
+Alterations: Subtenant prohibited from making alterations without prior written consent of Master Landlord and Sublandlord
+</special_provisions>

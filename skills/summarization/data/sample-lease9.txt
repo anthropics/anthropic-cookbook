@@ -1,0 +1,304 @@
+Source: https://investor.equinix.com/sec-filings/all-sec-filings/content/0001193125-04-035568/dex1095.htm
+
+Exhibit 10.95
+
+ 
+
+SUBLEASE AGREEMENT
+
+ 
+
+THIS SUBLEASE AGREEMENT (“Sublease”) is made and entered into as of the 24th day of October 2003, by and between SPRINT COMMUNICATIONS COMPANY, L.P., a Delaware limited partnership (“Sublandlord”), and EQUINIX OPERATING CO., INC., a Delaware corporation (“Subtenant”).
+
+ 
+
+RECITALS
+
+ 
+
+A. Duane Raymond, LLC, a California limited liability company (“Master Landlord”), has leased to Sublandlord the space in and around the building (the “Building”) situated on the real property commonly known and numbered as 1350 Duane Avenue, Santa Clara, California, such space being more particularly described in Exhibit A attached hereto and incorporated herein by this reference (the “Premises”), pursuant to that certain Lease made and entered into as of November 30, 2000 by Master Landlord and Sublandlord as amended by First Amendment dated as of March 15, 2001 (collectively, the “Master Lease”).
+
+ 
+
+B. A true, correct and complete copy of the Master Lease is attached hereto as Exhibit B and incorporated herein by this reference.
+
+ 
+
+C. Subtenant desires to sublet from Sublandlord, and Sublandlord has agreed to sublet to Subtenant, all of the Premises consisting of 160,000 square feet of space (the “Subleased Premises”).
+
+ 
+
+D. All undefined, capitalized terms used in this Sublease have the meanings ascribed to such terms in the Master Lease.
+
+ 
+
+NOW THEREFORE, for valuable consideration and on the terms and conditions set forth herein, Sublandlord and Subtenant hereby agree as follows:
+
+ 
+
+1. Subleased Premises. Sublandlord hereby leases to Subtenant, and Subtenant hereby leases from Sublandlord, the Subleased Premises, together with the right to use the Common Area (including, but not limited to, Tenant’s Allocated Parking Stalls within the Project), the Parking Area and the Exterior Area) provided by Master Landlord to Sublandlord pursuant to the terms of the Master Lease. The Subleased Premises shall include all tenant improvements, alterations, conduits and equipment installed therein by Sublandlord. In addition, Sublandlord hereby assigns to Subtenant for the duration of the Term (as hereinafter defined) of this Sublease, all rights that Sublandlord has pursuant to the Master Lease in connection with the occupancy, use or enjoyment of the Subleased Premises and agrees that (subject to Sublandlord’s rights pursuant to the MSA and the Conduits Agreement (each term as defined below)) such rights shall be exercisable exclusively by Subtenant while the Sublease is in effect. Such rights shall include, but not be limited to, the following: all rights Sublandlord has pursuant to Section 2.1 [Demise of Premises] of the Master Lease; all signage rights Sublandlord has pursuant to Section 4.3 [Signs] of the Master Lease, all parking rights that Sublandlord has pursuant to Section 4.4 [Parking] of the Master Lease, all rights Sublandlord has pursuant to Section 14.1(D) of the Master Lease (i.e., to permit Customers to enter upon and occupy the Premises for purposes of installing, repairing, replacing, operating and maintaining their customer
+
+equipment); all rights Sublandlord has pursuant to the following provisions of the Lease Rider to the Master Lease: Paragraph 3 [Roof Rights]; Paragraph 4 [Exterior Area]; Paragraph 5 [Fiber and Electrical Conduit Rights of Way]; Paragraph 6 [Emergency Generators and Fuel Storage Tanks]; Paragraph 7 [HVAC]; Paragraph 8 [Life Safety Systems]; Paragraph 10 [Leasehold Mortgage]; Paragraph 11 [Telephone Service]; and Paragraph 17 [Sprinkler]. Sublandlord warrants that (a) subject to obtaining the consent of Master Landlord as provided in Section 5, Sublandlord has the full power, authority and legal right to sublease the Subleased Premises to Subtenant, (b) Subtenant will have the right quietly to enjoy the Subleased Premises subject to (i) the Master Lease, (ii) the terms of this Sublease, and (iii) any other interest to which the Master Lease is subject according to its terms, and (c) the Subleased Premises will be in the same condition on the Commencement Date (as defined herein) as on the date hereof, normal wear and tear excepted.
+
+ 
+
+2. Accompanying Agreements.
+
+ 
+
+2.1 Employee Covenants Agreement. Sublandlord and Subtenant are simultaneously entering into a certain Employee Covenants Agreement, which is incorporated herein by reference, pursuant to which the parties agree to take certain actions and provide certain information beginning on the date hereof with respect to employees of Sublandlord at the Internet Data Center at the Subleased Premises to facilitate Subtenant making offers of employment to such employees, to be effective as of December 1, 2003 (the “Closing Date”).
+
+ 
+
+2.2 Master Service Agreement. The parties’ relationship with respect to Sublandlord’s point of presence into the Subleased Premises (the “Point of Presence”) to provide IP transport shall be governed by that certain Master Service Agreement (“MSA”) dated October 26, 2001.
+
+ 
+
+2.3 Conduits Agreement. Sublandlord and Subtenant are simultaneously entering into a certain Agreement to License Conduits (“Conduits Agreement”).
+
+ 
+
+3. Certain Actions with Respect to Customer Contracts; Transition Services.
+
+ 
+
+3.1 Certain Actions with Respect to Customer Contracts. During the first two years of this Sublease, Sublandlord and Subtenant will cooperate in any mutually agreeable, reasonable and lawful arrangements and use commercially reasonable efforts to cause each customer (each, a “Customer”) of Sublandlord at the Subleased Premises having a contract (a “Customer Contracts”) with Sublandlord to procure Collocation Services (as defined below) at the Premises, to agree to terminate its Customer Contract with Sublandlord as of the Closing Date and enter into new agreements for Collocation Services with Subtenant, and in each case, following the execution of a new agreement, Sublandlord will retain the right to receive all IP transport revenue under the Customer Contracts with Sublandlord in connection with the provision of Collocation Services by Subtenant to the Customer following the Closing Date. Subtenant agrees not to offer IP transport services to such Customer, either on its own behalf or on behalf of any other “Person” (defined below) other than Sublandlord, as part of or during the negotiations for new contracts contemplated by this provision, provided however, that following the Closing Date, Subtenant shall be entitled to respond to requests from Customers who wish to contact alternative providers for IP transport services. Notwithstanding the foregoing, if any
+
+ 
+
+2
+
+Customer refuses to enter into a new agreement with Subtenant or if the terms of any Customer Contracts require Sublandlord to deliver a termination notice to the applicable Customer between the date of this Sublease and the Closing Date, Sublandlord will terminate the applicable Customer Contracts, subject to Section 3(ii) below (each a “Termination Services Customer Contract”).
+
+ 
+
+3.2 Transition Services. Except as provided in this Section 3(ii), neither Subtenant nor Sublandlord will provide any transition services at the Subleased Premises following the Closing Date. Following the Closing Date, Sublandlord will continue to provide Collocation Services at the Subleased Premises to each Customer under a Termination Services Customer Contract until the sooner of (a) the expiration of the applicable termination period under the Termination Services Customer Contract (the “Termination Services Period”); or (b) March 31, 2004; provided, however, that during the Termination Services Period, Sublandlord will pay to Subtenant the amount billed to the customer by Sublandlord for power and space at the Subleased Premises under the terms of the applicable Termination Services Customer Contract during the Termination Services Period from the Closing Date until the expiration of the applicable Termination Services Customer Contract.
+
+ 
+
+For purposes of this Sublease, “Collocation Services” means services provided to a Customer that enable a Customer to install and operate telecommunications equipment in a data center, including provision of the space, power and network connections necessary to operate the equipment. “Person” means any individual, partnership, joint venture, corporation, trust, limited liability company, unincorporated organization, a government or any department or agency thereof, or other entity.
+
+ 
+
+4. Master Lease.
+
+ 
+
+4.1 Relationship of Sublease to Master Lease. Subtenant acknowledges that this Sublease is subject and subordinate to the Master Lease and to all the terms, covenants and conditions contained therein. To the extent that the Master Lease is also subject and subordinate to such instruments, this Sublease is also subject and subordinate to all ground and underlying leases and all mortgages which might now or hereafter affect such leases, the leasehold estate or estates thereby created or the real property of which the Subleased Premises form a part, and to any and all renewals, modifications, consolidations, replacements and extensions thereof. Subtenant covenants and agrees that (a) during the Term (as hereinafter defined) of this Sublease, Subtenant will perform and observe all of the terms, covenants, conditions and agreements of the Master Lease to be performed by Sublandlord (including, without limitation, the providing of estoppel certificates and subordination agreements in accordance with the Master Lease, if applicable) to the extent that the same are not modified or amended by this Sublease, (b) Subtenant shall not do, suffer or permit anything to be done which would constitute a default under the Master Lease or might cause the Master Lease to be canceled, terminated or forfeited, and (c) Subtenant will, in accordance with Section 9 below, and subject to the limitations therein, indemnify and hold harmless Sublandlord and Master Landlord from and against all claims, liabilities, losses and damages of any kind that Sublandlord or Master Landlord may incur to the extent they are by reason of, resulting from or arising out of a failure by Subtenant to comply with the provisions of this Sublease and/or the Master Lease, including, without limitation, subsections (a) and (b) of this paragraph. Notwithstanding the foregoing, Subtenant shall have no obligation to cure any default of Sublandlord under the Master Lease (except to the extent such default is caused by Subtenant’s default hereunder).
+
+4.2 Utilization of Master Lease Provisions as Part of Sublease.
+
+ 
+
+(a) Except as the terms and conditions set forth in this Sublease modify or contradict the terms and conditions of the Master Lease or any exhibits or attachments thereto, all of the terms and conditions contained in the Master Lease are hereby made a part of this Sublease and are deemed to constitute a portion of the agreement between Sublandlord and Subtenant concerning the leasing of the Subleased Premises; provided, however, that to the extent any of the terms and provisions of the Master Lease are inappropriate or inapplicable to this Sublease, such terms and provisions shall not be made a part hereof and in the event of any inconsistency between the Master Lease and this Sublease, as between Sublandlord and Subtenant, the provisions of this Sublease shall take precedence over any conflicting provisions of the Master Lease. Without limiting the generality of the foregoing, the parties agree that the following provisions of the Master Lease shall not be applicable to this Sublease: Sections 1.2 (except with respect to Master Landlord’s address), 2.2, 2.3, 2.4, 2.5, 2.6, 7.2.E., 7.2.H., Article 3, Sections 9.2, 10.2, 10.3, 10.4, 11.2, 12.1, 15.7 (except with respect to providing notice to Master Landlord), 15.11, Paragraphs 1, 2, 12 and 15 of the Lease Rider and Exhibits B and E. Where references are made in the Master Lease to the “Premises”, the same shall be deemed to refer to the Subleased Premises hereunder; where references are made in the Master Lease to the “Commencement Date,” the same shall be deemed to refer to the Commencement Date hereunder; where references are made to the Master Lease to “Base Monthly Rent”, the same shall be deemed to refer to Monthly Base Rent hereunder; where references are made under the Master Lease to “Additional Rent”, the same shall be deemed to refer to Additional Rent hereunder; and where references are made in the Master Lease to “this Lease” the same shall be deemed to refer to this Sublease.
+
+ 
+
+(b) It is understood by Subtenant that the services, repairs and alterations referred to herein to be furnished in accordance with the provisions of the Master Lease will in fact be furnished by Master Landlord and not by Sublandlord. Sublandlord shall not be liable to Subtenant nor shall Subtenant’s obligations hereunder be impaired or the performance thereof excused because of any failure or delay on Master Landlord’s part in furnishing any such service or in making any of such repairs or alterations unless and to the extent that Sublandlord reasonably agrees that Sublandlord’s performance of such obligations is excused pursuant to the terms of the Master Lease. Notwithstanding the foregoing, to the extent any default by Master Landlord results in a waiver or deferral of the performance of any of Sublandlord’s obligations under the Master Lease, the same obligations of Subtenant hereunder shall be similarly waived or deferred, as applicable, but all other obligations of Subtenant shall remain in full force and effect. Sublandlord agrees that if Master Landlord fails to provide any thing or service which Master Landlord is required to provide pursuant to the terms of the Master Lease, or otherwise defaults thereunder, Sublandlord will, upon the written request of Subtenant and at Subtenant’s cost and expense (except to the extent that such costs and expenses are reimbursed by Master Landlord to Sublandlord), provide such assistance as Subtenant may reasonably request, including without limitation, making a claim and/or demand on Master Landlord in the name of Sublandlord, to effect a cure of such default by Master Landlord or otherwise. Likewise, if Sublandlord defaults under the Master Lease, Subtenant shall have the
+
+right (subject to any applicable notice and cure provisions in the Master Lease and in this Sublease and subject to the consent of Master Landlord being first had and obtained), but not the obligation, to cure any such default, on behalf of Sublandlord and at Sublandlord’s cost and expense, including, without limitation, offsetting any costs and expenses incurred by Subtenant against Monthly Base Rent and Additional Rent payable hereunder (provided that Subtenant may not exercise the foregoing right of offset if Sublandlord has notified Subtenant that Sublandlord is disputing such alleged default in good faith and Master Landlord has not availed itself of any of its remedies under the Master Lease which would impair the continued existence of this Sublease). It is further understood by Subtenant that its rights with respect to the repair and restoration of the Subleased Premises or the Building, its rights as to the use and application of insurance proceeds and condemnation proceeds, its rights to rent abatement and its right to terminate this Sublease in the event of damage to or condemnation of all or any part of the Subleased Premises or the Building are all subject to the prior rights, if any, of Master Landlord. All expenses incurred by Master Landlord in connection with the Landlord Consent (as defined herein) shall be paid one-half by each party hereto.
+
+ 
+
+(c) It is further understood by Subtenant that Sublandlord will not be obligated to comply with Master Landlord’s responsibilities pursuant to Section 4.2 of the Master Lease relating to “Compliance with Law”, and Section 11.1 relating to “Landlord’s Duty to Restore” and Paragraph 16 of the Lease Rider relating to “Adjacent Property Rights.” In addition, notwithstanding anything herein to the contrary, only Master Landlord exclusively, not Sublandlord, shall have the rights of “Landlord” pursuant to the following provisions of the Master Lease as incorporated herein: Sections 4.3, 4.4, 4.5, 5.2 (provided, however, such alterations and improvements shall not materially impair Sublandlord’s Point of Presence and conduits pursuant to Sections 2.2 and 2.3 hereof, and Subtenant shall provide notice to Sublandlord in each case in which notice is provided to Master Landlord pursuant to Section 5.2 of the Master Lease), 6.3, 7.2(D), 7.2(G), Article 8, 11.2, 11.3, 12.1 and 12.5. Notwithstanding anything to the contrary contained in this Sublease, the parties agree and acknowledge that any right to terminate the leasehold interest by Subtenant shall only be with respect to the Sublease and not the Master Lease, and Sublandlord shall retain the retain the right to terminate the Master Lease pursuant to the terms thereof. Any attempt by Subtenant to terminate the Master Lease shall be null and void.
+
+ 
+
+4.3 Master Lease in Full Force and Effect. Sublandlord represents, covenants and agrees that: (i) a true, correct and complete copy of the Master Lease is attached hereto as Exhibit B and there exist no other agreements between Master Landlord and Sublandlord governing the use or occupancy of the Subleased Premises; (ii) the Master Lease is in full force and effect and has not been amended, supplemented or otherwise changed; (iii) to the best of Sublandlord’s knowledge, Sublandlord is not in default under the Master Lease (and no set of circumstances exists which, with the passage of time or giving of notice, would constitute a default thereunder); (iv) Sublandlord has paid and performed all obligations required to be paid or performed by Sublandlord under the Master Lease through the date the Sublease term commences; (v) Sublandlord has no knowledge of any default by Master Landlord under the Master Lease; (vi) the term of the Master Lease expires on September 30, 2014; and (vii) and the provisions of the Master Lease will not be waived, modified, amended or surrendered by Sublandlord in any manner so as to prevent or adversely affect the use by Subtenant of the Subleased Premises in accordance with the terms of this Sublease, nor as to impose any greater
+
+obligations on Subtenant than are imposed on Subtenant under this Sublease, or provide to Subtenant any lesser rights than are provided to Subtenant under this Sublease, without the prior written consent of Subtenant in each instance.
+
+ 
+
+5. Effectiveness of Sublease. This Sublease shall be effective on the Closing Date except for the following provisions of this Sublease, which shall become effective as of the date of this Sublease: Sections 3, 15, 19, 20, 21, 22, 23, 24 and 25. The parties hereto acknowledge that one of the conditions to the closing is that Master Landlord must provide its written consent to this Sublease pursuant to the Landlord Consent. Sublandlord agrees to use commercially reasonable efforts to obtain the consent of Master Landlord. If the Closing Date is not on or before December 1, 2003 (or such later date as the parties may mutually agree), this Sublease will be deemed to be null and void and neither party will have any liability or obligation to the other party hereunder.
+
+ 
+
+6. Term, Possession and Condition of Subleased Premises.
+
+ 
+
+6.1 Term. The term (the “Term”) of this Sublease is for the period which commences on the Closing Date (the “Commencement Date”), and expires on September 29, 2014, unless sooner terminated pursuant to the terms of this Sublease.
+
+ 
+
+6.2 Possession. Possession of the Subleased Premises will be delivered to Subtenant on the Commencement Date.
+
+ 
+
+6.3 Condition of Subleased Premises. Subtenant acknowledges and agrees that (i) it has inspected the Subleased Premises to the extent that it deems necessary prior to the execution of this Sublease, (ii) it accepts the Subleased Premises in “AS-IS WHERE IS” condition and (iii) neither Sublandlord nor Master Landlord shall have any obligation with respect to alterations, repairs or refurbishment of the Subleased Premises, except as may otherwise be specifically set forth in this Sublease. In the event that any improvements or alterations are permitted by Master Landlord, the removal thereof upon the termination of this Sublease will be the responsibility of Subtenant, all in accordance with the Master Lease. Subtenant also hereby assumes and agrees to perform any and all obligations of Sublandlord under the Master Lease with respect to (i) the removal of personal property, equipment, trade fixtures and leasehold improvements from the Subleased Premises, and (ii) the surrender of the Subleased Premises at the expiration of the Term of this Sublease in the condition required by the Master Lease irrespective of whether or not such items were placed upon or installed in the Subleased Premises by or at the direction of Subtenant or Sublandlord. Notwithstanding anything to the contrary contained herein, Subtenant’s obligations with respect to the removal of Tenant Improvements and Tenant Alterations from and the restoration of the Subleased Premises or the Building as required under the Master Lease shall be governed by the provisions of the Consent of Master Landlord attached hereto as Exhibit C and incorporated herein by this reference (the “Landlord Consent”), if Subtenant and Master Landlord enter into the New Lease (as defined in the Landlord Consent). The provisions of this Section 6.3 shall survive the termination or expiration of this Sublease.
+
+7. Rent.
+
+ 
+
+7.1 Rent. Subtenant shall pay to Sublandlord as “Monthly Base Rent” the following amounts: (i) during the first two (2) years of the Term, an amount equal to [*] payable by Sublandlord under the Master Lease; and (ii) thereafter, for the remainder of the Term, Subtenant shall pay to Sublandlord, [*] payable by Sublandlord under the Master Lease. Notwithstanding the immediately previous sentence or anything to the contrary contained herein, (x) if a Subtenant Default occurs during the first 2-years of the Term, the Monthly Base Rent payable by Subtenant shall increase to [*]; and (y) if a Subtenant Default occurs after the initial two years of the Term, Subtenant shall, within thirty (30) days of Sublandlord’s written demand, pay to Sublandlord an amount equal to [*] multiplied by the number of days elapsed from the Commencement Date until the date on which Subtenant’s Default occurred, but not to exceed a total of [*], as well as all unpaid and accrued rental amounts. The foregoing sentence shall not limit and the Sublandlord shall have available to it all other non-monetary remedies available to it pursuant to Section 13.2 of the Master Lease. As used herein, “Subtenant Default” shall mean a default by Subtenant hereunder that continues beyond any applicable grace, notice and cure periods. Subtenant agrees to commence paying an amount equal to [*] in advance for the first month of the Term on the Commencement Date and to make rent payments thereafter on the first day of each month during the remaining Term of this Sublease. All rental amounts hereunder for any partial month will be prorated on the basis of the actual number of days elapsed. Except as expressly permitted in this Sublease, all rental amounts hereunder shall be payable to Sublandlord without notice, demand, deduction, offset or abatement in lawful money of the United States of America at P.O. Box 219061, Kansas City, MO 64121-9061 or to such other person or at such other address as Sublandlord may designate in writing. If any Monthly Base Rent or Additional Rent is not received by Sublandlord from Subtenant within five (5) days of the later of (i) when due or (ii) after written notice to Subtenant that the same has not been received by Sublandlord (provided such notice for late payment has not previously been given in the preceding twelve months), then Subtenant shall immediately pay to Sublandlord a late charge equal to the lesser of any penalties, default interest charges or other similar costs computed based on the delinquent amount actually incurred by Sublandlord under the Master Lease by reason of Subtenant’s late payment or [*] percent ([*]%) of such delinquent rent, as liquidated damages for Subtenant’s failure to make timely payment. If any rent remains delinquent for a period in excess of thirty (30) days then, in addition to such late charge, Subtenant shall pay to Sublandlord interest on any rent that is not paid when due at the Agreed Interest Rate following the date such amount became due until paid. This paragraph shall not be deemed to grant Subtenant an extension of time within which to pay rent or prevent Sublandlord from exercising any other right or remedy.
+
+ 
+
+7.2 Other Charges. Subtenant shall pay all sales and uses taxes levied or assessed against all rent payments due under this Sublease (if any) simultaneously with each payment required hereunder. Subtenant shall pay directly to Sublandlord all of those costs, expenses, additional rent and all other amounts (defined as “Additional Rent” in the Master Lease) payable to Master Landlord under the Master Lease, including, but not limited to, those
+
+ 
+
+*	 	CONFIDENTIAL TREATMENT REQUESTED. CONFIDENTIAL PORTION HAS BEEN FILED SEPARATELY WITH THE SECURITIES AND EXCHANGE COMMISSION.
+amounts payable under Sections 3.2 and 8.1 of the Master Lease. Notwithstanding anything to the contrary contained in this Sublease, Subtenant shall not be responsible for any charges, costs, expenses or similar items (“Charges”) deemed to be Additional Rent if and to the extent said Charges are incurred as a result of Sublandlord in its role as Tenant under Master Lease breaching its representations, warranties and covenants thereunder (including, without limitation, damages claimed by Master Landlord, indemnification obligations owed to Master Landlord, enforcement fees owed to Master Landlord and costs of discharging mechanic’s liens arising through Sublandlord) which have not been assumed by Subtenant hereunder. In addition, Additional Rent shall not include premiums for insurance policies required to be maintained by Sublandlord (in its capacity as tenant under the Master Lease) pursuant to the Master Lease, and Excess rent required to be paid by Sublandlord pursuant to Article 14 of the Master Lease. Subtenant agrees to pay any and all such Additional Rent in estimated equal monthly installments or as may otherwise be required under the terms of the Master Lease. During the Term, Master Landlord may be permitted to adjust the amounts of such installments payable under the Master Lease. In such event, Sublandlord may adjust the amount of the installments due hereunder and, at the end of each calendar year during the Term, an adjustment will be made to compensate for any overage or shortfall with respect to the monthly estimated installments paid versus the actual real estate taxes, insurance, common area maintenance costs, management fees and the like owed, as and when provided in the Master Lease. To the extent Master Landlord has not agreed to do so pursuant to the Landlord’s Consent, Sublandlord shall promptly forward to Subtenant any statements received from Master Landlord relating to the payment of Common Operating Expenses and annual reconciliations thereof.
+
+ 
+
+If Subtenant so requests, Sublandlord shall, at no cost or expense to Sublandlord, exercise the right to contest Real Property Taxes pursuant to Section 8.3 of the Master Lease. If Subtenant so requests, Sublandlord shall cause an audit of Master Landlord’s books and records as permitted and in the manner provided for under Section 8.1 of the Master Lease. Any and all costs incurred by Sublandlord shall be borne by Subtenant and shall be considered Additional Rent. To the extent Master Landlord is not ultimately required to bear the costs of such audit in accordance with the Master Lease, the costs of such audit shall be borne by Subtenant, but in no event shall be Sublandlord be liable for such costs. Regardless of whether Subtenant elects to cause an audit of Master Landlord’s books and records, if Sublandlord’s payments toward Common Operating Expenses exceed the total payments made by Subtenant, Subtenant shall pay Sublandlord the deficiency within thirty (30) days of the date of Sublandlord’s statement. If the total payments by Subtenant, as determined pursuant to the audit, exceed the total actual amount of Additional Rent owed by Subtenant, Subtenant’s excess payment shall be refunded to Subtenant within thirty (30) days of the date of Sublandlord’s statement, and if not refunded within thirty (30) days, may be offset by Subtenant against the next installment of Monthly Base Rent and Additional Rent payable hereunder. For any partial calendar year at the commencement or termination of this Sublease, Subtenant’s Additional Rent for such year shall be prorated for the number of days this Sublease is in effect during such year. Notwithstanding the termination of this Sublease, within thirty (30) business days after Subtenant’s receipt of Sublandlord’s statement regarding Additional Rent in the calendar year in which this Sublease terminates, Subtenant shall pay to Sublandlord or shall receive from Sublandlord, as the case may be, an amount equal to the difference between the actual amount of Additional Rent (as prorated) and the amount previously paid by Subtenant toward Additional Rent.
+
+7.3 Survival. Subtenant’s obligation to pay all rental amounts hereunder and to remove alterations and improvements (except as provided in Section 4.2(ii) hereof), as well as any other obligation of Subtenant hereunder which is not fully satisfied at the termination of this Sublease, will survive the termination of this Sublease. Sublandlord’s obligation to refund to Subtenant any overpayments of Additional Rent shall also survive the termination of this Sublease.
+
+ 
+
+8. Use. The Subleased Premises may be used and occupied during the Term of this Sublease only for those purposes for which the Premises may be used and occupied by Sublandlord pursuant to the terms of the Master Lease. Subtenant must, at Subtenant’s expense, comply promptly with all applicable statutes, ordinances, rules, regulations, orders, restrictions of record and requirements in effect during the Term or any part of the Term hereof regulating the use by Subtenant of the Subleased Premises.
+
+ 
+
+9. Indemnity. Subtenant hereby indemnifies and agrees to hold Sublandlord and Master Landlord harmless from and against any and all claims, liabilities or losses incurred by Sublandlord or Master Landlord arising out of any breach by Subtenant of any of the terms of, or its representations contained in, this Sublease, for bodily injury to or death of any person or damage to any property arising out of Subtenant’s use of the Subleased Premises or from the conduct of Subtenant’s business, or from any activity, work or thing done, permitted or suffered by Subtenant in or about the Subleased Premises or the Building, except:
+
+ 
+
+(a) claims and liabilities occasioned in whole or in part by the grossly negligent acts or omissions of the indemnified party, its agents or employees; and
+
+ 
+
+(b) claims or liabilities for property damage addressed in Section 10 of this Sublease entitled “Mutual Waiver of Claims”.
+
+ 
+
+Sublandlord hereby indemnifies and agrees to hold Subtenant and Master Landlord harmless from and against any and all claims, liabilities or losses incurred by Subtenant or Master Landlord arising out of any breach by Sublandlord of any of the terms of, or its representations contained in, this Sublease or any terms of the Master Lease for which Sublandlord has retained responsibility pursuant to the terms and provisions of this Sublease, and for bodily injury to or death of any person or damage to any property arising out of Sublandlord’s Point of Presence at the Subleased Premises or from the conduct of Sublandlord’s business related thereto, or from any activity, work or thing done, permitted or suffered by Sublandlord in or about the Subleased Premises or the Building pursuant to the MSA, except:
+
+ 
+
+(c) claims and liabilities occasioned in whole or in part by the grossly negligent acts or omissions of the indemnified party, its agents or employees; and
+
+ 
+
+(d) claims or liabilities for property damage addressed in Paragraph 10 of this Sublease entitled “Mutual Waiver of Claims”.
+
+ 
+
+In addition, Sublandlord hereby indemnifies and agrees to hold Subtenant harmless from and against all claims, liabilities or losses suffered by Subtenant as a result of the “Release” (as defined below) with respect to the Project. For purposes of this Sublease, a Releases is that certain incident reported to the California Office of Emergency Services on May 31, 2002, and assigned spill number 05/31/2002 02-2920 (also known by the Santa Clara Water Board as case number SCVWDID #06S1W27K01f, LOP).
+
+The foregoing indemnities include all reasonable costs, attorneys’ fees and expenses incurred in the defense of any such claim or any action or proceeding brought thereon.
+
+ 
+
+10. Mutual Waiver of Claims. Sublandlord and Subtenant do each hereby release and relieve the other and Master Landlord, and waive their entire claim of recovery against the other party and/or Master Landlord for loss or damage to property arising out of or incident to fire, lightning or any other perils normally included in an “all-risks” property insurance policy when such property constitutes the Subleased Premises or the Building or is in, on or about the Subleased Premises, the Building or the land on which the Building is situated, whether or not such loss or damage is due to the negligence of Sublandlord, Subtenant or Master Landlord, their agents, employees, guests, licensees, invitees or contractors, to the extent such loss or damage is covered by such insurance.
+
+ 
+
+11. Default. The notice and grace period provisions contained in the Master Lease shall apply to any default by Subtenant hereunder. If Subtenant defaults in the payment of any rental amounts hereunder or any other sum required to be paid hereunder by Subtenant, or in the performance of any of its other obligations under this Sublease or the Master Lease beyond any applicable notice or grace period Sublandlord shall have the same rights and remedies against Subtenant as Master Landlord has against Sublandlord in the event of Sublandlord’s default under the Master Lease; provided, however, that any damages recoverable by Sublandlord shall be computed based on the Monthly Base Rent and Additional Rent payable under this Sublease Such rights and remedies shall be cumulative with all other rights and remedies which Sublandlord may otherwise have under applicable law.
+
+ 
+
+12. Transfer of Subleased Premises.
+
+ 
+
+12.1 Neither this Sublease nor the Term and estate hereby granted, or any part hereof or thereof, may be assigned, mortgaged, pledged, encumbered or sublet without first obtaining the express written consent of: (i) Sublandlord, such consent not to be unreasonably withheld; and (ii) Master Landlord, which consent shall be granted or denied in accordance with the provisions of the Master Lease.
+
+ 
+
+12.2 Any request for Sublandlord’s or Master Landlord’s consent to a proposed assignment or subletting of the Subleased Premises or any portion thereof shall be in writing (hereinafter referred to as “Subtenant’s Notice”) and shall set forth the proposed subtenant’s or assignee’s name, address, nature or character of business, and then current financial statements of the proposed subtenant or assignee, and the terms and conditions of the proposed subletting. Any consent to subletting or assignment which may be given by Sublandlord shall not constitute a waiver by Sublandlord of the provisions of this Section 12, or a release of Subtenant from the full performance by it of the covenants on the part of Subtenant herein contained. Any violation of any provision of this Sublease by any subtenant shall be deemed a violation of such provision by Subtenant.
+
+12.3 Any subletting or assignment permitted hereunder shall, with respect to the use of the Subleased Premises, be subject to and shall not violate the restrictive provisions of this Sublease and the provisions of the Master Lease.
+
+ 
+
+12.4 If, for any proposed assignment or sublease, Subtenant receives rent or other consideration, either initially or over the term of the assignment or sublease, in excess of the rent called for hereunder or, in case of the sublease of a portion of the Subleased Premises, in excess of such rent fairly attributable to such portion, after appropriate adjustments to ensure that all other payments called for hereunder are taken into account, Subtenant shall pay to Sublandlord, as additional rent hereunder, all of the profit realized by Subtenant promptly after its receipt. Such profit shall be calculated after deducting from gross rentals all costs incurred by Subtenant in connection with such transaction, including real estate commissions, legal fees, concessions, tenant improvement allowances, advertising costs, and the like. To the extent that Master Landlord successfully asserts a claim to collect any portion of such profits, they shall be paid equally by Subtenant and Sublandlord from their respective shares of such profit.
+
+ 
+
+12.5 Notwithstanding anything herein to the contrary, Sublandlord’s consent shall not be required hereunder for any agreements with Customers for which Master Landlord’s consent is not required pursuant to Section 14.1D of the Master Lease. In addition, Sublandlord shall not be entitled to share in any of Subtenant’s profits, rents or income derived in connection with any Customer’s use of the Subleased Premises.
+
+ 
+
+13. Insurance. Subtenant agrees to maintain during the Term hereof at least the minimum insurance described in Section 9.1 of the Master Lease. Sublandlord and Master Landlord must be named as an additional insured on the commercial general liability insurance coverage. A certificate evidencing such insurance coverages shall be delivered to Sublandlord and Master Landlord on or before the first to occur of the Commencement Date or the date when Subtenant shall enter into possession of the Subleased Premises. Each of Sublandlord and Subtenant shall cause its insurance carriers to waive all rights of subrogation against the other party hereto to the extent of Sublandlord’s and Subtenant’s undertakings set forth in Section 10 of this Sublease. Notwithstanding anything to the contrary contained herein or in the Master Lease, Subtenant shall be exclusively entitled to all insurance proceeds arising under any fire and property damage insurance policies maintained by Subtenant on Subtenant’s personal property, equipment and trade fixtures.
+
+ 
+
+14. Sublandlord’s Options Pursuant to the Master Lease. Sublandlord and Subtenant agree that all options that Sublandlord has pursuant to the Master Lease, i.e., Sublandlord’s Option to Extend pursuant to Paragraph 2 of the Lease Rider to the Master Lease and Sublandlord’s Right of First Offer to Purchase pursuant to Paragraph 15 of the Sublease shall be subordinate to Subtenant’s obligation and option to enter into the New Lease with Master Landlord as provided in the Landlord Consent. Sublandlord also agrees that while this Sublease remains in effect, Sublandlord shall neither have the right to nor exercise any such option without the prior written consent of Subtenant, which consent may be granted or withheld in Subtenant’s sole and absolute discretion.
+
+ 
+
+15. Notices. Except as otherwise provided in the Master Lease with respect to notices to Master Landlord or as hereinafter provided as to notices of default by Sublandlord and
+
+Subtenant, any notice required or permitted to be given hereunder shall be in writing and shall be effective only (a) three (3) days after deposit in a sealed envelope in the United States mail, postage prepaid, by registered or certified mail, return receipt requested, addressed to the recipient at the address set forth below, (b) the next business day following deposit with an overnight courier service, with next day delivery charges prepaid, or (c) upon receipt if delivered by facsimile transmission. Notices to Subtenant shall be addressed to Equinix Operating Co., Inc., 301 Velocity Way, 5th Floor, Foster City, CA 94404, Attention: Director of Real Estate, Facsimile No. (650) 513-7909, with a copy to Equinix Operating Co., Inc., 301 Velocity Way, 5th Floor, Foster City, CA 94404, Attention: General Counsel, Facsimile No. (650) 513-7909, and notices to Sublandlord shall be addressed to Sprint Communications Company, L.P., 6200 Sprint Parkway, KSOPHF 0302-3B679, Overland Park, KS 66251, Attention: Legal-Corporate Transactions, Facsimile No. (913) 794-0144, with copy to Sprint Communications Company, L.P., 6450 Sprint Parkway, KSOPHN 0314-3A671, Overland Park, KS 66251, Attention: Real Estate Attorney, Facsimile No. (913) 315-0708. Anything hereinbefore to the contrary notwithstanding, notices of default may only be sent by certified or registered mail pursuant to (a), above.
+
+ 
+
+16. Broker’s Commissions. Sublandlord and Subtenant each hereby represents and warrants to the other and to Master Landlord that neither party entered into any agreement with any broker, agent, finder or other party for the payment of a broker’s or agent’s commission, finder’s fee or like compensation payable in connection with Sublandlord and Subtenant entering into this Sublease. Sublandlord and Subtenant each hereby agrees to indemnify and hold the other and Master Landlord harmless from and against any and all claims, demands, damages, losses or causes of action related to or arising out of any such agreement entered into by the indemnifying party for the payment of any such commission, fee or like compensation.
+
+ 
+
+17. Security Interest. Sublandlord hereby waives any security interest pursuant to the Uniform Commercial Code of the State of California or other California law that Sublandlord may have in all of the personal property, equipment and trade fixtures used or to be used by Subtenant in connection with its use and operation of the Subleased Premises.
+
+ 
+
+18. Personal Property. Sublandlord and Subtenant are simultaneously entering into a certain Bill of Sale and Conveyance Agreement (the “Bill of Sale”), which will become effective on the Closing Date, pursuant to which Sublandlord will transfer to Subtenant certain items of tangible personal property, as provided in the Bill of Sale. Any sales taxes associated with the transfer of such personal property will be paid for as provided in the Bill of Sale.
+
+ 
+
+19. Casualty and Eminent Domain. In the event of a fire or other casualty affecting the Subleased Premises, or of a taking of all or a part of the Subleased Premises under the power of eminent domain, Sublandlord shall not exercise any rights which it may have permitting it to terminate or continue with the Master Lease as a result of a casualty or condemnation without first obtaining the prior written consent of Subtenant. If Subtenant fails to respond to such written request by Sublandlord to Subtenant within ten (10) days, then consent will be deemed to have been given. If the Master Lease imposes on Master Landlord, the obligation to repair or restore leasehold improvements or alterations, Subtenant shall permit Master Landlord to enter the Subleased Premises to perform the same. Subtenant shall have the right to terminate the Sublease as a result of a casualty or condemnation to the extent Sublandlord has the right to
+
+terminate the Master Lease as a result of such event. To the extent Sublandlord is entitled to an abatement of its obligation to pay rent pursuant to the Master Lease as a result of the occurrence of a casualty or condemnation, Subtenant shall also be entitled to an abatement of Monthly Base Rent and Additional Rent with respect to the Subleased Premises. Notwithstanding anything herein to the contrary, if the Master Lease is validly terminated by Master Landlord following a casualty or condemnation, this Sublease shall also terminate.
+
+ 
+
+20. Entire Agreement. This Sublease, including the terms of the Master Lease which are incorporated herein by reference, contains the entire agreement between the parties concerning the subject matter hereof and supersedes all prior and contemporaneous agreements, understandings, terms, warranties and representations, whether oral or written, made by the parties concerning the matters covered by this Sublease.
+
+ 
+
+21. Confidentiality. Subtenant and Sublandlord shall each maintain as confidential any and all non-public material obtained about the other and the transactions contemplated hereby, and shall not, except as required by law or governmental regulation applicable to Sublandlord or Subtenant, disclose such information to any third party. Notwithstanding the foregoing, Subtenant and Sublandlord shall have the right to disclose such information to their respective lenders or their employees and agents and such other persons whose assistance is required in carrying out the terms of this letter provided that all such persons are told that such information is confidential and agree (in writing for any third party consultants) to keep such information confidential. Subtenant and Sublandlord shall each have the right to publicize the consummation of this Sublease (other than the monetary terms) in whatever manner each deems appropriate; provided, however, that any press release or other public disclosure regarding the transactions contemplated herein, and the wording of same, must be approved in advance by both parties. Notwithstanding anything herein or in any other written or oral understanding or agreement to which the parties hereto are parties or by which they are bound, either party (or its representative, agents or employees) may (i) consult any tax advisor regarding the tax treatment and tax structure of the transaction contemplated by this Sublease and (ii) may at any time disclose to any person, without limitation of any kind, the tax treatment and tax structure of such transaction and all materials of any kind (including opinions or other tax analyses) that are provided relating to such tax treatment or tax structure. The provisions of this paragraph shall survive the termination of this Sublease.
+
+ 
+
+22. Severability. The illegality, invalidity or unenforceability of any term, condition or provision of this Sublease shall in no way impair or invalidate any other term, condition or provision of this Sublease, and all such other terms, conditions and provisions shall remain in full force and effect.
+
+ 
+
+23. Attorneys’ Fees. If any party hereunder brings an action to enforce the terms or to declare rights hereunder, the prevailing party in any such action, on trial or appeal, shall be entitled to recover its actual attorneys’ fees and costs of suit from the non-prevailing party.
+
+ 
+
+24. Successors and Assigns. This Sublease shall be binding upon the parties hereto and upon their respective successors and assigns.
+
+25. Governing Law. This Sublease will be governed by the law of the State of California, without regard to its choice of law rules.
+
+ 
+
+26. Authority to Sign. Each party hereby represents and warrants to the other that the person or entity signing this Sublease on behalf of such party is duly authorized to execute and deliver this Sublease and to legally bind the party on whose behalf this Sublease is signed to all of the terms, covenants and conditions contained in this Sublease.
+
+ 
+
+[Remainder of page intentionally left blank]
+
+IN WITNESS WHEREOF, the parties have executed this Sublease as of the day and year first above written.
+
+ 
+
+SUBLANDLORD:
+SPRINT COMMUNICATIONS COMPANY, L.P.
+
+By:
+
+ 	
+    /s/ Robert J. Dellinger
+
+Name: Robert J. Dellinger
+
+Title: EVP & CFO
+
+SUBTENANT:
+EQUINIX OPERATING CO., INC.
+
+By:
+
+ 	
+    /s/ Renee F. Lanam
+
+Name: Renee F. Lanam
+
+Title: CFO

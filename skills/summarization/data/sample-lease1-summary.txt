@@ -1,0 +1,60 @@
+Description: This is a commercial sublease agreement between Cohen Brothers, LLC d/b/a Cohen & Company (Sublessor) and Taberna Capital Management, LLC (Sublessee) for a portion of premises originally leased from Brandywine Cira, L.P. (Master Lessor). The sublease is for office space with a 5-year initial term.
+
+<parties involved>
+
+- Sublessor: Cohen Brothers, LLC d/b/a Cohen & Company
+- Sublessee: Taberna Capital Management, LLC
+- Original lessor: Brandywine Cira, L.P.
+
+</parties involved>
+
+<property details>
+
+- Address: 2929 Arch Street, Suite 1703, Philadelphia, PA 19104
+- Description: 2,000 square feet of office space, part of a larger 13,777 square foot master premises
+- Permitted use: Not explicitly stated, but likely general office use as per the master lease
+
+</property details>
+
+<term and rent>
+
+- Start date: April 1, 2024
+- End date: March 31, 2029 (5-year term)
+- Monthly rent:
+  • Months 1-12: $5,750.00
+  • Months 13-24: $5,865.00
+  • Months 25-36: $5,981.67
+  • Months 37-48: $6,101.67
+  • Months 49-60: $6,223.33
+- Security deposit: Not specified
+- Option to extend: Parties may renew on similar terms if Sublessor renews the Master Lease
+- Additional rent: Pro rata share of Sublessor's Allocated Share of Recognized Expenses
+
+</term and rent>
+
+<responsibilities>
+
+- Utilities: Not explicitly specified
+- Maintenance: Not explicitly specified
+- Repairs: Not explicitly specified
+- Insurance: Sublessee required to maintain all insurance as required by the Tenant under the Master Lease
+
+</responsibilities>
+
+<consent and notices>
+
+- Landlord's consent: Required for sublease to be effective
+- Notice requirements: Written notices to be delivered by registered or certified mail, prepaid nationally recognized overnight delivery service, or hand delivery to specified addresses
+
+</consent and notices>
+
+<special provisions>
+
+- Furniture and services: Sublessee has access to file space, printers, copiers, kitchen, conference room facilities, and receptionist and secretarial services
+- Assignment and subletting: Prohibited without Sublessor's prior written consent
+- Damage and destruction: Not explicitly addressed in the sublease summary
+- Default: Detailed events of default and remedies specified
+- Holdover: Rent at twice the amount of monthly rent payable before termination of sublease
+- Broker participation: Parties warrant no broker involvement except as specified
+
+</special provisions>

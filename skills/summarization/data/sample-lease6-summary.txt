@@ -1,0 +1,39 @@
+Description: Workrise Technologies Inc. to CS Disco, Inc. This sublease is for office space in Austin, Texas between Workrise Technologies Inc. as Sublessor and CS Disco, Inc. as Sublessee. Key details include:
+
+<parties_involved>
+- Sublessor: Workrise Technologies Inc., a Delaware corporation
+- Sublessee: CS Disco, Inc., a Delaware corporation 
+- Original Lessor: Cousins - One Congress Plaza LLC
+</parties_involved>
+
+<property_details>
+- Address: 111 Congress Avenue, Austin, Texas 78701
+- Description: 46,250 rentable square feet on the 6th floor (Suite 600) and 9th floor (Suite 900) of the Building
+- Permitted use: General business office use
+</property_details>
+
+<term_and_rent>
+- Start date: The later of the Effective Date or date premises are delivered 
+- End date: July 31, 2028
+- Monthly rent: Varies by period, starting at $167,657.67 per month
+- Security deposit: $306,714.58 cash deposit plus $500,000 letter of credit
+</term_and_rent>
+
+<responsibilities>
+- Utilities: Sublessee responsible for utilities
+- Maintenance and repairs: Sublessee responsible for non-structural interior repairs and maintenance
+- Operating expenses: Sublessee pays pro-rata share of expenses exceeding base year costs
+</responsibilities>
+
+<consent_and_notices>
+- Landlord's consent: Required from Master Landlord (Cousins - One Congress Plaza LLC)
+- Notice requirements: Written notices to specified addresses for each party
+</consent_and_notices>
+
+<special_provisions>
+- Furniture: Sublessee to purchase existing furniture and fixtures for $10
+- Parking: Sublessee obligated to rent 68 unreserved and 2 reserved parking permits
+- Subletting restrictions: Sublessee may not assign or sublet without prior written consent from Sublessor and Master Landlord
+- Signage: Sublessee has right to install building standard suite identification signage, subject to approvals
+- Insurance: Sublessee required to maintain commercial general liability insurance with $3,000,000 per occurrence limit
+</special_provisions>
