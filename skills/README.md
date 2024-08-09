@@ -10,6 +10,7 @@ Welcome to the Skills section of the Anthropic Cookbook! This directory contains
 
 - **[Citations with Claude](./citations/guide.ipynb)**: Learn how to leverage Claude for accurate and verifiable information retrieval. This guide demonstrates how to implement citations in two key scenarios: Q&A over a help center and extracting quotes from large documents. You'll explore prompt engineering techniques, post-processing methods, and strategies for creating user-friendly, interactive experiences with cited information.
 
+- **[Summarization with Claude](./summarization/guide.ipynb)**: Explore Claude's ability to summarize and synthesize information from multiple sources. This guide covers a variety of summarization techniques, including multi-shot, domain-based, and chunking methods, as well as strategies for handling long-form content and multiple documents. We also explore evaluating summaries, which can be a balance of art, subjectivity, and the right approach!
 
 ## Getting Started
 

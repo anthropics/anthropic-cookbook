@@ -1,0 +1,60 @@
+Description: This is a commercial sublease agreement between Cutter & Buck Inc. (Sublandlord) and Tableau Software, Inc. (Subtenant) for a portion of premises originally leased from Fremont Lake Union Center LLC (Landlord). The sublease is for office space with a term from June 1, 2012 to July 31, 2017.
+
+<parties involved>
+
+- Sublessor: Cutter & Buck Inc.
+- Sublessee: Tableau Software, Inc. 
+- Original lessor: Fremont Lake Union Center LLC
+
+</parties involved>
+
+<property details>
+
+- Address: 701 North 34th Street, Suite 230, Seattle, WA 98103
+- Description: Approximately 6,697 rentable square feet of space on the second floor
+- Permitted use: General office purposes as permitted under the Master Lease
+
+</property details>
+
+<term and rent>
+
+- Start date: June 1, 2012 (or as soon thereafter as Sublandlord can deliver possession, but no later than July 1, 2012)
+- End date: July 31, 2017
+- Monthly rent:
+  • June 1, 2012 – May 31, 2013: $25,113.75
+  • June 1, 2013 – May 31, 2014: $25,867.16
+  • June 1, 2014 – May 31, 2015: $26,642.90
+  • June 1, 2015 – May 31, 2016: $27,440.96
+  • June 1, 2016 – July 31, 2017: $28,266.92
+- Security deposit: $84,800.76
+- Option to extend: None
+- Additional rent: Subtenant's Percentage Share of Operating Costs and Applicable Additional Rent
+
+</term and rent>
+
+<responsibilities>
+
+- Utilities: Included in Base Rent
+- Maintenance: Subtenant responsible for non-structural repairs and maintenance within Subleased Premises
+- Repairs: Subtenant responsible for repairs within Subleased Premises; Sublandlord responsible for structural elements and building systems
+- Insurance: Subtenant required to maintain insurance as described in the Master Lease
+
+</responsibilities>
+
+<consent and notices>
+
+- Landlord's consent: Required for sublease to be effective
+- Notice requirements: Written notices to be delivered personally, by registered or certified mail, prepaid nationally recognized overnight courier service, or hand delivery to specified addresses
+
+</consent and notices>
+
+<special provisions>
+
+- Parking: Non-exclusive use of 15 parking spaces at specified rates
+- Signage: Building-standard suite entry signage allowed, subject to Landlord's approval
+- Alterations: Require prior written consent of Sublandlord and Landlord
+- Assignment and subletting: Prohibited without prior written consent of Sublandlord and Landlord, except for Permitted Transfers
+- Right of First Offer: Subtenant has right of first offer on additional space in the Premises that becomes available during the Term
+- Furniture: Subtenant may use certain existing furniture in the Subleased Premises
+
+</special provisions>

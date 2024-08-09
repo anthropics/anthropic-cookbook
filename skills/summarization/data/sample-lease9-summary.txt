@@ -1,0 +1,47 @@
+Description: Commercial sublease agreement for data center space in Santa Clara, CA
+
+<parties_involved>
+- Sublessor: Sprint Communications Company, L.P., a Delaware limited partnership
+- Sublessee: Equinix Operating Co., Inc., a Delaware corporation
+- Original Lessor: Duane Raymond, LLC, a California limited liability company
+</parties_involved>
+
+<property_details>
+- Address: 1350 Duane Avenue, Santa Clara, California
+- Description: 160,000 square feet of space in and around the building
+- Permitted Use: As specified in the Master Lease (not explicitly stated in sublease)
+</property_details>
+
+<term_and_rent>
+- Start Date: December 1, 2003 (referred to as "Closing Date" and "Commencement Date")
+- End Date: September 29, 2014
+- Monthly Base Rent: 
+  - First 2 years: [CONFIDENTIAL AMOUNT] payable by Sublandlord under Master Lease
+  - Remainder of term: [CONFIDENTIAL AMOUNT] payable by Sublandlord under Master Lease
+- Security Deposit: Not specified
+</term_and_rent>
+
+<responsibilities>
+- Utilities: Subtenant responsible for any increases or added costs arising from their tenancy
+- Maintenance: Subtenant responsible for maintenance and repair of the Subleased Premises as required by Master Lease
+- Repairs: Sublandlord not responsible for repairs to building structure, major systems, or exterior
+</responsibilities>
+
+<consent_and_notices>
+- Landlord's Consent: Required for sublease (consent form included as Exhibit C)
+- Notice Requirements:
+  - To Sublandlord: Sprint Communications Company, L.P., 6200 Sprint Parkway, KSOPHF 0302-3B679, Overland Park, KS 66251
+  - To Subtenant: Equinix Operating Co., Inc., 301 Velocity Way, 5th Floor, Foster City, CA 94404
+</consent_and_notices>
+
+<special_provisions>
+- Furniture: Not specified
+- Parking: Subtenant has right to use Tenant's Allocated Parking Stalls within the Project
+- Subletting Restrictions: Subtenant prohibited from assigning or subletting without prior written consent of Master Landlord and Sublandlord
+- Insurance: Subtenant required to maintain insurance as specified in Section 9.1 of the Master Lease
+- Alterations: Subtenant prohibited from making alterations without prior written consent of Master Landlord and Sublandlord
+- Other: 
+  - Accompanying agreements include Employee Covenants Agreement, Master Service Agreement, and Conduits Agreement
+  - Provisions for transitioning existing customer contracts
+  - Sublandlord retains certain rights for point of presence and conduits
+</special_provisions>
