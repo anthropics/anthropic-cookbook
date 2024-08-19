@@ -82,7 +82,7 @@ def get_assert(output: str, context, threshold=0.5) -> Union[bool, float, Dict[s
     # 4 different dimensions we measure performance on
     normalized_score = score / 4 
     
-    if score >= normalized_score:
+    if normalized_score >= threshold:
         return {
             "pass": True,
             "score": score,
