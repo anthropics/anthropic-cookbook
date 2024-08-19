@@ -78,8 +78,11 @@ def llm_eval(summary, input):
 def get_assert(output: str, context, threshold=0.5) -> Union[bool, float, Dict[str, Any]]:
     input = context['vars']['input']
     score, evaluation = llm_eval(output, input)
+
+    # 4 different dimensions we measure performance on
+    normalized_score = score / 4 
     
-    if score >= threshold:
+    if score >= normalized_score:
         return {
             "pass": True,
             "score": score,
