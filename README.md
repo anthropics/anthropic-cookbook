@@ -8,7 +8,7 @@ To make the most of the examples in this cookbook, you'll need an Anthropic API 
 
 While the code examples are primarily written in Python, the concepts can be adapted to any programming language that supports interaction with the Anthropic API.
 
-If you're new to working with the Anthropic API, we recommend starting with our [Anthropic API Fundamentals course](https://github.com/anthropics/courses/tree/master/AnthropicAPIFundamentals) to get a solid foundation.
+If you're new to working with the Anthropic API, we recommend starting with our [Anthropic API Fundamentals course](https://github.com/anthropics/courses/tree/master/anthropic_api_fundamentals) to get a solid foundation.
 
 ## Explore Further
 
