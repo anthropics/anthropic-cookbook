@@ -24,7 +24,6 @@ class InferenceAdapter:
                     }
                 ],
                 "temperature": 0.0,
-                "top_p": 1
             })
 
         # Invoke the model
