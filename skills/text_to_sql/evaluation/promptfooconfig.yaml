@@ -1,0 +1,37 @@
+# Learn more about building a configuration: https://promptfoo.dev/docs/configuration/guide
+description: "Text to SQL Evaluation"
+
+prompts:
+  - "Write a tweet about {{topic}}"
+  - "Write a concise, funny tweet about {{topic}}"
+  
+
+providers:
+  - id: anthropic:messages:claude-3-5-sonnet-20240620
+    label: "3.5 Sonnet"
+    config:
+      max_tokens: 4096
+      temperature: 0
+  
+
+tests:
+  - vars:
+      topic: avocado toast
+    assert:
+      # For more information on assertions, see https://promptfoo.dev/docs/configuration/expected-outputs
+
+      # Make sure output contains the word "avocado"
+      - type: icontains
+        value: avocado
+
+      # Prefer shorter outputs
+      - type: javascript
+        value: 1 / (output.length + 1)
+
+  - vars:
+      topic: new york city
+    assert:
+      # For more information on model-graded evals, see https://promptfoo.dev/docs/configuration/expected-outputs/model-graded
+      - type: llm-rubric
+        value: ensure that the output is funny
+
