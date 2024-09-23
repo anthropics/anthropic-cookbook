@@ -1,37 +1,51 @@
-# Learn more about building a configuration: https://promptfoo.dev/docs/configuration/guide
-description: "Text to SQL Evaluation"
+# promptfooconfig.yaml
 
-prompts:
-  - "Write a tweet about {{topic}}"
-  - "Write a concise, funny tweet about {{topic}}"
-  
+python_path: /opt/homebrew/bin/python3
 
 providers:
   - id: anthropic:messages:claude-3-5-sonnet-20240620
-    label: "3.5 Sonnet"
     config:
       max_tokens: 4096
       temperature: 0
-  
+
+prompts: 
+  - prompts.py:generate_prompt
+  - prompts.py:generate_prompt_with_examples
+  - prompts.py:generate_prompt_with_cot
+  # - prompts.py:generate_prompt_with_rag
 
 tests:
-  - vars:
-      topic: avocado toast
+  - description: "Simple query for employee names in Engineering"
+    prompt: prompts.py:basic_text_to_sql
+    vars:
+      user_query: "What are the names of all employees in the Engineering department?"
     assert:
-      # For more information on assertions, see https://promptfoo.dev/docs/configuration/expected-outputs
+      - type: contains
+        value: "<sql>"
+      - type: contains
+        value: "</sql>"
+      - type: python
+        value: |
+          import re
 
-      # Make sure output contains the word "avocado"
-      - type: icontains
-        value: avocado
+          def extract_sql(text):
+              match = re.search(r'<sql>(.*?)</sql>', text, re.DOTALL)
+              return match.group(1).strip() if match else ""
 
-      # Prefer shorter outputs
-      - type: javascript
-        value: 1 / (output.length + 1)
+          def check_sql(sql):
+              required_elements = ['select', 'from employees', 'join departments', "name = 'engineering'"]
+              return all(element in sql.lower() for element in required_elements)
 
-  - vars:
-      topic: new york city
-    assert:
-      # For more information on model-graded evals, see https://promptfoo.dev/docs/configuration/expected-outputs/model-graded
-      - type: llm-rubric
-        value: ensure that the output is funny
+          sql = extract_sql(output)
+          result = check_sql(sql)
+          
+          return {
+              "pass": result,
+              "score": 1 if result else 0,
+              "reason": f"SQL query {'is correct' if result else 'is incorrect or not found'}"
+          }
 
+
+output:
+  - type: csv
+    path: ./results.csv
