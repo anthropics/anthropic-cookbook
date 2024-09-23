@@ -89,6 +89,67 @@ tests:
               "reason": f"SQL {'executed successfully' if execution_success else 'execution failed'}. "
                         f"Returned count: {count}, Expected count: {expected_count}."
           }
+  - description: "Check specific employee details in Engineering department"
+    prompt: prompts.py:generate_prompt
+    vars:
+      user_query: "Give me the name, age, and salary of the oldest employee in the Engineering department."
+    assert:
+      - type: contains
+        value: "<sql>"
+      - type: contains
+        value: "</sql>"
+      - type: python
+        value: |
+          import re
+          import sqlite3
+
+          def extract_sql(text):
+              match = re.search(r'<sql>(.*?)</sql>', text, re.DOTALL)
+              return match.group(1).strip() if match else ""
+
+          def execute_sql(sql):
+              conn = sqlite3.connect('../data/data.db')
+              cursor = conn.cursor()
+              cursor.execute(sql)
+              results = cursor.fetchall()
+              conn.close()
+              return results
+
+          sql = extract_sql(output)
+          
+          try:
+              results = execute_sql(sql)
+              row = results[0] if results else None
+              execution_success = True
+          except Exception as e:
+              execution_success = False
+              row = None
+              print(f"SQL execution error: {e}")
+
+          expected_result = {
+              "name": "Charlie Davis",
+              "age": 31,
+              "salary": 85000.00
+          }
+
+          if row:
+              actual_result = {
+                  "name": row[0],
+                  "age": row[1],
+                  "salary": row[2]
+              }
+              data_match = actual_result == expected_result
+          else:
+              data_match = False
+
+          return {
+              "pass": execution_success and data_match,
+              "score": 1 if (execution_success and data_match) else 0,
+              "reason": f"SQL {'executed successfully' if execution_success else 'execution failed'}. "
+                        f"Data {'matches' if data_match else 'does not match'} expected result. "
+                        f"Actual: {actual_result if row else 'No data'}, Expected: {expected_result}"
+          }
+
 
 output:
   - type: csv
