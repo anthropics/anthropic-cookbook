@@ -8,6 +8,11 @@ providers:
     config:
       max_tokens: 4096
       temperature: 0
+  - id: anthropic:messages:claude-3-haiku-20240307
+    label: "3 Haiku"
+    config:
+      max_tokens: 4096
+      temperature: 0
 
 prompts: 
   - prompts.py:generate_prompt
