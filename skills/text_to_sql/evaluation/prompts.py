@@ -24,7 +24,8 @@ def get_schema_info():
     conn.close()
     return "\n\n".join(schema_info)
 
-def generate_prompt(user_query):
+def generate_prompt(context):
+    user_query = context['vars']['user_query']
     schema = get_schema_info()
     return f"""
     You are an AI assistant that converts natural language queries into SQL. 
@@ -39,7 +40,8 @@ def generate_prompt(user_query):
     Provide only the SQL query in your response, enclosed within <sql> tags.
     """
 
-def generate_prompt_with_examples(user_query):
+def generate_prompt_with_examples(context):
+    user_query = context['vars']['user_query']
     examples = """
         Example 1:
         <query>List all employees in the HR department.</<query>
@@ -78,7 +80,8 @@ def generate_prompt_with_examples(user_query):
         Provide only the SQL query in your response, enclosed within <sql> tags.
     """
 
-def generate_prompt_with_cot(user_query):
+def generate_prompt_with_cot(context):
+    user_query = context['vars']['user_query']
     schema = get_schema_info()
     examples = """
     <example>
@@ -126,15 +129,17 @@ def generate_prompt_with_cot(user_query):
     Then, within <sql> tags, provide your output SQL query.
     """
 
-def generate_prompt_with_rag(user_query):
+def generate_prompt_with_rag(context):
     from vectordb import VectorDB
-    
+
     # Load the vector database
     vectordb = VectorDB()
     vectordb.load_db()
 
+    user_query = context['vars']['user_query']
+
     if not vectordb.embeddings:
-        with sqlite3.connect() as conn:
+        with sqlite3.connect(DATABASE_PATH) as conn:
             cursor = conn.cursor()
             cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
             schema_data = [
@@ -144,7 +149,7 @@ def generate_prompt_with_rag(user_query):
                 for col in cursor.execute(f"PRAGMA table_info({table[0]})").fetchall()
             ]
         vectordb.load_data(schema_data)
-
+    
     relevant_schema = vectordb.search(user_query, k=10, similarity_threshold=0.3)
     schema_info = "\n".join([f"Table: {item['metadata']['table']}, Column: {item['metadata']['column']}, Type: {item['metadata']['type']}"
                              for item in relevant_schema])

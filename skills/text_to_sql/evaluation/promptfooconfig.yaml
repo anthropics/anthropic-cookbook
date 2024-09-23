@@ -4,6 +4,7 @@ python_path: /opt/homebrew/bin/python3
 
 providers:
   - id: anthropic:messages:claude-3-5-sonnet-20240620
+    label: "3.5 Sonnet"
     config:
       max_tokens: 4096
       temperature: 0
@@ -12,7 +13,7 @@ prompts:
   - prompts.py:generate_prompt
   - prompts.py:generate_prompt_with_examples
   - prompts.py:generate_prompt_with_cot
-  # - prompts.py:generate_prompt_with_rag
+  - prompts.py:generate_prompt_with_rag
 
 tests:
   - description: "Check syntax of simple query"
@@ -79,7 +80,7 @@ tests:
               count = 0
               print(f"SQL execution error: {e}")
 
-          expected_count = 3
+          expected_count = 20
 
           return {
               "pass": execution_success and count == expected_count,
@@ -124,9 +125,9 @@ tests:
               print(f"SQL execution error: {e}")
 
           expected_result = {
-              "name": "Charlie Davis",
-              "age": 31,
-              "salary": 85000.00
+              "name": "Julia Clark",
+              "age": 64,
+              "salary": 103699.17
           }
 
           if row:
@@ -148,6 +149,4 @@ tests:
           }
 
 
-output:
-  - type: csv
-    path: ./results.csv
+outputPath: ../data/results.csv
