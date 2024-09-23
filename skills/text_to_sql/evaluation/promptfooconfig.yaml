@@ -16,7 +16,6 @@ prompts:
 
 tests:
   - description: "Check syntax of simple query"
-    prompt: prompts.py:basic_text_to_sql
     vars:
       user_query: "What are the names of all employees in the Engineering department?"
     assert:
@@ -45,7 +44,6 @@ tests:
               "reason": f"SQL query {'is correct' if result else 'is incorrect or not found'}"
           }
   - description: "Validate count of employees in Engineering department"
-    prompt: prompts.py:generate_prompt
     vars:
       user_query: "How many employees are in the Engineering department?"
     assert:
@@ -90,7 +88,6 @@ tests:
                         f"Returned count: {count}, Expected count: {expected_count}."
           }
   - description: "Check specific employee details in Engineering department"
-    prompt: prompts.py:generate_prompt
     vars:
       user_query: "Give me the name, age, and salary of the oldest employee in the Engineering department."
     assert:
