@@ -19,7 +19,6 @@ prompts:
   - prompts.py:generate_prompt_with_examples
   - prompts.py:generate_prompt_with_cot
   - prompts.py:generate_prompt_with_rag
-  - prompts.py:generate_prompt_with_self_improvement
 
 tests:
   - description: "Check syntax of simple query"
