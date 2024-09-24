@@ -1,4 +1,4 @@
-user_query,[3.5 Sonnet] prompts.py:generate_prompt,[3.5 Sonnet] prompts.py:generate_prompt_with_examples,[3.5 Sonnet] prompts.py:generate_prompt_with_cot,[3.5 Sonnet] prompts.py:generate_prompt_with_rag,[3.5 Sonnet] prompts.py:generate_prompt,[3.5 Sonnet] prompts.py:generate_prompt_with_examples,[3.5 Sonnet] prompts.py:generate_prompt_with_cot,[3.5 Sonnet] prompts.py:generate_prompt_with_rag
+user_query,[3.5 Sonnet] prompts.py:generate_prompt,[3.5 Sonnet] prompts.py:generate_prompt_with_examples,[3.5 Sonnet] prompts.py:generate_prompt_with_cot,[3.5 Sonnet] prompts.py:generate_prompt_with_rag,[3 Haiku] prompts.py:generate_prompt,[3 Haiku] prompts.py:generate_prompt_with_examples,[3 Haiku] prompts.py:generate_prompt_with_cot,[3 Haiku] prompts.py:generate_prompt_with_rag
 What are the names of all employees in the Engineering department?,"[PASS] (1.00)
 
 <sql>
