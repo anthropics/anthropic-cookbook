@@ -1,5 +1,3 @@
-# promptfooconfig.yaml
-
 python_path: /opt/homebrew/bin/python3
 
 providers:
@@ -151,4 +149,175 @@ tests:
               "reason": f"SQL {'executed successfully' if execution_success else 'execution failed'}. "
                         f"Data {'matches' if data_match else 'does not match'} expected result. "
                         f"Actual: {actual_result if row else 'No data'}, Expected: {expected_result}"
+          }
+  - description: "Find the average salary of employees in departments located in 'New York', but only for departments with more than 5 employees"
+    vars:
+      user_query: "What's the average salary for employees in New York-based departments that have more than 5 staff members?"
+    assert:
+      - type: python
+        value: |
+          import re
+          import sqlite3
+
+          def extract_sql(text):
+              match = re.search(r'<sql>(.*?)</sql>', text, re.DOTALL)
+              return match.group(1).strip() if match else ""
+
+          def execute_sql(sql):
+              conn = sqlite3.connect('../data/data.db')
+              cursor = conn.cursor()
+              cursor.execute(sql)
+              results = cursor.fetchall()
+              conn.close()
+              return results
+
+          sql = extract_sql(output)
+          
+          try:
+              results = execute_sql(sql)
+              execution_success = True
+              # Check if results make sense (e.g., not empty, reasonable avg salary)
+              result_valid = len(results) > 0 and 40000 < results[0][0] < 200000
+          except Exception as e:
+              execution_success = False
+              result_valid = False
+              print(f"SQL execution error: {e}")
+
+          return {
+              "pass": execution_success and result_valid,
+              "score": 1 if (execution_success and result_valid) else 0,
+              "reason": f"SQL {'executed successfully with valid results' if (execution_success and result_valid) else 'failed or produced invalid results'}."
+          }
+  - description: "Find employees who earn more than their department's average salary, along with the percentage difference"
+    vars:
+      user_query: "Which employees earn above their department's average salary, and by what percentage?"
+    assert:
+      - type: python
+        value: |
+          import re
+          import sqlite3
+
+          def extract_sql(text):
+              match = re.search(r'<sql>(.*?)</sql>', text, re.DOTALL)
+              return match.group(1).strip() if match else ""
+
+          def execute_sql(sql):
+              conn = sqlite3.connect('../data/data.db')
+              cursor = conn.cursor()
+              cursor.execute(sql)
+              results = cursor.fetchall()
+              conn.close()
+              return results
+
+          sql = extract_sql(output)
+          
+          try:
+              results = execute_sql(sql)
+              execution_success = True
+              # Check if results make sense (e.g., not empty, percentage above 0)
+              result_valid = len(results) > 0 and all(row[2] > 0 for row in results)
+          except Exception as e:
+              execution_success = False
+              result_valid = False
+              print(f"SQL execution error: {e}")
+
+          return {
+              "pass": execution_success and result_valid,
+              "score": 1 if (execution_success and result_valid) else 0,
+              "reason": f"SQL {'executed successfully with valid results' if (execution_success and result_valid) else 'failed or produced invalid results'}."
+          }
+  - description: "Complex hierarchical query with multiple aggregations: For each department, show the highest paid employee and how their salary compares to the average of the next 3 highest paid employees in that department"
+    vars:
+      user_query: "For each department, show the name of the highest paid employee, their salary, and the percentage difference between their salary and the average salary of the next 3 highest paid employees in that department"
+    assert:
+      - type: contains
+        value: "PARTITION BY"
+      - type: contains
+        value: "AVG"
+      - type: python
+        value: |
+          import re
+          import sqlite3
+
+          def extract_sql(text):
+              match = re.search(r'<sql>(.*?)</sql>', text, re.DOTALL)
+              return match.group(1).strip() if match else ""
+
+          def execute_sql(sql):
+              conn = sqlite3.connect('../data/data.db')
+              cursor = conn.cursor()
+              cursor.execute(sql)
+              results = cursor.fetchall()
+              conn.close()
+              return results
+
+          sql = extract_sql(output)
+          
+          try:
+              results = execute_sql(sql)
+              execution_success = True
+              result_valid = len(results) > 0 and len(results[0]) == 4  # department, employee name, salary, percentage difference
+              if result_valid:
+                  for row in results:
+                      if not (isinstance(row[2], (int, float)) and isinstance(row[3], (int, float))):
+                          result_valid = False
+                          break
+          except Exception as e:
+              execution_success = False
+              result_valid = False
+              print(f"SQL execution error: {e}")
+
+          return {
+              "pass": execution_success and result_valid,
+              "score": 1 if (execution_success and result_valid) else 0,
+              "reason": f"SQL {'executed successfully' if execution_success else 'failed to execute'}. {'Valid results obtained' if result_valid else 'Invalid or no results'}"
+          }
+  - description: "Department budget allocation analysis"
+    vars:
+      user_query: "Analyze the budget allocation across departments. Calculate the percentage of total salary budget each department consumes. Then, for each department, show the top 3 highest-paid employees and what percentage of the department's budget their salaries represent. Finally, calculate a 'budget efficiency' score for each department, defined as the department's percentage of total employees divided by its percentage of total salary budget."
+    assert:
+      - type: contains
+        value: "WITH"
+      - type: contains
+        value: "ROW_NUMBER()"
+      - type: contains
+        value: "PARTITION BY"
+      - type: python
+        value: |
+          import re
+          import sqlite3
+
+          def extract_sql(text):
+              match = re.search(r'<sql>(.*?)</sql>', text, re.DOTALL)
+              return match.group(1).strip() if match else ""
+
+          def execute_sql(sql):
+              conn = sqlite3.connect('../data/data.db')
+              cursor = conn.cursor()
+              cursor.execute(sql)
+              results = cursor.fetchall()
+              conn.close()
+              return results
+
+          sql = extract_sql(output)
+          
+          try:
+              results = execute_sql(sql)
+              execution_success = True
+              result_valid = len(results) > 0 and len(results[0]) >= 5  # department, budget %, top employees, their salary %, efficiency score
+              if result_valid:
+                  for row in results:
+                      if not (isinstance(row[1], float) and 0 <= row[1] <= 100 and
+                              isinstance(row[-1], float)):
+                          result_valid = False
+                          break
+          except Exception as e:
+              execution_success = False
+              result_valid = False
+              print(f"SQL execution error: {e}")
+
+          return {
+              "pass": execution_success and result_valid,
+              "score": 1 if (execution_success and result_valid) else 0,
+              "reason": f"SQL {'executed successfully' if execution_success else 'failed to execute'}. {'Valid budget analysis results obtained' if result_valid else 'Invalid or incomplete analysis results'}"
           }
