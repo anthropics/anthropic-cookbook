@@ -3,13 +3,13 @@
 python_path: /opt/homebrew/bin/python3
 
 providers:
-  - id: anthropic:messages:claude-3-5-sonnet-20240620
-    label: "3.5 Sonnet"
+  - id: anthropic:messages:claude-3-haiku-20240307
+    label: "3 Haiku"
     config:
       max_tokens: 4096
       temperature: 0
-  - id: anthropic:messages:claude-3-haiku-20240307
-    label: "3 Haiku"
+  - id: anthropic:messages:claude-3-5-sonnet-20240620
+    label: "3.5 Sonnet"
     config:
       max_tokens: 4096
       temperature: 0
@@ -19,6 +19,7 @@ prompts:
   - prompts.py:generate_prompt_with_examples
   - prompts.py:generate_prompt_with_cot
   - prompts.py:generate_prompt_with_rag
+  - prompts.py:generate_prompt_with_self_improvement
 
 tests:
   - description: "Check syntax of simple query"
