@@ -153,6 +153,3 @@ tests:
                         f"Data {'matches' if data_match else 'does not match'} expected result. "
                         f"Actual: {actual_result if row else 'No data'}, Expected: {expected_result}"
           }
-
-
-outputPath: ../data/results.csv
