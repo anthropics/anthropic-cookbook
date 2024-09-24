@@ -13,10 +13,14 @@ providers:
       temperature: 0
 
 prompts: 
-  - prompts.py:generate_prompt
-  - prompts.py:generate_prompt_with_examples
-  - prompts.py:generate_prompt_with_cot
-  - prompts.py:generate_prompt_with_rag
+  - id: prompts.py:generate_prompt
+    label: Basic
+  - id: prompts.py:generate_prompt_with_examples
+    label: Few-Shot Examples
+  - id: prompts.py:generate_prompt_with_cot
+    label: Chain of Thought & Few-Shot Examples
+  - id: prompts.py:generate_prompt_with_rag
+    label: RAG, Few-Shot Examples, & Chain of Thought
 
 tests:
   - description: "Check syntax of simple query"
