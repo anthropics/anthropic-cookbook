@@ -1,0 +1,93 @@
+providers:
+  - id: anthropic:messages:claude-3-haiku-20240307
+    label: "3 Haiku"
+    config:
+      max_tokens: 4096
+      temperature: 0
+  - id: anthropic:messages:claude-3-5-sonnet-20240620
+    label: "3.5 Sonnet"
+    config:
+      max_tokens: 4096
+      temperature: 0
+
+prompts: 
+  - id: prompts.py:generate_prompt
+    label: Basic
+  - id: prompts.py:generate_prompt_with_examples
+    label: Few-Shot Examples
+  - id: prompts.py:generate_prompt_with_cot
+    label: Chain of Thought & Few-Shot Examples
+  - id: prompts.py:generate_prompt_with_rag
+    label: RAG, Few-Shot Examples, & Chain of Thought
+
+tests:
+  - description: "Check syntax of simple query"
+    vars:
+      user_query: "What are the names of all employees in the Engineering department?"
+    assert:
+      - type: contains
+        value: "<sql>"
+      - type: contains
+        value: "</sql>"
+      - type: python
+        value: file://tests/test_simple_query.py
+
+  - description: "Validate count of employees in Engineering department"
+    vars:
+      user_query: "How many employees are in the Engineering department?"
+    assert:
+      - type: contains
+        value: "<sql>"
+      - type: contains
+        value: "</sql>"
+      - type: python
+        value: file://tests/test_employee_count.py
+
+  - description: "Check specific employee details in Engineering department"
+    vars:
+      user_query: "Give me the name, age, and salary of the oldest employee in the Engineering department."
+    assert:
+      - type: contains
+        value: "<sql>"
+      - type: contains
+        value: "</sql>"
+      - type: python
+        value: file://tests/test_employee_details.py
+
+  - description: "Find the average salary of employees in departments located in 'New York', but only for departments with more than 5 employees"
+    vars:
+      user_query: "What's the average salary for employees in New York-based departments that have more than 5 staff members?"
+    assert:
+      - type: python
+        value: file://tests/test_average_salary.py
+
+  - description: "Find employees who earn more than their department's average salary, along with the percentage difference"
+    vars:
+      user_query: "Which employees earn above their department's average salary, and by what percentage?"
+    assert:
+      - type: python
+        value: file://tests/test_above_average_salary.py
+
+  - description: "Complex hierarchical query with multiple aggregations"
+    vars:
+      user_query: "For each department, show the name of the highest paid employee, their salary, and the percentage difference between their salary and the average salary of the next 3 highest paid employees in that department"
+    assert:
+      - type: contains
+        value: "PARTITION BY"
+      - type: contains
+        value: "AVG"
+      - type: python
+        value: file://tests/test_hierarchical_query.py
+
+  - description: "Department budget allocation analysis"
+    vars:
+      user_query: "Analyze the budget allocation across departments. Calculate the percentage of total salary budget each department consumes. Then, for each department, show the top 3 highest-paid employees and what percentage of the department's budget their salaries represent. Finally, calculate a 'budget efficiency' score for each department, defined as the department's percentage of total employees divided by its percentage of total salary budget."
+    assert:
+      - type: contains
+        value: "WITH"
+      - type: contains
+        value: "ROW_NUMBER()"
+      - type: contains
+        value: "PARTITION BY"
+      - type: python
+        value: file://tests/test_budget_allocation.py

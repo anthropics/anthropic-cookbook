@@ -1,0 +1,1241 @@
+user_query,[3 Haiku] prompts.py:generate_prompt,[3 Haiku] prompts.py:generate_prompt_with_examples,[3 Haiku] prompts.py:generate_prompt_with_cot,[3 Haiku] prompts.py:generate_prompt_with_rag,[3 Haiku] prompts.py:generate_prompt_with_self_improvement,[3.5 Sonnet] prompts.py:generate_prompt,[3.5 Sonnet] prompts.py:generate_prompt_with_examples,[3.5 Sonnet] prompts.py:generate_prompt_with_cot,[3.5 Sonnet] prompts.py:generate_prompt_with_rag,[3.5 Sonnet] prompts.py:generate_prompt_with_self_improvement
+What's the average salary for employees in New York-based departments that have more than 5 staff members?,"[PASS] (1.00)
+
+Here is the SQL query for the given natural language query:
+
+<sql>
+SELECT AVG(e.salary) AS average_salary
+FROM employees e
+JOIN departments d ON e.department_id = d.id
+WHERE d.location = 'New York'
+GROUP BY d.id
+HAVING COUNT(e.id) > 5;
+</sql>
+
+Pass Reason: All assertions passed","[PASS] (1.00)
+
+Here is the SQL query for the given natural language query:
+
+<sql>
+SELECT AVG(e.salary) AS avg_salary
+FROM employees e
+JOIN departments d ON e.department_id = d.id
+WHERE d.location = 'New York'
+GROUP BY d.id
+HAVING COUNT(e.id) > 5;
+</sql>
+
+Pass Reason: All assertions passed","[PASS] (1.00)
+
+<thought_process>
+1. We need to join the employees and departments tables to get the department information for each employee.
+2. We'll filter for departments located in New York.
+3. We'll group the employees by department and count the number of employees per department.
+4. We'll filter for departments that have more than 5 employees.
+5. Finally, we'll calculate the average salary for the filtered employees.
+</thought_process>
+
+<sql>
+SELECT AVG(e.salary) AS avg_salary
+FROM employees e
+JOIN departments d ON e.department_id = d.id
+WHERE d.location = 'New York'
+GROUP BY d.id
+HAVING COUNT(e.id) > 5;
+</sql>
+
+Pass Reason: All assertions passed","[PASS] (1.00)
+
+   <thought_process>
+To approach this natural language query, I will break it down into the following steps:
+
+1. Identify the relevant tables and columns needed to answer the query.
+- The relevant tables are 'employees' and 'departments'.
+- The relevant columns are 'salary' and 'department_id' from the 'employees' table, and 'location' and 'id' from the 'departments' table.
+
+2. Filter the data to only include employees from departments located in New York.
+- This can be done by joining the 'employees' and 'departments' tables on the 'department_id' and 'id' columns, and then filtering the 'location' column to only include 'New York'.
+
+3. Group the data by department and count the number of employees in each department.
+- This can be done using a GROUP BY clause on the 'department_id' column.
+
+4. Filter the data to only include departments with more than 5 employees.
+- This can be done using a HAVING clause to filter the result of the GROUP BY operation.
+
+5. Calculate the average salary for the remaining employees.
+- This can be done using an AVG() aggregate function on the 'salary' column.
+</thought_process>
+
+<sql>
+SELECT AVG(e.salary) AS average_salary
+FROM employees e
+JOIN departments d ON e.department_id = d.id
+WHERE d.location = 'New York'
+GROUP BY e.department_id
+HAVING COUNT(e.id) > 5;
+</sql>
+
+   Pass Reason: All assertions passed","[PASS] (1.00)
+
+    <attempt1>
+<thought_process>
+To get the average salary for employees in New York-based departments that have more than 5 staff members, we need to:
+1. Join the employees and departments tables to get the department location.
+2. Filter for departments located in New York.
+3. Group by department and count the number of employees per department.
+4. Filter for departments with more than 5 employees.
+5. Calculate the average salary for the filtered employees.
+</thought_process>
+<sql>
+SELECT AVG(e.salary) AS avg_salary
+FROM employees e
+JOIN departments d ON e.department_id = d.id
+WHERE d.location = 'New York'
+GROUP BY d.id
+HAVING COUNT(e.id) > 5;
+</sql>
+<error>
+This query might fail if there are no departments located in New York with more than 5 employees. In that case, the HAVING clause would not return any results, and the AVG() function would not have any values to calculate the average.
+</error>
+</attempt1>
+
+<attempt2>
+<thought_process>
+To handle the case where there might not be any departments in New York with more than 5 employees, we can use a subquery to first get the list of department IDs that meet the criteria, and then use that in the main query.
+</thought_process>
+<sql>
+SELECT AVG(e.salary) AS avg_salary
+FROM employees e
+WHERE e.department_id IN (
+SELECT d.id
+FROM departments d
+WHERE d.location = 'New York'
+GROUP BY d.id
+HAVING COUNT(e.id) > 5
+);
+</sql>
+<error>
+This query might still fail if there are no employees in the departments that meet the criteria. The subquery would return a list of department IDs, but the main query would not have any rows to calculate the average salary.
+</error>
+</attempt2>
+
+<attempt3>
+<thought_process>
+To ensure that the query returns a result even if there are no employees in the eligible departments, we can use a COALESCE() function to handle the case where the average salary is NULL.
+</thought_process>
+<sql>
+SELECT COALESCE(AVG(e.salary), 0) AS avg_salary
+FROM employees e
+WHERE e.department_id IN (
+SELECT d.id
+FROM departments d
+WHERE d.location = 'New York'
+GROUP BY d.id
+HAVING COUNT(e.id) > 5
+);
+</sql>
+<error>
+This query should work as expected and handle the edge cases.
+</error>
+</attempt3>
+
+<final_sql>
+SELECT COALESCE(AVG(e.salary), 0) AS avg_salary
+FROM employees e
+WHERE e.department_id IN (
+SELECT d.id
+FROM departments d
+WHERE d.location = 'New York'
+GROUP BY d.id
+HAVING COUNT(e.id) > 5
+);
+</final_sql>
+
+    Pass Reason: All assertions passed","[PASS] (1.00)
+
+  Here's the SQL query to answer that question:
+
+<sql>
+SELECT AVG(e.salary) as average_salary
+FROM employees e
+JOIN departments d ON e.department_id = d.id
+WHERE d.location = 'New York'
+AND d.id IN (
+SELECT department_id
+FROM employees
+GROUP BY department_id
+HAVING COUNT(*) > 5
+)
+</sql>
+
+  Pass Reason: All assertions passed","[PASS] (1.00)
+
+  Here's the SQL query to answer the given natural language question:
+
+<sql>
+SELECT AVG(e.salary)
+FROM employees e
+JOIN departments d ON e.department_id = d.id
+WHERE d.location = 'New York'
+AND d.id IN (
+SELECT department_id
+FROM employees
+GROUP BY department_id
+HAVING COUNT(*) > 5
+);
+</sql>
+
+  Pass Reason: All assertions passed","[PASS] (1.00)
+
+  <thought_process>
+1. We need to join the employees and departments tables to get department information.
+2. We need to filter for departments located in New York.
+3. We need to count the number of employees in each department and filter for those with more than 5.
+4. We need to calculate the average salary for the employees in these departments.
+5. We'll use a subquery to first identify the departments that meet our criteria.
+6. Then we'll use this subquery to filter the employees and calculate their average salary.
+</thought_process>
+
+<sql>
+SELECT AVG(e.salary)
+FROM employees e
+JOIN (
+SELECT d.id
+FROM departments d
+JOIN employees e ON d.id = e.department_id
+WHERE d.location = 'New York'
+GROUP BY d.id
+HAVING COUNT(*) > 5
+) qualified_depts ON e.department_id = qualified_depts.id;
+</sql>
+
+  Pass Reason: All assertions passed","[PASS] (1.00)
+
+  <thought_process>
+To answer this query, we need to follow these steps:
+1. Join the employees and departments tables to get department locations.
+2. Filter for departments located in New York.
+3. Count the number of employees in each department and filter for those with more than 5 staff members.
+4. Calculate the average salary for the remaining employees.
+
+We'll need to use:
+- JOIN to connect employees and departments tables
+- WHERE clause to filter for New York departments
+- GROUP BY to count employees per department
+- HAVING clause to filter departments with more than 5 employees
+- AVG function to calculate the average salary
+
+We'll use a subquery to first identify the eligible departments, then calculate the average salary for employees in those departments.
+</thought_process>
+
+<sql>
+SELECT AVG(e.salary) as average_salary
+FROM employees e
+JOIN (
+SELECT d.id, COUNT(e.id) as employee_count
+FROM departments d
+JOIN employees e ON d.id = e.department_id
+WHERE d.location = 'New York'
+GROUP BY d.id
+HAVING employee_count > 5
+) eligible_depts ON e.department_id = eligible_depts.id
+</sql>
+
+  Pass Reason: All assertions passed","[PASS] (1.00)
+
+  <attempt1>
+<thought_process>
+To solve this query, we need to:
+1. Join the employees and departments tables
+2. Filter for New York-based departments
+3. Group by department to count employees
+4. Filter for departments with more than 5 employees
+5. Calculate the average salary for the remaining employees
+</thought_process>
+<sql>
+SELECT AVG(e.salary) as avg_salary
+FROM employees e
+JOIN departments d ON e.department_id = d.id
+WHERE d.location = 'New York'
+AND d.id IN (
+SELECT department_id
+FROM employees
+GROUP BY department_id
+HAVING COUNT(*) > 5
+)
+</sql>
+<error>
+This query might fail because we're assuming the location column in the departments table contains the exact string 'New York'. It might be stored differently, like 'NY' or 'New York City'.
+</error>
+</attempt1>
+
+<attempt2>
+<thought_process>
+Let's modify the query to be more flexible with the location matching:
+1. Use LIKE instead of exact matching for location
+2. Add a check for NULL values in salary to avoid skewing the average
+</thought_process>
+<sql>
+SELECT AVG(e.salary) as avg_salary
+FROM employees e
+JOIN departments d ON e.department_id = d.id
+WHERE d.location LIKE '%New York%'
+AND e.salary IS NOT NULL
+AND d.id IN (
+SELECT department_id
+FROM employees
+GROUP BY department_id
+HAVING COUNT(*) > 5
+)
+</sql>
+<error>
+This query should work, but it might be inefficient due to the subquery. We can improve it by using a HAVING clause instead.
+</error>
+</attempt2>
+
+<attempt3>
+<thought_process>
+Let's optimize the query by:
+1. Using a HAVING clause instead of a subquery
+2. Adding an alias for the departments table to improve readability
+</thought_process>
+<sql>
+SELECT AVG(e.salary) as avg_salary
+FROM employees e
+JOIN departments d ON e.department_id = d.id
+WHERE d.location LIKE '%New York%'
+AND e.salary IS NOT NULL
+GROUP BY d.id
+HAVING COUNT(DISTINCT e.id) > 5
+</sql>
+</attempt3>
+
+<final_sql>
+SELECT AVG(e.salary) as avg_salary
+FROM employees e
+JOIN departments d ON e.department_id = d.id
+WHERE d.location LIKE '%New York%'
+AND e.salary IS NOT NULL
+GROUP BY d.id
+HAVING COUNT(DISTINCT e.id) > 5
+</final_sql>
+
+  Pass Reason: All assertions passed"
+What's the percentage increase in average salary for each department from 2022 to 2023?,"[FAIL] (0.00)
+
+    SQL failed or produced invalid results.
+---
+Here is the SQL query to find the percentage increase in average salary for each department from 2022 to 2023:
+
+<sql>
+WITH dept_2022 AS (
+SELECT
+  d.name AS department_name,
+  AVG(e.salary) AS avg_salary_2022
+FROM employees e
+JOIN departments d ON e.department_id = d.id
+WHERE DATE_PART('year', e.hire_date) = 2022
+GROUP BY d.name
+),
+dept_2023 AS (
+SELECT
+  d.name AS department_name,
+  AVG(e.salary) AS avg_salary_2023
+FROM employees e
+JOIN departments d ON e.department_id = d.id
+WHERE DATE_PART('year', e.hire_date) = 2023
+GROUP BY d.name
+)
+SELECT
+d2023.department_name,
+ROUND(100.0 * (d2023.avg_salary_2023 - d2022.avg_salary_2022) / d2022.avg_salary_2022, 2) AS pct_increase
+FROM dept_2023 d2023
+JOIN dept_2022 d2022 ON d2023.department_name = d2022.department_name;
+</sql>
+
+The key steps are:
+
+1. Use a CTE (WITH clause) to calculate the average salary for each department in 2022 and 2023 separately.
+2. Join the two CTEs to compare the average salaries between the two years.
+3. Calculate the percentage increase using the formula: (2023 average - 2022 average) / 2022 average * 100.
+4. Round the percentage increase to 2 decimal places.
+
+    Fail Reason: SQL failed or produced invalid results.","[PASS] (1.00)
+
+    Here is the SQL query to find the percentage increase in average salary for each department from 2022 to 2023:
+
+<sql>
+WITH dept_2022 AS (
+SELECT d.name AS department, AVG(e.salary) AS avg_salary_2022
+FROM employees e
+JOIN departments d ON e.department_id = d.id
+WHERE e.hire_date < '2023-01-01'
+GROUP BY d.name
+),
+dept_2023 AS (
+SELECT d.name AS department, AVG(e.salary) AS avg_salary_2023
+FROM employees e
+JOIN departments d ON e.department_id = d.id
+WHERE e.hire_date >= '2023-01-01'
+GROUP BY d.name
+)
+SELECT
+d2022.department,
+ROUND(100.0 * (d2023.avg_salary_2023 - d2022.avg_salary_2022) / d2022.avg_salary_2022, 2) AS pct_increase
+FROM dept_2022 d2022
+JOIN dept_2023 d2023 ON d2022.department = d2023.department;
+</sql>
+
+The key steps are:
+
+1. Use a CTE (WITH clause) to calculate the average salary for each department in 2022 and 2023 separately.
+2. Join the two CTEs to compare the average salaries and calculate the percentage increase.
+3. Use ROUND() to format the percentage increase to 2 decimal places.
+
+    Pass Reason: All assertions passed","[FAIL] (0.00)
+
+    SQL failed or produced invalid results.
+---
+<thought_process>
+1. We need to calculate the average salary for each department in 2022 and 2023 separately.
+2. To do this, we'll need to group the employees by department and filter by the year of the hire_date.
+3. We can use the YEAR function to extract the year from the hire_date column.
+4. Then, we'll calculate the percentage increase in average salary for each department by comparing the 2022 and 2023 averages.
+5. The final query will involve multiple steps:
+ a. Calculate the 2022 average salary for each department
+ b. Calculate the 2023 average salary for each department
+ c. Calculate the percentage increase for each department
+</thought_process>
+
+<sql>
+WITH dept_2022 AS (
+SELECT
+  d.name AS department_name,
+  AVG(e.salary) AS avg_salary_2022
+FROM employees e
+JOIN departments d ON e.department_id = d.id
+WHERE YEAR(e.hire_date) = 2022
+GROUP BY d.name
+),
+dept_2023 AS (
+SELECT
+  d.name AS department_name,
+  AVG(e.salary) AS avg_salary_2023
+FROM employees e
+JOIN departments d ON e.department_id = d.id
+WHERE YEAR(e.hire_date) = 2023
+GROUP BY d.name
+)
+SELECT
+dept_2023.department_name,
+ROUND(100.0 * (dept_2023.avg_salary_2023 - dept_2022.avg_salary_2022) / dept_2022.avg_salary_2022, 2) AS percentage_increase
+FROM dept_2023
+JOIN dept_2022 ON dept_2023.department_name = dept_2022.department_name;
+</sql>
+
+    Fail Reason: SQL failed or produced invalid results.","[FAIL] (0.00)
+
+    SQL failed or produced invalid results.
+---
+<thought_process>
+To calculate the percentage increase in average salary for each department from 2022 to 2023, I will need to follow these steps:
+
+1. Calculate the average salary for each department in 2022 and 2023 separately.
+2. Calculate the percentage increase for each department by comparing the 2022 and 2023 average salaries.
+
+To do this, I will need to join the `employees` and `departments` tables to get the department information, and then group the data by department and year to calculate the average salaries. I will also need to use a subquery or a common table expression (CTE) to calculate the 2022 and 2023 average salaries separately, and then join them to calculate the percentage increase.
+</thought_process>
+
+<sql>
+WITH avg_salaries AS (
+SELECT
+  d.name AS department_name,
+  STRFTIME('%Y', e.hire_date) AS year,
+  AVG(e.salary) AS avg_salary
+FROM employees e
+JOIN departments d ON e.department_id = d.id
+GROUP BY d.name, STRFTIME('%Y', e.hire_date)
+)
+SELECT
+department_name,
+ROUND(100.0 * (a2023.avg_salary - a2022.avg_salary) / a2022.avg_salary, 2) AS percentage_increase
+FROM
+(SELECT * FROM avg_salaries WHERE year = '2023') a2023
+JOIN (SELECT * FROM avg_salaries WHERE year = '2022') a2022
+  ON a2023.department_name = a2022.department_name
+ORDER BY percentage_increase DESC;
+</sql>
+
+    Fail Reason: SQL failed or produced invalid results.","[FAIL] (0.00)
+
+  SQL failed or produced invalid results.
+---
+<attempt1>
+<thought_process>
+To get the percentage increase in average salary for each department from 2022 to 2023, I will need to:
+1. Calculate the average salary for each department in 2022 and 2023.
+2. Calculate the percentage increase between the two years for each department.
+To do this, I will need to join the employees and departments tables, group by the department name, and calculate the average salary for each year.
+</thought_process>
+<sql>
+SELECT
+d.name AS department_name,
+ROUND(
+    (
+        (AVG(CASE WHEN YEAR(e.hire_date) = 2023 THEN e.salary END) -
+         AVG(CASE WHEN YEAR(e.hire_date) = 2022 THEN e.salary END)
+        ) /
+        AVG(CASE WHEN YEAR(e.hire_date) = 2022 THEN e.salary END)
+    ) * 100, 2
+) AS percentage_increase
+FROM
+employees e
+JOIN departments d ON e.department_id = d.id
+GROUP BY
+d.name;
+</sql>
+<error>
+This query might fail if there are no employees hired in 2022 or 2023 for a particular department, as the AVG() function will return NULL in that case, and the percentage calculation will not work.
+</error>
+</attempt1>
+
+<attempt2>
+<thought_process>
+To handle the case where there might be no employees hired in a particular year for a department, I can use a COALESCE() function to replace the NULL values with 0, and then calculate the percentage increase.
+</thought_process>
+<sql>
+SELECT
+d.name AS department_name,
+ROUND(
+    (
+        (
+            COALESCE(AVG(CASE WHEN YEAR(e.hire_date) = 2023 THEN e.salary END), 0) -
+            COALESCE(AVG(CASE WHEN YEAR(e.hire_date) = 2022 THEN e.salary END), 0)
+        ) /
+        COALESCE(AVG(CASE WHEN YEAR(e.hire_date) = 2022 THEN e.salary END), 0)
+    ) * 100, 2
+) AS percentage_increase
+FROM
+employees e
+JOIN departments d ON e.department_id = d.id
+GROUP BY
+d.name;
+</sql>
+<error>
+This query should work, but it might not provide accurate results if there are no employees in a department for either 2022 or 2023. In that case, the percentage increase would be calculated as 0%, which might not be the desired behavior.
+</error>
+</attempt2>
+
+<attempt3>
+<thought_process>
+To handle the case where there are no employees in a department for either 2022 or 2023, I can use a subquery to first calculate the average salary for each department in 2022 and 2023, and then join those results to calculate the percentage increase.
+</thought_process>
+<sql>
+WITH salary_by_year AS (
+SELECT
+    e.department_id,
+    YEAR(e.hire_date) AS year,
+    AVG(e.salary) AS avg_salary
+FROM
+    employees e
+GROUP BY
+    e.department_id, YEAR(e.hire_date)
+)
+SELECT
+d.name AS department_name,
+ROUND(
+    (
+        (COALESCE(sbyy2023.avg_salary, 0) - COALESCE(sbyy2022.avg_salary, 0)) /
+        COALESCE(sbyy2022.avg_salary, 1)
+    ) * 100, 2
+) AS percentage_increase
+FROM
+departments d
+LEFT JOIN salary_by_year sbyy2022 ON d.id = sbyy2022.department_id AND sbyy2022.year = 2022
+LEFT JOIN salary_by_year sbyy2023 ON d.id = sbyy2023.department_id AND sbyy2023.year = 2023
+GROUP BY
+d.name;
+</sql>
+<error>
+This query should work and handle the case where there are no employees in a department for either 2022 or 2023. The COALESCE() function is used to replace any NULL values with 0 or 1 (for the denominator) to avoid division by zero errors.
+</error>
+</attempt3>
+
+<final_sql>
+WITH salary_by_year AS (
+SELECT
+    e.department_id,
+    YEAR(e.hire_date) AS year,
+    AVG(e.salary) AS avg_salary
+FROM
+    employees e
+GROUP BY
+    e.department_id, YEAR(e.hire_date)
+)
+SELECT
+d.name AS department_name,
+ROUND(
+    (
+        (COALESCE(sbyy2023.avg_salary, 0) - COALESCE(sbyy2022.avg_salary, 0)) /
+        COALESCE(sbyy2022.avg_salary, 1)
+    ) * 100, 2
+) AS percentage_increase
+FROM
+departments d
+LEFT JOIN salary_by_year sbyy2022 ON d.id = sbyy2022.department_id AND sbyy2022.year = 2022
+LEFT JOIN salary_by_year sbyy2023 ON d.id = sbyy2023.department_id AND sbyy2023.year = 2023
+GROUP BY
+d.name;
+</final_sql>
+
+  Fail Reason: SQL failed or produced invalid results.","[PASS] (1.00)
+
+    <sql>
+WITH avg_salaries AS (
+SELECT 
+  department_id,
+  AVG(CASE WHEN strftime('%Y', hire_date) = '2022' THEN salary END) AS avg_salary_2022,
+  AVG(CASE WHEN strftime('%Y', hire_date) = '2023' THEN salary END) AS avg_salary_2023
+FROM employees
+WHERE strftime('%Y', hire_date) IN ('2022', '2023')
+GROUP BY department_id
+)
+SELECT 
+d.name AS department_name,
+ROUND((avg_salary_2023 - avg_salary_2022) / avg_salary_2022 * 100, 2) AS percentage_increase
+FROM avg_salaries AS a
+JOIN departments AS d ON a.department_id = d.id
+WHERE avg_salary_2022 IS NOT NULL AND avg_salary_2023 IS NOT NULL
+ORDER BY percentage_increase DESC
+</sql>
+
+    Pass Reason: All assertions passed","[PASS] (1.00)
+
+    <sql>
+WITH avg_salaries AS (
+SELECT 
+  d.name AS department,
+  AVG(CASE WHEN strftime('%Y', e.hire_date) = '2022' THEN e.salary END) AS avg_salary_2022,
+  AVG(CASE WHEN strftime('%Y', e.hire_date) = '2023' THEN e.salary END) AS avg_salary_2023
+FROM 
+  employees e
+JOIN 
+  departments d ON e.department_id = d.id
+GROUP BY 
+  d.name
+)
+SELECT 
+department,
+ROUND(((avg_salary_2023 - avg_salary_2022) / avg_salary_2022) * 100, 2) AS percentage_increase
+FROM 
+avg_salaries
+WHERE 
+avg_salary_2022 IS NOT NULL AND avg_salary_2023 IS NOT NULL;
+</sql>
+
+    Pass Reason: All assertions passed","[FAIL] (0.00)
+
+    SQL failed or produced invalid results.
+---
+<thought_process>
+1. We need to work with both the employees and departments tables.
+2. We need to calculate the average salary for each department for both 2022 and 2023.
+3. We'll use the YEAR function to filter the hire_date for 2022 and 2023.
+4. We'll use subqueries to calculate the average salaries for each year.
+5. We'll join these subqueries with the departments table.
+6. To calculate the percentage increase, we'll use the formula: (2023_avg - 2022_avg) / 2022_avg * 100
+7. We'll use COALESCE to handle potential NULL values in case a department has no employees in either year.
+8. We'll round the result to 2 decimal places for readability.
+</thought_process>
+
+<sql>
+WITH avg_2022 AS (
+SELECT department_id, AVG(salary) AS avg_salary_2022
+FROM employees
+WHERE YEAR(hire_date) = 2022
+GROUP BY department_id
+),
+avg_2023 AS (
+SELECT department_id, AVG(salary) AS avg_salary_2023
+FROM employees
+WHERE YEAR(hire_date) = 2023
+GROUP BY department_id
+)
+SELECT 
+d.name AS department_name,
+ROUND(
+  COALESCE(
+    (avg_2023.avg_salary_2023 - avg_2022.avg_salary_2022) / avg_2022.avg_salary_2022 * 100,
+    0
+  ),
+  2
+) AS percentage_increase
+FROM departments d
+LEFT JOIN avg_2022 ON d.id = avg_2022.department_id
+LEFT JOIN avg_2023 ON d.id = avg_2023.department_id
+ORDER BY percentage_increase DESC;
+</sql>
+
+    Fail Reason: SQL failed or produced invalid results.","[PASS] (1.00)
+
+    <thought_process>
+To solve this query, we need to:
+1. Calculate the average salary for each department for both 2022 and 2023.
+2. Compare these averages to find the percentage increase.
+3. Group the results by department.
+
+Steps:
+1. Join the employees and departments tables to get department names.
+2. Use strftime to extract the year from hire_date.
+3. Calculate average salaries for 2022 and 2023 separately using subqueries.
+4. Calculate the percentage increase using the formula: (2023_avg - 2022_avg) / 2022_avg * 100
+5. Group by department name and order the results.
+
+Note: We'll need to use subqueries because SQLite doesn't support window functions.
+</thought_process>
+
+<sql>
+WITH avg_2022 AS (
+SELECT d.name AS department, AVG(e.salary) AS avg_salary_2022
+FROM employees e
+JOIN departments d ON e.department_id = d.id
+WHERE strftime('%Y', e.hire_date) = '2022'
+GROUP BY d.name
+),
+avg_2023 AS (
+SELECT d.name AS department, AVG(e.salary) AS avg_salary_2023
+FROM employees e
+JOIN departments d ON e.department_id = d.id
+WHERE strftime('%Y', e.hire_date) = '2023'
+GROUP BY d.name
+)
+SELECT 
+avg_2022.department,
+ROUND(((avg_2023.avg_salary_2023 - avg_2022.avg_salary_2022) / avg_2022.avg_salary_2022 * 100), 2) AS percentage_increase
+FROM avg_2022
+JOIN avg_2023 ON avg_2022.department = avg_2023.department
+ORDER BY percentage_increase DESC;
+</sql>
+
+    Pass Reason: All assertions passed","[FAIL] (0.00)
+
+    SQL failed or produced invalid results.
+---
+<attempt1>
+<thought_process>
+To calculate the percentage increase in average salary for each department from 2022 to 2023, we need to:
+1. Calculate the average salary for each department in 2022 and 2023
+2. Compare these averages and calculate the percentage increase
+3. We'll need to join the employees and departments tables
+4. We'll use the EXTRACT function to get the year from the hire_date
+</thought_process>
+<sql>
+WITH avg_salaries AS (
+SELECT 
+  d.name AS department_name,
+  EXTRACT(YEAR FROM e.hire_date) AS year,
+  AVG(e.salary) AS avg_salary
+FROM 
+  employees e
+  JOIN departments d ON e.department_id = d.id
+WHERE 
+  EXTRACT(YEAR FROM e.hire_date) IN (2022, 2023)
+GROUP BY 
+  d.name, EXTRACT(YEAR FROM e.hire_date)
+)
+SELECT 
+a1.department_name,
+((a2.avg_salary - a1.avg_salary) / a1.avg_salary) * 100 AS percentage_increase
+FROM 
+avg_salaries a1
+JOIN avg_salaries a2 ON a1.department_name = a2.department_name
+WHERE 
+a1.year = 2022 AND a2.year = 2023;
+</sql>
+<error>
+This query might fail if there are departments that don't have employees hired in both 2022 and 2023. It will exclude those departments from the results.
+</error>
+</attempt1>
+
+<attempt2>
+<thought_process>
+To address the potential issue of missing departments, we can use LEFT JOINs and COALESCE to include all departments, even if they don't have data for both years. We'll also handle the case where the 2022 average salary is 0 or NULL.
+</thought_process>
+<sql>
+WITH avg_salaries AS (
+SELECT 
+  d.name AS department_name,
+  EXTRACT(YEAR FROM e.hire_date) AS year,
+  AVG(e.salary) AS avg_salary
+FROM 
+  departments d
+  LEFT JOIN employees e ON e.department_id = d.id AND EXTRACT(YEAR FROM e.hire_date) IN (2022, 2023)
+GROUP BY 
+  d.name, EXTRACT(YEAR FROM e.hire_date)
+)
+SELECT 
+d.name AS department_name,
+CASE 
+  WHEN COALESCE(a1.avg_salary, 0) = 0 THEN NULL
+  ELSE ((COALESCE(a2.avg_salary, 0) - COALESCE(a1.avg_salary, 0)) / COALESCE(a1.avg_salary, 0)) * 100 
+END AS percentage_increase
+FROM 
+departments d
+LEFT JOIN avg_salaries a1 ON d.name = a1.department_name AND a1.year = 2022
+LEFT JOIN avg_salaries a2 ON d.name = a2.department_name AND a2.year = 2023;
+</sql>
+<error>
+This query should handle most cases, but it might still produce unexpected results if there's no data for either 2022 or 2023 for some departments.
+</error>
+</attempt2>
+
+<attempt3>
+<thought_process>
+To provide more informative results, let's add columns to show the average salaries for both years and include a status column to indicate if there's missing data for any year.
+</thought_process>
+<sql>
+WITH avg_salaries AS (
+SELECT 
+  d.name AS department_name,
+  EXTRACT(YEAR FROM e.hire_date) AS year,
+  AVG(e.salary) AS avg_salary
+FROM 
+  departments d
+  LEFT JOIN employees e ON e.department_id = d.id AND EXTRACT(YEAR FROM e.hire_date) IN (2022, 2023)
+GROUP BY 
+  d.name, EXTRACT(YEAR FROM e.hire_date)
+)
+SELECT 
+d.name AS department_name,
+COALESCE(a1.avg_salary, 0) AS avg_salary_2022,
+COALESCE(a2.avg_salary, 0) AS avg_salary_2023,
+CASE 
+  WHEN a1.avg_salary IS NULL AND a2.avg_salary IS NULL THEN 'No data for both years'
+  WHEN a1.avg_salary IS NULL THEN 'No data for 2022'
+  WHEN a2.avg_salary IS NULL THEN 'No data for 2023'
+  WHEN a1.avg_salary = 0 THEN 'Cannot calculate (2022 avg salary is 0)'
+  ELSE 'Complete data'
+END AS data_status,
+CASE 
+  WHEN COALESCE(a1.avg_salary, 0) = 0 THEN NULL
+  ELSE ((COALESCE(a2.avg_salary, 0) - COALESCE(a1.avg_salary, 0)) / COALESCE(a1.avg_salary, 0)) * 100 
+END AS percentage_increase
+FROM 
+departments d
+LEFT JOIN avg_salaries a1 ON d.name = a1.department_name AND a1.year = 2022
+LEFT JOIN avg_salaries a2 ON d.name = a2.department_name AND a2.year = 2023;
+</sql>
+</attempt3>
+
+<final_sql>
+WITH avg_salaries AS (
+SELECT 
+  d.name AS department_name,
+  EXTRACT(YEAR FROM e.hire_date) AS year,
+  AVG(e.salary) AS avg_salary
+FROM 
+  departments d
+  LEFT JOIN employees e ON e.department_id = d.id AND EXTRACT(YEAR FROM e.hire_date) IN (2022, 2023)
+GROUP BY 
+  d.name, EXTRACT(YEAR FROM e.hire_date)
+)
+SELECT 
+d.name AS department_name,
+COALESCE(a1.avg_salary, 0) AS avg_salary_2022,
+COALESCE(a2.avg_salary, 0) AS avg_salary_2023,
+CASE 
+  WHEN a1.avg_salary IS NULL AND a2.avg_salary IS NULL THEN 'No data for both years'
+  WHEN a1.avg_salary IS NULL THEN 'No data for 2022'
+  WHEN a2.avg_salary IS NULL THEN 'No data for 2023'
+  WHEN a1.avg_salary = 0 THEN 'Cannot calculate (2022 avg salary is 0)'
+  ELSE 'Complete data'
+END AS data_status,
+CASE 
+  WHEN COALESCE(a1.avg_salary, 0) = 0 THEN NULL
+  ELSE ((COALESCE(a2.avg_salary, 0) - COALESCE(a1.avg_salary, 0)) / COALESCE(a1.avg_salary, 0)) * 100 
+END AS percentage_increase
+FROM 
+departments d
+LEFT JOIN avg_salaries a1 ON d.name = a1.department_name AND a1.year = 2022
+LEFT JOIN avg_salaries a2 ON d.name = a2.department_name AND a2.year = 2023;
+</final_sql>
+
+    Fail Reason: SQL failed or produced invalid results."
+"Which employees earn above their department's average salary, and by what percentage?","[PASS] (1.00)
+
+    Here is the SQL query to find the employees who earn above their department's average salary and by what percentage:
+
+<sql>
+SELECT
+e.name,
+e.salary,
+(e.salary - d.avg_salary) / d.avg_salary * 100 AS percentage_above_average
+FROM
+employees e
+JOIN (
+  SELECT
+    department_id,
+    AVG(salary) AS avg_salary
+  FROM
+    employees
+  GROUP BY
+    department_id
+) d ON e.department_id = d.department_id
+WHERE
+e.salary > d.avg_salary
+ORDER BY
+percentage_above_average DESC;
+</sql>
+
+    Pass Reason: All assertions passed","[FAIL] (0.00)
+
+    SQL failed or produced invalid results.
+---
+Here is the SQL query for the given natural language query:
+
+<sql>
+WITH dept_avg AS (
+SELECT department_id, AVG(salary) AS avg_salary
+FROM employees
+GROUP BY department_id
+)
+SELECT e.name, ROUND(100.0 * (e.salary - da.avg_salary) / da.avg_salary, 2) AS percentage_above_avg
+FROM employees e
+JOIN dept_avg da ON e.department_id = da.department_id
+WHERE e.salary > da.avg_salary
+ORDER BY percentage_above_avg DESC;
+</sql>
+
+    Fail Reason: SQL failed or produced invalid results.","[PASS] (1.00)
+
+    <thought_process>
+1. We need to join the employees and departments tables to get the department information for each employee.
+2. We'll calculate the average salary for each department using a subquery.
+3. We'll compare each employee's salary to their department's average salary.
+4. We'll calculate the percentage difference between the employee's salary and the department average.
+5. We'll filter to only include employees whose salary is above their department's average.
+6. We'll select the employee name, department name, employee salary, department average salary, and the percentage difference.
+</thought_process>
+
+<sql>
+SELECT
+e.name AS employee_name,
+d.name AS department_name,
+e.salary AS employee_salary,
+(SELECT AVG(salary) FROM employees WHERE department_id = e.department_id) AS department_avg_salary,
+ROUND(100.0 * (e.salary - (SELECT AVG(salary) FROM employees WHERE department_id = e.department_id)) / (SELECT AVG(salary) FROM employees WHERE department_id = e.department_id), 2) AS percentage_above_average
+FROM
+employees e
+JOIN departments d ON e.department_id = d.id
+WHERE
+e.salary > (SELECT AVG(salary) FROM employees WHERE department_id = e.department_id)
+ORDER BY
+percentage_above_average DESC;
+</sql>
+
+    Pass Reason: All assertions passed","[FAIL] (0.00)
+
+    SQL failed or produced invalid results.
+---
+<thought_process>
+To solve this query, I will need to follow these steps:
+
+1. Calculate the average salary for each department.
+2. Compare each employee's salary to the average salary of their department.
+3. Select the employees who earn above their department's average salary, and calculate the percentage difference.
+
+To calculate the average salary for each department, I will need to join the `employees` and `departments` tables on the `department_id` column, and then group the results by the `name` column of the `departments` table to get the average salary for each department.
+
+I can then compare each employee's salary to the average salary of their department by joining the results of the first query with the original `employees` table. This will allow me to calculate the percentage difference between the employee's salary and their department's average salary.
+</thought_process>
+
+<sql>
+WITH department_avg_salary AS (
+SELECT
+  d.name AS department_name,
+  AVG(e.salary) AS avg_salary
+FROM employees e
+JOIN departments d ON e.department_id = d.id
+GROUP BY d.name
+)
+SELECT
+e.name,
+e.salary,
+d.name AS department_name,
+das.avg_salary,
+ROUND(100 * (e.salary - das.avg_salary) / das.avg_salary, 2) AS percentage_above_average
+FROM employees e
+JOIN departments d ON e.department_id = d.id
+JOIN department_avg_salary das ON d.name = das.department_name
+WHERE e.salary > das.avg_salary
+ORDER BY percentage_above_average DESC;
+</sql>
+
+    Fail Reason: SQL failed or produced invalid results.","[FAIL] (0.00)
+
+    SQL failed or produced invalid results.
+---
+<attempt1>
+<thought_process>
+To find the employees who earn above their department's average salary, we need to:
+1. Calculate the average salary for each department.
+2. Compare each employee's salary to the average salary of their department.
+3. Return the employees who earn above their department's average salary, along with the percentage difference.
+</thought_process>
+<sql>
+SELECT e.name, e.salary, d.name AS department_name, 
+     (e.salary - (SELECT AVG(salary) FROM employees WHERE department_id = e.department_id)) / (SELECT AVG(salary) FROM employees WHERE department_id = e.department_id) * 100 AS percentage_above_average
+FROM employees e
+JOIN departments d ON e.department_id = d.id
+WHERE e.salary > (SELECT AVG(salary) FROM employees WHERE department_id = e.department_id)
+</sql>
+<error>
+This query might fail if there are no employees in a department, as the subquery to calculate the department's average salary would return no results, causing the main query to fail.
+</error>
+</attempt1>
+
+<attempt2>
+<thought_process>
+To handle the case where a department might have no employees, we can use a LEFT JOIN to ensure all departments are included, and then filter the results to only include employees who earn above their department's average.
+</thought_process>
+<sql>
+SELECT e.name, e.salary, d.name AS department_name, 
+     (e.salary - d_avg.avg_salary) / d_avg.avg_salary * 100 AS percentage_above_average
+FROM employees e
+LEFT JOIN departments d ON e.department_id = d.id
+LEFT JOIN (
+SELECT department_id, AVG(salary) AS avg_salary
+FROM employees
+GROUP BY department_id
+) d_avg ON e.department_id = d_avg.department_id
+WHERE e.salary > d_avg.avg_salary
+</sql>
+<error>
+This query should work for the given scenario, as it handles the case where a department might have no employees, and it calculates the percentage above the department's average salary correctly.
+</error>
+</attempt2>
+
+<final_sql>
+SELECT e.name, e.salary, d.name AS department_name, 
+     (e.salary - d_avg.avg_salary) / d_avg.avg_salary * 100 AS percentage_above_average
+FROM employees e
+LEFT JOIN departments d ON e.department_id = d.id
+LEFT JOIN (
+SELECT department_id, AVG(salary) AS avg_salary
+FROM employees
+GROUP BY department_id
+) d_avg ON e.department_id = d_avg.department_id
+WHERE e.salary > d_avg.avg_salary
+</final_sql>
+
+    Fail Reason: SQL failed or produced invalid results.","[FAIL] (0.00)
+
+    SQL failed or produced invalid results.
+---
+<sql>
+WITH dept_avgs AS (
+SELECT department_id, AVG(salary) AS avg_salary
+FROM employees
+GROUP BY department_id
+)
+SELECT 
+e.name,
+e.salary,
+d.name AS department,
+da.avg_salary AS dept_avg_salary,
+ROUND((e.salary - da.avg_salary) / da.avg_salary * 100, 2) AS percentage_above_avg
+FROM 
+employees e
+JOIN 
+departments d ON e.department_id = d.id
+JOIN 
+dept_avgs da ON e.department_id = da.department_id
+WHERE 
+e.salary > da.avg_salary
+ORDER BY 
+percentage_above_avg DESC
+</sql>
+
+    Fail Reason: SQL failed or produced invalid results.","[FAIL] (0.00)
+
+  SQL failed or produced invalid results.
+---
+<sql>
+SELECT e.name,
+   e.salary,
+   d.name AS department,
+   ROUND((e.salary - dept_avg.avg_salary) / dept_avg.avg_salary * 100, 2) AS percentage_above_avg
+FROM employees e
+JOIN departments d ON e.department_id = d.id
+JOIN (
+SELECT department_id, AVG(salary) AS avg_salary
+FROM employees
+GROUP BY department_id
+) dept_avg ON e.department_id = dept_avg.department_id
+WHERE e.salary > dept_avg.avg_salary
+ORDER BY percentage_above_avg DESC;
+</sql>
+
+  Fail Reason: SQL failed or produced invalid results.","[PASS] (1.00)
+
+    <thought_process>
+1. We need to work with both the employees and departments tables.
+2. We need to calculate the average salary for each department.
+3. We need to compare each employee's salary with their department's average salary.
+4. We need to calculate the percentage difference between the employee's salary and their department's average.
+5. We should filter for employees whose salary is above their department's average.
+6. We'll need to use a subquery to calculate department averages.
+7. We'll use the ROUND function to limit decimal places in the percentage calculation.
+8. We'll order the results by the percentage difference in descending order for better readability.
+</thought_process>
+
+<sql>
+WITH dept_avg AS (
+SELECT department_id, AVG(salary) AS avg_salary
+FROM employees
+GROUP BY department_id
+)
+SELECT 
+e.name AS employee_name,
+d.name AS department_name,
+e.salary,
+ROUND(da.avg_salary, 2) AS dept_avg_salary,
+ROUND((e.salary - da.avg_salary) / da.avg_salary * 100, 2) AS percentage_above_avg
+FROM 
+employees e
+JOIN departments d ON e.department_id = d.id
+JOIN dept_avg da ON e.department_id = da.department_id
+WHERE 
+e.salary > da.avg_salary
+ORDER BY 
+percentage_above_avg DESC;
+</sql>
+
+    Pass Reason: All assertions passed","[PASS] (1.00)
+
+    <thought_process>
+To solve this query, we need to follow these steps:
+1. Calculate the average salary for each department.
+2. Join the employees table with the departments table to get department information.
+3. Compare each employee's salary with their department's average salary.
+4. Calculate the percentage difference between the employee's salary and their department's average.
+5. Filter to show only employees earning above their department's average.
+
+We'll use a subquery to calculate the department averages, then join this with the main employee data. We'll use the ROUND function to limit decimal places in the percentage calculation for readability.
+</thought_process>
+
+<sql>
+WITH dept_avgs AS (
+SELECT department_id, AVG(salary) AS dept_avg_salary
+FROM employees
+GROUP BY department_id
+)
+SELECT 
+e.name AS employee_name,
+d.name AS department_name,
+e.salary,
+da.dept_avg_salary,
+ROUND((e.salary - da.dept_avg_salary) / da.dept_avg_salary * 100, 2) AS percentage_above_avg
+FROM 
+employees e
+JOIN 
+departments d ON e.department_id = d.id
+JOIN 
+dept_avgs da ON e.department_id = da.department_id
+WHERE 
+e.salary > da.dept_avg_salary
+ORDER BY 
+percentage_above_avg DESC;
+</sql>
+
+    Pass Reason: All assertions passed","[FAIL] (0.00)
+
+  SQL failed or produced invalid results.
+---
+<attempt1>
+<thought_process>
+To solve this query, we need to:
+1. Calculate the average salary for each department
+2. Compare each employee's salary to their department's average
+3. Calculate the percentage difference
+4. Filter for employees earning above their department's average
+
+We can use a subquery to calculate the department averages, then join it with the employees table.
+</thought_process>
+<sql>
+SELECT 
+e.name,
+e.salary,
+d.name AS department,
+ROUND((e.salary - dept_avg.avg_salary) / dept_avg.avg_salary * 100, 2) AS percentage_above_avg
+FROM 
+employees e
+JOIN 
+departments d ON e.department_id = d.id
+JOIN 
+(SELECT department_id, AVG(salary) AS avg_salary FROM employees GROUP BY department_id) dept_avg
+ON e.department_id = dept_avg.department_id
+WHERE 
+e.salary > dept_avg.avg_salary
+ORDER BY 
+percentage_above_avg DESC;
+</sql>
+<error>
+This query should execute without errors, but it might be inefficient for large datasets due to the subquery.
+</error>
+</attempt1>
+
+<attempt2>
+<thought_process>
+To improve efficiency, we can use a window function (AVG() OVER()) instead of a subquery. This allows us to calculate the department average in a single pass over the data.
+</thought_process>
+<sql>
+WITH dept_averages AS (
+SELECT 
+    e.*,
+    d.name AS department_name,
+    AVG(e.salary) OVER (PARTITION BY e.department_id) AS dept_avg_salary
+FROM 
+    employees e
+JOIN 
+    departments d ON e.department_id = d.id
+)
+SELECT 
+name,
+salary,
+department_name,
+ROUND((salary - dept_avg_salary) / dept_avg_salary * 100, 2) AS percentage_above_avg
+FROM 
+dept_averages
+WHERE 
+salary > dept_avg_salary
+ORDER BY 
+percentage_above_avg DESC;
+</sql>
+</attempt2>
+
+<final_sql>
+WITH dept_averages AS (
+SELECT 
+    e.*,
+    d.name AS department_name,
+    AVG(e.salary) OVER (PARTITION BY e.department_id) AS dept_avg_salary
+FROM 
+    employees e
+JOIN 
+    departments d ON e.department_id = d.id
+)
+SELECT 
+name,
+salary,
+department_name,
+ROUND((salary - dept_avg_salary) / dept_avg_salary * 100, 2) AS percentage_above_avg
+FROM 
+dept_averages
+WHERE 
+salary > dept_avg_salary
+ORDER BY 
+percentage_above_avg DESC;
+</final_sql>
+
+  Fail Reason: SQL failed or produced invalid results."
