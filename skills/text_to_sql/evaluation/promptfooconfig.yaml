@@ -4,7 +4,7 @@ providers:
     config:
       max_tokens: 4096
       temperature: 0
-  - id: anthropic:messages:claude-3-5-sonnet-20240620
+  - id: anthropic:messages:claude-3-5-sonnet-20241022
     label: "3.5 Sonnet"
     config:
       max_tokens: 4096
