@@ -1,0 +1,8 @@
+{
+  "name": "Summary Indexing",
+  "average_precision": 0.45333333333333337,
+  "average_recall": 0.7141666666666666,
+  "average_f1": 0.55461337140138,
+  "average_mrr": 0.7733333333333333,
+  "end_to_end_accuracy": 0.79
+}

@@ -13,7 +13,7 @@ providers:
       max_tokens: 2500
       temperature: 0
 
-  - id: anthropic:messages:claude-3-5-sonnet-20240620
+  - id: anthropic:messages:claude-3-5-sonnet-20241022
     label: "3.5 Sonnet: T-0.0"
     config:
       max_tokens: 2500
