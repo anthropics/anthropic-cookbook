@@ -1,0 +1,8 @@
+{
+  "name": "Basic RAG",
+  "average_precision": 0.4283333333333335,
+  "average_recall": 0.6591666666666666,
+  "average_f1": 0.5192515964240103,
+  "average_mrr": 0.7366666666666666,
+  "end_to_end_accuracy": 0.71
+}
