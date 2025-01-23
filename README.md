@@ -29,7 +29,6 @@ If you have ideas for new examples or guides, share them on the [issues page](ht
 ## Table of recipes
 
 ### Skills
-- [Citations](https://github.com/anthropics/anthropic-cookbook/tree/main/skills/citations): Learn how to prompt Claude to cite sources in its responses.
 - [Classification](https://github.com/anthropics/anthropic-cookbook/tree/main/skills/classification): Explore techniques for text and data classification using Claude.
 - [Retrieval Augmented Generation](https://github.com/anthropics/anthropic-cookbook/tree/main/skills/retrieval_augmented_generation): Learn how to enhance Claude's responses with external knowledge.
 - [Summarization](https://github.com/anthropics/anthropic-cookbook/tree/main/skills/summarization): Discover techniques for effective text summarization with Claude.
