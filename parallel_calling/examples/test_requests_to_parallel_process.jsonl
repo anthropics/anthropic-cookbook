@@ -1,0 +1,10 @@
+{"model": "claude-3-5-sonnet-20240620", "max_tokens": 1024, "temperature": 0, "messages": [{"role": "user", "content": "How much is 8 * 0? Return only the result.\n Result:"}]}
+{"model": "claude-3-5-sonnet-20240620", "max_tokens": 1024, "temperature": 0, "messages": [{"role": "user", "content": "How much is 8 * 1? Return only the result.\n Result:"}]}
+{"model": "claude-3-5-sonnet-20240620", "max_tokens": 1024, "temperature": 0, "messages": [{"role": "user", "content": "How much is 8 * 2? Return only the result.\n Result:"}]}
+{"model": "claude-3-5-sonnet-20240620", "max_tokens": 1024, "temperature": 0, "messages": [{"role": "user", "content": "How much is 8 * 3? Return only the result.\n Result:"}]}
+{"model": "claude-3-5-sonnet-20240620", "max_tokens": 1024, "temperature": 0, "messages": [{"role": "user", "content": "How much is 8 * 4? Return only the result.\n Result:"}]}
+{"model": "claude-3-5-sonnet-20240620", "max_tokens": 1024, "temperature": 0, "messages": [{"role": "user", "content": "How much is 8 * 5? Return only the result.\n Result:"}]}
+{"model": "claude-3-5-sonnet-20240620", "max_tokens": 1024, "temperature": 0, "messages": [{"role": "user", "content": "How much is 8 * 6? Return only the result.\n Result:"}]}
+{"model": "claude-3-5-sonnet-20240620", "max_tokens": 1024, "temperature": 0, "messages": [{"role": "user", "content": "How much is 8 * 7? Return only the result.\n Result:"}]}
+{"model": "claude-3-5-sonnet-20240620", "max_tokens": 1024, "temperature": 0, "messages": [{"role": "user", "content": "How much is 8 * 8? Return only the result.\n Result:"}]}
+{"model": "claude-3-5-sonnet-20240620", "max_tokens": 1024, "temperature": 0, "messages": [{"role": "user", "content": "How much is 8 * 9? Return only the result.\n Result:"}]}
