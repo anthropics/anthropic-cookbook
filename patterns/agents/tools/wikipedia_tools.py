@@ -2,106 +2,120 @@ import wikipedia
 from typing import Dict, List
 from .base import Tool
 
-class WikipediaTool(Tool):
-    """Tool for searching Wikipedia and fetching article content."""
+class WikiSearchTool(Tool):
+    """Tool for searching Wikipedia articles."""
     
     def __init__(self):
         super().__init__(
-            name="wikipedia",
-            description="Search Wikipedia or fetch full article content",
+            name="wiki_search",
+            description="Search Wikipedia for information on a topic",
             parameters={
                 "type": "object",
                 "properties": {
-                    "action": {
-                        "type": "string",
-                        "description": "The action to perform: 'search' for a topic or 'fetch' for a full article",
-                        "enum": ["search", "fetch"]
-                    },
                     "query": {
                         "type": "string",
-                        "description": "The search term or exact article title"
+                        "description": "The search term to look up on Wikipedia"
                     },
                     "depth": {
                         "type": "string",
-                        "description": "For search: 'summary' (default) or 'detailed' to get more information",
+                        "description": "Controls how much information to return: 'summary' (default) or 'detailed'",
                         "enum": ["summary", "detailed"]
                     }
                 },
-                "required": ["action", "query"]
+                "required": ["query"]
             },
-            function=self.wikipedia_action
+            function=self.search_wikipedia
         )
     
-    def wikipedia_action(self, action: str, query: str, depth: str = "summary") -> str:
+    def search_wikipedia(self, query: str, depth: str = "summary") -> str:
         """
-        Perform Wikipedia actions: search or fetch.
+        Search Wikipedia for a topic.
         
         Args:
-            action: Either 'search' to find information or 'fetch' to get a full article
-            query: The search term or article title
-            depth: For search, controls how much information to return (summary or detailed)
+            query: The search term
+            depth: Controls how much information to return (summary or detailed)
             
         Returns:
-            A formatted string with the results
+            A formatted string with the search results
         """
         try:
-            if action == "search":
-                return self._search(query, depth)
-            elif action == "fetch":
-                return self._fetch(query)
-            else:
-                return f"Invalid action: {action}. Use 'search' or 'fetch'."
-        except Exception as e:
-            return f"Error performing Wikipedia {action}: {str(e)}"
-    
-    def _search(self, query: str, depth: str = "summary") -> str:
-        """Search Wikipedia for a topic."""
-        # Find search results
-        search_results = wikipedia.search(query, results=5)
-        
-        if not search_results:
-            return f"No Wikipedia results found for '{query}'."
-        
-        try:
-            # Get the page for the top result
-            page = wikipedia.page(search_results[0])
+            # Find search results
+            search_results = wikipedia.search(query, results=5)
             
-            if depth == "summary":
-                # Just get a summary
-                summary = wikipedia.summary(search_results[0], sentences=5)
-                result = f"Title: {page.title}\n\nSummary: {summary}\n\nURL: {page.url}"
+            if not search_results:
+                return f"No Wikipedia results found for '{query}'."
+            
+            try:
+                # Get the page for the top result
+                page = wikipedia.page(search_results[0])
                 
-                # Add other search results if any
-                if len(search_results) > 1:
-                    result += "\n\nOther relevant topics: " + ", ".join(search_results[1:5])
-                
-                return result
-            else:
-                # Get more detailed information
-                summary = wikipedia.summary(search_results[0], sentences=10)
-                content = page.content[:4000]  # First part of the content
-                
-                result = f"# {page.title}\n\n"
-                result += f"URL: {page.url}\n\n"
-                result += f"## Summary\n{summary}\n\n"
-                result += f"## Content (Partial)\n{content}"
-                
-                if len(page.content) > 4000:
-                    result += "\n\n[Content truncated due to length...]"
-                
-                # Add other search results if any
-                if len(search_results) > 1:
-                    result += "\n\n## Other relevant topics:\n- " + "\n- ".join(search_results[1:5])
-                
-                return result
-                
-        except wikipedia.DisambiguationError as e:
-            return f"Multiple matches found for '{query}'. Try one of these specific topics: {', '.join(e.options[:5])}"
+                if depth == "summary":
+                    # Just get a summary
+                    summary = wikipedia.summary(search_results[0], sentences=5)
+                    result = f"Title: {page.title}\n\nSummary: {summary}\n\nURL: {page.url}"
+                    
+                    # Add other search results if any
+                    if len(search_results) > 1:
+                        result += "\n\nOther relevant topics: " + ", ".join(search_results[1:5])
+                    
+                    return result
+                else:
+                    # Get more detailed information
+                    summary = wikipedia.summary(search_results[0], sentences=10)
+                    content = page.content[:4000]  # First part of the content
+                    
+                    result = f"# {page.title}\n\n"
+                    result += f"URL: {page.url}\n\n"
+                    result += f"## Summary\n{summary}\n\n"
+                    result += f"## Content (Partial)\n{content}"
+                    
+                    if len(page.content) > 4000:
+                        result += "\n\n[Content truncated due to length...]"
+                    
+                    # Add other search results if any
+                    if len(search_results) > 1:
+                        result += "\n\n## Other relevant topics:\n- " + "\n- ".join(search_results[1:5])
+                    
+                    return result
+                    
+            except wikipedia.DisambiguationError as e:
+                return f"Multiple matches found for '{query}'. Try one of these specific topics: {', '.join(e.options[:5])}"
+            except Exception as e:
+                return f"Error retrieving Wikipedia page: {str(e)}"
         except Exception as e:
-            return f"Error retrieving Wikipedia page: {str(e)}"
+            return f"Error searching Wikipedia: {str(e)}"
+
+
+class WikiContentTool(Tool):
+    """Tool for fetching full Wikipedia article content."""
     
-    def _fetch(self, title: str) -> str:
-        """Fetch the full content of a specific Wikipedia page."""
+    def __init__(self):
+        super().__init__(
+            name="wiki_content",
+            description="Fetch the full content of a specific Wikipedia article",
+            parameters={
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "description": "The exact title of the Wikipedia article to fetch"
+                    }
+                },
+                "required": ["title"]
+            },
+            function=self.fetch_content
+        )
+    
+    def fetch_content(self, title: str) -> str:
+        """
+        Fetch the full content of a specific Wikipedia page.
+        
+        Args:
+            title: The exact title of the Wikipedia article
+            
+        Returns:
+            The article content as formatted text
+        """
         try:
             # Get the page
             page = wikipedia.page(title)

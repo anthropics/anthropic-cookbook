@@ -7,7 +7,7 @@ from tools import Tool
 class Agent:
     """Agent that uses Anthropic's native tool use API."""
     
-    def __init__(self, model="claude-3-7-sonnet-20250219", system_prompt=None, api_key=None):
+    def __init__(self, model="claude-3-5-sonnet-20241022", system_prompt=None, api_key=None):
         self.model = model
         self.system_prompt = system_prompt
         self.api_key = api_key or os.environ.get("ANTHROPIC_API_KEY")

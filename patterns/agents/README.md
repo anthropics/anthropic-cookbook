@@ -33,3 +33,34 @@ The repo includes implementations of five common workflow patterns:
 - [Evaluator-Optimizer Workflow](evaluator_optimizer.ipynb): Implementation of the Evaluator-Optimizer pattern
 - [Orchestrator-Workers Workflow](orchestrator_workers.ipynb): Implementation of the Orchestrator-Workers pattern
 
+## Agent Visualization Demo
+
+The project now includes a web-based interface for visualizing an LLM-powered agent as it works through tasks, showing its thinking process and tool usage in real-time.
+
+### Features
+
+- Visual interface to monitor agent execution
+- Step-by-step agent operation with detailed thinking
+- Ability to control maximum execution steps
+- Support for running the full agent or stepping through execution
+- Visualization of tool usage and results
+- Support for multiple Claude models
+
+### Running the Demo
+
+1. Make sure you have the required dependencies installed:
+```
+pip install flask anthropic wikipedia
+```
+
+2. Set your Anthropic API key:
+```
+export ANTHROPIC_API_KEY=your_api_key_here
+```
+
+3. Run the demo:
+```
+python demo.py
+```
+
+4. Open your browser and go to http://127.0.0.1:5000
