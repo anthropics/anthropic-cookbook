@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agent Visualization</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-6">
+        <h1 class="text-2xl font-bold mb-6 text-center">Agent Visualization</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Left panel: Configuration -->
+            <div class="md:col-span-1">
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <h2 class="text-lg font-semibold mb-3">Configuration</h2>
+                    
+                    
+                    <div class="mb-3">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Max Turns</label>
+                        <input type="number" id="max-turns" class="w-full p-2 border border-gray-300 rounded-md" value="5" min="1" max="20">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">System Prompt</label>
+                        <textarea id="system-prompt" class="w-full p-2 border border-gray-300 rounded-md h-32" placeholder="Enter system prompt here...">You are a helpful research assistant. Your goal is to provide accurate, well-researched information to the user's questions.
+
+You can use tools to help you:
+- Use wiki_search to look up information on Wikipedia
+- Use wiki_content to get detailed information about a specific topic
+- Use notes to keep track of important information
+
+When answering, be clear and concise. If you don't know something, use the appropriate tool to find the answer.</textarea>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <button id="init-button" class="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">Initialize Agent</button>
+                        <span id="init-status" class="block mt-2 text-sm"></span>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Query</label>
+                        <textarea id="query-input" class="w-full p-2 border border-gray-300 rounded-md h-24" placeholder="Enter your query here..."></textarea>
+                        <div class="mt-3 grid grid-cols-3 gap-2">
+                            <button id="run-button" class="bg-green-600 text-white px-3 py-2 rounded-md hover:bg-green-700 disabled:bg-gray-400">Run Agent</button>
+                            <button id="step-button" class="bg-purple-600 text-white px-3 py-2 rounded-md hover:bg-purple-700 disabled:bg-gray-400">Step Through</button>
+                            <button id="reset-button" class="bg-red-600 text-white px-3 py-2 rounded-md hover:bg-red-700">Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right panel: Visualization -->
+            <div class="md:col-span-2">
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <h2 class="text-lg font-semibold mb-3">Agent Execution</h2>
+                    
+                    <!-- Progress -->
+                    <div class="mb-4">
+                        <div class="flex justify-between items-center mb-1">
+                            <h3 class="text-sm font-medium">Progress</h3>
+                            <div id="progress-text" class="text-sm text-gray-600">Not started</div>
+                        </div>
+                        <div class="h-2 w-full bg-gray-200 rounded-full">
+                            <div id="progress-bar" class="h-full bg-blue-600 transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Steps -->
+                    <div id="steps-container" class="space-y-4 overflow-auto" style="max-height: 60vh">
+                        <div class="text-gray-500 text-center p-6">
+                            Initialize the agent and enter a query to begin.
+                        </div>
+                    </div>
+                    
+                    <!-- Final Response -->
+                    <div id="final-response-container" class="mt-6 hidden border-t border-gray-200 pt-3">
+                        <h3 class="text-md font-medium mb-2">Final Response</h3>
+                        <div id="final-response" class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Template for step -->
+    <template id="step-template">
+        <div class="border border-gray-300 rounded-lg overflow-hidden mb-4">
+            <div class="bg-gray-100 px-4 py-2 flex justify-between items-center">
+                <h3 class="font-medium step-title">Step X</h3>
+                <button class="toggle-button text-sm text-blue-600 hover:text-blue-800">Show Tools</button>
+            </div>
+            
+            <div class="p-4">
+                <div class="mb-3">
+                    <h4 class="text-sm font-medium text-gray-700 mb-1">Agent Thinking</h4>
+                    <pre class="thinking-output bg-gray-50 p-3 rounded border border-gray-200 text-sm"></pre>
+                </div>
+                
+                <div class="tool-section hidden">
+                    <div class="mb-2">
+                        <h4 class="text-sm font-medium text-gray-700">Using Tool: <span class="tool-name font-mono"></span></h4>
+                    </div>
+                    
+                    <div class="grid gap-3 mb-2">
+                        <div>
+                            <p class="text-xs text-gray-500 mb-1">Input:</p>
+                            <pre class="tool-input font-mono text-sm bg-gray-50 p-2 rounded border border-gray-200"></pre>
+                        </div>
+                        
+                        <div>
+                            <p class="text-xs text-gray-500 mb-1">Result:</p>
+                            <pre class="tool-result font-mono text-sm bg-gray-50 p-2 rounded border border-gray-200 max-h-60 overflow-y-auto"></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM elements
+            const initButton = document.getElementById('init-button');
+            const initStatus = document.getElementById('init-status');
+            const runButton = document.getElementById('run-button');
+            const stepButton = document.getElementById('step-button');
+            const resetButton = document.getElementById('reset-button');
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progress-text');
+            const stepsContainer = document.getElementById('steps-container');
+            const finalResponseContainer = document.getElementById('final-response-container');
+            const finalResponse = document.getElementById('final-response');
+            
+            // State
+            let agentInitialized = false;
+            let stepsExecuted = 0;
+            let maxSteps = 5;
+            let isComplete = false;
+            let stepMode = false;
+            
+            // Disable run and step buttons initially
+            runButton.disabled = true;
+            stepButton.disabled = true;
+            
+            // Initialize Agent
+            initButton.addEventListener('click', async function() {
+                const systemPrompt = document.getElementById('system-prompt').value;
+                
+                initStatus.textContent = 'Initializing...';
+                
+                try {
+                    const response = await fetch('/init', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            system_prompt: systemPrompt
+                        }),
+                    });
+                    
+                    if (response.ok) {
+                        const data = await response.json();
+                        agentInitialized = true;
+                        initStatus.textContent = `Initialized with ${data.model}`;
+                        initStatus.className = 'ml-2 text-sm text-green-600';
+                        runButton.disabled = false;
+                        stepButton.disabled = false;
+                    } else {
+                        const data = await response.json();
+                        initStatus.textContent = `Error: ${data.error || 'Failed to initialize'}`;
+                        initStatus.className = 'ml-2 text-sm text-red-600';
+                    }
+                } catch (error) {
+                    initStatus.textContent = 'Error: ' + error.message;
+                    initStatus.className = 'ml-2 text-sm text-red-600';
+                }
+            });
+            
+            // Run Agent
+            runButton.addEventListener('click', async function() {
+                if (!agentInitialized) return;
+                
+                const query = document.getElementById('query-input').value;
+                maxSteps = parseInt(document.getElementById('max-turns').value, 10);
+                
+                // Reset state
+                stepMode = false;
+                resetVisualization();
+                
+                // Disable buttons during run
+                runButton.disabled = true;
+                stepButton.disabled = true;
+                
+                try {
+                    const response = await fetch('/run', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            query: query,
+                            max_turns: maxSteps
+                        }),
+                    });
+                    
+                    if (response.ok) {
+                        const data = await response.json();
+                        
+                        // Update progress
+                        stepsExecuted = data.steps.length;
+                        isComplete = data.is_done;
+                        
+                        // Update UI
+                        updateProgress();
+                        
+                        // Display steps
+                        stepsContainer.innerHTML = '';
+                        data.steps.forEach((step, index) => {
+                            addStepToUI(step, index + 1);
+                        });
+                        
+                        // Show final response if complete
+                        if (isComplete && data.final_response) {
+                            showFinalResponse(data.final_response);
+                        }
+                    } else {
+                        const data = await response.json();
+                        alert(`Error: ${data.error || 'Failed to run agent'}`);
+                    }
+                } catch (error) {
+                    alert('Error: ' + error.message);
+                } finally {
+                    // Re-enable buttons
+                    runButton.disabled = false;
+                    stepButton.disabled = isComplete;
+                }
+            });
+            
+            // Step Through
+            stepButton.addEventListener('click', async function() {
+                if (!agentInitialized) return;
+                
+                // First step needs the query
+                const isFirstStep = stepsExecuted === 0;
+                const query = isFirstStep ? document.getElementById('query-input').value : null;
+                maxSteps = parseInt(document.getElementById('max-turns').value, 10);
+                
+                // First step in step mode - reset visualization
+                if (isFirstStep) {
+                    stepMode = true;
+                    resetVisualization();
+                }
+                
+                // Disable button during step
+                stepButton.disabled = true;
+                
+                try {
+                    const response = await fetch('/step', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            query: query
+                        }),
+                    });
+                    
+                    if (response.ok) {
+                        const data = await response.json();
+                        
+                        // Update progress
+                        stepsExecuted++;
+                        isComplete = data.is_done;
+                        
+                        // Update UI
+                        updateProgress();
+                        
+                        // Add step to UI
+                        addStepToUI(data.step, stepsExecuted);
+                        
+                        // Show final response if complete
+                        if (isComplete && data.final_response) {
+                            showFinalResponse(data.final_response);
+                        }
+                        
+                        // Disable step button if complete or reached max steps
+                        stepButton.disabled = isComplete || stepsExecuted >= maxSteps;
+                    } else {
+                        const data = await response.json();
+                        alert(`Error: ${data.error || 'Failed to step agent'}`);
+                    }
+                } catch (error) {
+                    alert('Error: ' + error.message);
+                } finally {
+                    if (!isComplete && stepsExecuted < maxSteps) {
+                        stepButton.disabled = false;
+                    }
+                }
+            });
+            
+            // Reset Button
+            resetButton.addEventListener('click', function() {
+                resetVisualization();
+                document.getElementById('query-input').value = '';
+                
+                // Enable buttons if agent is initialized
+                if (agentInitialized) {
+                    runButton.disabled = false;
+                    stepButton.disabled = false;
+                }
+            });
+            
+            // Helper Functions
+            function resetVisualization() {
+                stepsExecuted = 0;
+                isComplete = false;
+                stepsContainer.innerHTML = '<div class="text-gray-500 text-center p-8">No steps executed yet.</div>';
+                finalResponseContainer.classList.add('hidden');
+                updateProgress();
+            }
+            
+            function updateProgress() {
+                const percentage = maxSteps > 0 ? (stepsExecuted / maxSteps) * 100 : 0;
+                progressBar.style.width = `${Math.min(percentage, 100)}%`;
+                
+                if (isComplete) {
+                    progressText.textContent = `Complete: ${stepsExecuted} step${stepsExecuted !== 1 ? 's' : ''}`;
+                    progressBar.className = 'h-full bg-green-600 transition-all duration-500';
+                } else {
+                    progressText.textContent = `Step ${stepsExecuted} of ${maxSteps}`;
+                    progressBar.className = 'h-full bg-blue-600 transition-all duration-500';
+                }
+            }
+            
+            function addStepToUI(step, stepNumber) {
+                // Remove placeholder if it exists
+                if (stepsContainer.querySelector('.text-center')) {
+                    stepsContainer.innerHTML = '';
+                }
+                
+                // Clone template
+                const template = document.getElementById('step-template');
+                const stepNode = template.content.cloneNode(true);
+                
+                // Update step elements
+                stepNode.querySelector('.step-title').textContent = `Step ${stepNumber}`;
+                stepNode.querySelector('.thinking-output').textContent = step.thinking || 'No thinking output';
+                
+                // Tool section
+                const toolSection = stepNode.querySelector('.tool-section');
+                const toggleButton = stepNode.querySelector('.toggle-button');
+                
+                if (step.tool_use) {
+                    stepNode.querySelector('.tool-name').textContent = step.tool_use.name;
+                    stepNode.querySelector('.tool-input').textContent = JSON.stringify(step.tool_use.input, null, 2);
+                    
+                    const toolResult = stepNode.querySelector('.tool-result');
+                    // Handle string truncation for long results
+                    let resultText = step.tool_result;
+                    if (typeof resultText === 'string' && resultText.length > 2000) {
+                        resultText = resultText.substring(0, 2000) + '... [truncated]';
+                    } else if (typeof resultText !== 'string') {
+                        resultText = JSON.stringify(resultText, null, 2);
+                    }
+                    toolResult.textContent = resultText;
+                    
+                    // Add toggle functionality for tool section
+                    toggleButton.addEventListener('click', function() {
+                        if (toolSection.classList.contains('hidden')) {
+                            toolSection.classList.remove('hidden');
+                            toggleButton.textContent = 'Hide Tools';
+                        } else {
+                            toolSection.classList.add('hidden');
+                            toggleButton.textContent = 'Show Tools';
+                        }
+                    });
+                } else {
+                    toggleButton.textContent = 'No Tools Used';
+                    toggleButton.disabled = true;
+                    toggleButton.classList.add('text-gray-400');
+                }
+                
+                // Append to container
+                stepsContainer.appendChild(stepNode);
+                
+                // Scroll to the bottom of the container
+                stepsContainer.scrollTop = stepsContainer.scrollHeight;
+            }
+            
+            function showFinalResponse(response) {
+                finalResponse.innerHTML = `<pre class="whitespace-pre-wrap">${response}</pre>`;
+                finalResponseContainer.classList.remove('hidden');
+                // Scroll to show the final response
+                stepsContainer.scrollTop = stepsContainer.scrollHeight;
+            }
+        });
+    </script>
+</body>
+</html>
