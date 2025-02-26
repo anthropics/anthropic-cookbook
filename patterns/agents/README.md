@@ -1,66 +1,35 @@
 # Claude Agent Framework
 
-A lightweight framework for building tool-using agents with Claude and demonstrating workflow patterns.
+Example implementations from our blog [Building Effective Agents](https://www.anthropic.com/research/building-effective-agents), which shares practical patterns for building effective LLM-powered systems.
 
-## Tool-Using Agents
+## Agentic Systems
 
-- `agent.py`: Core agent implementation with Claude's tool use API
-- `tools/`: Reusable tool modules that agents can leverage
+The repository demonstrates two distinct approaches to building agentic systems:
 
-### Architecture
+- **Workflows**: Systems where LLMs and tools are orchestrated through predefined code paths
+- **Agents**: Systems where LLMs dynamically direct their own processes and tool usage
 
+## Implementation
+
+### Core Agent Implementation
+
+- [`agent.py`](agent.py): Core agent implementation that uses Claude's tool use API
 - `Tool`: Base class for all tools with a standard interface
 - `Agent`: Manages conversation flow and tool dispatch
 
-### Example Usage
+### Workflow Patterns
 
-```python
-from agent import Agent, Tool
+The repo includes implementations of five common workflow patterns:
 
-# Create a calculator tool
-class CalculatorTool(Tool):
-    def __init__(self):
-        super().__init__(
-            name="calculator",
-            description="Perform calculations",
-            parameters={
-                "type": "object",
-                "properties": {
-                    "expression": {"type": "string"}
-                },
-                "required": ["expression"]
-            },
-            function=self.calculate
-        )
-    
-    def calculate(self, expression: str) -> str:
-        return str(eval(expression))
+1. **Prompt Chaining**: Sequential processing where outputs feed into next step
+2. **Routing**: Dynamically selecting specialized paths based on input
+3. **Parallelization**: Concurrent processing of independent subtasks
+4. **Orchestrator-Workers**: Central LLM breaks complex tasks into dynamic subtasks
+5. **Evaluator-Optimizer**: One LLM generates solutions while another evaluates
 
-# Use the agent
-agent = Agent()
-agent.add_tool(CalculatorTool())
-response = agent.run("What is 125 * 3.14?")
-```
+## Notebooks
 
-## Agent Workflow Patterns
+- [Basic Workflows](basic_workflows.ipynb): Implementations of Prompt Chaining, Routing, and Parallelization
+- [Evaluator-Optimizer Workflow](evaluator_optimizer.ipynb): Implementation of the Evaluator-Optimizer pattern
+- [Orchestrator-Workers Workflow](orchestrator_workers.ipynb): Implementation of the Orchestrator-Workers pattern
 
-This repository contains example implementations of common agent workflows:
-
-- Basic Building Blocks
-  - Prompt Chaining
-  - Routing
-  - Multi-LLM Parallelization
-- Advanced Workflows
-  - Orchestrator-Subagents
-  - Evaluator-Optimizer
-
-### Workflow Notebooks
-
-- [Basic Workflows](basic_workflows.ipynb)
-- [Evaluator-Optimizer Workflow](evaluator_optimizer.ipynb) 
-- [Orchestrator-Workers Workflow](orchestrator_workers.ipynb)
-
-## Requirements
-
-- Python 3.9+
-- Anthropic Python SDK
