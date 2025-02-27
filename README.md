@@ -1,10 +1,10 @@
 # Anthropic Cookbook
 
-The Anthropic Cookbook provides code and guides designed to help developers build with Claude, offering copy-able code snippets that you can easily integrate into your own projects.
+The [Anthropic](https://www.anthropic.com) Cookbook provides code and guides designed to help developers build with Claude, offering copy-able code snippets that you can easily integrate into your own projects.
 
 ## Prerequisites
 
-To make the most of the examples in this cookbook, you'll need an Anthropic API key (sign up for free [here](https://www.anthropic.com)).
+To make the most of the examples in this cookbook, you'll need an [Anthropic API key](https://console.anthropic.com/settings/keys) (sign up for free [here](https://www.anthropic.com)).
 
 While the code examples are primarily written in Python, the concepts can be adapted to any programming language that supports interaction with the Anthropic API.
 
