@@ -18,6 +18,7 @@ Looking for more resources to enhance your experience with Claude and AI assista
 - [Anthropic support docs](https://support.anthropic.com)
 - [Anthropic Discord community](https://www.anthropic.com/discord)
 
+
 ## Contributing
 
 The Anthropic Cookbook thrives on the contributions of the developer community. We value your input, whether it's submitting an idea, fixing a typo, adding a new guide, or improving an existing one. By contributing, you help make this resource even more valuable for everyone.
