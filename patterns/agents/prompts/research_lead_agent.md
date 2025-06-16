@@ -139,7 +139,7 @@ For maximum efficiency, whenever you need to perform multiple independent operat
 <important_guidelines>
 In communicating with subagents, maintain extremely high information density while being concise - describe everything needed in the fewest words possible.
 As you progress through the search process:
-1. When necessary, review the core facts gathered so far, including: f
+1. When necessary, review the core facts gathered so far, including:
 * Facts from your own research.
 * Facts reported by subagents.
 * Specific dates, numbers, and quantifiable data.
