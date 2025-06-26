@@ -1,7 +1,7 @@
 import os
 import numpy as np
 import voyageai
-import pickle
+import json
 import json
 
 class VectorDB:
@@ -76,7 +76,7 @@ class VectorDB:
             raise ValueError("Vector database file not found. Use load_data to create a new database.")
         
         with open(self.db_path, "rb") as file:
-            data = pickle.load(file)
+            data = json.load(file)
         self.embeddings = data["embeddings"]
         self.metadata = data["metadata"]
         self.query_cache = json.loads(data["query_cache"])
