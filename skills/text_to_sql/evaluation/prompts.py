@@ -14,7 +14,7 @@ def get_schema_info():
     
     for (table_name,) in tables:
         # Get columns for this table
-        cursor.execute(f"PRAGMA table_info({table_name})")
+from sqlalchemy import text
         columns = cursor.fetchall()
         
         table_info = f"Table: {table_name}\n"
@@ -146,7 +146,7 @@ def generate_prompt_with_rag(context):
                 {"text": f"Table: {table[0]}, Column: {col[1]}, Type: {col[2]}", 
                 "metadata": {"table": table[0], "column": col[1], "type": col[2]}}
                 for table in cursor.fetchall()
-                for col in cursor.execute(f"PRAGMA table_info({table[0]})").fetchall()
+                for col in cursor.execute(text("PRAGMA table_info(:param)"), {"param": table[0]}).fetchall()
             ]
         vectordb.load_data(schema_data)
     
