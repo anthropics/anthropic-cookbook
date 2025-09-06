@@ -1,0 +1,40 @@
+repos:
+  # Strip notebook outputs first
+  - repo: https://github.com/kynan/nbstripout
+    rev: 0.7.1
+    hooks:
+      - id: nbstripout
+        args: ['--extra-keys', 'metadata.widgets metadata.vscode']
+
+  # Ruff for notebooks via nbQA
+  - repo: https://github.com/nbQA-dev/nbQA
+    rev: 1.9.1
+    hooks:
+      - id: nbqa-ruff
+        args: ['--fix']
+        additional_dependencies: [ruff>=0.8.0]
+
+  # Ruff for Python files
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.0
+    hooks:
+      - id: ruff
+        args: ['--fix']
+      - id: ruff-format
+
+  # Custom validations
+  - repo: local
+    hooks:
+      - id: check-models
+        name: Check Claude model usage
+        entry: python scripts/check_models.py
+        language: python
+        files: '\.ipynb$'
+        pass_filenames: false
+      
+      - id: validate-notebooks
+        name: Validate notebook structure
+        entry: python scripts/validate_notebooks.py
+        language: python
+        files: '\.ipynb$'
+        pass_filenames: false
