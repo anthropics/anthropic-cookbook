@@ -138,3 +138,11 @@ dmypy.json
 *.DS_Store
 tmp_*
 examples/fine-tuned_qa/local_cache/*
+
+# CI/CD and testing
+.model_cache.json
+uv.lock
+test_outputs/
+.ruff_cache/
+lychee-report.md
+.lycheecache
