@@ -1,0 +1,35 @@
+# Lychee configuration for Anthropic Cookbook
+cache = true
+max_cache_age = "1d"
+timeout = 30
+max_redirects = 10
+max_retries = 3
+retry_wait_time = 2
+include_fragments = true
+skip_missing = false
+
+# Jupyter-specific settings
+glob_ignore_case = true
+fallback_extensions = ["ipynb", "md", "html", "py"]
+
+exclude_path = [
+    ".git/",
+    "__pycache__/",
+    ".ipynb_checkpoints/",
+    "*.pyc"
+]
+
+exclude = [
+    "https://api.anthropic.com.*",
+    "https://console.anthropic.com.*",
+    "http://localhost.*",
+    "http://127.0.0.1.*"
+]
+
+# Accept these status codes
+accept = [200, 201, 202, 203, 204, 206, 301, 302, 303, 304, 307, 308, 403, 429]
+
+# Headers for authenticated requests
+headers = [
+    "User-Agent=Mozilla/5.0 (compatible; lychee/0.20.1; anthropic-cookbook)"
+]
