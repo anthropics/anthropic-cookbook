@@ -46,6 +46,9 @@ jobs:
             - No hardcoded API keys (use os.getenv("ANTHROPIC_API_KEY"))
 
             ## Notebook Structure
+            - Clear introduction explaining what the notebook demonstrates and why it's useful
+            - Configuration instructions (how to set up API keys, install dependencies, etc.)
+            - Connecting explanations between cells that help users understand the flow
             - Clear markdown explanations between code cells
             - Logical flow from simple to complex
             - Outputs preserved for educational value
