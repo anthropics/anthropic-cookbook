@@ -42,13 +42,10 @@ jobs:
           uv run nbstripout --verify skills/**/*.ipynb || \
             (echo "❌ Notebooks contain outputs. Run 'nbstripout skills/**/*.ipynb' locally" && exit 1)
       
-      - name: Lint with Ruff via nbQA
+      - name: Lint with Ruff
         run: |
-          # Check for issues
-          uv run nbqa ruff skills/ --show-fixes
-          
-          # Check formatting
-          uv run nbqa ruff skills/ --check --select=I,F
+          uv run ruff check skills/ --show-fixes
+          uv run ruff format skills/ --check
       
       - name: Validate notebook structure
         run: |
@@ -58,7 +55,7 @@ jobs:
         run: |
           uv run python scripts/check_models.py
       
-      # Only run API tests on main branch or for maintainers
+      # Only run API tests on main branch or for maintainers (costs money)
       - name: Execute notebooks (API Testing)
         if: |
           github.event_name == 'push' || 
@@ -67,17 +64,14 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          mkdir -p test_outputs
-          
           for notebook in skills/*/guide.ipynb; do
             echo "📓 Testing: $notebook"
-            uv run papermill "$notebook" \
-              "test_outputs/$(basename $notebook)" \
-              --kernel python3 \
-              -p test_mode true \
-              -p model "claude-3-5-haiku-latest" \
-              -p max_tokens 10 \
-              --log-level ERROR \
+            # Use nbconvert to execute notebooks
+            uv run jupyter nbconvert --to notebook \
+              --execute "$notebook" \
+              --ExecutePreprocessor.kernel_name=python3 \
+              --ExecutePreprocessor.timeout=120 \
+              --stdout > /dev/null \
               || echo "⚠️  Failed: $notebook"
           done
       

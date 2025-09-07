@@ -55,9 +55,8 @@ This repository uses automated tools to maintain code quality:
 ### The Notebook Validation Stack
 
 - **[papermill](https://papermill.readthedocs.io/)**: Parameterized notebook execution for testing
-- **[nbqa](https://nbqa.readthedocs.io/)**: Applies Python quality tools to notebooks
+- **[ruff](https://docs.astral.sh/ruff/)**: Fast Python linter and formatter with native Jupyter support
 - **[nbstripout](https://github.com/kynan/nbstripout)**: Keeps notebooks clean in git (removes outputs)
-- **[ruff](https://docs.astral.sh/ruff/)**: Fast Python linter and formatter
 
 ### Before Committing
 
@@ -68,13 +67,10 @@ This repository uses automated tools to maintain code quality:
 
 2. **Run quality checks**:
    ```bash
-   # Lint and format
-   uv run nbqa ruff skills/ --fix
+   uv run ruff check skills/ --fix
+   uv run ruff format skills/
    
-   # Validate notebook structure
    uv run python scripts/validate_notebooks.py
-   
-   # Check model usage
    uv run python scripts/check_models.py
    ```
 

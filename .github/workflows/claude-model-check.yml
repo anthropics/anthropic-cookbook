@@ -35,6 +35,7 @@ jobs:
         run: |
           uv run python scripts/check_models.py --github-output
       
+      # Only run Claude validation for repo members (API costs)
       - name: Claude Model Validation
         if: |
           github.event.pull_request.author_association == 'MEMBER' ||

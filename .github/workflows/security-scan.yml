@@ -25,10 +25,8 @@ jobs:
       
       - name: Check for hardcoded secrets in notebooks
         run: |
-          # Check for potential API keys
           ! grep -r "sk-ant-" skills/ --include="*.ipynb" || \
             (echo "❌ Found potential API key in notebook" && exit 1)
           
-          # Check for environment variable usage
           grep -r "os.environ\|getenv" skills/ --include="*.ipynb" || \
             echo "⚠️  No environment variable usage found - ensure API keys are not hardcoded"
