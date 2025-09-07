@@ -81,7 +81,7 @@ jobs:
           
           for notebook in skills/*/guide.ipynb; do
             echo "📓 Validating structure: $notebook"
-            uv run python -m nbformat.validator.validate "$notebook"
+            uv run python -m nbformat.validator "$notebook"
           done
       
       - name: Upload test outputs
