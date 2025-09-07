@@ -66,13 +66,6 @@ def validate_models(notebook_path: Path) -> dict:
                 'suggestion': RECOMMENDED_MODELS['default']
             })
     
-    # Add general recommendations
-    if models and all(m[1] not in ['claude-3-5-haiku-latest', 'claude-3-5-haiku-20241022'] 
-                      for m in models):
-        issues['recommendations'].append(
-            "Consider using 'claude-3-5-haiku-latest' for test examples to minimize costs"
-        )
-    
     return issues
 
 
