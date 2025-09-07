@@ -37,11 +37,6 @@ jobs:
         run: |
           uv sync --frozen --all-extras
       
-      - name: Check notebooks are clean
-        run: |
-          uv run nbstripout --verify skills/**/*.ipynb || \
-            (echo "❌ Notebooks contain outputs. Run 'nbstripout skills/**/*.ipynb' locally" && exit 1)
-      
       - name: Lint notebooks with Ruff
         run: |
           uv run ruff check skills/**/*.ipynb --show-fixes || true

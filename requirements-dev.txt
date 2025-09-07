@@ -1,5 +1,4 @@
 papermill>=2.6.0
-nbstripout>=0.7.1
 ruff>=0.12.0
 pytest>=8.3.3
 nbval>=0.11.0

@@ -1,10 +1,4 @@
 repos:
-  - repo: https://github.com/kynan/nbstripout
-    rev: 0.7.1
-    hooks:
-      - id: nbstripout
-        args: ['--extra-keys', 'metadata.widgets metadata.vscode cell.metadata.execution']
-
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.12.12
     hooks:

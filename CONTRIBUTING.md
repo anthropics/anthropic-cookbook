@@ -56,16 +56,12 @@ This repository uses automated tools to maintain code quality:
 
 - **[papermill](https://papermill.readthedocs.io/)**: Parameterized notebook execution for testing
 - **[ruff](https://docs.astral.sh/ruff/)**: Fast Python linter and formatter with native Jupyter support
-- **[nbstripout](https://github.com/kynan/nbstripout)**: Keeps notebooks clean in git (removes outputs)
+
+**Note**: Notebook outputs are intentionally kept in this repository as they demonstrate expected results for users.
 
 ### Before Committing
 
-1. **Clean notebook outputs**:
-   ```bash
-   uv run nbstripout skills/**/*.ipynb
-   ```
-
-2. **Run quality checks**:
+1. **Run quality checks**:
    ```bash
    uv run ruff check skills/ --fix
    uv run ruff format skills/

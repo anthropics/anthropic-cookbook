@@ -41,11 +41,11 @@ jobs:
           args: |
             --config lychee.toml 
             --format markdown
-            --output lychee-report.md
             --no-progress
             skills/**/*.md 
             temp_md/*.md 
             README.md
+          output: lychee-report.md
           fail: false
       
       - name: Comment PR with results

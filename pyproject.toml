@@ -13,7 +13,6 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "nbstripout>=0.7.1",
     "ruff>=0.7.0",
     "pytest>=8.3.3",
     "nbval>=0.11.0",
@@ -41,10 +40,3 @@ ignore = ["E501", "S101"]  # E501: line too long, S101: assert used (ok in tests
 # Notebooks have different conventions than regular Python files
 "*.ipynb" = ["E402", "E501", "F401", "F811"]  # Allow: imports mid-file, long lines, unused imports, redefinitions
 
-[tool.nbstripout]
-extra_keys = [
-    "cell.metadata.execution",
-    "cell.metadata.pycharm",
-    "metadata.widgets",
-    "metadata.vscode"
-]
