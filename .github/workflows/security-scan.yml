@@ -1,0 +1,32 @@
+name: Security Scan
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 0 * * MON'  # Weekly scan
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  secret-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Run Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Check for hardcoded secrets in notebooks
+        run: |
+          ! grep -r "sk-ant-" skills/ --include="*.ipynb" || \
+            (echo "❌ Found potential API key in notebook" && exit 1)
+          
+          grep -r "os.environ\|getenv" skills/ --include="*.ipynb" || \
+            echo "⚠️  No environment variable usage found - ensure API keys are not hardcoded"
