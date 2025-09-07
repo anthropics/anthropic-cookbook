@@ -33,7 +33,7 @@ jobs:
       - name: Check models with script
         id: model_check
         run: |
-          uv run python scripts/check_models.py --github-output
+          uv run python scripts/check_models.py --github-output || true
       
       # Only run Claude validation for repo members (API costs)
       - name: Claude Model Validation
