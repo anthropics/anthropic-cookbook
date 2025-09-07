@@ -25,14 +25,6 @@ def validate_notebook(path: Path) -> list:
                 if output.get('output_type') == 'error':
                     issues.append(f"Cell {i}: Contains error output")
     
-    # Check for hardcoded API keys
-    for i, cell in enumerate(nb['cells']):
-        if cell['cell_type'] == 'code':
-            source = ''.join(cell['source'])
-            if 'sk-ant-' in source or 'anthropic_api_key=' in source.lower():
-                issues.append(f"Cell {i}: Potential hardcoded API key")
-            if 'api_key' in source.lower() and 'os.environ' not in source and 'getenv' not in source:
-                issues.append(f"Cell {i}: API key not using environment variable")
     
     return issues
 

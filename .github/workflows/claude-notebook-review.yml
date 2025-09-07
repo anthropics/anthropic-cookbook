@@ -55,7 +55,10 @@ jobs:
             - Dependencies properly imported
 
             ## Security
-            - No exposed secrets or API keys
+            - Check for any hardcoded API keys or secrets (not just Anthropic keys)
+            - Ensure all sensitive credentials use environment variables (os.environ, getenv, etc.)
+            - Flag any potential secret patterns (tokens, passwords, private keys)
+            - Note: Educational examples showing "what not to do" are acceptable if clearly marked
             - Safe handling of user inputs
             - Appropriate use of environment variables
 
