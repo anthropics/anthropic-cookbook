@@ -1,0 +1,64 @@
+name: Claude Notebook Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - 'skills/**/*.ipynb'
+      - 'pyproject.toml'
+      - 'uv.lock'
+      - 'scripts/**/*.py'
+
+jobs:
+  notebook-review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Claude Notebook Review
+        uses: anthropics/claude-code-action@beta
+        with:
+          use_sticky_comment: true
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          timeout_minutes: "30"
+          allowed_bots: "*"
+          direct_prompt: |
+            Review the changes to Jupyter notebooks and Python scripts in this PR. Please check for:
+
+            ## Model Usage
+            Check that all Claude model references use current, public models:
+            - claude-3-5-haiku-latest (recommended for testing)
+            - claude-3-5-sonnet-latest (for complex tasks)
+            - Avoid deprecated models like claude-3-haiku-20240307, old Sonnet 3.5 versions
+
+            ## Code Quality
+            - Python code follows PEP 8 conventions
+            - Proper error handling
+            - Clear variable names and documentation
+            - No hardcoded API keys (use os.getenv("ANTHROPIC_API_KEY"))
+
+            ## Notebook Structure
+            - Clear markdown explanations between code cells
+            - Logical flow from simple to complex
+            - Outputs preserved for educational value
+            - Dependencies properly imported
+
+            ## Security
+            - No exposed secrets or API keys
+            - Safe handling of user inputs
+            - Appropriate use of environment variables
+
+            Provide a clear summary with:
+            - ✅ What looks good
+            - ⚠️ Suggestions for improvement
+            - ❌ Critical issues that must be fixed
+
+            Format your response as a helpful PR review comment.

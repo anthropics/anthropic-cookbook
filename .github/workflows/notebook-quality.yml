@@ -13,6 +13,7 @@ on:
 
 permissions:
   contents: read
+  pull-requests: write
 
 jobs:
   validate-notebooks:
@@ -59,14 +60,17 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
+          mkdir -p test_outputs
           for notebook in skills/*/guide.ipynb; do
             echo "📓 Testing: $notebook"
-            # Use nbconvert to execute notebooks
+            output_name=$(basename $(dirname "$notebook"))
+            # Use nbconvert to execute notebooks and save outputs
             uv run jupyter nbconvert --to notebook \
               --execute "$notebook" \
               --ExecutePreprocessor.kernel_name=python3 \
               --ExecutePreprocessor.timeout=120 \
-              --stdout > /dev/null \
+              --output "test_outputs/${output_name}_executed.ipynb" \
+              --output-dir=. \
               || echo "⚠️  Failed: $notebook"
           done
       

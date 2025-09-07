@@ -1,0 +1,59 @@
+name: Claude Link Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - '**.md'
+      - '**.mdx'
+      - '**.ipynb'
+      - 'README.md'
+
+jobs:
+  link-review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Claude Link Review
+        uses: anthropics/claude-code-action@beta
+        with:
+          use_sticky_comment: true
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          timeout_minutes: "30"
+          allowed_bots: "*"
+          direct_prompt: |
+            Review the links in the changed files and check for potential issues:
+
+            ## Link Quality Checks
+            1. **Broken Links**: Identify any links that might be broken or malformed
+            2. **Outdated Links**: Check for links to deprecated resources or old documentation
+            3. **Security**: Ensure no links to suspicious or potentially harmful sites
+            4. **Best Practices**: 
+               - Links should use HTTPS where possible
+               - Internal links should use relative paths
+               - External links should be to stable, reputable sources
+
+            ## Specific Checks for Anthropic Content
+            - Links to Claude documentation should point to the latest versions
+            - API documentation links should be current
+            - Model documentation should reference current models, not deprecated ones
+            - GitHub links should use the correct repository paths
+
+            ## Report Format
+            Provide a clear summary with:
+            - ✅ Valid and well-formed links
+            - ⚠️ Links that might need attention (e.g., HTTP instead of HTTPS)
+            - ❌ Broken or problematic links that must be fixed
+            
+            If all links look good, provide a brief confirmation.
+            
+            Format your response as a helpful PR review comment.
