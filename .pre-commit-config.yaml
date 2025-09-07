@@ -10,13 +10,6 @@ repos:
 
   - repo: local
     hooks:
-      - id: check-models
-        name: Check Claude model usage
-        entry: python scripts/check_models.py
-        language: python
-        files: '\.ipynb$'
-        pass_filenames: false
-      
       - id: validate-notebooks
         name: Validate notebook structure
         entry: python scripts/validate_notebooks.py

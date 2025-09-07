@@ -34,10 +34,12 @@ jobs:
             Review the changes to Jupyter notebooks and Python scripts in this PR. Please check for:
 
             ## Model Usage
-            Check that all Claude model references use current, public models:
-            - claude-3-5-haiku-latest (recommended for testing)
-            - claude-3-5-sonnet-latest (for complex tasks)
-            - Avoid deprecated models like claude-3-haiku-20240307, old Sonnet 3.5 versions
+            Verify all Claude model references against the current list at:
+            https://docs.anthropic.com/en/docs/about-claude/models/overview.md
+            - Flag any deprecated models (older Sonnet 3.5, Opus 3 versions)
+            - Flag any internal/non-public model names
+            - Suggest current alternatives when issues found
+            - Recommend aliases ending in -latest for stability
 
             ## Code Quality
             - Python code follows PEP 8 conventions

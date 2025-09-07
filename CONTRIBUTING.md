@@ -54,8 +54,9 @@ This repository uses automated tools to maintain code quality:
 
 ### The Notebook Validation Stack
 
-- **[papermill](https://papermill.readthedocs.io/)**: Parameterized notebook execution for testing
+- **[nbconvert](https://nbconvert.readthedocs.io/)**: Notebook execution for testing
 - **[ruff](https://docs.astral.sh/ruff/)**: Fast Python linter and formatter with native Jupyter support
+- **Claude AI Review**: Intelligent code review using Claude
 
 **Note**: Notebook outputs are intentionally kept in this repository as they demonstrate expected results for users.
 
@@ -67,26 +68,22 @@ This repository uses automated tools to maintain code quality:
    uv run ruff format skills/
    
    uv run python scripts/validate_notebooks.py
-   uv run python scripts/check_models.py
    ```
 
 3. **Test notebook execution** (optional, requires API key):
    ```bash
-   uv run papermill skills/classification/guide.ipynb test.ipynb \
-     -p model "claude-3-5-haiku-latest" \
-     -p test_mode true \
-     -p max_tokens 10
+   uv run jupyter nbconvert --to notebook \
+     --execute skills/classification/guide.ipynb \
+     --ExecutePreprocessor.kernel_name=python3 \
+     --output test_output.ipynb
    ```
 
 ### Pre-commit Hooks
 
 Pre-commit hooks will automatically run before each commit to ensure code quality:
 
-- Strip notebook outputs
 - Format code with ruff
 - Validate notebook structure
-- Check for hardcoded API keys
-- Validate Claude model usage
 
 If a hook fails, fix the issues and try committing again.
 
@@ -101,9 +98,9 @@ If a hook fails, fix the issues and try committing again.
    ```
 
 2. **Use current Claude models**:
-   - For examples: `claude-3-5-haiku-latest` (fast and cheap)
-   - For powerful tasks: `claude-opus-4-1`
-   - Check allowed models in `scripts/allowed_models.py`
+   - Use model aliases (e.g., `claude-3-5-haiku-latest`) for better maintainability
+   - Check current models at: https://docs.anthropic.com/en/docs/about-claude/models/overview
+   - Claude will automatically validate model usage in PR reviews
 
 3. **Keep notebooks focused**:
    - One concept per notebook
@@ -175,9 +172,6 @@ Run the validation suite:
 # Check all notebooks
 uv run python scripts/validate_notebooks.py
 
-# Check model usage
-uv run python scripts/check_models.py
-
 # Run pre-commit on all files
 uv run pre-commit run --all-files
 ```
@@ -187,11 +181,10 @@ uv run pre-commit run --all-files
 Our GitHub Actions workflows will automatically:
 
 - Validate notebook structure
-- Check for hardcoded secrets
 - Lint code with ruff
 - Test notebook execution (for maintainers)
 - Check links
-- Validate Claude model usage
+- Claude reviews code and model usage
 
 External contributors will have limited API testing to conserve resources.
 

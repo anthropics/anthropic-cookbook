@@ -44,10 +44,6 @@ jobs:
         run: |
           uv run python scripts/validate_notebooks.py
       
-      - name: Check model usage
-        run: |
-          uv run python scripts/check_models.py
-      
       # Only run API tests on main branch or for maintainers (costs money)
       - name: Execute notebooks (API Testing)
         if: |

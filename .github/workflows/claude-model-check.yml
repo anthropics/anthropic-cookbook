@@ -21,25 +21,7 @@ jobs:
         with:
           fetch-depth: 0
       
-      - name: Install uv
-        uses: astral-sh/setup-uv@v4
-      
-      - name: Setup Python
-        run: uv python install 3.11
-      
-      - name: Install dependencies
-        run: uv sync
-      
-      - name: Check models with script
-        id: model_check
-        run: |
-          uv run python scripts/check_models.py --github-output || true
-      
-      # Only run Claude validation for repo members (API costs)
       - name: Claude Model Validation
-        if: |
-          github.event.pull_request.author_association == 'MEMBER' ||
-          github.event.pull_request.author_association == 'OWNER'
         uses: anthropics/claude-code-action@beta
         with:
           use_sticky_comment: true
@@ -47,14 +29,15 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           timeout_minutes: "5"
           direct_prompt: |
-            Review the changed files for Claude model usage. 
+            Review the changed files for Claude model usage.
             
-            Check the latest models at: https://docs.anthropic.com/en/docs/about-claude/models/overview.md
+            First, fetch the current list of allowed models from:
+            https://docs.anthropic.com/en/docs/about-claude/models/overview.md
             
-            Please check for:
-            1. Any internal/non-public model names
-            2. Usage of deprecated models (older Sonnet 3.5 and Opus 3 models)
-            3. Recommend using aliases for better maintainability
-            4. For testing examples, suggest claude-3-5-haiku-latest (fastest/cheapest)
+            Then check:
+            1. All model references are from the current public models list
+            2. Flag any deprecated models (older Sonnet 3.5, Opus 3 versions)
+            3. Flag any internal/non-public model names
+            4. Suggest using aliases ending in -latest for better maintainability
             
-            Format as actionable feedback.
+            Provide clear, actionable feedback on any issues found.
