@@ -1,4 +1,5 @@
 ---
+allowed_tools: Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*)
 description: Comprehensive review of Jupyter notebooks and Python scripts
 ---
 
