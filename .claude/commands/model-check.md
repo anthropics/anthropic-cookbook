@@ -15,3 +15,5 @@ Then check:
 4. Suggest using aliases ending in -latest for better maintainability
 
 Provide clear, actionable feedback on any issues found.
+
+**IMPORTANT: Post your findings as a comment on the pull request using the gh pr comment command.**

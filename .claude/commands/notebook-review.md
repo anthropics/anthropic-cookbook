@@ -41,4 +41,4 @@ Provide a clear summary with:
 - ⚠️ Suggestions for improvement
 - ❌ Critical issues that must be fixed
 
-Format your response as a helpful PR review comment.
+**IMPORTANT: Post your review as a comment on the pull request using the gh pr comment command.**
