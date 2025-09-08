@@ -28,4 +28,4 @@ Provide a clear summary with:
 
 If all links look good, provide a brief confirmation.
 
-**IMPORTANT: Post your review as a comment on the pull request using the gh pr comment command.**
+**IMPORTANT: Post your review as a comment on the pull request using the command: `gh pr comment ${{ github.event.pull_request.number }} --body "your review content"`**

@@ -16,4 +16,4 @@ Then check:
 
 Provide clear, actionable feedback on any issues found.
 
-**IMPORTANT: Post your findings as a comment on the pull request using the gh pr comment command.**
+**IMPORTANT: Post your findings as a comment on the pull request using the command: `gh pr comment ${{ github.event.pull_request.number }} --body "your findings"`**
