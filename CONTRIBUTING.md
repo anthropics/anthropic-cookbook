@@ -77,7 +77,7 @@ This repository includes slash commands that work in both Claude Code (for local
 /link-review README.md
 ```
 
-These commands use the exact same validation logic as our CI pipeline, helping you catch issues before pushing. The command definitions are stored in `.github/slash-commands/` and symlinked to `.claude/commands/` for local use.
+These commands use the exact same validation logic as our CI pipeline, helping you catch issues before pushing. The command definitions are stored in `.claude/commands/` for both local and CI use.
 
 ### Before Committing
 

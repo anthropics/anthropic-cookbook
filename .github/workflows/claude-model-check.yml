@@ -22,12 +22,8 @@ jobs:
           fetch-depth: 0
       
       - name: Claude Model Validation
-        uses: anthropics/claude-code-action@beta
+        uses: anthropics/claude-code-action@v1
         with:
-          mode: agent
-          use_sticky_comment: true
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          timeout_minutes: "5"
-          experimental_slash_commands_dir: ${{ github.workspace }}/.github/slash-commands
           prompt: "/model-check"
