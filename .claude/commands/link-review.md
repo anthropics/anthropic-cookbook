@@ -1,5 +1,5 @@
 ---
-allowed_tools: Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*)
+allowed-tools: Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*)
 description: Review links in changed files for quality and security issues
 ---
 
