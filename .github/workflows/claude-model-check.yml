@@ -22,22 +22,11 @@ jobs:
           fetch-depth: 0
       
       - name: Claude Model Validation
-        uses: anthropics/claude-code-action@beta
+        uses: anthropics/claude-code-action@v1
         with:
           use_sticky_comment: true
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           timeout_minutes: "5"
-          direct_prompt: |
-            Review the changed files for Claude model usage.
-            
-            First, fetch the current list of allowed models from:
-            https://docs.anthropic.com/en/docs/about-claude/models/overview.md
-            
-            Then check:
-            1. All model references are from the current public models list
-            2. Flag any deprecated models (older Sonnet 3.5, Opus 3 versions)
-            3. Flag any internal/non-public model names
-            4. Suggest using aliases ending in -latest for better maintainability
-            
-            Provide clear, actionable feedback on any issues found.
+          experimental_slash_commands_dir: ${{ github.workspace }}/.github/slash-commands
+          prompt: "/model-check"

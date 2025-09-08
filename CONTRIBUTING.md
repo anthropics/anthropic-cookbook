@@ -60,6 +60,25 @@ This repository uses automated tools to maintain code quality:
 
 **Note**: Notebook outputs are intentionally kept in this repository as they demonstrate expected results for users.
 
+### Claude Code Slash Commands
+
+This repository includes slash commands that work in both Claude Code (for local development) and GitHub Actions CI. These commands are automatically available when you work in this repository with Claude Code.
+
+**Available Commands**:
+- `/link-review` - Validate links in markdown and notebooks
+- `/model-check` - Verify Claude model usage is current
+- `/notebook-review` - Comprehensive notebook quality check
+
+**Usage in Claude Code**:
+```bash
+# Run the same validations that CI will run
+/notebook-review skills/my-notebook.ipynb
+/model-check
+/link-review README.md
+```
+
+These commands use the exact same validation logic as our CI pipeline, helping you catch issues before pushing. The command definitions are stored in `.github/slash-commands/` and symlinked to `.claude/commands/` for local use.
+
 ### Before Committing
 
 1. **Run quality checks**:

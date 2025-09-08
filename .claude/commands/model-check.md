@@ -1,0 +1,1 @@
+../../.github/slash-commands/model-check.md
