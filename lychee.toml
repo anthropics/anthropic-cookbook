@@ -1,0 +1,51 @@
+# Lychee configuration for Anthropic Cookbook
+# Validates links in notebooks and documentation
+
+# Core settings
+timeout = 30
+max_redirects = 10
+include_fragments = true
+require_https = false
+
+# Caching to speed up repeated checks
+cache = true
+max_cache_age = "1d"
+
+# Retry configuration for transient failures
+max_retries = 3
+retry_wait_time = 2
+
+# Skip checking code blocks (important for notebooks with example code)
+skip_code_blocks = true
+
+# Fallback extensions for local file checking
+# When checking relative links, try these extensions if the exact path doesn't exist
+fallback_extensions = ["ipynb", "md", "html", "py"]
+
+# Exclude certain paths from being searched
+exclude_path = [
+    ".git/",
+    "__pycache__/",
+    ".ipynb_checkpoints/",
+    "*.pyc",
+    ".github/",
+    "scripts/"
+]
+
+# Exclude API endpoints and local development URLs from link checking
+exclude = [
+    "https://api.anthropic.com.*",
+    "https://console.anthropic.com.*",
+    "https://www.claude.ai/",
+    "http://localhost.*",
+    "http://127.0.0.1.*"
+]
+
+# Accept 403 (forbidden) and 429 (rate limited) as valid
+# These are returned by gated and rate-limited sites
+accept = [403, 429]
+
+# Headers for authenticated requests
+headers = [
+    "User-Agent=Mozilla/5.0 (compatible; lychee/0.20.1; anthropic-cookbook)"
+]

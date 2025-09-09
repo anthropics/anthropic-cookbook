@@ -1,0 +1,18 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.12.12
+    hooks:
+      - id: ruff
+        types_or: [python, pyi, jupyter]
+        args: ['--fix']
+      - id: ruff-format
+        types_or: [python, pyi, jupyter]
+
+  - repo: local
+    hooks:
+      - id: validate-notebooks
+        name: Validate notebook structure
+        entry: python scripts/validate_notebooks.py
+        language: python
+        files: '\.ipynb$'
+        pass_filenames: false

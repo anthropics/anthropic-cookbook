@@ -1,0 +1,42 @@
+[project]
+name = "anthropic-cookbook"
+version = "0.1.0"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "anthropic>=0.39.0",
+    "jupyter>=1.1.1",
+    "ipykernel>=6.29.5",
+    "notebook>=7.2.2",
+    "numpy>=1.26.4",
+    "pandas>=2.2.3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.7.0",
+    "pytest>=8.3.3",
+    "nbval>=0.11.0",
+    "pre-commit>=3.8.0",
+    "nbconvert>=7.16.0",  # For executing notebooks in CI
+]
+
+[tool.uv.sources]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["anthropic_cookbook"]  # Dummy package for build system
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-include = ["*.ipynb"]  # Ruff v0.6.0+ includes notebooks by default, but explicit is better
+select = ["E", "F", "I", "W", "UP", "S", "B"]
+ignore = ["E501", "S101"]  # E501: line too long, S101: assert used (ok in tests)
+
+[tool.ruff.per-file-ignores]
+# Notebooks have different conventions than regular Python files
+"*.ipynb" = ["E402", "E501", "F401", "F811"]  # Allow: imports mid-file, long lines, unused imports, redefinitions
+

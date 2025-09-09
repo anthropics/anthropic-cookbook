@@ -1,0 +1,29 @@
+name: Claude Model Check
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - 'skills/**/*.ipynb'
+      - '**.py'
+      - '**.md'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  model-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Claude Model Validation
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          prompt: "/model-check"

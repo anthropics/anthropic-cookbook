@@ -1,0 +1,65 @@
+name: Link Check
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+  schedule:
+    - cron: "0 0 * * SUN"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Convert notebooks for link extraction
+        run: |
+          pip install jupyter nbconvert
+          mkdir -p temp_md
+          
+          for nb in skills/**/*.ipynb; do
+            echo "Converting: $nb"
+            jupyter nbconvert --to markdown "$nb" \
+              --output-dir=temp_md \
+              --ExtractOutputPreprocessor.enabled=False
+          done
+      
+      - name: Check Links with Lychee
+        id: lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: |
+            --config lychee.toml 
+            --format markdown
+            --no-progress
+            skills/**/*.md 
+            temp_md/*.md 
+            README.md
+          output: lychee-report.md
+          fail: false
+      
+      - name: Comment PR with results
+        if: github.event_name == 'pull_request' && steps.lychee.outputs.exit_code != 0
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: link-check
+          path: lychee-report.md
+      
+      - name: Upload link check results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-check-results
+          path: |
+            lychee-report.md
+            .lycheecache

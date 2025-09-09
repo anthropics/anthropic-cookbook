@@ -1,0 +1,30 @@
+name: Claude Link Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - '**.md'
+      - '**.mdx'
+      - '**.ipynb'
+      - 'README.md'
+
+jobs:
+  link-review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Claude Link Review
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          prompt: "/link-review"

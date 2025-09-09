@@ -1,0 +1,6 @@
+anthropic>=0.39.0
+jupyter>=1.1.1
+ipykernel>=6.29.5
+notebook>=7.2.2
+numpy>=1.26.4
+pandas>=2.2.3

@@ -1,0 +1,5 @@
+papermill>=2.6.0
+ruff>=0.12.0
+pytest>=8.3.3
+nbval>=0.11.0
+pre-commit>=3.8.0
