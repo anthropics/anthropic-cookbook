@@ -1,116 +1,34 @@
 <evaluation>
-    <!-- Date/Time Calculations -->
     <task>
-        <prompt>How many days are between March 15, 2024 and September 22, 2025? Include both start and end dates in your count.</prompt>
-        <response>557</response>
+        <prompt>Calculate the compound interest on $10,000 invested at 5% annual interest rate, compounded monthly for 3 years. What is the final amount in dollars (rounded to 2 decimal places)?</prompt>
+        <response>11614.72</response>
     </task>
-    
     <task>
-        <prompt>If a meeting starts at 11:45 AM and lasts for 2 hours and 37 minutes, what time does it end? Express in 24-hour format as HH:MM.</prompt>
-        <response>14:22</response>
+        <prompt>A projectile is launched at a 45-degree angle with an initial velocity of 50 m/s. Calculate the total distance (in meters) it has traveled from the launch point after 2 seconds, assuming g=9.8 m/s². Round to 2 decimal places.</prompt>
+        <response>87.25</response>
     </task>
-    
-    <!-- Modular Arithmetic -->
     <task>
-        <prompt>What is 2^100 mod 7? Give the exact integer result.</prompt>
+        <prompt>A sphere has a volume of 500 cubic meters. Calculate its surface area in square meters. Round to 2 decimal places.</prompt>
+        <response>304.65</response>
+    </task>
+    <task>
+        <prompt>Calculate the population standard deviation of this dataset: [12, 15, 18, 22, 25, 30, 35]. Round to 2 decimal places.</prompt>
+        <response>7.61</response>
+    </task>
+    <task>
+        <prompt>Calculate the pH of a solution with a hydrogen ion concentration of 3.5 × 10^-5 M. Round to 2 decimal places.</prompt>
+        <response>4.46</response>
+    </task>
+    <task>
+        <prompt>Calculate the monthly payment for a $200,000 mortgage at 4.5% annual interest rate for 30 years (360 months). Use the standard mortgage payment formula. Round to 2 decimal places.</prompt>
+        <response>1013.37</response>
+    </task>
+    <task>
+        <prompt>Calculate the energy in joules of a photon with wavelength 550 nanometers. Use h = 6.626 × 10^-34 J·s and c = 3 × 10^8 m/s. Express the answer in scientific notation with 2 significant figures after the decimal (e.g., 3.61e-19).</prompt>
+        <response>3.61e-19</response>
+    </task>
+    <task>
+        <prompt>Find the larger real root of the quadratic equation 3x² - 7x + 2 = 0. Give the exact value.</prompt>
         <response>2</response>
-    </task>
-    
-    <task>
-        <prompt>What day of the week will it be 1000 days from Monday?</prompt>
-        <response>Wednesday</response>
-    </task>
-    
-    <!-- Factorial/Combinatorics -->
-    <task>
-        <prompt>Calculate 15! (15 factorial). Give the exact integer result.</prompt>
-        <response>1307674368000</response>
-    </task>
-    
-    <task>
-        <prompt>How many different ways can you choose 5 items from a set of 12 items? (Calculate C(12,5))</prompt>
-        <response>792</response>
-    </task>
-    
-    <!-- Trigonometric Functions -->
-    <task>
-        <prompt>Calculate sin(π/6) + cos(π/3) + tan(π/4). Give the exact value.</prompt>
-        <response>2</response>
-    </task>
-    
-    <!-- Logarithms/Exponentials -->
-    <task>
-        <prompt>Solve for x: 2^x = 128. Give the exact integer value.</prompt>
-        <response>7</response>
-    </task>
-    
-    <task>
-        <prompt>Calculate ln(e^3) + log₁₀(1000) - log₂(8). Give the exact value.</prompt>
-        <response>3</response>
-    </task>
-    
-    <!-- Matrix Operations -->
-    <task>
-        <prompt>Calculate the determinant of the 2x2 matrix [[3, 7], [2, 5]].</prompt>
-        <response>1</response>
-    </task>
-    
-    <!-- Number Theory -->
-    <task>
-        <prompt>What is the greatest common divisor (GCD) of 1071 and 462?</prompt>
-        <response>21</response>
-    </task>
-    
-    <task>
-        <prompt>Is 97 a prime number? Answer 'true' or 'false'.</prompt>
-        <response>true</response>
-    </task>
-    
-    <!-- Bitwise Operations -->
-    <task>
-        <prompt>Calculate 42 XOR 15 (bitwise exclusive OR).</prompt>
-        <response>37</response>
-    </task>
-    
-    <!-- Floor/Ceiling Functions -->
-    <task>
-        <prompt>Calculate floor(7.8) × ceiling(2.1) + round(4.5).</prompt>
-        <response>25</response>
-    </task>
-    
-    <!-- Complex Numbers -->
-    <task>
-        <prompt>Calculate the magnitude of the complex number 3 + 4i.</prompt>
-        <response>5</response>
-    </task>
-    
-    <!-- Base Conversions -->
-    <task>
-        <prompt>Convert the hexadecimal number FF to decimal.</prompt>
-        <response>255</response>
-    </task>
-    
-    <!-- Statistical Functions -->
-    <task>
-        <prompt>Calculate the median of this dataset: [3, 7, 2, 9, 1, 5, 8].</prompt>
-        <response>5</response>
-    </task>
-    
-    <!-- Recursive Calculations -->
-    <task>
-        <prompt>Calculate the 10th Fibonacci number (where F(1)=1, F(2)=1).</prompt>
-        <response>55</response>
-    </task>
-    
-    <!-- Percentage of Percentage -->
-    <task>
-        <prompt>What is 25% of 40% of 80% of 500?</prompt>
-        <response>40</response>
-    </task>
-    
-    <!-- Unit Conversions -->
-    <task>
-        <prompt>Convert 72 degrees Fahrenheit to Celsius. Round to 1 decimal place.</prompt>
-        <response>22.2</response>
     </task>
 </evaluation>
