@@ -32,20 +32,30 @@ def validate_notebook(path: Path) -> list:
 def main():
     """Check all notebooks."""
     has_issues = False
-    
-    for notebook in Path('skills').glob('**/*.ipynb'):
+
+    # Find all notebooks in the repository
+    notebooks = list(Path('.').glob('**/*.ipynb'))
+    # Exclude hidden directories and common build directories
+    notebooks = [nb for nb in notebooks if not any(part.startswith('.') for part in nb.parts)]
+    notebooks = [nb for nb in notebooks if 'test_outputs' not in nb.parts]
+
+    if not notebooks:
+        print("⚠️ No notebooks found to validate")
+        sys.exit(0)
+
+    for notebook in notebooks:
         issues = validate_notebook(notebook)
         if issues:
             has_issues = True
             print(f"\n❌ {notebook}:")
             for issue in issues:
                 print(f"  - {issue}")
-    
+
     if not has_issues:
-        print("✅ All notebooks validated successfully")
+        print(f"✅ All {len(notebooks)} notebooks validated successfully")
     else:
         print("\n⚠️ Found issues that should be fixed in a separate PR")
-    
+
     # For POC, return 0 even with issues to show detection without blocking
     sys.exit(0)
 
