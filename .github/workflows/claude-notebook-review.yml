@@ -4,7 +4,7 @@ on:
   pull_request:
     types: [opened, synchronize]
     paths:
-      - 'skills/**/*.ipynb'
+      - '**/*.ipynb'
       - 'pyproject.toml'
       - 'uv.lock'
       - 'scripts/**/*.py'

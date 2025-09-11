@@ -3,13 +3,13 @@ name: Notebook Quality Check
 on:
   pull_request:
     paths:
-      - 'skills/**/*.ipynb'
+      - '**/*.ipynb'
       - 'pyproject.toml'
       - 'uv.lock'
   push:
     branches: [main]
     paths:
-      - 'skills/**/*.ipynb'
+      - '**/*.ipynb'
 
 permissions:
   contents: read
@@ -37,8 +37,8 @@ jobs:
       
       - name: Lint notebooks with Ruff
         run: |
-          uv run ruff check skills/**/*.ipynb --show-fixes || true
-          uv run ruff format skills/**/*.ipynb --check || true
+          uv run ruff check **/*.ipynb --show-fixes || true
+          uv run ruff format **/*.ipynb --check || true
       
       - name: Validate notebook structure
         run: |
@@ -54,9 +54,9 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           mkdir -p test_outputs
-          for notebook in skills/*/guide.ipynb; do
+          for notebook in $(find . -name "*.ipynb" -not -path "*/.*" -not -path "*/test_outputs/*"); do
             echo "📓 Testing: $notebook"
-            output_name=$(basename $(dirname "$notebook"))
+            output_name=$(echo "$notebook" | sed 's|/|_|g' | sed 's|\.|_|g')
             # Use nbconvert to execute notebooks and save outputs
             uv run jupyter nbconvert --to notebook \
               --execute "$notebook" \
@@ -75,8 +75,8 @@ jobs:
           github.event.pull_request.author_association != 'OWNER'
         run: |
           echo "🔒 Running in mock mode for external contributor"
-          
-          for notebook in skills/*/guide.ipynb; do
+
+          for notebook in $(find . -name "*.ipynb" -not -path "*/.*"); do
             echo "📓 Validating structure: $notebook"
             uv run python -m nbformat.validator "$notebook"
           done

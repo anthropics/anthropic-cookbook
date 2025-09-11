@@ -1,0 +1,27 @@
+name: SAST Security Monitor
+
+on:
+    pull_request:
+
+permissions:
+    contents: read
+    pull-requests: write
+
+jobs:
+    security-scan:
+        runs-on: ubuntu-latest
+        continue-on-error: true # Never fail the build
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  ref: ${{ github.event.pull_request.head.sha || github.sha }}
+                  # fetch-depth: 2 is required to get the previous commit for diff analysis
+                  # The SAST tool needs git history to review changes between commits
+                  fetch-depth: 2
+
+            - uses: anthropics/sast@main
+              with:
+                  mode: monitor
+                  comment-pr: true
+                  upload-results: true
+                  claude-api-key: ${{ secrets.ANTHROPIC_API_KEY }}

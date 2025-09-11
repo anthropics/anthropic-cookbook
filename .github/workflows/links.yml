@@ -27,7 +27,7 @@ jobs:
           pip install jupyter nbconvert
           mkdir -p temp_md
           
-          for nb in skills/**/*.ipynb; do
+          for nb in $(find . -name "*.ipynb" -not -path "*/.*"); do
             echo "Converting: $nb"
             jupyter nbconvert --to markdown "$nb" \
               --output-dir=temp_md \
