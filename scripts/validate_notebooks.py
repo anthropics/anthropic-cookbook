@@ -56,8 +56,8 @@ def main():
     else:
         print("\n⚠️ Found issues that should be fixed in a separate PR")
 
-    # For POC, return 0 even with issues to show detection without blocking
-    sys.exit(0)
+    # Exit with error if issues found
+    sys.exit(1 if has_issues else 0)
 
 
 if __name__ == "__main__":
