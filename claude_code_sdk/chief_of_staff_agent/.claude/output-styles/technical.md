@@ -1,7 +1,5 @@
-# Technical
-
 ---
-name: Technical Style
+name: technical
 description: Detailed, data-rich analysis for technical teams and analysts
 ---
 

@@ -1,7 +1,5 @@
-# Executive
-
 ---
-name: Executive Style
+name: executive
 description: Concise, KPI-focused communication for C-suite executives
 ---
 
