@@ -1,0 +1,26 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+.env
+.python-version
+
+# Claude Code settings
+.claude-code/
+/CLAUDE.md
+
+# Package manager lock files (optional for tutorials)
+uv.lock
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+*.ipynb_checkpoints/
+
+# macOS
+.DS_Store

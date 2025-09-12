@@ -1,0 +1,11 @@
+Role,Level,Base_Salary,Equity_Percent,Total_Comp,Recruiting_Fee,Onboarding_Cost,Monthly_Loaded_Cost
+Backend Engineer,Senior,200000,0.002,220000,30000,5000,18333
+Backend Engineer,Junior,115000,0.0008,125000,17250,5000,10417
+Frontend Engineer,Senior,190000,0.002,210000,28500,5000,17500
+Frontend Engineer,Junior,110000,0.0008,120000,16500,5000,10000
+DevOps Engineer,Senior,210000,0.0025,235000,31500,5000,19583
+ML Engineer,Senior,240000,0.003,270000,36000,5000,22500
+Engineering Manager,Manager,225000,0.004,260000,33750,5000,21667
+Product Manager,Senior,180000,0.002,200000,27000,5000,16667
+Designer,Senior,170000,0.0015,185000,25500,5000,15417
+Data Scientist,Senior,200000,0.002,220000,30000,5000,18333
