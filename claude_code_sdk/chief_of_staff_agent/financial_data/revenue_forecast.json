@@ -1,0 +1,53 @@
+{
+  "current_arr": 2400000,
+  "growth_rate_monthly": 0.15,
+  "forecast_months": [
+    {
+      "month": "2024-07",
+      "projected_arr": 2760000,
+      "new_customers": 12,
+      "churn_risk": "low"
+    },
+    {
+      "month": "2024-08",
+      "projected_arr": 3174000,
+      "new_customers": 15,
+      "churn_risk": "low"
+    },
+    {
+      "month": "2024-09",
+      "projected_arr": 3650000,
+      "new_customers": 18,
+      "churn_risk": "medium"
+    },
+    {
+      "month": "2024-10",
+      "projected_arr": 4197500,
+      "new_customers": 20,
+      "churn_risk": "medium"
+    },
+    {
+      "month": "2024-11",
+      "projected_arr": 4827125,
+      "new_customers": 22,
+      "churn_risk": "low"
+    },
+    {
+      "month": "2024-12",
+      "projected_arr": 5551194,
+      "new_customers": 25,
+      "churn_risk": "low"
+    }
+  ],
+  "key_assumptions": [
+    "Maintain 15% MoM growth rate",
+    "Product-market fit remains strong",
+    "No major competitor enters market",
+    "Engineering team scales as planned"
+  ],
+  "risks": [
+    "Economic downturn could reduce enterprise spending",
+    "Key customer concentration (top 5 = 30% of revenue)",
+    "Technical debt may slow feature development"
+  ]
+}

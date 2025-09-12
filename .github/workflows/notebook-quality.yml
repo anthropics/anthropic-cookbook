@@ -41,9 +41,46 @@ jobs:
           uv run ruff format **/*.ipynb --check || true
       
       - name: Validate notebook structure
+        id: validate
         run: |
-          uv run python scripts/validate_notebooks.py
-      
+          uv run python scripts/validate_notebooks.py | tee validation_output.txt
+          # Check if validation found issues
+          if grep -q "❌" validation_output.txt; then
+            echo "has_issues=true" >> $GITHUB_OUTPUT
+            exit 1
+          else
+            echo "has_issues=false" >> $GITHUB_OUTPUT
+          fi
+        continue-on-error: true
+
+      - name: Summarize validation issues with Claude
+        if: github.event_name == 'pull_request' && steps.validate.outputs.has_issues == 'true'
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          prompt: |
+            The notebook validation found these issues:
+
+            ```
+            $(cat validation_output.txt)
+            ```
+
+            Create a helpful PR comment that:
+            - Summarizes the validation issues found
+            - Groups similar issues together (e.g., "7 notebooks have empty cells")
+            - Explains why empty cells are problematic and how to fix them (delete them or add content)
+            - If there are error outputs, explain they should be cleared before committing
+            - Uses friendly, constructive language
+            - Includes specific notebook names and cell numbers for reference
+
+            Format as a nice GitHub comment with markdown. Use emoji sparingly for clarity.
+            Post using: gh pr comment $PR_NUMBER --body "your comment"
+          claude_args: |
+            --allowedTools "Bash(gh pr comment:*),Bash(cat:*),Read"
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+
       # Only run API tests on main branch or for maintainers (costs money)
       - name: Execute notebooks (API Testing)
         if: |

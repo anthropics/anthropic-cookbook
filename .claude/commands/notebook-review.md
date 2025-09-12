@@ -41,4 +41,4 @@ Provide a clear summary with:
 - ⚠️ Suggestions for improvement
 - ❌ Critical issues that must be fixed
 
-**IMPORTANT: Post your review as a comment on the pull request using the command: `gh pr comment ${{ github.event.pull_request.number }} --body "your review"`**
+**IMPORTANT: Post your review as a comment on the pull request using the command: `gh pr comment $PR_NUMBER --body "your review"`**

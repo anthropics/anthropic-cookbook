@@ -1,0 +1,18 @@
+services:
+  observability-agent:
+    build: 
+      context: ../..
+      dockerfile: observability_agent/docker/Dockerfile
+    ports:
+      - "8001:8000"  # Different port to avoid conflict with research agent
+    env_file:
+      - ../../.env
+    environment:
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      # Mount Docker socket for MCP server containers
+      - /var/run/docker.sock:/var/run/docker.sock
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    restart: unless-stopped

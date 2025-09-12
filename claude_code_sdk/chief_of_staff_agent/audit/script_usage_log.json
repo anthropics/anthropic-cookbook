@@ -1,0 +1,36 @@
+{
+  "script_executions": [
+    {
+      "timestamp": "2025-09-12T11:09:48.519841",
+      "script": "simple_calculation.py",
+      "command": "python scripts/simple_calculation.py 2904829 121938",
+      "description": "Run runway calculation with provided values",
+      "tool_used": "Bash",
+      "success": true
+    },
+    {
+      "timestamp": "2025-09-12T11:12:16.209491",
+      "script": "simple_calculation.py",
+      "command": "python scripts/simple_calculation.py 2904829 121938",
+      "description": "Run runway calculation with $2.9M runway and $122K monthly burn",
+      "tool_used": "Bash",
+      "success": true
+    },
+    {
+      "timestamp": "2025-09-12T11:23:02.810007",
+      "script": "simple_calculation.py",
+      "command": "python scripts/simple_calculation.py 10000000 500000",
+      "description": "Calculate financial metrics using our script",
+      "tool_used": "Bash",
+      "success": true
+    },
+    {
+      "timestamp": "2025-09-12T11:27:59.994999",
+      "script": "hiring_impact.py",
+      "command": "python scripts/hiring_impact.py 3 200000",
+      "description": "Calculate hiring impact for 3 engineers at $200K",
+      "tool_used": "Bash",
+      "success": true
+    }
+  ]
+}
