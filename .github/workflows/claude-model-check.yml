@@ -27,3 +27,5 @@ jobs:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           prompt: "/model-check"
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
