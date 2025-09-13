@@ -13,7 +13,7 @@ class VectorDB:
     def load_db(self):
         if os.path.exists(self.db_path):
             with open(self.db_path, "rb") as file:
-                data = pickle.load(file)
+            self.embeddings, self.metadata, self.query_cache = data['embeddings'], data['metadata'], data['query_cache']
             self.embeddings, self.metadata, self.query_cache = data['embeddings'], data['metadata'], json.loads(data['query_cache'])
         else:
             self.embeddings, self.metadata, self.query_cache = [], [], {}
@@ -37,7 +37,6 @@ class VectorDB:
         return [{"metadata": self.metadata[i], "similarity": similarities[i]} 
                 for i in top_indices if similarities[i] >= similarity_threshold][:k]
 
-    def save_db(self):
-        with open(self.db_path, "wb") as file:
+            pickle.dump({"embeddings": self.embeddings, "metadata": self.metadata, "query_cache": self.query_cache}, file)
             pickle.dump({"embeddings": self.embeddings, "metadata": self.metadata, 
                          "query_cache": json.dumps(self.query_cache)}, file)
