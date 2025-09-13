@@ -67,3 +67,4 @@ If you have ideas for new examples or guides, share them on the [issues page](ht
 
 - [Anthropic on AWS](https://github.com/aws-samples/anthropic-on-aws): Explore examples and solutions for using Claude on AWS infrastructure.
 - [AWS Samples](https://github.com/aws-samples/): A collection of code samples from AWS which can be adapted for use with Claude. Note that some samples may require modification to work optimally with Claude.
+- [God Tier Prompts](https://www.godtierprompts.com/model/claude): Explore claude prompts on GTP, a community driven leaderboard where the best prompts rise to the top.
