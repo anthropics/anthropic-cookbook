@@ -1,4 +1,4 @@
-# Lychee configuration for Anthropic Cookbook
+# Lychee configuration for Claude Cookbook
 # Validates links in notebooks and documentation
 
 # Core settings
@@ -35,7 +35,7 @@ exclude_path = [
 # Exclude API endpoints and local development URLs from link checking
 exclude = [
     "https://api.anthropic.com.*",
-    "https://console.anthropic.com.*",
+    "https://platform.claude.com.*",
     "https://www.claude.ai/",
     "http://localhost.*",
     "http://127.0.0.1.*"

@@ -1,26 +1,26 @@
-# Anthropic Cookbook
+# Claude Cookbook
 
-The Anthropic Cookbook provides code and guides designed to help developers build with Claude, offering copy-able code snippets that you can easily integrate into your own projects.
+The Claude Cookbook provides code and guides designed to help developers build with Claude, offering copy-able code snippets that you can easily integrate into your own projects.
 
 ## Prerequisites
 
-To make the most of the examples in this cookbook, you'll need an Anthropic API key (sign up for free [here](https://www.anthropic.com)).
+To make the most of the examples in this cookbook, you'll need an Claude API key (sign up for free [here](https://www.anthropic.com)).
 
-While the code examples are primarily written in Python, the concepts can be adapted to any programming language that supports interaction with the Anthropic API.
+While the code examples are primarily written in Python, the concepts can be adapted to any programming language that supports interaction with the Claude API.
 
-If you're new to working with the Anthropic API, we recommend starting with our [Anthropic API Fundamentals course](https://github.com/anthropics/courses/tree/master/anthropic_api_fundamentals) to get a solid foundation.
+If you're new to working with the Claude API, we recommend starting with our [Claude API Fundamentals course](https://github.com/anthropics/courses/tree/master/anthropic_api_fundamentals) to get a solid foundation.
 
 ## Explore Further
 
 Looking for more resources to enhance your experience with Claude and AI assistants? Check out these helpful links:
 
-- [Anthropic developer documentation](https://docs.anthropic.com/claude/docs/guide-to-anthropics-prompt-engineering-resources)
+- [Anthropic developer documentation](https://docs.claude.com/claude/docs/guide-to-anthropics-prompt-engineering-resources)
 - [Anthropic support docs](https://support.anthropic.com)
 - [Anthropic Discord community](https://www.anthropic.com/discord)
 
 ## Contributing
 
-The Anthropic Cookbook thrives on the contributions of the developer community. We value your input, whether it's submitting an idea, fixing a typo, adding a new guide, or improving an existing one. By contributing, you help make this resource even more valuable for everyone.
+The Claude Cookbook thrives on the contributions of the developer community. We value your input, whether it's submitting an idea, fixing a typo, adding a new guide, or improving an existing one. By contributing, you help make this resource even more valuable for everyone.
 
 To avoid duplication of efforts, please review the existing issues and pull requests before contributing.
 

@@ -1,4 +1,4 @@
-# LlamaIndex <> Anthropic Cookbooks
+# LlamaIndex <> Claude Cookbooks
 
 [LlamaIndex](https://github.com/run-llama/llama_index) is a data framework for LLM-based applications that benefit from context augmentation.
 

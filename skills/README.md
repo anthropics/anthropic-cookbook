@@ -1,6 +1,6 @@
 # Claude Skills
 
-Welcome to the Skills section of the Anthropic Cookbook! This directory contains a collection of guides that showcase specific skills and capabilities where Claude excels. Each guide provides an in-depth exploration of a particular skill, discussing potential use cases, prompt engineering techniques to optimize results, and approaches for evaluating Claude's performance.
+Welcome to the Skills section of the Claude Cookbook! This directory contains a collection of guides that showcase specific skills and capabilities where Claude excels. Each guide provides an in-depth exploration of a particular skill, discussing potential use cases, prompt engineering techniques to optimize results, and approaches for evaluating Claude's performance.
 
 ## Guides
 

@@ -20,7 +20,7 @@ See the official docs [here](https://www.promptfoo.dev/docs/getting-started)
 
 ### Getting Started
 
-To get started, set your ANTHROPIC_API_KEY environment variable, or other required keys for the providers you selected. You can do `export ANTHROPIC_API_KEY=YOUR_API_KEY`.
+To get started, set your CLAUDE_API_KEY environment variable, or other required keys for the providers you selected. You can do `export CLAUDE_API_KEY=YOUR_API_KEY`.
 
 Then, `cd` into the `evaluation` directory and write `npx promptfoo@latest eval -c promptfooconfig.yaml --output ../data/results.csv`
 

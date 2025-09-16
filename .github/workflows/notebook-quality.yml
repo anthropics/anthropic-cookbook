@@ -57,7 +57,7 @@ jobs:
         if: github.event_name == 'pull_request' && steps.validate.outputs.has_issues == 'true'
         uses: anthropics/claude-code-action@v1
         with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           prompt: |
             The notebook validation found these issues:
@@ -88,7 +88,7 @@ jobs:
           github.event.pull_request.author_association == 'MEMBER' ||
           github.event.pull_request.author_association == 'OWNER'
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
         run: |
           mkdir -p test_outputs
           for notebook in $(find . -name "*.ipynb" -not -path "*/.*" -not -path "*/test_outputs/*"); do

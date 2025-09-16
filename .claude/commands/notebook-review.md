@@ -7,7 +7,7 @@ Review the changes to Jupyter notebooks and Python scripts in this PR. Please ch
 
 ## Model Usage
 Verify all Claude model references against the current list at:
-https://docs.anthropic.com/en/docs/about-claude/models/overview.md
+https://docs.claude.com/en/docs/about-claude/models/overview.md
 - Flag any deprecated models (older Sonnet 3.5, Opus 3 versions)
 - Flag any internal/non-public model names
 - Suggest current alternatives when issues found
@@ -17,7 +17,7 @@ https://docs.anthropic.com/en/docs/about-claude/models/overview.md
 - Python code follows PEP 8 conventions
 - Proper error handling
 - Clear variable names and documentation
-- No hardcoded API keys (use os.getenv("ANTHROPIC_API_KEY"))
+- No hardcoded API keys (use os.getenv("CLAUDE_API_KEY"))
 
 ## Notebook Structure
 - Clear introduction explaining what the notebook demonstrates and why it's useful

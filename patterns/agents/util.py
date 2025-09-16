@@ -2,7 +2,7 @@ from anthropic import Anthropic
 import os
 import re
 
-client = Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+client = Anthropic(api_key=os.environ["CLAUDE_API_KEY"])
 
 def llm_call(prompt: str, system_prompt: str = "", model="claude-3-5-sonnet-20241022") -> str:
     """
@@ -16,7 +16,7 @@ def llm_call(prompt: str, system_prompt: str = "", model="claude-3-5-sonnet-2024
     Returns:
         str: The response from the language model.
     """
-    client = Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+    client = Anthropic(api_key=os.environ["CLAUDE_API_KEY"])
     messages = [{"role": "user", "content": prompt}]
     response = client.messages.create(
         model=model,

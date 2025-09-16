@@ -32,7 +32,7 @@ def evaluate_end_to_end(query, generated_answer, correct_answer):
     </evaluation>
     """
     
-    client = Anthropic(api_key=os.environ.get('ANTHROPIC_API_KEY'))
+    client = Anthropic(api_key=os.environ.get('CLAUDE_API_KEY'))
     try:
         response = client.messages.create(
             model="claude-3-5-sonnet-20241022",

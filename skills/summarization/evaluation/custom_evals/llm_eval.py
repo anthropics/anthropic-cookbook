@@ -14,7 +14,7 @@ def llm_eval(summary, input):
     Returns:
     bool: True if the average score is above the threshold, False otherwise.
     """
-    client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+    client = anthropic.Anthropic(api_key=os.getenv("CLAUDE_API_KEY"))
     
     # You could include an example here too and likely improve performance further!
     prompt = f"""Evaluate the following summary based on these criteria:

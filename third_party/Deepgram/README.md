@@ -1,4 +1,4 @@
-# Deepgram <> Anthropic Cookbooks
+# Deepgram <> Claude Cookbooks
 
 [Deepgram](https://deepgram.com/) is a foundational AI company providing the speech-to-text, text-to-speech, text-to-text and language intelligence capabilities you need to make your data readable and actionable by human or machines.
 

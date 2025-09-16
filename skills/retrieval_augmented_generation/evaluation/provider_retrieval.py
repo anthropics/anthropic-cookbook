@@ -6,7 +6,7 @@ from anthropic import Anthropic
 
 # Initialize the VectorDB
 db = VectorDB("anthropic_docs")
-# Load the Anthropic documentation
+# Load the Claude Documentation
 with open('../data/anthropic_docs.json', 'r') as f:
     anthropic_docs = json.load(f)
 db.load_data(anthropic_docs)
@@ -23,7 +23,7 @@ def retrieve_base(query, options, context):
 
 # Initialize the VectorDB
 db_summary = SummaryIndexedVectorDB("anthropic_docs_summaries")
-# Load the Anthropic documentation
+# Load the Claude Documentation
 with open("../data/anthropic_summary_indexed_docs.json", 'r') as f:
     anthropic_docs_summaries = json.load(f)
 db_summary.load_data(anthropic_docs_summaries)
@@ -64,7 +64,7 @@ def _rerank_results(query: str, results: List[Dict], k: int = 3) -> List[Dict]:
     <relevant_indices>put the numbers of your indices here, seeparted by commas</relevant_indices>
     """
     
-    client = Anthropic(api_key=os.environ.get('ANTHROPIC_API_KEY'))
+    client = Anthropic(api_key=os.environ.get('CLAUDE_API_KEY'))
     try:
         response = client.messages.create(
             model="claude-3-5-sonnet-20241022",
@@ -108,7 +108,7 @@ def _rerank_results(query: str, results: List[Dict], k: int = 3) -> List[Dict]:
 
 # Initialize the VectorDB
 db_rerank = SummaryIndexedVectorDB("anthropic_docs_summaries_rerank")
-# Load the Anthropic documentation
+# Load the Claude Documentation
 with open("../data/anthropic_summary_indexed_docs.json", 'r') as f:
     anthropic_docs_summaries = json.load(f)
 db_rerank.load_data(anthropic_docs_summaries)
