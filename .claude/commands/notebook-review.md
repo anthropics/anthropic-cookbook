@@ -17,7 +17,7 @@ https://docs.claude.com/en/docs/about-claude/models/overview.md
 - Python code follows PEP 8 conventions
 - Proper error handling
 - Clear variable names and documentation
-- No hardcoded API keys (use os.getenv("CLAUDE_API_KEY"))
+- No hardcoded API keys (use os.getenv("ANTHROPIC_API_KEY"))
 
 ## Notebook Structure
 - Clear introduction explaining what the notebook demonstrates and why it's useful

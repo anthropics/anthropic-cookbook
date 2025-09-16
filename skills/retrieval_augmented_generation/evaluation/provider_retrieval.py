@@ -64,7 +64,7 @@ def _rerank_results(query: str, results: List[Dict], k: int = 3) -> List[Dict]:
     <relevant_indices>put the numbers of your indices here, seeparted by commas</relevant_indices>
     """
     
-    client = Anthropic(api_key=os.environ.get('CLAUDE_API_KEY'))
+    client = Anthropic(api_key=os.environ.get('ANTHROPIC_API_KEY'))
     try:
         response = client.messages.create(
             model="claude-3-5-sonnet-20241022",

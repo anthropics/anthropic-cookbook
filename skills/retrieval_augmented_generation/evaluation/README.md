@@ -47,7 +47,7 @@ To get started with Promptfoo open your terminal and navigate to this directory 
 
 Before running your evaluation you must define the following enviroment variables:
 
-`export CLAUDE_API_KEY=YOUR_API_KEY`  
+`export ANTHROPIC_API_KEY=YOUR_API_KEY`  
 `export VOYAGE_API_KEY=YOUR_API_KEY`
 
 From the `evaluation` directory, run one of the following commands.  

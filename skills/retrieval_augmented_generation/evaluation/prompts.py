@@ -4,7 +4,7 @@ from typing import Callable, List, Dict, Any, Tuple, Set
 from vectordb import VectorDB, SummaryIndexedVectorDB
 from anthropic import Anthropic
 
-client = Anthropic(api_key=os.environ.get('CLAUDE_API_KEY'))
+client = Anthropic(api_key=os.environ.get('ANTHROPIC_API_KEY'))
 
 # Initialize the VectorDB
 db = VectorDB("anthropic_docs")

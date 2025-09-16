@@ -26,7 +26,7 @@ A tutorial series demonstrating how to build sophisticated general-purpose agent
 1. Visit [platform.claude.com](https://platform.claude.com/dashboard)
 2. Sign up or log in to your account
 3. Click on "Get API keys"
-4. Copy the key and paste it into your `.env` file as ```CLAUDE_API_KEY=```
+4. Copy the key and paste it into your `.env` file as ```ANTHROPIC_API_KEY=```
 
 #### 5. GitHub Token for Notebook 02
 If you plan to work through the Observability Agent notebook:

@@ -853,7 +853,7 @@
         "https://docs.claude.com/en/api/client-sdks#typescript",
         "https://docs.claude.com/en/api/client-sdks#python"
       ],
-      "correct_answer": "In both the Python and TypeScript examples, you can specify the API key as a string parameter when creating a new Anthropic client object. If no API key is provided, it defaults to using the CLAUDE_API_KEY environment variable."
+      "correct_answer": "In both the Python and TypeScript examples, you can specify the API key as a string parameter when creating a new Anthropic client object. If no API key is provided, it defaults to using the ANTHROPIC_API_KEY environment variable."
     },
     {
       "id": "2fa26c55",
@@ -889,6 +889,6 @@
         "https://docs.claude.com/en/api/messages-examples#multiple-conversational-turns",
         "https://docs.claude.com/en/api/client-sdks#python"
       ],
-      "correct_answer": "When using the Python SDK, you can specify your API key either by passing it as the api_key parameter when initializing the Anthropic client, or by setting it as an environment variable named CLAUDE_API_KEY which the client will use by default."
+      "correct_answer": "When using the Python SDK, you can specify your API key either by passing it as the api_key parameter when initializing the Anthropic client, or by setting it as an environment variable named ANTHROPIC_API_KEY which the client will use by default."
     }
   ]

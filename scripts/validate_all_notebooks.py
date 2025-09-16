@@ -166,7 +166,7 @@ class NotebookValidator:
         
         # Execute notebook if in full mode
         if mode == "full" and result["status"] != "error":
-            if os.environ.get("CLAUDE_API_KEY"):
+            if os.environ.get("ANTHROPIC_API_KEY"):
                 exec_result = self.execute_notebook(notebook_path)
                 if not exec_result["success"]:
                     result["status"] = "error"
@@ -306,8 +306,8 @@ Overall: {passing}/{total} notebooks passing ({percentage:.1f}%)
             dashboard += "  → Run with --auto-fix to update deprecated models\n"
         if critical_issues:
             dashboard += "  → Fix critical security issues first\n"
-        if not os.environ.get("CLAUDE_API_KEY"):
-            dashboard += "  → Set CLAUDE_API_KEY to enable execution tests\n"
+        if not os.environ.get("ANTHROPIC_API_KEY"):
+            dashboard += "  → Set ANTHROPIC_API_KEY to enable execution tests\n"
         
         return dashboard
     
@@ -688,8 +688,8 @@ Overall: {passing}/{total} notebooks passing ({percentage:.1f}%)
             if choice == "1":
                 self.run_validation(mode="quick")
             elif choice == "2":
-                if not os.environ.get("CLAUDE_API_KEY"):
-                    print("\n⚠️  Warning: CLAUDE_API_KEY not set. Execution tests will be skipped.")
+                if not os.environ.get("ANTHROPIC_API_KEY"):
+                    print("\n⚠️  Warning: ANTHROPIC_API_KEY not set. Execution tests will be skipped.")
                     cont = input("Continue anyway? (y/n): ")
                     if cont.lower() != 'y':
                         continue
@@ -766,8 +766,8 @@ Examples:
     if args.quick:
         validator.run_validation(mode="quick")
     elif args.full:
-        if not os.environ.get("CLAUDE_API_KEY"):
-            print("⚠️  Warning: CLAUDE_API_KEY not set. Execution tests will be skipped.")
+        if not os.environ.get("ANTHROPIC_API_KEY"):
+            print("⚠️  Warning: ANTHROPIC_API_KEY not set. Execution tests will be skipped.")
         validator.run_validation(mode="full")
     elif args.dashboard:
         print(validator.generate_dashboard())
