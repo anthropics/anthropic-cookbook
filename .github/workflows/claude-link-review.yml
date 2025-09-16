@@ -25,7 +25,7 @@ jobs:
       - name: Run Claude Link Review
         uses: anthropics/claude-code-action@v1
         with:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           prompt: "/link-review"
           claude_args: |
