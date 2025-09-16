@@ -5,14 +5,6 @@ description: Comprehensive review of Jupyter notebooks and Python scripts
 
 Review the changes to Jupyter notebooks and Python scripts in this PR. Please check for:
 
-## Model Usage
-Verify all Claude model references against the current list at:
-https://docs.claude.com/en/docs/about-claude/models/overview.md
-- Flag any deprecated models (older Sonnet 3.5, Opus 3 versions)
-- Flag any internal/non-public model names
-- Suggest current alternatives when issues found
-- Recommend aliases ending in -latest for stability
-
 ## Code Quality
 - Python code follows PEP 8 conventions
 - Proper error handling
