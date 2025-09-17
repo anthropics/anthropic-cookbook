@@ -1,6 +1,6 @@
-# Claude Cookbook
+# Claude Cookbooks
 
-The Claude Cookbook provides code and guides designed to help developers build with Claude, offering copy-able code snippets that you can easily integrate into your own projects.
+The Claude Cookbooks provide code and guides designed to help developers build with Claude, offering copy-able code snippets that you can easily integrate into your own projects.
 
 ## Prerequisites
 
@@ -20,7 +20,7 @@ Looking for more resources to enhance your experience with Claude and AI assista
 
 ## Contributing
 
-The Claude Cookbook thrives on the contributions of the developer community. We value your input, whether it's submitting an idea, fixing a typo, adding a new guide, or improving an existing one. By contributing, you help make this resource even more valuable for everyone.
+The Claude Cookbooks thrives on the contributions of the developer community. We value your input, whether it's submitting an idea, fixing a typo, adding a new guide, or improving an existing one. By contributing, you help make this resource even more valuable for everyone.
 
 To avoid duplication of efforts, please review the existing issues and pull requests before contributing.
 

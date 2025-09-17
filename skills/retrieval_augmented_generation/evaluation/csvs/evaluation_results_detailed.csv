@@ -74,7 +74,7 @@ How do the streaming API delta formats differ between tool_use content blocks an
 What are the image file size limits when uploading images to Claude using the API versus on claude.ai?,0.3333333333333333,1.0,1.0,True
 What is one key consideration when selecting a Claude model for an enterprise use case that needs low latency?,0.6666666666666666,1.0,0.5,True
 "What embedding model does Anthropic recommend for code retrieval, and how does its performance compare to alternatives according to Voyage AI?",0.6666666666666666,1.0,1.0,True
-What are two ways the Claude Cookbook can help developers learn to use Anthropic's APIs?,0.6666666666666666,1.0,1.0,True
+What are two ways the Claude Cookbooks can help developers learn to use Anthropic's APIs?,0.6666666666666666,1.0,1.0,True
 How does the size of the context window impact a language model's ability to utilize retrieval augmented generation (RAG)?,0.6666666666666666,1.0,1.0,True
 How can the Evaluation tool in Anthropic's Claude platform help improve prompts and build more robust AI applications?,0.3333333333333333,0.5,1.0,True
 Which Claude model has the fastest comparative latency according to the comparison tables?,0.6666666666666666,1.0,1.0,True
