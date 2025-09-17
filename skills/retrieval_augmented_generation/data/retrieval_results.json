@@ -28819,11 +28819,11 @@
           "id": "python:provider_retrieval.py:retrieve_base"
         },
         "prompt": {
-          "raw": "What are two ways the Claude Cookbook can help developers learn to use Anthropic's APIs?",
+          "raw": "What are two ways the Claude Cookbooks can help developers learn to use Anthropic's APIs?",
           "label": "{{ query }}"
         },
         "vars": {
-          "query": "What are two ways the Claude Cookbook can help developers learn to use Anthropic's APIs?",
+          "query": "What are two ways the Claude Cookbooks can help developers learn to use Anthropic's APIs?",
           "correct_chunks": "[\"https://docs.claude.com/en/docs/welcome#develop-with-claude\",\"https://docs.claude.com/en/docs/quickstart#next-steps\"]"
         },
         "response": {
@@ -28948,11 +28948,11 @@
           "id": "python:provider_retrieval.py:retrieve_level_two"
         },
         "prompt": {
-          "raw": "What are two ways the Claude Cookbook can help developers learn to use Anthropic's APIs?",
+          "raw": "What are two ways the Claude Cookbooks can help developers learn to use Anthropic's APIs?",
           "label": "{{ query }}"
         },
         "vars": {
-          "query": "What are two ways the Claude Cookbook can help developers learn to use Anthropic's APIs?",
+          "query": "What are two ways the Claude Cookbooks can help developers learn to use Anthropic's APIs?",
           "correct_chunks": "[\"https://docs.claude.com/en/docs/welcome#develop-with-claude\",\"https://docs.claude.com/en/docs/quickstart#next-steps\"]"
         },
         "response": {
@@ -29851,11 +29851,11 @@
           "id": "python:provider_retrieval.py:retrieve_level_three"
         },
         "prompt": {
-          "raw": "What are two ways the Claude Cookbook can help developers learn to use Anthropic's APIs?",
+          "raw": "What are two ways the Claude Cookbooks can help developers learn to use Anthropic's APIs?",
           "label": "{{ query }}"
         },
         "vars": {
-          "query": "What are two ways the Claude Cookbook can help developers learn to use Anthropic's APIs?",
+          "query": "What are two ways the Claude Cookbooks can help developers learn to use Anthropic's APIs?",
           "correct_chunks": "[\"https://docs.claude.com/en/docs/welcome#develop-with-claude\",\"https://docs.claude.com/en/docs/quickstart#next-steps\"]"
         },
         "response": {
@@ -66207,7 +66207,7 @@
               "score": 0.8,
               "namedScores": {},
               "text": "[\"https://docs.claude.com/en/docs/welcome#develop-with-claude\",\"https://docs.claude.com/en/docs/quickstart#next-steps\",\"https://docs.claude.com/en/docs/build-with-claude/text-generation#anthropic-cookbook\"]",
-              "prompt": "What are two ways the Claude Cookbook can help developers learn to use Anthropic's APIs?",
+              "prompt": "What are two ways the Claude Cookbooks can help developers learn to use Anthropic's APIs?",
               "provider": "python:provider_retrieval.py:retrieve_base",
               "latencyMs": 1373,
               "gradingResult": {
@@ -66322,7 +66322,7 @@
               "score": 0.8,
               "namedScores": {},
               "text": "[\"https://docs.claude.com/en/docs/quickstart#next-steps\",\"https://docs.claude.com/en/api/#accessing-the-api\",\"https://docs.claude.com/en/docs/welcome#develop-with-claude\"]",
-              "prompt": "What are two ways the Claude Cookbook can help developers learn to use Anthropic's APIs?",
+              "prompt": "What are two ways the Claude Cookbooks can help developers learn to use Anthropic's APIs?",
               "provider": "python:provider_retrieval.py:retrieve_level_two",
               "latencyMs": 1494,
               "gradingResult": {
@@ -66437,7 +66437,7 @@
               "score": 0.8,
               "namedScores": {},
               "text": "[\"https://docs.claude.com/en/docs/build-with-claude/text-generation#anthropic-cookbook\",\"https://docs.claude.com/en/docs/quickstart#next-steps\",\"https://docs.claude.com/en/docs/welcome#develop-with-claude\"]",
-              "prompt": "What are two ways the Claude Cookbook can help developers learn to use Anthropic's APIs?",
+              "prompt": "What are two ways the Claude Cookbooks can help developers learn to use Anthropic's APIs?",
               "provider": "python:provider_retrieval.py:retrieve_level_three",
               "latencyMs": 4931,
               "gradingResult": {
@@ -66550,7 +66550,7 @@
           ],
           "test": {
             "vars": {
-              "query": "What are two ways the Claude Cookbook can help developers learn to use Anthropic's APIs?",
+              "query": "What are two ways the Claude Cookbooks can help developers learn to use Anthropic's APIs?",
               "correct_chunks": "[\"https://docs.claude.com/en/docs/welcome#develop-with-claude\",\"https://docs.claude.com/en/docs/quickstart#next-steps\"]"
             },
             "assert": [
@@ -66564,7 +66564,7 @@
           },
           "vars": [
             "[\"https://docs.claude.com/en/docs/welcome#develop-with-claude\",\"https://docs.claude.com/en/docs/quickstart#next-steps\"]",
-            "What are two ways the Claude Cookbook can help developers learn to use Anthropic's APIs?"
+            "What are two ways the Claude Cookbooks can help developers learn to use Anthropic's APIs?"
           ]
         },
         {
@@ -76465,7 +76465,7 @@
       },
       {
         "vars": {
-          "query": "What are two ways the Claude Cookbook can help developers learn to use Anthropic's APIs?",
+          "query": "What are two ways the Claude Cookbooks can help developers learn to use Anthropic's APIs?",
           "correct_chunks": "[\"https://docs.claude.com/en/docs/welcome#develop-with-claude\",\"https://docs.claude.com/en/docs/quickstart#next-steps\"]"
         },
         "assert": [

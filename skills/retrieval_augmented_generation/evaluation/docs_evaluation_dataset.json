@@ -399,7 +399,7 @@
         "https://docs.claude.com/en/docs/quickstart#next-steps",
         "https://docs.claude.com/en/docs/welcome#develop-with-claude"
       ],
-      "correct_answer": "The Claude Cookbook provides interactive Jupyter notebooks demonstrating how to upload PDFs, generate embeddings, and more. The Developer Console offers a prompt generator tool for easier, more powerful prompting."
+      "correct_answer": "The Claude Cookbooks provides interactive Jupyter notebooks demonstrating how to upload PDFs, generate embeddings, and more. The Developer Console offers a prompt generator tool for easier, more powerful prompting."
     },
     {
       "id": "c417a6d5",
@@ -668,12 +668,12 @@
     },
     {
       "id": "142b8567",
-      "question": "What are two ways the Claude Cookbook can help developers learn to use Anthropic's APIs?",
+      "question": "What are two ways the Claude Cookbooks can help developers learn to use Anthropic's APIs?",
       "correct_chunks": [
         "https://docs.claude.com/en/docs/welcome#develop-with-claude",
         "https://docs.claude.com/en/docs/quickstart#next-steps"
       ],
-      "correct_answer": "The Claude Cookbook provides interactive Jupyter notebooks that demonstrate how to upload PDFs and work with embeddings to help developers learn to use Anthropic's APIs."
+      "correct_answer": "The Claude Cookbooks provides interactive Jupyter notebooks that demonstrate how to upload PDFs and work with embeddings to help developers learn to use Anthropic's APIs."
     },
     {
       "id": "79f3daa2",
