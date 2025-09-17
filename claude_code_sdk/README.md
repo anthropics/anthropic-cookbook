@@ -23,7 +23,7 @@ A tutorial series demonstrating how to build sophisticated general-purpose agent
 ```uv run python -m ipykernel install --user --name="cc-sdk-tutorial" --display-name "Python (cc-sdk-tutorial)" ```
 
 #### 4. Claude API Key
-1. Visit [platform.claude.com](https://platform.claude.com/dashboard)
+1. Visit [console.anthropic.com](https://console.anthropic.com/dashboard)
 2. Sign up or log in to your account
 3. Click on "Get API keys"
 4. Copy the key and paste it into your `.env` file as ```ANTHROPIC_API_KEY=```
