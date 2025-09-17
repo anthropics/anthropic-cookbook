@@ -6,7 +6,7 @@ description: Validate Claude model usage against current public models
 Review the changed files for Claude model usage.
 
 First, fetch the current list of allowed models from:
-https://docs.anthropic.com/en/docs/about-claude/models/overview.md
+https://docs.claude.com/en/docs/about-claude/models/overview.md
 
 Then check:
 1. All model references are from the current public models list

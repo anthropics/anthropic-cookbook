@@ -1,6 +1,6 @@
-# Contributing to Anthropic Cookbook
+# Contributing to Claude Cookbook
 
-Thank you for your interest in contributing to the Anthropic Cookbook! This guide will help you get started with development and ensure your contributions meet our quality standards.
+Thank you for your interest in contributing to the Claude Cookbook! This guide will help you get started with development and ensure your contributions meet our quality standards.
 
 ## Development Setup
 
@@ -45,7 +45,7 @@ Thank you for your interest in contributing to the Anthropic Cookbook! This guid
 5. **Set up your API key**:
    ```bash
    cp .env.example .env
-   # Edit .env and add your Anthropic API key
+   # Edit .env and add your Claude API key
    ```
 
 ## Quality Standards
@@ -118,7 +118,7 @@ If a hook fails, fix the issues and try committing again.
 
 2. **Use current Claude models**:
    - Use model aliases (e.g., `claude-3-5-haiku-latest`) for better maintainability
-   - Check current models at: https://docs.anthropic.com/en/docs/about-claude/models/overview
+   - Check current models at: https://docs.claude.com/en/docs/about-claude/models/overview
    - Claude will automatically validate model usage in PR reviews
 
 3. **Keep notebooks focused**:

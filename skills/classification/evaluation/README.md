@@ -19,7 +19,7 @@ The evaluation is orchestrated by the `promptfooconfig.yaml` file. In this file 
 - Prompts
     - Promptfoo enables you to import prompts in many different formats. You can read more about this [here](https://www.promptfoo.dev/docs/configuration/parameters).
     - In this example we will load 3 prompts - the same used in `guide.ipynb` from the `prompts.py` file:
-        - The functions are identical to those used in `guide.ipynb` except that instead of calling the Anthropic API they just return the prompt. Promptfoo then handles the orchestration of calling the API and storing the results.
+        - The functions are identical to those used in `guide.ipynb` except that instead of calling the Claude API they just return the prompt. Promptfoo then handles the orchestration of calling the API and storing the results.
         - You can read more about prompt functions [here](https://www.promptfoo.dev/docs/configuration/parameters#prompt-functions). Using python allows us to reuse the VectorDB class which is necessary for RAG, this is defined in `vectordb.py`.
 - Providers
     - With Promptfoo you can connect to many different LLMs from different platforms, see [here for more](https://www.promptfoo.dev/docs/providers). In `guide.ipynb` we used Haiku with default temperature 0.0. We will use Promptfoo to experiment with an array of different temperature settings to identify the optimal choice for our use case.

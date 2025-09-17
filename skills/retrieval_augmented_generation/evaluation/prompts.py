@@ -8,7 +8,7 @@ client = Anthropic(api_key=os.environ.get('ANTHROPIC_API_KEY'))
 
 # Initialize the VectorDB
 db = VectorDB("anthropic_docs")
-# Load the Anthropic documentation
+# Load the Claude Documentation
 with open('../data/anthropic_docs.json', 'r') as f:
     anthropic_docs = json.load(f)
 db.load_data(anthropic_docs)
@@ -41,7 +41,7 @@ def answer_query_base(context):
 
 # Initialize the VectorDB
 db_summary = SummaryIndexedVectorDB("anthropic_docs_summaries")
-# Load the Anthropic documentation
+# Load the Claude Documentation
 with open("../data/anthropic_summary_indexed_docs.json", 'r') as f:
     anthropic_docs_summaries = json.load(f)
 db_summary.load_data(anthropic_docs_summaries)
@@ -74,7 +74,7 @@ def answer_query_level_two(context):
 
 # Initialize the VectorDB
 db_rerank = SummaryIndexedVectorDB("anthropic_docs_rerank")
-# Load the Anthropic documentation
+# Load the Claude Documentation
 with open("../data/anthropic_summary_indexed_docs.json", 'r') as f:
     anthropic_docs_summaries = json.load(f)
 db_rerank.load_data(anthropic_docs_summaries)

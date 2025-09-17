@@ -153,7 +153,7 @@ class NotebookValidator:
                         "type": "hardcoded_api_key",
                         "severity": "critical",
                         "cell": i,
-                        "details": "Hardcoded Anthropic API key detected"
+                        "details": "Hardcoded Claude API key detected"
                     })
                 elif 'api_key=' in source.lower() and 'os.environ' not in source and 'getenv' not in source:
                     result["status"] = "error"

@@ -8,7 +8,7 @@ How do the additional tokens required for tool use in Claude API requests impact
 "When will the new Anthropic Developer Console features that show API usage, billing details, and rate limits be available?",0.3333333333333333,1.0,1.0,True
 "When deciding whether to use chain-of-thought (CoT) for a task, what are two key factors to consider in order to strike the right balance between performance and latency?",0.3333333333333333,0.5,1.0,True
 How can I use Claude to more easily digest the content of long PDF documents?,0.3333333333333333,0.5,1.0,True
-"According to the documentation, where can you view your organization's current API rate limits in the Anthropic Console?",0.6666666666666666,1.0,1.0,True
+"According to the documentation, where can you view your organization's current API rate limits in the Claude Console?",0.6666666666666666,1.0,1.0,True
 How can we measure the performance of the ticket classification system implemented using Claude beyond just accuracy?,0.3333333333333333,0.5,0.3333333333333333,True
 How can you specify a system prompt using the Text Completions API versus the Messages API?,0.3333333333333333,0.5,1.0,True
 How can you combine XML tags with chain of thought reasoning to create high-performance prompts for Claude?,0.3333333333333333,0.5,1.0,True
@@ -23,23 +23,23 @@ How can you access and deploy Voyage embeddings on AWS Marketplace?,0.3333333333
 "When using tools just to get Claude to produce JSON output following a particular schema, what key things should you do in terms of tool setup and prompting?",0.3333333333333333,0.5,1.0,False
 What are the key differences between the legacy Claude Instant 1.2 model and the Claude 3 Haiku model in terms of capabilities and performance?,1.0,1.0,1.0,True
 What is one key benefit of using examples when prompt engineering with Claude?,0.3333333333333333,1.0,1.0,True
-"According to the Anthropic documentation, what is one key advantage of using prompt engineering instead of fine-tuning when it comes to adapting an AI model to new domains or tasks?",0.6666666666666666,1.0,1.0,False
+"According to the Claude Documentation, what is one key advantage of using prompt engineering instead of fine-tuning when it comes to adapting an AI model to new domains or tasks?",0.6666666666666666,1.0,1.0,False
 How can I quickly get started using the Claude for Sheets extension with a pre-made template?,0.6666666666666666,1.0,1.0,True
 "How does the ""index"" field in the ""content_block_delta"" event relate to the text being streamed in a response?",0.3333333333333333,0.5,0.5,True
 "How can you include an image as part of a Claude API request, and what image formats are currently supported?",0.3333333333333333,0.5,1.0,True
 What is the relationship between time to first token (TTFT) and latency when evaluating a language model's performance?,0.6666666666666666,0.6666666666666666,1.0,True
 How can providing Claude with examples of handling certain edge cases like implicit requests or emotional prioritization help improve its performance in routing support tickets?,0.3333333333333333,0.5,1.0,True
 "How does the stop_reason of ""tool_use"" relate to the overall workflow of integrating external tools with Claude?",0.3333333333333333,0.5,1.0,True
-"According to the documentation, what error event and corresponding HTTP error code may be sent during periods of high usage for the Anthropic API when using streaming responses?",1.0,1.0,1.0,True
-What are the two types of deltas that can be contained in a content_block_delta event when streaming responses from the Anthropic API?,0.6666666666666666,1.0,1.0,False
-"On what date did Claude 3.5 Sonnet and tool use both become generally available across the Anthropic API, Amazon Bedrock, and Google Vertex AI?",0.6666666666666666,1.0,1.0,False
+"According to the documentation, what error event and corresponding HTTP error code may be sent during periods of high usage for the Claude API when using streaming responses?",1.0,1.0,1.0,True
+What are the two types of deltas that can be contained in a content_block_delta event when streaming responses from the Claude API?,0.6666666666666666,1.0,1.0,False
+"On what date did Claude 3.5 Sonnet and tool use both become generally available across the Claude API, Amazon Bedrock, and Google Vertex AI?",0.6666666666666666,1.0,1.0,False
 In what order did Anthropic launch Claude.ai and the Claude iOS app in Canada and Europe?,0.6666666666666666,1.0,1.0,True
 "When the API response from Claude has a stop_reason of ""tool_use"", what does this indicate and what should be done next to continue the conversation?",0.3333333333333333,0.5,1.0,True
 What Python libraries are used in the example code snippet for evaluating tone and style in a customer service chatbot?,0.0,0.0,0.0,False
 What are the two main ways to authenticate when using the Anthropic Python SDK to access Claude models on Amazon Bedrock?,0.3333333333333333,0.5,0.3333333333333333,False
 "When deciding whether to implement leak-resistant prompt engineering strategies, what two factors should be considered and balanced?",0.6666666666666666,1.0,1.0,True
 How can selecting the appropriate Claude model based on your specific requirements help reduce latency in your application?,0.0,0.0,0.0,True
-How can you stream responses from the Anthropic API using the Python SDK?,0.3333333333333333,0.5,1.0,True
+How can you stream responses from the Claude API using the Python SDK?,0.3333333333333333,0.5,1.0,True
 "How can you guide Claude's response by pre-filling part of the response, and what API parameter is used to generate a short response in this case?",0.3333333333333333,0.5,0.3333333333333333,True
 "What is more important when building an eval set for an AI system - having a larger number of test cases with automated grading, or having fewer high-quality test cases graded by humans?",0.0,0.0,0.0,True
 What are the two required fields in a content_block_delta event for a text delta type?,0.6666666666666666,1.0,1.0,False
@@ -48,7 +48,7 @@ Why does breaking a task into distinct subtasks for chained prompts help improve
 How does the streaming format for Messages responses differ from Text Completions streaming responses?,0.3333333333333333,1.0,1.0,True
 "What are two ways to start experimenting with Claude as a user, according to Anthropic's documentation?",0.3333333333333333,1.0,1.0,False
 How can using chain prompts help reduce errors and inconsistency in complex tasks handled by Claude?,0.3333333333333333,0.5,1.0,True
-What HTTP status code does an overloaded_error event correspond to in a non-streaming context for the Anthropic API?,0.6666666666666666,1.0,1.0,True
+What HTTP status code does an overloaded_error event correspond to in a non-streaming context for the Claude API?,0.6666666666666666,1.0,1.0,True
 What are the two ways to specify the format in which Voyage AI returns embeddings through its HTTP API?,0.3333333333333333,1.0,1.0,True
 "When streaming API requests that use tools, how are the input JSON deltas for tool_use content blocks sent, and how can they be accumulated and parsed by the client?",0.3333333333333333,0.5,1.0,True
 "What are the two interactive prompt engineering tutorials that Anthropic offers, and how do they differ?",0.3333333333333333,0.5,1.0,True
@@ -62,7 +62,7 @@ How can using examples in prompts improve Claude's performance on complex tasks?
 "What are the two types of content block deltas that can be emitted when streaming responses with tool use, and what does each delta type contain?",0.6666666666666666,0.5,1.0,True
 What are two key capabilities of Claude that enable it to build interactive systems and personalized user experiences?,0.3333333333333333,1.0,1.0,True
 "What are the key event types included in a raw HTTP stream response when using message streaming, and what is the typical order they occur in?",0.6666666666666666,1.0,1.0,True
-What is the maximum number of images that can be included in a single request using the Anthropic API compared to the claude.ai interface?,0.3333333333333333,0.5,0.5,True
+What is the maximum number of images that can be included in a single request using the Claude API compared to the claude.ai interface?,0.3333333333333333,0.5,0.5,True
 "When Claude's response is cut off due to hitting the max_tokens limit and contains an incomplete tool use block, what should you do to get the full tool use?",0.3333333333333333,1.0,1.0,True
 What two steps are needed before running a classification evaluation on Claude according to the documentation?,0.3333333333333333,0.5,0.5,False
 How can you use the content parameter in the messages list to influence Claude's response?,0.0,0.0,0.0,True
@@ -74,7 +74,7 @@ How do the streaming API delta formats differ between tool_use content blocks an
 What are the image file size limits when uploading images to Claude using the API versus on claude.ai?,0.3333333333333333,1.0,1.0,True
 What is one key consideration when selecting a Claude model for an enterprise use case that needs low latency?,0.3333333333333333,0.5,0.5,True
 "What embedding model does Anthropic recommend for code retrieval, and how does its performance compare to alternatives according to Voyage AI?",0.3333333333333333,0.5,1.0,False
-What are two ways the Anthropic Cookbook can help developers learn to use Anthropic's APIs?,0.6666666666666666,1.0,0.5,False
+What are two ways the Claude Cookbook can help developers learn to use Anthropic's APIs?,0.6666666666666666,1.0,0.5,False
 How does the size of the context window impact a language model's ability to utilize retrieval augmented generation (RAG)?,0.6666666666666666,1.0,1.0,True
 How can the Evaluation tool in Anthropic's Claude platform help improve prompts and build more robust AI applications?,0.3333333333333333,0.5,1.0,True
 Which Claude model has the fastest comparative latency according to the comparison tables?,0.0,0.0,0.0,True
