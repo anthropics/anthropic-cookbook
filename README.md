@@ -1,6 +1,6 @@
 # Claude Cookbooks
 
-The Claude Cookbooks provides code and guides designed to help developers build with Claude, offering copy-able code snippets that you can easily integrate into your own projects.
+The Claude Cookbooks provide code and guides designed to help developers build with Claude, offering copy-able code snippets that you can easily integrate into your own projects.
 
 ## Prerequisites
 
