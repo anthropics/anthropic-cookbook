@@ -1001,3 +1001,13 @@
   categories:
   - Observability
   - Claude Managed Agents
+- title: Semantic code search with Claude
+  description: Find code by meaning instead of keywords using tree-sitter chunking,
+    Voyage embeddings, and cosine similarity.
+  path: capabilities/semantic_code_search/guide.ipynb
+  authors:
+  - Julia-b-work
+  date: '2026-09-30'
+  categories:
+  - RAG & Retrieval
+  - Tools
