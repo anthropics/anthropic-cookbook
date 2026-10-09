@@ -844,12 +844,12 @@
   categories:
   - Claude Managed Agents
   - Tools
-- title: 'Coordinator pattern: big models for planning, small models for execution'
-  description: Two-model team economics via the multiagent coordinator config — a
-    frontier coordinator plans and synthesizes while cheap search workers do the
-    token-heavy web reading in parallel threads, compared against a rigor-matched
-    solo-frontier control with real bills. Covers per-thread usage.list_cost metering,
-    cost attribution, and a session budget as the fan-out guardrail.
+- title: 'Orchestrator pattern: big models for planning, small models for execution'
+  description: Two-model team economics via the multiagent config — a frontier orchestrator
+    plans and synthesizes while cheap search workers do the token-heavy web reading
+    in parallel threads, compared against a rigor-matched solo-frontier control with
+    real bills. Covers per-thread usage.list_cost metering, cost attribution, and
+    a session budget as the fan-out guardrail.
   path: managed_agents/CMA_plan_big_execute_small.ipynb
   authors:
   - bradabrams
