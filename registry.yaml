@@ -976,3 +976,14 @@
   - Agent Patterns
   - Tools
   - Multimodal
+- title: Equity compensation tax planning with the OptionsAhoy MCP server
+  description: Connect Claude to the OptionsAhoy remote MCP server via the MCP connector
+    and plan a multi-year ISO exercise schedule with deterministic US tax math (federal,
+    all 50 states, and DC) instead of in-context arithmetic.
+  path: third_party/OptionsAhoy/equity_compensation_tax_planning.ipynb
+  authors:
+  - AlvisoOculus
+  date: '2026-06-11'
+  categories:
+  - Integrations
+  - Tools
