@@ -976,3 +976,14 @@
   - Agent Patterns
   - Tools
   - Multimodal
+- title: Build a storefront against real commerce data before you have a store
+  description: Give Claude three tools for mock.shop, Shopify's public no-token Storefront
+    API, and have it pick the store that matches the shop being built, query real
+    products, and render a homepage grid.
+  path: tool_use/storefront_from_mock_data.ipynb
+  authors:
+  - BobbyNguye
+  date: '2026-09-10'
+  categories:
+  - Tools
+  - Agent Patterns
