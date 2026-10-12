@@ -48,12 +48,13 @@ def test_expenses_preserve_global_random_state(quarter):
         random.setstate(state)
 
 
-def test_expenses_are_repeatable_between_other_requests():
+@pytest.mark.parametrize("quarter", ["Q3", "q3"])
+def test_expenses_are_repeatable_between_other_requests(quarter):
     first = get_expenses("ENG001", "Q3")
     other_employee = get_expenses("ENG002", "Q3")
     other_quarter = get_expenses("ENG001", "Q4")
 
-    assert get_expenses("ENG001", "Q3") == first
+    assert get_expenses("ENG001", quarter) == first
     amounts = [expense["amount"] for expense in json.loads(first)]
     assert amounts != [expense["amount"] for expense in json.loads(other_employee)]
     assert amounts != [expense["amount"] for expense in json.loads(other_quarter)]
