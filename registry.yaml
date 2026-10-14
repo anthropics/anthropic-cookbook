@@ -976,3 +976,15 @@
   - Agent Patterns
   - Tools
   - Multimodal
+- title: Claude as a co-scientist for quantum biology on real hardware
+  description: Claude designs a Trotterized quantum circuit for the radical-pair
+    mechanism of avian magnetoreception, runs it on a simulator and real IBM
+    hardware, interprets the results, and gives an honest verdict on whether the
+    problem needs a quantum computer at all.
+  path: misc/avian_magnetoreception/avian_magnetoreception.ipynb
+  authors:
+  - steps-re
+  date: '2026-07-08'
+  categories:
+  - Agent Patterns
+  - Thinking
