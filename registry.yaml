@@ -976,3 +976,15 @@
   - Agent Patterns
   - Tools
   - Multimodal
+- title: Trace Claude API requests and Managed Agents sessions with OpenTelemetry
+  description: Read the OpenTelemetry spans the Python SDK emits for Messages API
+    requests, streams, tool-runner loops, and Managed Agents sessions, attribute by
+    attribute. Then export to an OTLP backend and add a Console destination so the
+    API's server-side spans join the same trace.
+  path: observability/opentelemetry_tracing.ipynb
+  authors:
+  - cj-ant
+  date: '2026-10-13'
+  categories:
+  - Observability
+  - Claude Managed Agents
