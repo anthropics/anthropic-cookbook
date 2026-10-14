@@ -86,6 +86,8 @@ jobs:
             --allowedTools "Bash(gh pr comment:*),Bash(cat:*),Read"
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
+          # Request headers the Anthropic CI organization requires on its API calls.
+          ANTHROPIC_CUSTOM_HEADERS: ${{ secrets.ANTHROPIC_CUSTOM_HEADERS }}
 
       # Only run API tests on main branch or for maintainers (costs money)
       # TODO: this step still reads the static ANTHROPIC_API_KEY secret. The

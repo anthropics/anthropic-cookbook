@@ -57,3 +57,5 @@ jobs:
             --allowedTools "SlashCommand,Task,Bash(gh pr diff:*),Bash(gh pr view:*),Bash(gh pr review:*),Bash(git diff:*),Bash(git log:*),Read,Glob,Grep"
         env:
           PR_NUMBER: ${{ steps.pr-number.outputs.number }}
+          # Request headers the Anthropic CI organization requires on its API calls.
+          ANTHROPIC_CUSTOM_HEADERS: ${{ secrets.ANTHROPIC_CUSTOM_HEADERS }}
