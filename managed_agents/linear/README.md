@@ -1,38 +1,18 @@
-# Linear × Claude Managed Agents
+# Linear × Claude Managed Agents has moved
 
-`@mention` a Claude [Managed Agent](https://platform.claude.com/docs/en/managed-agents/overview) in a Linear issue and get the reply as a comment.
+This example now lives in the Claude Quickstarts repo:
 
-```
-Linear @mention ──▶ /linear-webhook ──▶ sessions.create (+ metadata) ──▶ 200
-                                                 │
-                               Claude runs to idle on Anthropic infra
-                                                 │
-/cma-webhook ◀── session.status_idled ◀──────────┘
-      │
-      └──▶ sessions.retrieve → read metadata → createAgentActivity
-```
+**[claude-quickstarts/managed-agents/linear](https://github.com/anthropics/claude-quickstarts/tree/main/managed-agents/linear)**
 
-The CMA session's `metadata` (`linear_session_id`, `linear_org_id`) is the entire routing state.
+It is a runnable app rather than a notebook, and runnable apps belong in [claude-quickstarts](https://github.com/anthropics/claude-quickstarts). This repo keeps the notebook demos.
 
-## Quickstart
+## If you set up the old version
 
-```bash
-cd managed_agents/linear
-bun install
-claude
-```
+The bridge works the same way. Four things changed in the move:
 
-Then ask: **"walk me through setting this up."** Claude reads [`skill.md`](./skill.md) and drives the config — Linear OAuth app, Anthropic agent + webhook, env vars, `bun run dev` — in the order that actually works.
+- The agent and environment are defined in `agents/linear-assistant/*.yaml` and created with `./agents/setup.sh` and the [`ant` CLI](https://platform.claude.com/docs/en/cli-sdks-libraries/cli/quickstart). `bun run setup` is gone.
+- The Anthropic webhook route is `/managed-agents/webhook`, not `/cma-webhook`. Update the endpoint URL in Claude Console → Manage → Webhooks.
+- Configuration is read from `.env`, not `.env.local`.
+- The first Linear workspace to install the agent owns the bridge. Installs from any other workspace are refused unless you list them in `LINEAR_ALLOWED_ORG_IDS`. The old version let any workspace that could reach the server install it.
 
-## Files
-
-| | |
-|---|---|
-| `setup/create-agent.ts` | One-time: `agents.create` + `environments.create` |
-| `src/main.ts` | Bun server, routes |
-| `src/oauth.ts` | Linear OAuth (`actor=app`) + token store |
-| `src/agent.ts` | `sessions.create` + `user.message` with routing metadata |
-| `src/cma-webhook.ts` | `beta.webhooks.unwrap` → filter by metadata → post reply |
-| `skill.md` | Setup walkthrough, gotchas, debugging |
-
-Requires `@anthropic-ai/sdk` ≥ 0.95.1.
+The last version of the code that lived here is at [`a97b9a2`](https://github.com/anthropics/claude-cookbooks/tree/a97b9a2dc300635f0c26b5e05d0b54bbe0279ee5/managed_agents/linear).

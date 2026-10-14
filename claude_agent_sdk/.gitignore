@@ -27,3 +27,11 @@ orbitcart_data/
 
 # macOS
 .DS_Store
+
+# Runtime artifacts of scheduled_repository_reviewer. The root .gitignore
+# anchors demo_repo/ at its two documented paths; the unanchored entry
+# below covers any other execution directory.
+.last_review_session
+.last_review_session.tmp
+.review.lock
+demo_repo/

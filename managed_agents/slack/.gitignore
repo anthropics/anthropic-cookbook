@@ -1,4 +1,0 @@
-node_modules/
-.env
-.env.local
-bun.lock

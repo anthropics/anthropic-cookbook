@@ -1,58 +1,63 @@
 # Building Powerful Agents with the Claude Agent SDK
 
-A tutorial series demonstrating how to build sophisticated general-purpose agentic systems using the [Claude Agent SDK](https://github.com/anthropics/claude-agent-sdk-python), progressing from simple research agents to multi-agent orchestration with external system integration.
+Recipes for building agents with the [Claude Agent SDK](https://github.com/anthropics/claude-agent-sdk-python), from core SDK fundamentals to multi-agent orchestration and production deployment.
 
 ## Getting Started
 
 #### 1. Install uv, [node](https://nodejs.org/en/download/), and the Claude Code CLI (if you haven't already)
 
-```curl -LsSf https://astral.sh/uv/install.sh | sh ```
+```curl -LsSf https://astral.sh/uv/install.sh | sh```
 
 ```npm install -g @anthropic-ai/claude-code```
 
+The `npm` step is optional unless a notebook lists the separate CLI install in its own prerequisites: the `claude-agent-sdk` package bundles the CLI.
+
 #### 2. Clone and set up the project
 
-```git clone https://github.com/anthropics/anthropic-cookbook.git ```
+```git clone https://github.com/anthropics/claude-cookbooks.git```
 
-```cd anthropic-cookbook/claude_agent_sdk```
+```cd claude-cookbooks/claude_agent_sdk```
 
-```uv sync ```
+```uv sync```
+
+The uv environment gives you one kernel every notebook runs on. Notebooks whose first cell installs their own requirements also run on any other kernel.
 
 #### 3. Register venv as Jupyter kernel so that you can use it in the notebooks
 
-```uv run python -m ipykernel install --user --name="cc-sdk-tutorial" --display-name "Python (cc-sdk-tutorial)" ```
+```uv run python -m ipykernel install --user --name="cc-sdk-tutorial" --display-name "Python (cc-sdk-tutorial)"```
 
 #### 4. Claude API Key
-1. Visit [platform.claude.ai](https://platform.claude.ai/dashboard)
+1. Visit [platform.claude.com](https://platform.claude.com/dashboard)
 2. Sign up or log in to your account
 3. Click on "Get API keys"
 4. Copy the key and paste it into your `.env` file as ```ANTHROPIC_API_KEY=```
 
-#### 5. GitHub Token for Notebook 02
-If you plan to work through the Observability Agent notebook:
+#### 5. GitHub Token for recipe 02
+If you plan to work through recipe 02, the Observability Agent:
 1. Get a GitHub Personal Access Token [here](https://github.com/settings/personal-access-tokens/new)
 2. Select "Fine-grained" token with default options (public repos, no account permissions)
 3. Add it to your `.env` file as `GITHUB_TOKEN="<token>"`
 4. Ensure [Docker](https://www.docker.com/products/docker-desktop/) is running on your machine
 
-## Tutorial Series Overview
+#### 6. Optional: import the companion agent modules
+To use the foundations recipes' companion code outside the notebooks, run Python from the `claude_agent_sdk/` directory so the companion packages resolve as imports.
 
-This tutorial series takes you on a journey from basic agent implementation to sophisticated multi-agent systems capable of handling real-world complexity. Each notebook builds upon the previous one, introducing new concepts and capabilities while maintaining practical, production-ready implementations.
+## What You'll Learn
 
-### What You'll Learn
-
-Through this series, you'll be exposed to:
+Through the foundations sequence, you'll be exposed to:
 - **Core SDK fundamentals** with `query()` and the `ClaudeSDKClient` & `ClaudeAgentOptions` interfaces in the Python SDK
 - **Tool usage patterns** from basic WebSearch to complex MCP server integration
 - **Multi-agent orchestration** with specialized subagents and coordination
 - **Enterprise features** by leveraging hooks for compliance tracking and audit trails
 - **External system integration** via Model Context Protocol (MCP)
 
-Note: This tutorial assumes you have some level of familiarity with Claude Code. Ideally, if you have been using Claude Code to supercharge your coding tasks and would like to leverage its raw agentic power for tasks beyond Software Engineering, this tutorial will help you get started.
+Note: These recipes assume you have some level of familiarity with Claude Code. Ideally, if you have been using Claude Code to supercharge your coding tasks and would like to leverage its raw agentic power for tasks beyond Software Engineering, these recipes will help you get started.
 
-## Notebook Structure & Content
+## Foundations Sequence
 
-### [Notebook 00: The One-Liner Research Agent](00_The_one_liner_research_agent.ipynb)
+The foundations sequence takes you on a journey from basic agent implementation to sophisticated multi-agent systems capable of handling real-world complexity. Each recipe builds upon the previous one, introducing new concepts and capabilities while maintaining practical, production-ready implementations.
+
+### [00: The One-Liner Research Agent](00_The_one_liner_research_agent.ipynb)
 
 Start your journey with a simple yet powerful research agent built in just a few lines of code. This notebook introduces core SDK concepts and demonstrates how the Claude Agent SDK enables autonomous information gathering and synthesis.
 
@@ -63,7 +68,9 @@ Start your journey with a simple yet powerful research agent built in just a few
 - Conversation context management with `ClaudeSDKClient`
 - System prompts for agent specialization
 
-### [Notebook 01: The Chief of Staff Agent](01_The_chief_of_staff_agent.ipynb)
+**Companion code:** [`research_agent/`](research_agent/)
+
+### [01: The Chief of Staff Agent](01_The_chief_of_staff_agent.ipynb)
 
 Build a comprehensive AI Chief of Staff for a startup CEO, showcasing advanced SDK features for production environments. This notebook demonstrates how to create sophisticated agent architectures with governance, compliance, and specialized expertise.
 
@@ -76,7 +83,9 @@ Build a comprehensive AI Chief of Staff for a startup CEO, showcasing advanced S
 - **Subagent Orchestration:** Coordinating specialized agents for domain expertise
 - **Bash Tool Integration:** Python script execution for procedural knowledge and complex computations
 
-### [Notebook 02: The Observability Agent](02_The_observability_agent.ipynb)
+**Companion code:** [`chief_of_staff_agent/`](chief_of_staff_agent/)
+
+### [02: The Observability Agent](02_The_observability_agent.ipynb)
 
 Expand beyond local capabilities by connecting agents to external systems through the Model Context Protocol. Transform your agent from a passive observer into an active participant in DevOps workflows.
 
@@ -87,7 +96,9 @@ Expand beyond local capabilities by connecting agents to external systems throug
 - **Intelligent Incident Response:** Automated root cause analysis
 - **Production Workflow Automation:** From monitoring to actionable insights
 
-### [Notebook 03: The Site Reliability Agent](03_The_site_reliability_agent.ipynb)
+**Companion code:** [`observability_agent/`](observability_agent/)
+
+### [03: The Site Reliability Agent](03_The_site_reliability_agent.ipynb)
 
 Move from read-only observation to read-write remediation. Build an SRE incident response agent that can investigate production incidents, diagnose root causes, apply fixes, and document the results — all autonomously.
 
@@ -99,7 +110,9 @@ Move from read-only observation to read-write remediation. Build an SRE incident
 - **End-to-End Incident Lifecycle:** From detection through remediation to post-mortem documentation
 - **Production Extensions:** Optional PagerDuty and Confluence integrations via conditional MCP tool registration
 
-### [Notebook 04: Migrating from the OpenAI Agents SDK](04_migrating_from_openai_agents_sdk.ipynb)
+**Companion code:** [`site_reliability_agent/`](site_reliability_agent/)
+
+### [04: Migrating from the OpenAI Agents SDK](04_migrating_from_openai_agents_sdk.ipynb)
 
 Port an existing OpenAI Agents SDK application to the Claude Agent SDK, mapping each primitive across a single expense-approval agent example while both SDKs run live.
 
@@ -109,7 +122,7 @@ Port an existing OpenAI Agents SDK application to the Claude Agent SDK, mapping 
 - **Client vs. `query()`:** When to use the stateful `ClaudeSDKClient` versus stateless `query()`
 - **Observability:** Wiring the SDK's OpenTelemetry export into an existing stack
 
-### [Notebook 05: Building a Session Browser](05_Building_a_session_browser.ipynb)
+### [05: Building a Session Browser](05_Building_a_session_browser.ipynb)
 
 Build the conversation-history sidebar users expect from an agent product, reading the SDK's on-disk session transcripts instead of writing a parser.
 
@@ -119,7 +132,9 @@ Build the conversation-history sidebar users expect from an agent product, readi
 - **Organizing History:** Rename, tag, and filter sessions
 - **Forking:** Branch a session at any point and resume the fork as a live `query()` call
 
-### [Notebook 06: The Vulnerability Detection Agent](06_The_vulnerability_detection_agent.ipynb)
+**Companion code:** [`session_browser_demo/`](session_browser_demo/)
+
+### [06: The Vulnerability Detection Agent](06_The_vulnerability_detection_agent.ipynb)
 
 Build a vulnerability-discovery agent that threat-models a C target, hunts memory-safety bugs with built-in file tools, and triages findings into a report a reviewer can act on.
 
@@ -128,9 +143,11 @@ Build a vulnerability-discovery agent that threat-models a C target, hunts memor
 - **Agentic Find Loop:** Built-in `Read`/`Grep`/`Glob` tools instead of hand-rolled file access
 - **Chained Stages:** Separate find, triage, and report `query()` calls emitting schema-conformant JSON
 
-### [Notebook 07: Hosting Your Agent](07_Hosting_the_agent.ipynb)
+**Companion code:** [`vulnerability_detection_agent/`](vulnerability_detection_agent/)
 
-Deploy the research agent from notebook 00 through three tiers of operational maturity with the same container image and HTTP interface at every tier.
+### [07: Hosting Your Agent](07_Hosting_the_agent.ipynb)
+
+Deploy the research agent from recipe 00 through three tiers of operational maturity with the same container image and HTTP interface at every tier.
 
 **Key Concepts:**
 - **Docker:** Local and single-VM hosting for the dev loop and internal tools
@@ -138,7 +155,9 @@ Deploy the research agent from notebook 00 through three tiers of operational ma
 - **Kubernetes:** Multi-tenant deployment in your own cluster
 - **Portable Interface:** Identical agent code, image, and HTTP surface across all three tiers
 
-### [Notebook 08: Orchestrate Subagents at Scale with Dynamic Workflows](08_Dynamic_workflows.ipynb)
+**Companion code:** [`hosting/`](hosting/)
+
+### [08: Orchestrate Subagents at Scale with Dynamic Workflows](08_Dynamic_workflows.ipynb)
 
 Scale beyond what one context window can coordinate. Trigger dynamic workflows from the Agent SDK: Claude writes a JavaScript orchestration script for your task, and a runtime executes it across a fleet of parallel subagents in the background.
 
@@ -148,18 +167,20 @@ Scale beyond what one context window can coordinate. Trigger dynamic workflows f
 - **Fan-Out + Adversarial Verification:** One verifier per claim in parallel, each challenged by a skeptic agent before its verdict counts
 - **Reading Generated Scripts:** `agent()`, `parallel()`, `pipeline()`, phases, and structured output schemas
 
-## Complete Agent Implementations
+## Standalone Recipes
 
-Each notebook includes an agent implementation in its respective directory:
-- **`research_agent/`** - Autonomous research agent with web search and multimodal analysis
-- **`chief_of_staff_agent/`** - Multi-agent executive assistant with financial modeling and compliance
-- **`observability_agent/`** - DevOps monitoring agent with GitHub integration
-- **`site_reliability_agent/`** - SRE incident response agent with Prometheus, Docker, and MCP tool server
+Standalone, task-shaped recipes. Each recipe lives in its own directory carrying the notebook and any supporting files.
 
-**Running standalone agents:** To import agent modules outside of notebooks, either run from the `claude_agent_sdk/` directory or install the package in editable mode:
-```bash
-uv pip install -e .
-```
+### [Build a Scheduled Repository Reviewer](scheduled_repository_reviewer/scheduled_repository_reviewer.ipynb)
+
+Turn recurring review toil into an unattended job you control. Build a read-only review agent that reviews a repository on a schedule, resumes its session between runs so one full baseline review is followed by short follow-ups, and proves that continuity in schema-validated fields that echo the previous review's id and findings. The notebook runs the first two cycles by hand and ends by putting the reviewer on a schedule with [`scheduled_review.py`](scheduled_repository_reviewer/scheduled_review.py), the companion script.
+
+**Key Concepts:**
+- **Read-Only Agents:** `tools` decides which built-in tools exist, `allowed_tools` decides which run without prompting, and restricting both to `Read`, `Glob`, and `Grep` leaves the agent no write tool
+- **Unattended Permission Mode:** `permission_mode="dontAsk"` with pre-approved tools, plus `max_turns` and `max_budget_usd` capping the turns and spend a run can consume
+- **Resumable Sessions for Continuity:** capture `session_id` from `ResultMessage`, persist it between invocations, and pass `resume` on the next run
+- **Schema-Validated Continuity:** the follow-up's `output_format` schema requires the reply to echo the previous review's id and finding ids, so the resume link is a field you can assert on
+- **Typed Failure Path and Greppable Output:** the `VERDICT:` line prints from the structured reply's own field, the completion line prints only after verified success, and a narrow `ResultError` catch makes a bound-exceeded run exit non-zero with `REVIEW-RUN-INCOMPLETE`
 
 ## Background
 ### The Evolution of Claude Agent SDK
@@ -187,7 +208,7 @@ Originally an internal tool built by Anthropic engineers to accelerate developme
 
 The pattern was clear: the SDK had inadvertently become an effective agent-building framework. Its architecture, designed to handle software development complexity, proved remarkably well-suited for general-purpose agent creation.
 
-This tutorial series demonstrates how to leverage the Claude Agent SDK to build highly efficient agents for any domain or use case, from simple automation to complex enterprise systems. 
+This recipe series demonstrates how to leverage the Claude Agent SDK to build highly efficient agents for any domain or use case, from simple automation to complex enterprise systems. 
 
 ## Contributing
 

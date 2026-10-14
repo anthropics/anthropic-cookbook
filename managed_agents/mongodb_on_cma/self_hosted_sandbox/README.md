@@ -1,4 +1,11 @@
-# Docker demo — Self-Hosted Sandboxes
+# Self-hosted sandbox for the MongoDB cookbook
+
+This is the image behind **Path B** of the
+[MongoDB Atlas cookbook](../../CMA_with_mongodb_atlas.ipynb): a self-hosted
+sandbox that bundles `pymongo`, so the agent can query MongoDB from its `bash`
+tool. It lives here because that notebook depends on it. The general-purpose
+self-hosted sandbox demos, with Docker and five cloud providers, are in
+[claude-quickstarts](https://github.com/anthropics/claude-quickstarts/tree/main/managed-agents/self-hosted-sandboxes).
 
 The host runs `ant beta:worker poll` directly; per claimed work item its
 `--on-work` script (`on-work.sh`) `docker run`s a per-session container whose
@@ -6,9 +13,9 @@ entrypoint is `ant beta:worker run`. Each container gets a `/workspace` (the
 agent's working tree; skills download here) backed by a per-session Docker
 volume so the tree and skills survive across containers for one session.
 
-This is the no-cloud variant of `../cf/` (which runs the same
-`ant beta:worker run` entrypoint, but in Cloudflare Containers): same CLI, same
-env contract, just plain Docker on a host you control.
+It is plain Docker on a host you control, with the same CLI and the same env
+contract as the
+[`docker/` quickstart](https://github.com/anthropics/claude-quickstarts/tree/main/managed-agents/self-hosted-sandboxes/docker).
 
 - **`Dockerfile`** — the per-session image: pinned `ant` CLI, `WORKDIR
   /workspace`, `ENTRYPOINT ["ant","beta:worker","run", …]`. The CLI owns
@@ -60,7 +67,7 @@ export MONGO_URI="mongodb+srv://<user>:<password>@<cluster>/"
 it's a normal env var that never reaches the control plane or the session event history — the
 self-hosted advantage. (A *cloud* sandbox has no env-var or vault channel for a database secret,
 so there you keep the credential host-side behind a custom tool instead. See the
-[MongoDB-on-CMA landing page](../../mongodb_on_cma/README.md) and the
+[MongoDB-on-CMA landing page](../README.md) and the
 [cookbook](../../CMA_with_mongodb_atlas.ipynb), whose Section 1
 walks all three connection paths.)
 
@@ -105,6 +112,6 @@ JSON: `downloaded skill …`, `executing tool …`, etc. The container removes
 itself after it idles out; the `cma-ws-<session_id>` volume remains for that
 session's next message (`docker volume rm` to discard).
 
-Unlike the webhook-driven demos (Modal/Daytona/Vercel/Cloudflare), there is no
+Unlike the [webhook-started providers](https://github.com/anthropics/claude-quickstarts/tree/main/managed-agents/self-hosted-sandboxes) in claude-quickstarts, there is no
 webhook here — `ant beta:worker poll` long-polls the environment directly, so
 nothing needs to be exposed to the internet.

@@ -1,36 +1,20 @@
-# Self-Hosted Sandboxes
+# Self-hosted sandboxes has moved
 
-Reference implementations for running Claude Managed Agents sessions against
-**self-hosted execution sandboxes**. Each variant implements the same contract
-on a different compute provider:
+These examples now live in the Claude Quickstarts repo:
 
-1. Receive the `session.status_run_started` webhook (verified with
-   `client.beta.webhooks.unwrap()`).
-2. Drain the environment work queue so a single delivery recovers any earlier
-   missed items.
-3. Per work item, launch a per-session sandbox that runs the SDK/CLI tool
-   runner (`bash`/`read`/`write`/`edit`/`glob`/`grep`), heartbeats the lease,
-   and posts `tool_result`s back to the session.
+**[claude-quickstarts/managed-agents/self-hosted-sandboxes](https://github.com/anthropics/claude-quickstarts/tree/main/managed-agents/self-hosted-sandboxes)**
 
-No org API key reaches the runner — the sandbox authenticates with the
-**environment key**, the single credential for both the control plane and the
-per-session calls.
+They are runnable apps rather than notebooks, and runnable apps belong in [claude-quickstarts](https://github.com/anthropics/claude-quickstarts). This repo keeps the notebook demos.
 
-| Variant | Compute | Runner |
-|---|---|---|
-| [`docker/`](docker/) | Plain Docker on a host you control | `ant beta:worker run` in a per-session container |
-| [`cf/`](cf/) | Cloudflare Containers | `ant beta:worker run` in a per-session Cloudflare Container |
-| [`cf-worker/`](cf-worker/) | Cloudflare Workers (no container) | TS `SessionToolRunner` in a Durable Object with an in-isolate fake filesystem |
-| [`modal/`](modal/) | [Modal](https://modal.com) | Python `sandbox_runner.py` in a Modal Sandbox with a per-session Volume |
-| [`daytona/`](daytona/) | [Daytona](https://www.daytona.io/) | Same `sandbox_runner.py` uploaded to a Daytona sandbox |
-| [`vercel/`](vercel/) | Vercel Functions + Sandbox | Node `runner.mjs` in a Vercel Sandbox |
+## If you set up the old version
 
-## Getting started
+The shape is the same: a self-hosted environment is a work queue, and your own compute claims sessions from it. Six things changed in the move:
 
-See [`docs/usage-guide.md`](docs/usage-guide.md) for the full flow: creating a
-self-hosted environment, registering the webhook, and wiring up the
-environment key. Each variant's `README.md` covers its provider-specific
-deploy steps.
+- Two directories were renamed. `cf/` is `cloudflare-containers/` and `cf-worker/` is `cloudflare-worker/`. `daytona/`, `modal/`, and `vercel/` kept their names. The quickstart adds `docker-memory/` and `archil/`.
+- The agent and the environment are files, created with [`ant apply`](https://platform.claude.com/docs/en/cli-sdks-libraries/cli/apply). The five webhook-started providers share one pair, in `webhook-demo/`. You no longer create the environment by hand in the Console. You still mint its environment key there.
+- `docs/usage-guide.md` and `docs/upgrade-guide.md` are gone. Each provider's README is its own runbook: set up, deploy, register the webhook, test.
+- The sandbox no longer holds the environment key on Daytona, Modal, or Vercel. Each sandbox gets a per-session secret, and a work item that arrives without one is refused. `cloudflare-containers/` still has to pass the key into the container, so it refuses all work until you set `ALLOW_ENVIRONMENT_KEY_IN_SANDBOX`. Its README says when that trade is acceptable.
+- The SDK floor moved from 0.97 to 0.124 for both `@anthropic-ai/sdk` and `anthropic`, which is where per-session secrets arrived.
+- The `docker/` image here bundled `pymongo` for the MongoDB Atlas cookbook. That image stayed in this repo and moved to [`mongodb_on_cma/self_hosted_sandbox/`](../mongodb_on_cma/self_hosted_sandbox/), next to the rest of that notebook's support code. The quickstart's `docker/` is the general-purpose version without it.
 
-See [`docs/upgrade-guide.md`](docs/upgrade-guide.md) for migrating between SDK
-versions.
+The last version of the code that lived here is at [`a4b0d89`](https://github.com/anthropics/claude-cookbooks/tree/a4b0d89061bc65769fea7947c080b3b11d938515/managed_agents/self_hosted_sandboxes).

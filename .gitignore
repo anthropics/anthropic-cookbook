@@ -167,3 +167,9 @@ claude_agent_sdk/vulnerability_detection_agent/canary/THREAT_MODEL.md
 # content_moderation: generated eval artifacts
 capabilities/content_moderation/evaluation/compiled/
 capabilities/content_moderation/evaluation/results.json
+
+# scheduled_repository_reviewer: runtime sample repo. Anchored to the two
+# places it can appear: the recipe directory (the documented location) and
+# the repo root (a kernel started there).
+/demo_repo/
+/claude_agent_sdk/scheduled_repository_reviewer/demo_repo/

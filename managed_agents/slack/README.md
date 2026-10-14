@@ -1,38 +1,17 @@
-# Slack × Claude Managed Agents
+# Slack × Claude Managed Agents has moved
 
-`@mention` a Claude [Managed Agent](https://platform.claude.com/docs/en/managed-agents/overview) in Slack and get the reply in-thread.
+This example now lives in the Claude Quickstarts repo:
 
-```
-Slack @mention ──▶ /slack/events ──▶ sessions.create (+ metadata) ──▶ 200
-                                              │
-                            Claude runs to idle on Anthropic infra
-                                              │
-/cma-webhook ◀── session.status_idled ◀───────┘
-      │
-      └──▶ sessions.retrieve → read metadata → chat.postMessage
-```
+**[claude-quickstarts/managed-agents/slack](https://github.com/anthropics/claude-quickstarts/tree/main/managed-agents/slack)**
 
-The CMA session's `metadata` (`slack_channel`, `slack_thread_ts`) is the entire routing state.
+It is a runnable app rather than a notebook, and runnable apps belong in [claude-quickstarts](https://github.com/anthropics/claude-quickstarts). This repo keeps the notebook demos, including [`slack_data_bot.ipynb`](../slack_data_bot.ipynb).
 
-## Quickstart
+## If you set up the old version
 
-```bash
-cd managed_agents/slack
-bun install
-claude
-```
+The app behaves the same. Three things changed in the move:
 
-Then ask: **"walk me through setting this up."** Claude reads [`skill.md`](./skill.md) and drives the config — Slack app, Anthropic agent + webhook, env vars, `bun run dev` — in the order that actually works.
+- The agent and environment are defined in `agents/slack-assistant/*.yaml` and created with `./agents/setup.sh` and the [`ant` CLI](https://platform.claude.com/docs/en/cli-sdks-libraries/cli/quickstart). `bun run setup` is gone.
+- The Anthropic webhook route is `/managed-agents/webhook`, not `/cma-webhook`. Update the endpoint URL in Claude Console → Manage → Webhooks.
+- Configuration is read from `.env`, not `.env.local`.
 
-## Files
-
-| | |
-|---|---|
-| `setup/create-agent.ts` | One-time: `agents.create` + `environments.create` |
-| `src/main.ts` | Bun server, routes |
-| `src/slack-events.ts` | Verify Slack sig, `url_verification`, fire-and-forget kickoff |
-| `src/agent.ts` | `sessions.create` + `user.message` with routing metadata |
-| `src/cma-webhook.ts` | `beta.webhooks.unwrap` → filter by metadata → `chat.postMessage` |
-| `skill.md` | Setup walkthrough, gotchas, debugging |
-
-Requires `@anthropic-ai/sdk` ≥ 0.95.1.
+The last version of the code that lived here is at [`a97b9a2`](https://github.com/anthropics/claude-cookbooks/tree/a97b9a2dc300635f0c26b5e05d0b54bbe0279ee5/managed_agents/slack).

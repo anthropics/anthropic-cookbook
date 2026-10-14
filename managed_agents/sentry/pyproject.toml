@@ -1,9 +1,0 @@
-[project]
-name = "sentry-triage-cma"
-version = "0.1.0"
-description = "Scheduled Sentry triage with a Claude Managed Agent"
-requires-python = ">=3.11,<3.13"
-dependencies = [
-    "anthropic>=0.124.0",
-    "python-dotenv",
-]

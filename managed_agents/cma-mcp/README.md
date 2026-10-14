@@ -1,50 +1,19 @@
-# CMA as an MCP server
+# Managed Agents MCP server has moved
 
-A thin [MCP](https://modelcontextprotocol.io) server that wraps the Claude [Managed Agents](https://platform.claude.com/docs/en/managed-agents/overview) Sessions API — so Claude Desktop **or** claude.ai web can start and chat with your org's hosted agents as if they were tools.
+This example now lives in the Claude Quickstarts repo:
 
-```
-User ─▶ Claude (Desktop or claude.ai) ─▶ MCP: send_message + wait_for_idle ─▶ CMA session
-  ▲                                                                              │
-  └──────────────────────── agent's reply ◀─── stream-to-idle ◀──────────────────┘
-```
+**[claude-quickstarts/managed-agents/mcp-server-typescript](https://github.com/anthropics/claude-quickstarts/tree/main/managed-agents/mcp-server-typescript)**
 
-Nine tools — eight are 1:1 with CMA endpoints, one (`wait_for_idle`) is the SSE→request/response shim. Same handlers, two transports.
+It is a runnable app rather than a notebook, and runnable apps belong in [claude-quickstarts](https://github.com/anthropics/claude-quickstarts). This repo keeps the notebook demos.
 
-## Quickstart
+## If you set up the old version
 
-```bash
-cd managed_agents/cma-mcp
-bun install
-claude
-```
+The nine tools and both transports work the same way. Five things changed in the move:
 
-Then ask: **"walk me through setting this up."** Claude reads [`skill.md`](./skill.md) and drives whichever path you pick:
+- The directory is `mcp-server-typescript`, not `cma-mcp`. If you registered the stdio server with an absolute path, register it again from the new location.
+- The bearer token variable is `MANAGED_AGENTS_MCP_TOKEN`, not `CMA_MCP_TOKEN`. It has to be at least 32 characters, or the HTTP server refuses to start.
+- The HTTP server binds `127.0.0.1` by default. The old one listened on every interface. To serve it from another address, set `HOST` and list the public hostname in `ALLOWED_HOSTS`. Requests with any other `Host` header are refused.
+- `ALLOWED_AGENT_IDS` is new. Unset, the token reaches every agent in the workspace, as before. Set it to a comma-separated list to limit the server to those agents.
+- The environment is defined in `environment.yaml` and created with the [`ant` CLI](https://platform.claude.com/docs/en/cli-sdks-libraries/cli/quickstart). The inline `--config` command is gone.
 
-| Client | Transport | Entrypoint |
-|---|---|---|
-| **Claude Desktop / Claude Code** | stdio (local process) | `src/server.ts` |
-| **claude.ai web** (custom Connector) | Streamable HTTP (deployed URL + bearer token) | `src/server-http.ts` |
-
-## Tools
-
-| Tool | CMA endpoint |
-|---|---|
-| `list_agents` / `get_agent` | `GET /v1/agents[/{id}]` |
-| `create_session` | `POST /v1/sessions` |
-| `send_message` / `interrupt` | `POST /v1/sessions/{id}/events` |
-| `get_session` | `GET /v1/sessions/{id}` |
-| `list_events` | `GET /v1/sessions/{id}/events` |
-| `archive_session` | `POST /v1/sessions/{id}/archive` |
-| **`wait_for_idle`** | streams `…/events/stream` until idle, returns reply text |
-
-## Files
-
-| | |
-|---|---|
-| `src/cma.ts` | Anthropic SDK calls — shared |
-| `src/tools.ts` | Nine `server.tool(...)` registrations — shared |
-| `src/server.ts` | stdio entrypoint (~10 LOC) |
-| `src/server-http.ts` | HTTP entrypoint + bearer auth (~40 LOC) |
-| `Dockerfile` | Fly / Railway / Render deploy for the HTTP path |
-
-Requires `@anthropic-ai/sdk` ≥ 0.95.1.
+The last version of the code that lived here is at [`6b671ef`](https://github.com/anthropics/claude-cookbooks/tree/6b671ef60ada2a8d3b0c07cadb424172da5135f5/managed_agents/cma-mcp).

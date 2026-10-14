@@ -12,6 +12,7 @@ This package holds only the pieces the notebook imports rather than reads.
 | [`tools.py`](tools.py) | MongoDB Atlas setup — seed the collection, create the vector + Atlas Search indexes and wait until they are queryable and synced, preflight — plus the shared decision/audit document shapers used by the notebook's `record_decision` handler and the AP2 module. |
 | [`ap2_mandates.py`](ap2_mandates.py) | AP2 (Agent Payments Protocol) mandate signing and verification (ES256 JWTs) — a crypto black box the notebook calls through `verify_mandates` and acts on its verdict. |
 | [`seed.py`](seed.py) | Loads the plaintext fixture from [`../example_data/mongodb_on_cma/`](../example_data/mongodb_on_cma/seed_transactions.jsonl). |
+| [`self_hosted_sandbox/`](self_hosted_sandbox/) | The Docker image for the cookbook's Path B: a self-hosted sandbox with `pymongo` inside, where the agent queries MongoDB from `bash` and `MONGO_URI` is an ordinary container env var. Not a Python module, and nothing imports it. |
 
 The MongoDB credential (`MONGO_URI`) only ever lives on your side of the boundary: `pymongo`
 runs in the notebook's host-side handlers, never in the agent context or its sandbox. See the

@@ -290,6 +290,16 @@
   categories:
   - Claude Agent SDK
   - Agent Patterns
+- title: Build a scheduled repository reviewer
+  description: Build a scheduled, read-only review agent that resumes its session
+    and returns schema-validated verdicts linking each review to the last.
+  path: claude_agent_sdk/scheduled_repository_reviewer/scheduled_repository_reviewer.ipynb
+  authors:
+  - codyanthony736
+  date: '2026-08-26'
+  categories:
+  - Claude Agent SDK
+  - Agent Patterns
 - title: Extended thinking
   description: Use Claude's extended thinking for transparent step-by-step reasoning
     with budget management.
@@ -318,6 +328,15 @@
   date: '2024-08-19'
   categories:
   - Fine-Tuning
+- title: Manage your organization with the Admin API
+  description: Invite users, create workspaces, audit API keys, provision service
+    accounts, and read rate limits with client.beta.organization in the Python SDK.
+  path: misc/admin_api.ipynb
+  authors:
+  - cj-ant
+  date: '2026-08-26'
+  categories:
+  - Observability
 - title: Batch processing with Message Batches API
   description: Process large volumes of Claude requests asynchronously with 50% cost
     reduction using batches.
@@ -546,6 +565,16 @@
   date: '2026-06-08'
   categories:
   - Agent Patterns
+- title: Multi-agent teams under latency pressure and budgets
+  description: Starter code for a lead-and-helpers agent team with a shared wall-clock and two
+    ways to make time matter, either a time-matters sentence or a latency budget on the clock line.
+  path: patterns/agents/latency_multi_agent.ipynb
+  authors:
+  - eloreaux-ant
+  date: '2026-09-18'
+  categories:
+  - Agent Patterns
+  - Tools
 - title: Introduction to Claude Skills
   description: Create documents, analyze data, automate workflows with Claude's Excel,
     PowerPoint, PDF skills.
@@ -815,12 +844,12 @@
   categories:
   - Claude Managed Agents
   - Tools
-- title: 'Coordinator pattern: big models for planning, small models for execution'
-  description: Two-model team economics via the multiagent coordinator config — a
-    frontier coordinator plans and synthesizes while cheap search workers do the
-    token-heavy web reading in parallel threads, compared against a rigor-matched
-    solo-frontier control with real bills. Covers per-thread usage.list_cost metering,
-    cost attribution, and a session budget as the fan-out guardrail.
+- title: 'Orchestrator pattern: big models for planning, small models for execution'
+  description: Two-model team economics via the multiagent config — a frontier orchestrator
+    plans and synthesizes while cheap search workers do the token-heavy web reading
+    in parallel threads, compared against a rigor-matched solo-frontier control with
+    real bills. Covers per-thread usage.list_cost metering, cost attribution, and
+    a session budget as the fan-out guardrail.
   path: managed_agents/CMA_plan_big_execute_small.ipynb
   authors:
   - bradabrams

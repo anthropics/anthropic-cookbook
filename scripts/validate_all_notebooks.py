@@ -18,6 +18,16 @@ import subprocess
 from datetime import datetime
 from pathlib import Path
 
+NO_CREDS_WARNING = (
+    "⚠️  Warning: neither ANTHROPIC_API_KEY nor ANTHROPIC_AUTH_TOKEN is set. "
+    "Execution tests will be skipped."
+)
+
+
+def has_anthropic_credentials() -> bool:
+    """Whether Anthropic API credentials are available for notebook execution."""
+    return bool(os.environ.get("ANTHROPIC_API_KEY") or os.environ.get("ANTHROPIC_AUTH_TOKEN"))
+
 
 class NotebookValidator:
     """Validates Jupyter notebooks for common issues."""
@@ -110,20 +120,20 @@ class NotebookValidator:
 
         # Check for deprecated models
         deprecated_models = {
-            "claude-3-5-sonnet-20240620": "claude-sonnet-4-6",
-            "claude-3-5-sonnet-20241022": "claude-sonnet-4-6",
-            "claude-3-5-sonnet-latest": "claude-sonnet-4-6",
+            "claude-3-5-sonnet-20240620": "claude-sonnet-5",
+            "claude-3-5-sonnet-20241022": "claude-sonnet-5",
+            "claude-3-5-sonnet-latest": "claude-sonnet-5",
             "claude-3-haiku-20240307": "claude-haiku-4-5",
             "claude-3-5-haiku-20241022": "claude-haiku-4-5",
-            "claude-3-opus-20240229": "claude-opus-4-6",
-            "claude-3-opus-latest": "claude-opus-4-6",
-            "claude-sonnet-4-20250514": "claude-sonnet-4-6",
-            "claude-opus-4-20250514": "claude-opus-4-6",
-            "claude-opus-4-1": "claude-opus-4-6",
-            "claude-sonnet-4-5-20250929": "claude-sonnet-4-6",
-            "claude-sonnet-4-5": "claude-sonnet-4-6",
-            "claude-opus-4-5-20251101": "claude-opus-4-6",
-            "claude-opus-4-5": "claude-opus-4-6",
+            "claude-3-opus-20240229": "claude-opus-4-8",
+            "claude-3-opus-latest": "claude-opus-4-8",
+            "claude-sonnet-4-20250514": "claude-sonnet-5",
+            "claude-opus-4-20250514": "claude-opus-4-8",
+            "claude-opus-4-1": "claude-opus-4-8",
+            "claude-sonnet-4-5-20250929": "claude-sonnet-5",
+            "claude-sonnet-4-5": "claude-sonnet-5",
+            "claude-opus-4-5-20251101": "claude-opus-4-8",
+            "claude-opus-4-5": "claude-opus-4-8",
         }
 
         for i, cell in enumerate(nb.get("cells", [])):
@@ -187,7 +197,7 @@ class NotebookValidator:
 
         # Execute notebook if in full mode
         if mode == "full" and result["status"] != "error":
-            if os.environ.get("ANTHROPIC_API_KEY"):
+            if has_anthropic_credentials():
                 exec_result = self.execute_notebook(notebook_path)
                 if not exec_result["success"]:
                     result["status"] = "error"
@@ -334,8 +344,10 @@ Overall: {passing}/{total} notebooks passing ({percentage:.1f}%)
             dashboard += "  → Run with --auto-fix to update deprecated models\n"
         if critical_issues:
             dashboard += "  → Fix critical security issues first\n"
-        if not os.environ.get("ANTHROPIC_API_KEY"):
-            dashboard += "  → Set ANTHROPIC_API_KEY to enable execution tests\n"
+        if not has_anthropic_credentials():
+            dashboard += (
+                "  → Set ANTHROPIC_API_KEY (or ANTHROPIC_AUTH_TOKEN) to enable execution tests\n"
+            )
 
         return dashboard
 
@@ -658,20 +670,20 @@ Overall: {passing}/{total} notebooks passing ({percentage:.1f}%)
                 nb = json.load(f)
 
             replacements = {
-                "claude-3-5-sonnet-20240620": "claude-sonnet-4-6",
-                "claude-3-5-sonnet-20241022": "claude-sonnet-4-6",
-                "claude-3-5-sonnet-latest": "claude-sonnet-4-6",
+                "claude-3-5-sonnet-20240620": "claude-sonnet-5",
+                "claude-3-5-sonnet-20241022": "claude-sonnet-5",
+                "claude-3-5-sonnet-latest": "claude-sonnet-5",
                 "claude-3-haiku-20240307": "claude-haiku-4-5",
                 "claude-3-5-haiku-20241022": "claude-haiku-4-5",
-                "claude-3-opus-20240229": "claude-opus-4-6",
-                "claude-3-opus-latest": "claude-opus-4-6",
-                "claude-sonnet-4-20250514": "claude-sonnet-4-6",
-                "claude-opus-4-20250514": "claude-opus-4-6",
-                "claude-opus-4-1": "claude-opus-4-6",
-                "claude-sonnet-4-5-20250929": "claude-sonnet-4-6",
-                "claude-sonnet-4-5": "claude-sonnet-4-6",
-                "claude-opus-4-5-20251101": "claude-opus-4-6",
-                "claude-opus-4-5": "claude-opus-4-6",
+                "claude-3-opus-20240229": "claude-opus-4-8",
+                "claude-3-opus-latest": "claude-opus-4-8",
+                "claude-sonnet-4-20250514": "claude-sonnet-5",
+                "claude-opus-4-20250514": "claude-opus-4-8",
+                "claude-opus-4-1": "claude-opus-4-8",
+                "claude-sonnet-4-5-20250929": "claude-sonnet-5",
+                "claude-sonnet-4-5": "claude-sonnet-5",
+                "claude-opus-4-5-20251101": "claude-opus-4-8",
+                "claude-opus-4-5": "claude-opus-4-8",
             }
 
             modified = False
@@ -724,10 +736,8 @@ Overall: {passing}/{total} notebooks passing ({percentage:.1f}%)
             if choice == "1":
                 self.run_validation(mode="quick")
             elif choice == "2":
-                if not os.environ.get("ANTHROPIC_API_KEY"):
-                    print(
-                        "\n⚠️  Warning: ANTHROPIC_API_KEY not set. Execution tests will be skipped."
-                    )
+                if not has_anthropic_credentials():
+                    print("\n" + NO_CREDS_WARNING)
                     cont = input("Continue anyway? (y/n): ")
                     if cont.lower() != "y":
                         continue
@@ -806,8 +816,8 @@ Examples:
     if args.quick:
         validator.run_validation(mode="quick")
     elif args.full:
-        if not os.environ.get("ANTHROPIC_API_KEY"):
-            print("⚠️  Warning: ANTHROPIC_API_KEY not set. Execution tests will be skipped.")
+        if not has_anthropic_credentials():
+            print(NO_CREDS_WARNING)
         validator.run_validation(mode="full")
     elif args.dashboard:
         print(validator.generate_dashboard())

@@ -300,3 +300,71 @@ class TestModelUsage:
                 + "\n".join(f"  - {i}" for i in issues)
                 + f"\n\nPlease use one of the current models: {', '.join(sorted(self.CURRENT_MODELS))}"
             )
+
+
+class TestCookbookAttribution:
+    """Tests for the anthropic_cookbook tag on Managed Agents."""
+
+    # Attribution only counts a tag that matches this shape. Anything else is
+    # ignored with no error, so a typo would lose attribution unnoticed.
+    SLUG_PATTERN = r"[a-z0-9][a-z0-9-]{0,63}"
+
+    def test_agents_carry_cookbook_tag(
+        self, notebook_path: Path, notebook_cells: list[CellInfo]
+    ) -> None:
+        """Test that every agents.create call tags the agent with this cookbook."""
+        import ast
+        import re
+
+        name = re.sub(r"[^a-z0-9]+", "-", notebook_path.stem.lower()).strip("-")
+        expected = f"claude-cookbooks/{name}"
+
+        calls = 0
+        issues = []
+
+        for cell in notebook_cells:
+            if cell.cell_type != "code" or "agents.create" not in cell.source:
+                continue
+
+            # IPython magics and shell escapes are not Python, so blank them out.
+            source = re.sub(r"^(\s*)[%!].*$", r"\1pass", cell.source, flags=re.MULTILINE)
+            try:
+                tree = ast.parse(source)
+            except SyntaxError as e:
+                issues.append(f"Cell {cell.index}: could not parse the cell ({e.msg})")
+                continue
+
+            for node in ast.walk(tree):
+                if not isinstance(node, ast.Call):
+                    continue
+                if not ast.unparse(node.func).endswith("agents.create"):
+                    continue
+
+                calls += 1
+                where = f"Cell {cell.index}, line {node.lineno}"
+                metadata = next((kw.value for kw in node.keywords if kw.arg == "metadata"), None)
+                if metadata is None:
+                    issues.append(f"{where}: no metadata argument")
+                    continue
+
+                try:
+                    value = ast.literal_eval(metadata)
+                except ValueError:
+                    value = None
+                if not isinstance(value, dict):
+                    # A variable or a spread can't be checked without running the cell.
+                    issues.append(f"{where}: metadata must be a plain dict literal")
+                    continue
+
+                tag = value.get("anthropic_cookbook")
+                if tag != expected:
+                    issues.append(f"{where}: anthropic_cookbook is {tag!r}")
+
+        if calls:
+            assert re.fullmatch(self.SLUG_PATTERN, name), f"Notebook name makes a bad slug: {name}"
+
+        if issues:
+            pytest.fail(
+                f'agents.create calls need metadata={{"anthropic_cookbook": "{expected}"}}:\n'
+                + "\n".join(f"  - {i}" for i in issues)
+            )

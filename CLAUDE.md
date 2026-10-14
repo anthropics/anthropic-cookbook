@@ -67,11 +67,11 @@ style: lint/format
    - Opus: `claude-opus-4-8`
    - **Never use dated model IDs** (e.g., `claude-sonnet-4-6-20250514`). Always use the non-dated alias.
    - **Bedrock model IDs** follow a different format. Use the base Bedrock model ID from the docs:
-     - Opus 4.6: `anthropic.claude-opus-4-6-v1`
-     - Sonnet 4.5: `anthropic.claude-sonnet-4-5-20250929-v1:0`
+     - Opus 4.8: `anthropic.claude-opus-4-8`
+     - Sonnet 5: `anthropic.claude-sonnet-5`
      - Haiku 4.5: `anthropic.claude-haiku-4-5-20251001-v1:0`
-     - Prepend `global.` for global endpoints (recommended): `global.anthropic.claude-opus-4-6-v1`
-     - Note: Bedrock models before Opus 4.6 require dated IDs in their Bedrock model ID.
+     - Prepend `global.` for global endpoints (recommended): `global.anthropic.claude-opus-4-8`
+     - Note: older Bedrock models use a dated `-YYYYMMDD-v1:0` suffix (e.g., Haiku 4.5 above); newer ones use the suffix-less `anthropic.claude-<model>` format.
 
 4. **Notebooks:**
    - Keep outputs in notebooks (intentional for demonstration)
