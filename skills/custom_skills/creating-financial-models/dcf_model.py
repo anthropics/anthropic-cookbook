@@ -181,7 +181,8 @@ class DCFModel:
         }
 
         prev_revenue = base_revenue
-        prev_nwc = base_revenue * 0.10  # Initial NWC assumption
+        historical_nwc = self.historical_financials.get("nwc", [])
+        prev_nwc = historical_nwc[-1] if historical_nwc else base_revenue * 0.10
 
         for i in range(years):
             # Revenue
