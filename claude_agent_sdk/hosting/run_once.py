@@ -14,8 +14,8 @@ import sys
 from research_agent.agent import send_query
 
 # Same default as server.py: Sonnet keeps test runs cheap. Override with
-# MODEL=claude-opus-4-6 to match notebook 00's DEFAULT_MODEL.
-DEFAULT_MODEL = "claude-sonnet-4-6"
+# MODEL=claude-opus-5-5 to match notebook 00's DEFAULT_MODEL.
+DEFAULT_MODEL = "claude-sonnet-5-5"
 
 # Unlike server.py, this path keeps notebook 00's default tools (including Read):
 # the caller controls $PROMPT and the container holds no other sessions' state,

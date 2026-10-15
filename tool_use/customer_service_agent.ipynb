@@ -6,7 +6,7 @@
    "source": [
     "# Creating a Customer Service Agent with Client-Side Tools\n",
     "\n",
-    "In this recipe, we'll demonstrate how to create a customer service chatbot using Claude 3 plus client-side tools. The chatbot will be able to look up customer information, retrieve order details, and cancel orders on behalf of the customer. We'll define the necessary tools and simulate synthetic responses to showcase the chatbot's capabilities."
+    "In this recipe, we'll demonstrate how to create a customer service chatbot using Claude plus client-side tools. The chatbot will be able to look up customer information, retrieve order details, and cancel orders on behalf of the customer. We'll define the necessary tools and simulate synthetic responses to showcase the chatbot's capabilities."
    ]
   },
   {
@@ -36,7 +36,7 @@
     "import anthropic\n",
     "\n",
     "client = anthropic.Client()\n",
-    "MODEL_NAME = \"claude-opus-4-8\""
+    "MODEL_NAME = \"claude-opus-5-5\""
    ]
   },
   {
@@ -374,7 +374,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "And that's it! We've created a customer service chatbot using Claude 3 models and client-side tools. The chatbot can look up customer information, retrieve order details, and cancel orders based on the user's requests. By defining clear tool descriptions and schemas, we enable Claude to effectively understand and utilize the available tools to assist customers.\n",
+    "And that's it! We've created a customer service chatbot using Claude and client-side tools. The chatbot can look up customer information, retrieve order details, and cancel orders based on the user's requests. By defining clear tool descriptions and schemas, we enable Claude to effectively understand and utilize the available tools to assist customers.\n",
     "\n",
     "Feel free to expand on this example by integrating with your actual customer database and order management system, and by adding more tools to handle a wider range of customer service tasks."
    ]

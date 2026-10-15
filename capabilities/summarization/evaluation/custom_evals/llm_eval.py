@@ -36,7 +36,7 @@ def llm_eval(summary, input):
     6. Does the summary capture the key concepts and principles embodied in the legal document?
     7. Does the summary omit any important ideas that should be captured to make decisions using the document?
 
-    Provide a score for each criterion in JSON format. Here is the format you should follow always:
+    Provide a score for each criterion in JSON format, and respond with only the <json> block. Here is the format you should follow always:
 
     <json>
     {{
@@ -44,7 +44,7 @@ def llm_eval(summary, input):
     "accuracy": <number>,
     "completeness": <number>,
     "clarity": <number>,
-    "explanation": <string>,
+    "explanation": <string>
     }}
     </json>
 
@@ -55,14 +55,20 @@ def llm_eval(summary, input):
     Evaluation (JSON format):"""
 
     response = client.messages.create(
-        model="claude-sonnet-4-6",
+        model="claude-sonnet-5-5",
         max_tokens=1000,
-        temperature=0,
-        messages=[{"role": "user", "content": prompt}, {"role": "assistant", "content": "<json>"}],
+        messages=[{"role": "user", "content": prompt}],
         stop_sequences=["</json>"],
     )
 
-    evaluation = json.loads(response.content[0].text)
+    # Read text blocks by type (current models may return a leading thinking block). The reply wraps
+    # the object in <json> tags (the stop sequence trims the closing one) and may add a preamble or
+    # code fences, so parse the outermost {...} block.
+    text = "".join(block.text for block in response.content if block.type == "text")
+    start, end = text.find("{"), text.rfind("}")
+    if start == -1 or end == -1:
+        raise ValueError(f"no JSON object in grader response: {text[:200]!r}")
+    evaluation = json.loads(text[start : end + 1])
     # Filter out non-numeric values and calculate the average
     numeric_values = [value for key, value in evaluation.items() if isinstance(value, (int, float))]
     avg_score = sum(numeric_values) / len(numeric_values)

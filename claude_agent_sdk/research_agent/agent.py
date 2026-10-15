@@ -27,7 +27,7 @@ from claude_agent_sdk import ClaudeAgentOptions, ClaudeSDKClient
 load_dotenv()
 
 # Default model for the research agent
-DEFAULT_MODEL = "claude-opus-4-6"
+DEFAULT_MODEL = "claude-opus-5-5"
 
 # System prompt with citation requirements for research quality
 RESEARCH_SYSTEM_PROMPT = """You are a research agent specialized in AI.
@@ -80,7 +80,7 @@ async def send_query(
         prompt: The query to send
         activity_handler: Callback for activity updates (default: print_activity)
         continue_conversation: Continue the previous conversation if True
-        model: Model to use (default: claude-sonnet-4-6)
+        model: Model to use (default: claude-opus-5-5)
         display_result: If True, display the response using display_agent_response()
             after completion. Set to False for programmatic use.
 

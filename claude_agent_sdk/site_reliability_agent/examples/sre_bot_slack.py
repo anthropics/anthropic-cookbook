@@ -16,15 +16,15 @@ Usage:
 """
 
 import asyncio
-import os
-import sys
-import re
 import json
+import os
+import re
+import sys
 from pathlib import Path
 
 # Check aiohttp for webhook server
 try:
-    from aiohttp import web, ClientSession
+    from aiohttp import ClientSession, web
 except ImportError:
     print("❌ aiohttp not installed")
     print("   Run: pip install aiohttp")
@@ -48,8 +48,8 @@ PAGERDUTY_API_KEY = os.environ.get("PAGERDUTY_API_KEY", "")
 
 # Check Slack dependency
 try:
-    from slack_bolt.async_app import AsyncApp
     from slack_bolt.adapter.socket_mode.async_handler import AsyncSocketModeHandler
+    from slack_bolt.async_app import AsyncApp
 except ImportError:
     print("❌ slack-bolt not installed")
     print("   Run: pip install slack-bolt")
@@ -58,12 +58,12 @@ except ImportError:
 # Check Claude Agent SDK
 try:
     from claude_agent_sdk import (
-        query,
-        ClaudeAgentOptions,
         AssistantMessage,
+        ClaudeAgentOptions,
+        ResultMessage,
         TextBlock,
         ToolUseBlock,
-        ResultMessage,
+        query,
     )
 except ImportError:
     print("❌ claude-agent-sdk not installed")
@@ -195,9 +195,7 @@ async def handle_pagerduty_webhook(request: web.Request) -> web.Response:
                             if created_at and resolved_at:
                                 from datetime import datetime
 
-                                created = datetime.fromisoformat(
-                                    created_at.replace("Z", "+00:00")
-                                )
+                                created = datetime.fromisoformat(created_at.replace("Z", "+00:00"))
                                 resolved = datetime.fromisoformat(
                                     resolved_at.replace("Z", "+00:00")
                                 )
@@ -218,10 +216,7 @@ async def handle_pagerduty_webhook(request: web.Request) -> web.Response:
         # Check for pending post-mortem URL (created before resolving)
         global pending_postmortem_url
         if pending_postmortem_url:
-            print(
-                "📝 Including post-mortem URL in resolved"
-                f" message: {pending_postmortem_url}"
-            )
+            print(f"📝 Including post-mortem URL in resolved message: {pending_postmortem_url}")
             postmortem_value = pending_postmortem_url
             pending_postmortem_url = ""
         else:
@@ -456,7 +451,7 @@ async def process_investigation(
             "mcp__sre__get_container_logs",
         ],
         permission_mode="acceptEdits",
-        model="claude-opus-4-6",
+        model="claude-opus-5-5",
     )
 
     # Stream responses to Slack as they arrive
@@ -482,17 +477,13 @@ async def process_investigation(
                         if confluence_match:
                             global pending_postmortem_url
                             pending_postmortem_url = confluence_match.group(1)
-                            print(
-                                f"📝 Stored post-mortem URL: {pending_postmortem_url}"
-                            )
+                            print(f"📝 Stored post-mortem URL: {pending_postmortem_url}")
 
                         # Reset tool tracking when we get actual content
                         last_tool_posted = None
                         # Split long messages to respect Slack's 4000 char limit
                         if len(text) > 3900:
-                            chunks = [
-                                text[i : i + 3900] for i in range(0, len(text), 3900)
-                            ]
+                            chunks = [text[i : i + 3900] for i in range(0, len(text), 3900)]
                             for chunk in chunks:
                                 await say(text=chunk, thread_ts=thread_ts)
                                 await asyncio.sleep(0.3)
@@ -571,9 +562,7 @@ async def handle_mention(event, say, client):
 
     # Combine context with current request
     full_prompt = (
-        thread_context + "Current request: " + incident_text
-        if thread_context
-        else incident_text
+        thread_context + "Current request: " + incident_text if thread_context else incident_text
     )
 
     # Detect if this is a short confirmation
@@ -595,9 +584,7 @@ async def handle_mention(event, say, client):
     )
 
     # Schedule the task as a background task so handler returns quickly
-    asyncio.create_task(
-        process_investigation(full_prompt, channel, thread_ts, say, is_followup)
-    )
+    asyncio.create_task(process_investigation(full_prompt, channel, thread_ts, say, is_followup))
 
 
 @app.event("message")
@@ -647,13 +634,10 @@ async def start_webhook_server():
 
     runner = web.AppRunner(webhook_app)
     await runner.setup()
-    site = web.TCPSite(runner, "0.0.0.0", WEBHOOK_PORT)
+    site = web.TCPSite(runner, "0.0.0.0", WEBHOOK_PORT)  # noqa: S104 - webhook listener must be reachable
     await site.start()
     print(f"🌐 Webhook server listening on http://0.0.0.0:{WEBHOOK_PORT}")
-    print(
-        "   PagerDuty webhook URL:"
-        f" http://<your-host>:{WEBHOOK_PORT}/webhooks/pagerduty"
-    )
+    print(f"   PagerDuty webhook URL: http://<your-host>:{WEBHOOK_PORT}/webhooks/pagerduty")
 
     # Keep the server running
     while True:

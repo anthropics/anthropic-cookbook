@@ -6,14 +6,14 @@ from anthropic import Anthropic
 client = Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 
 
-def llm_call(prompt: str, system_prompt: str = "", model="claude-sonnet-4-6") -> str:
+def llm_call(prompt: str, system_prompt: str = "", model="claude-sonnet-5-5") -> str:
     """
     Calls the model with the given prompt and returns the response.
 
     Args:
         prompt (str): The user prompt to send to the model.
         system_prompt (str, optional): The system prompt to send to the model. Defaults to "".
-        model (str, optional): The model to use for the call. Defaults to "claude-sonnet-4-6".
+        model (str, optional): The model to use for the call. Defaults to "claude-sonnet-5-5".
 
     Returns:
         str: The response from the language model.
@@ -25,9 +25,8 @@ def llm_call(prompt: str, system_prompt: str = "", model="claude-sonnet-4-6") ->
         max_tokens=4096,
         system=system_prompt,
         messages=messages,
-        temperature=0.1,
     )
-    return response.content[0].text
+    return "".join(block.text for block in response.content if block.type == "text")
 
 
 def extract_xml(text: str, tag: str) -> str:

@@ -35,17 +35,14 @@ def evaluate_end_to_end(query, generated_answer, correct_answer):
     client = Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
     try:
         response = client.messages.create(
-            model="claude-sonnet-4-6",
+            model="claude-sonnet-5-5",
             max_tokens=1500,
-            messages=[
-                {"role": "user", "content": prompt},
-                {"role": "assistant", "content": "<evaluation>"},
-            ],
-            temperature=0,
+            messages=[{"role": "user", "content": prompt}],
             stop_sequences=["</evaluation>"],
         )
 
-        response_text = response.content[0].text
+        # Read text blocks by type; current models may return a leading thinking block
+        response_text = "".join(block.text for block in response.content if block.type == "text")
 
         # Use regex to extract explanation and is_correct
         explanation_match = re.search(r"<explanation>(.*?)</explanation>", response_text, re.DOTALL)

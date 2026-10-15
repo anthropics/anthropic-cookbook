@@ -438,8 +438,8 @@
   categories:
   - Agent Patterns
   - Responses
-- title: Summarizing web page content with Claude 3 Haiku
-  description: Fetch and summarize web page content using Claude 3 Haiku via URL extraction.
+- title: Summarizing web page content with Claude Haiku 4.5
+  description: Fetch and summarize web page content using Claude Haiku 4.5 via URL extraction.
   path: misc/read_web_pages_with_haiku.ipynb
   authors:
   - alexalbertt
@@ -484,7 +484,7 @@
   categories:
   - Multimodal
 - title: Getting started - how to pass images into Claude
-  description: Tutorial on passing images to Claude 3 API for vision-based text analysis.
+  description: Tutorial on passing images to the Claude API for vision-based text analysis.
   path: multimodal/getting_started_with_vision.ipynb
   authors:
   - alexalbertt
@@ -493,7 +493,7 @@
   - Multimodal
 - title: How to transcribe documents with Claude
   description: Extract and structure unstructured text from images and PDFs using
-    Claude 3's vision.
+    Claude's vision.
   path: multimodal/how_to_transcribe_text.ipynb
   authors:
   - alexalbertt
@@ -675,7 +675,7 @@
   categories:
   - Integrations
   - RAG & Retrieval
-- title: How to build a RAG system using Claude 3 and MongoDB
+- title: How to build a RAG system using Claude and MongoDB
   description: Build chatbot RAG system with Claude and MongoDB using tech news as
     knowledge base.
   path: third_party/MongoDB/rag_using_mongodb.ipynb
@@ -685,8 +685,8 @@
   categories:
   - Integrations
   - RAG & Retrieval
-- title: Claude 3 RAG agents with LangChain v1
-  description: Build RAG agents with Claude 3 using LangChain v1's updated agent framework
+- title: Claude RAG agents with LangChain v1
+  description: Build RAG agents with Claude using LangChain v1's updated agent framework
     patterns.
   path: third_party/Pinecone/claude_3_rag_agent.ipynb
   authors:
@@ -763,7 +763,7 @@
   categories:
   - Responses
   - Tools
-- title: Memory & context management with Claude Sonnet 4.6
+- title: Memory & context management with Claude
   description: Build AI agents with persistent memory using Claude's memory tool and
     context editing.
   path: tool_use/memory_cookbook.ipynb
@@ -773,9 +773,9 @@
   categories:
   - Tools
   - Agent Patterns
-- title: Parallel tool calls on Claude 3.7 Sonnet
-  description: Enable parallel tool calls on Claude 3.7 Sonnet using batch tool meta-pattern
-    workaround.
+- title: Encouraging parallel tool calls with a batch tool
+  description: Use a batch tool meta-pattern to encourage Claude to make parallel tool
+    calls in a single turn.
   path: tool_use/parallel_tools.ipynb
   authors:
   - Anthropic
