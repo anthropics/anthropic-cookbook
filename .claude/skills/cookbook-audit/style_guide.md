@@ -114,7 +114,7 @@ Before following this guide, ensure you have:
 
 **Required Tools:**
 - Python 3.11 or higher
-- Anthropic API key ([get one here](https://console.anthropic.com))
+- Anthropic API key ([get one here](https://platform.claude.com))
 
 **Recommended:**
 - Familiarity with async/await patterns in Python
@@ -142,7 +142,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-MODEL = "claude-sonnet-4-6"
+MODEL = "claude-sonnet-5-5"
 
 client = anthropic.Anthropic()
 ~~~
