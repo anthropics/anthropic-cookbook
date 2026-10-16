@@ -844,12 +844,12 @@
   categories:
   - Claude Managed Agents
   - Tools
-- title: 'Coordinator pattern: big models for planning, small models for execution'
-  description: Two-model team economics via the multiagent coordinator config — a
-    frontier coordinator plans and synthesizes while cheap search workers do the
-    token-heavy web reading in parallel threads, compared against a rigor-matched
-    solo-frontier control with real bills. Covers per-thread usage.list_cost metering,
-    cost attribution, and a session budget as the fan-out guardrail.
+- title: 'Orchestrator pattern: big models for planning, small models for execution'
+  description: Two-model team economics via the multiagent config — a frontier orchestrator
+    plans and synthesizes while cheap search workers do the token-heavy web reading
+    in parallel threads, compared against a rigor-matched solo-frontier control with
+    real bills. Covers per-thread usage.list_cost metering, cost attribution, and
+    a session budget as the fan-out guardrail.
   path: managed_agents/CMA_plan_big_execute_small.ipynb
   authors:
   - bradabrams
@@ -976,3 +976,15 @@
   - Agent Patterns
   - Tools
   - Multimodal
+- title: Trace Claude API requests and Managed Agents sessions with OpenTelemetry
+  description: Read the OpenTelemetry spans the Python SDK emits for Messages API
+    requests, streams, tool-runner loops, and Managed Agents sessions, attribute by
+    attribute. Then export to an OTLP backend and add a Console destination so the
+    API's server-side spans join the same trace.
+  path: observability/opentelemetry_tracing.ipynb
+  authors:
+  - cj-ant
+  date: '2026-10-13'
+  categories:
+  - Observability
+  - Claude Managed Agents
