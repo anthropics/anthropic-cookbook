@@ -856,6 +856,19 @@
   date: '2026-07-02'
   categories:
   - Claude Managed Agents
+- title: Review your agents' sessions for security issues with Claude
+  description: Build a review system for finished agent sessions. It turns Managed Agents
+    sessions, Messages API logs or Agent SDK logs into transcripts, flags what looks off in code, has
+    Claude review each session in a Managed Agents dynamic workflow, and returns a ranked
+    report with quoted evidence.
+  path: managed_agents/CMA_agent_security_review.ipynb
+  authors:
+  - bradabrams
+  date: '2026-10-16'
+  categories:
+  - Claude Managed Agents
+  - Cybersecurity
+  - Agent Patterns
 - title: 'Outcomes: agents that verify their own work'
   description: 'Build a grade-and-revise loop with Outcomes: a writer drafts a cited
     research brief, a stateless grader fetches every URL and checks every quote against
