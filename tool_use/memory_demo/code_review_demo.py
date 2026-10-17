@@ -150,7 +150,17 @@ Remember: Your memory persists across conversations. Use it wisely."""
             final_text = []
 
             for content in response.content:
-                if content.type == "text":
+                if content.type == "thinking":
+                    # Pass thinking blocks back unchanged (with signature) so the
+                    # tool-use loop stays valid when the model emits them.
+                    assistant_content.append(
+                        {
+                            "type": "thinking",
+                            "thinking": content.thinking,
+                            "signature": content.signature,
+                        }
+                    )
+                elif content.type == "text":
                     assistant_content.append({"type": "text", "text": content.text})
                     final_text.append(content.text)
                 elif content.type == "tool_use":

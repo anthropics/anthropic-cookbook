@@ -28,7 +28,7 @@ from claude_agent_sdk import ClaudeAgentOptions, ClaudeSDKClient, McpServerConfi
 load_dotenv()
 
 # Default model for the observability agent
-DEFAULT_MODEL = "claude-opus-4-6"
+DEFAULT_MODEL = "claude-opus-5-5"
 
 # System prompt optimized for observability tasks
 DEFAULT_SYSTEM_PROMPT = """You are an observability agent specialized in monitoring \
@@ -83,7 +83,7 @@ async def send_query(
         continue_conversation: Continue the previous conversation if True
         mcp_servers: Custom MCP servers configuration (merged with GitHub if enabled)
         use_github: Include GitHub MCP server (default: True)
-        model: Model to use (default: claude-opus-4-6)
+        model: Model to use (default: claude-opus-5-5)
         restrict_to_mcp: If True, disallow Bash/Task to ensure MCP tools are used.
             Set to False if you want the agent to have fallback options.
         display_result: If True, display the response using display_agent_response()

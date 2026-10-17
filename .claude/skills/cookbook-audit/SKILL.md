@@ -123,8 +123,8 @@ Use this to ensure comprehensive coverage:
 **Technical Requirements**
 - [ ] Executable without modification (except API keys)
 - [ ] Uses non-deprecated API patterns
-- [ ] Uses valid model names (claude-sonnet-4-6, claude-haiku-4-5, claude-opus-4-6)
-- [ ] Uses non-dated model aliases (never dated IDs like claude-sonnet-4-6-20250514)
+- [ ] Uses the latest model in each family (claude-opus-5-5, claude-sonnet-5-5, claude-fable-5-1, claude-haiku-4-5); a superseded-but-still-served ID (e.g. claude-opus-5, claude-sonnet-5) is a warning unless pinned on purpose, a retired ID (e.g. claude-3-*) is blocking
+- [ ] Uses non-dated model aliases (never dated IDs like claude-sonnet-4-5-20250929)
 - [ ] Model name defined as constant at top of notebook
 - [ ] Includes dependency specifications
 - [ ] Assigned to primary category

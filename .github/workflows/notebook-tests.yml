@@ -152,7 +152,7 @@ jobs:
             - Explains how to fix common issues:
               - "Cells not executed": Run all cells from top to bottom before committing
               - "Execution order issues": Restart kernel and run all cells sequentially
-              - "Deprecated models": Update to current model versions (claude-sonnet-4-6, etc.)
+              - "Deprecated or non-current models": Switch to a current alias (claude-opus-5-5, claude-sonnet-5-5, claude-fable-5-1, claude-haiku-4-5); if the notebook pins an older model on purpose (pricing tables, recorded eval numbers), add it to ALLOWED_LEGACY_MODELS in tests/notebook_tests/test_notebooks.py with a one-line reason
               - "Hardcoded API keys": Use os.environ.get("ANTHROPIC_API_KEY") instead
             - Mentions they can test locally with: `make test-notebooks NOTEBOOK=path/to/notebook.ipynb`
             - Uses friendly, constructive language

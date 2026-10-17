@@ -23,6 +23,62 @@ import subprocess
 import sys
 from pathlib import Path
 
+# Model tables. Keep in sync with LATEST_MODELS / SUPERSEDED_MODELS / RETIRED_MODELS in
+# scripts/validate_all_notebooks.py and TestModelUsage in tests/notebook_tests/test_notebooks.py
+# (those two also list the few notebooks that pin a superseded model on purpose).
+#
+# The newest model in each family. New and updated cookbooks should use one of these.
+LATEST_MODELS = {
+    "claude-opus-5-5",
+    "claude-sonnet-5-5",
+    "claude-fable-5-1",
+    "claude-haiku-4-5",
+}
+
+# Still served by the API, but a newer model exists in the same family. Reported as a warning:
+# update unless the notebook pins the model on purpose (pricing tables, recorded eval results).
+SUPERSEDED_MODELS = {
+    # Opus family
+    "claude-opus-5": "claude-opus-5-5",
+    "claude-opus-4-8": "claude-opus-5-5",
+    "claude-opus-4-7": "claude-opus-5-5",
+    "claude-opus-4-6": "claude-opus-5-5",
+    "claude-opus-4-5-20251101": "claude-opus-5-5",
+    "claude-opus-4-5": "claude-opus-5-5",
+    # Sonnet family
+    "claude-sonnet-5": "claude-sonnet-5-5",
+    "claude-sonnet-4-6": "claude-sonnet-5-5",
+    # Fable family
+    "claude-fable-5": "claude-fable-5-1",
+}
+
+# Retired (the API returns 404) or officially deprecated with a retirement date on the
+# model-deprecations page. Reported as a blocking issue.
+RETIRED_MODELS = {
+    # Opus family
+    "claude-opus-4-1-20250805": "claude-opus-5-5",  # retired 2026-08-05
+    "claude-opus-4-1": "claude-opus-5-5",
+    "claude-opus-4-20250514": "claude-opus-5-5",
+    "claude-opus-4-0": "claude-opus-5-5",
+    "claude-3-opus-20240229": "claude-opus-5-5",
+    "claude-3-opus-latest": "claude-opus-5-5",
+    # Sonnet family
+    "claude-sonnet-4-5-20250929": "claude-sonnet-5-5",  # deprecated 2026-09-30, retires 2026-11-30
+    "claude-sonnet-4-5": "claude-sonnet-5-5",
+    "claude-sonnet-4-20250514": "claude-sonnet-5-5",
+    "claude-sonnet-4-0": "claude-sonnet-5-5",
+    "claude-3-7-sonnet-20250219": "claude-sonnet-5-5",
+    "claude-3-7-sonnet-latest": "claude-sonnet-5-5",
+    "claude-3-5-sonnet-20240620": "claude-sonnet-5-5",
+    "claude-3-5-sonnet-20241022": "claude-sonnet-5-5",
+    "claude-3-5-sonnet-latest": "claude-sonnet-5-5",
+    "claude-3-sonnet-20240229": "claude-sonnet-5-5",
+    # Haiku family
+    "claude-3-5-haiku-20241022": "claude-haiku-4-5",
+    "claude-3-5-haiku-latest": "claude-haiku-4-5",
+    "claude-3-haiku-20240307": "claude-haiku-4-5",
+}
+
 
 class NotebookValidator:
     def __init__(self, notebook_path: str):
@@ -321,28 +377,13 @@ class NotebookValidator:
             if has_model_refs:
                 self.warnings.append(
                     "Model name should be defined as a constant at the top of the notebook "
-                    "(e.g., MODEL = 'claude-sonnet-4-6') to make future updates easier"
+                    "(e.g., MODEL = 'claude-sonnet-5-5') to make future updates easier"
                 )
 
-    def check_deprecated_patterns(self):
-        """Check for deprecated API patterns and invalid models."""
-        # Valid models
-        valid_models = [
-            "claude-fable-5",
-            "claude-sonnet-5",
-            "claude-opus-4-8",
-            "claude-sonnet-4-6",
-            "claude-haiku-4-5",
-            "claude-opus-4-6",
-        ]
-
+    def check_models_and_deprecated_patterns(self):
+        """Check model IDs (latest / superseded / retired / unknown) and deprecated API patterns."""
         # Pattern to match model strings
         model_pattern = r'["\']claude-([a-z0-9\.-]+)["\']'
-
-        # Deprecated models that should be migrated
-        deprecated_models = {
-            "claude-opus-4-1": "claude-opus-4-6",
-        }
 
         deprecated_patterns = {
             r"\.completion\(": "Using old completion API (use messages API)",
@@ -355,29 +396,40 @@ class NotebookValidator:
             source = self.get_cell_source(cell)
 
             # Check for dated API model IDs (exclude Bedrock IDs which require dates)
-            dated_pattern = r'["\']claude-\w+-[\d.]+-\d{8}["\']'
+            dated_pattern = r'["\']claude-[a-z0-9.-]+-\d{8}["\']'
             dated_matches = re.findall(dated_pattern, source)
             for match in dated_matches:
                 # Skip Bedrock model IDs (anthropic.claude-*) which require dates
                 if f"anthropic.{match.strip(chr(34)).strip(chr(39))}" not in source:
                     self.issues.append(
                         f"Cell {i}: Dated model ID {match} found. "
-                        "Use non-dated aliases instead (e.g., claude-sonnet-4-6)"
+                        "Use non-dated aliases instead (e.g., claude-sonnet-5-5)"
                     )
 
-            # Check for invalid or deprecated models
+            # Classify each model ID: latest (fine), superseded (warn), retired (block),
+            # or unknown (block).
             model_matches = re.findall(model_pattern, source)
             for match in model_matches:
                 full_model = f"claude-{match}"
-                if full_model in deprecated_models:
-                    self.warnings.append(
-                        f"Cell {i}: Deprecated model '{full_model}'. "
-                        f"Please update to '{deprecated_models[full_model]}'"
-                    )
-                elif full_model not in valid_models:
+                if full_model in LATEST_MODELS:
+                    continue
+                if re.search(r"-\d{8}$", full_model) and full_model not in RETIRED_MODELS:
+                    continue  # dated first-party ID: already reported by the dated-ID check above
+                if full_model in RETIRED_MODELS:
                     self.issues.append(
-                        f"Cell {i}: Invalid model '{full_model}'. "
-                        f"Valid models are: {', '.join(valid_models)}"
+                        f"Cell {i}: Retired or deprecated model '{full_model}' (no longer served, or scheduled for retirement). "
+                        f"Replace with '{RETIRED_MODELS[full_model]}'"
+                    )
+                elif full_model in SUPERSEDED_MODELS:
+                    self.warnings.append(
+                        f"Cell {i}: Superseded model '{full_model}' (still available, but "
+                        f"'{SUPERSEDED_MODELS[full_model]}' is the latest in its family). "
+                        "Update it unless this notebook pins the model on purpose"
+                    )
+                else:
+                    self.issues.append(
+                        f"Cell {i}: Unrecognized model '{full_model}'. "
+                        f"Latest models are: {', '.join(sorted(LATEST_MODELS))}"
                     )
 
             # Check for other deprecated patterns
@@ -411,7 +463,7 @@ class NotebookValidator:
         self.check_verbose_output()
         self.check_variable_names()
         self.check_model_constant()
-        self.check_deprecated_patterns()
+        self.check_models_and_deprecated_patterns()
         self.check_conclusion()
 
     def print_report(self):

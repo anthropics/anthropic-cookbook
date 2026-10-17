@@ -14,6 +14,7 @@ This module provides comprehensive tests for Jupyter notebooks including:
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from typing import Any
 
@@ -267,38 +268,94 @@ class TestNotebookMetadata:
 class TestModelUsage:
     """Tests for Claude model usage."""
 
-    # Current supported models
+    # Current supported models (first-party aliases). Everything else a notebook names in
+    # code must be listed in ALLOWED_LEGACY_MODELS with a reason.
     CURRENT_MODELS = {
-        "claude-sonnet-4-6",
+        "claude-opus-5-5",
+        "claude-sonnet-5-5",
+        "claude-fable-5-1",
         "claude-haiku-4-5",
-        "claude-opus-4-6",
     }
 
-    # Pattern to match Claude model identifiers
-    CLAUDE_MODEL_PATTERN = r"claude-[a-z0-9-]+-\d{8}"
+    # Bedrock base IDs for the current models (see CLAUDE.md). Regional prefixes such as
+    # `global.` and context-window suffixes such as `:200k` are stripped before comparing.
+    # Haiku 4.5 is listed in both forms: the dated `-v1:0` ID used with InvokeModel and the
+    # alias used with the Messages-API endpoint.
+    CURRENT_BEDROCK_MODELS = {
+        "anthropic.claude-opus-5-5",
+        "anthropic.claude-sonnet-5-5",
+        "anthropic.claude-fable-5-1",
+        "anthropic.claude-haiku-4-5",
+        "anthropic.claude-haiku-4-5-20251001-v1:0",
+    }
 
-    def test_no_deprecated_models(self, notebook_cells: list[CellInfo]) -> None:
-        """Test that no deprecated Claude models are used."""
-        import re
+    # Older IDs that specific notebooks pin on purpose because the content is tied to that
+    # model (pricing math, recorded eval results, model-specific billing behaviour). Keyed by
+    # notebook path (relative to the repo root) so a legacy ID allowed in one notebook is still
+    # flagged everywhere else; keep in sync with PINNED_LEGACY_NOTEBOOKS in
+    # scripts/validate_all_notebooks.py (model tables are also mirrored in
+    # .claude/skills/cookbook-audit/validate_notebook.py).
+    ALLOWED_LEGACY_MODELS: dict[str, set[str]] = {
+        # Pricing math and recorded cost/latency results for the Fable 5 / Opus 5 / Sonnet 5
+        # generation; needs a full re-run to move.
+        "cost_optimization/cost_optimization.ipynb": {
+            "claude-fable-5",
+            "claude-opus-5",
+            "claude-sonnet-5",
+        },
+        # GRADER_MODEL that produced the published benchmark numbers (eval methodology).
+        "evals/agentic_search/reproduce_agentic_search_benchmarks.ipynb": {"claude-opus-4-6"},
+        # The Fable 5 -> Opus 4.8 classifier-fallback and billing behaviour it documents is
+        # specific to these two models.
+        "fable_5_fallback_billing/guide.ipynb": {"claude-fable-5", "claude-opus-4-8"},
+        # Recorded chart-reading benchmark results and costs are for Fable 5 / Sonnet 5.
+        "multimodal/crop_tool.ipynb": {"claude-fable-5", "claude-sonnet-5"},
+    }
 
+    # Whole model IDs in code cells: first-party `claude-<family>-...` and legacy
+    # `claude-3[-x]-<family>-...` IDs, optionally carrying a Bedrock `[region.]anthropic.`
+    # prefix. The boundaries keep `claude-opus-5` from matching inside `claude-opus-5-5` and
+    # skip templated IDs such as `claude-opus-{version}`; requiring a family name skips
+    # look-alikes such as a `claude-3-rag` index name.
+    CLAUDE_MODEL_PATTERN = re.compile(
+        r"(?<![\w.-])"
+        r"(?:(?:[a-z]{2,6}\.)?anthropic\.)?"
+        r"claude-(?:3(?:-[57])?-)?(?:opus|sonnet|haiku|fable|mythos)(?:[-:][a-z0-9]+)+"
+        r"(?![\w-])"
+    )
+
+    @classmethod
+    def _is_allowed_model(cls, model_id: str, allowed_legacy: set[str]) -> bool:
+        if "anthropic." in model_id:
+            base = model_id[model_id.index("anthropic.") :]  # drop regional prefix
+            base = re.sub(r":\d+k$", "", base)  # drop context-window suffix (e.g. :200k)
+            return base in cls.CURRENT_BEDROCK_MODELS
+        return model_id in cls.CURRENT_MODELS or model_id in allowed_legacy
+
+    def test_no_deprecated_models(
+        self, notebook_path: Path, project_root: Path, notebook_cells: list[CellInfo]
+    ) -> None:
+        """Test that code cells only name current Claude models (or an allowed legacy pin)."""
+        rel_path = notebook_path.resolve().relative_to(project_root.resolve()).as_posix()
+        allowed_legacy = self.ALLOWED_LEGACY_MODELS.get(rel_path, set())
         issues = []
 
         for cell in notebook_cells:
             if cell.cell_type != "code":
                 continue
 
-            source = cell.source
-            matches = re.findall(self.CLAUDE_MODEL_PATTERN, source)
-
-            for match in matches:
-                if match not in self.CURRENT_MODELS:
-                    issues.append(f"Cell {cell.index}: Found deprecated model '{match}'")
+            for model_id in sorted(set(self.CLAUDE_MODEL_PATTERN.findall(cell.source))):
+                if not self._is_allowed_model(model_id, allowed_legacy):
+                    issues.append(f"Cell {cell.index}: Found non-current model '{model_id}'")
 
         if issues:
             pytest.fail(
-                "Deprecated Claude models detected:\n"
+                "Deprecated or non-current Claude models detected:\n"
                 + "\n".join(f"  - {i}" for i in issues)
-                + f"\n\nPlease use one of the current models: {', '.join(sorted(self.CURRENT_MODELS))}"
+                + "\n\nPlease use one of the current models: "
+                + ", ".join(sorted(self.CURRENT_MODELS))
+                + " (or add a documented, per-notebook exception to"
+                " TestModelUsage.ALLOWED_LEGACY_MODELS)."
             )
 
 

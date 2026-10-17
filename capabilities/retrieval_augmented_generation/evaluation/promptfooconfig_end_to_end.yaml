@@ -8,15 +8,14 @@ prompts:
 
 providers:
   - id: anthropic:messages:claude-haiku-4-5
-    label: "Haiku: T-0.0"
+    label: "Haiku"
     config:
       max_tokens: 2500
       temperature: 0
 
-  - id: anthropic:messages:claude-sonnet-4-6
-    label: "3.5 Sonnet: T-0.0"
+  - id: anthropic:messages:claude-sonnet-5-5
+    label: "Sonnet"
     config:
       max_tokens: 2500
-      temperature: 0
 
 tests: promptfoo_datasets/end_to_end_dataset.csv

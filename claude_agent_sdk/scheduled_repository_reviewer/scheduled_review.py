@@ -69,7 +69,7 @@ SERVICE_DIR = Path(__file__).resolve().parent
 SESSION_FILE = SERVICE_DIR / ".last_review_session"
 
 READ_ONLY_TOOLS = ["Read", "Glob", "Grep"]
-MODEL = "claude-sonnet-5"
+MODEL = "claude-sonnet-5-5"
 FIRST_RUN_BUDGET_USD = 2.00
 FOLLOW_UP_BUDGET_USD = 0.50
 # Sized with headroom for a real repository. Tune against the cost_usd

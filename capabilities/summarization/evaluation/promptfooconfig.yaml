@@ -7,15 +7,14 @@ prompts:
 
 providers:
   - id: anthropic:messages:claude-haiku-4-5
-    label: "3.0 Haiku"
+    label: "Haiku"
     config:
       max_tokens: 4096
       temperature: 0
-  - id: anthropic:messages:claude-sonnet-4-6
-    label: "3.5 Sonnet"
+  - id: anthropic:messages:claude-sonnet-5-5
+    label: "Sonnet"
     config:
       max_tokens: 4096
-      temperature: 0
 
 defaultTest:
   assert:

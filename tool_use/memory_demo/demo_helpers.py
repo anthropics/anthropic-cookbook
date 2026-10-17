@@ -49,7 +49,7 @@ def run_conversation_turn(
         memory_handler: Memory tool handler instance
         system: System prompt
         context_management: Optional context management config
-        thinking: Optional extended thinking config (e.g., {"type": "enabled", "budget_tokens": 10000})
+        thinking: Optional thinking config (e.g., {"type": "adaptive"})
         max_tokens: Max tokens for response
         verbose: Whether to print tool operations
 
@@ -141,7 +141,7 @@ def run_conversation_loop(
         memory_handler: Memory tool handler instance
         system: System prompt
         context_management: Optional context management config
-        thinking: Optional extended thinking config (e.g., {"type": "enabled", "budget_tokens": 10000})
+        thinking: Optional thinking config (e.g., {"type": "adaptive"})
         max_tokens: Max tokens for response
         max_turns: Maximum number of turns to prevent infinite loops
         verbose: Whether to print progress

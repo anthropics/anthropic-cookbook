@@ -34,7 +34,7 @@ The agent image exposes:
 
   Port: 8000
   Required env: ANTHROPIC_API_KEY
-  Optional env: MODEL (default: claude-sonnet-4-6),
+  Optional env: MODEL (default: claude-sonnet-5-5),
                 CLAUDE_CONFIG_DIR (default: /data — mount this for persistence),
                 AGENT_AUTH_TOKEN (when set, /sessions/* requires
                                   Authorization: Bearer <token>; /health stays open)

@@ -22,8 +22,8 @@ from engine import validate_document
 
 # Compilation runs once per policy change, so it gets the strongest model.
 # Extraction runs once per piece of content, so it gets a cheaper, faster one.
-COMPILER_MODEL = "claude-opus-5"
-EXTRACTOR_MODEL = "claude-sonnet-5"
+COMPILER_MODEL = "claude-opus-5-5"
+EXTRACTOR_MODEL = "claude-sonnet-5-5"
 MODEL = COMPILER_MODEL  # backward-compatible alias
 
 client: anthropic.Anthropic | None = None

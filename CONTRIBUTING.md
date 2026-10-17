@@ -118,8 +118,9 @@ If a hook fails, fix the issues and try committing again.
 
 2. **Use current Claude models**:
    - Use model aliases for better maintainability when available
-   - Latest Haiku model: `claude-haiku-4-5` (Haiku 4.5)
-   - Check current models at: https://docs.claude.com/en/docs/about-claude/models/overview
+   - Current models: `claude-opus-5-5`, `claude-sonnet-5-5`, `claude-fable-5-1`, `claude-haiku-4-5`
+   - Never use dated model IDs; `claude-haiku-4-5` is a good low-cost default for examples
+   - Check current models at: https://platform.claude.com/docs/en/about-claude/models/overview
    - Claude will automatically validate model usage in PR reviews
 
 3. **Keep notebooks focused**:

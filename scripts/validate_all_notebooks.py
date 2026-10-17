@@ -29,6 +29,94 @@ def has_anthropic_credentials() -> bool:
     return bool(os.environ.get("ANTHROPIC_API_KEY") or os.environ.get("ANTHROPIC_AUTH_TOKEN"))
 
 
+# The newest model in each family. Everything older maps to one of these.
+LATEST_MODELS = {"claude-opus-5-5", "claude-sonnet-5-5", "claude-fable-5-1", "claude-haiku-4-5"}
+
+# Still served by the API, but a newer model exists in the same family -> warning (auto-fixable).
+SUPERSEDED_MODELS: dict[str, str] = {
+    # Opus family
+    "claude-opus-5": "claude-opus-5-5",
+    "claude-opus-4-8": "claude-opus-5-5",
+    "claude-opus-4-7": "claude-opus-5-5",
+    "claude-opus-4-6": "claude-opus-5-5",
+    "claude-opus-4-5-20251101": "claude-opus-5-5",
+    "claude-opus-4-5": "claude-opus-5-5",
+    # Sonnet family
+    "claude-sonnet-5": "claude-sonnet-5-5",
+    "claude-sonnet-4-6": "claude-sonnet-5-5",
+    # Fable family
+    "claude-fable-5": "claude-fable-5-1",
+}
+
+# Retired (the API returns 404) or officially deprecated with a retirement date on the
+# model-deprecations page -> error (auto-fixable).
+RETIRED_MODELS: dict[str, str] = {
+    # Opus family
+    "claude-opus-4-1-20250805": "claude-opus-5-5",  # retired 2026-08-05
+    "claude-opus-4-1": "claude-opus-5-5",
+    "claude-opus-4-20250514": "claude-opus-5-5",
+    "claude-opus-4-0": "claude-opus-5-5",
+    "claude-3-opus-20240229": "claude-opus-5-5",
+    "claude-3-opus-latest": "claude-opus-5-5",
+    # Sonnet family
+    "claude-sonnet-4-5-20250929": "claude-sonnet-5-5",  # deprecated 2026-09-30, retires 2026-11-30
+    "claude-sonnet-4-5": "claude-sonnet-5-5",
+    "claude-sonnet-4-20250514": "claude-sonnet-5-5",
+    "claude-sonnet-4-0": "claude-sonnet-5-5",
+    "claude-3-7-sonnet-20250219": "claude-sonnet-5-5",
+    "claude-3-7-sonnet-latest": "claude-sonnet-5-5",
+    "claude-3-5-sonnet-20240620": "claude-sonnet-5-5",
+    "claude-3-5-sonnet-20241022": "claude-sonnet-5-5",
+    "claude-3-5-sonnet-latest": "claude-sonnet-5-5",
+    "claude-3-sonnet-20240229": "claude-sonnet-5-5",
+    # Haiku family
+    "claude-3-5-haiku-20241022": "claude-haiku-4-5",
+    "claude-3-5-haiku-latest": "claude-haiku-4-5",
+    "claude-3-haiku-20240307": "claude-haiku-4-5",
+}
+
+# Every older ID -> its replacement (superseded first, then retired; used by --auto-fix).
+OLDER_MODELS: dict[str, str] = {**SUPERSEDED_MODELS, **RETIRED_MODELS}
+
+
+def model_id_pattern(model_id: str) -> re.Pattern[str]:
+    """Whole-ID matcher: `claude-opus-5` must not match inside `claude-opus-5-5` or a Bedrock
+    `anthropic.claude-*` ID, so plain substring checks are not safe here."""
+    return re.compile(r"(?<![\w.-])" + re.escape(model_id) + r"(?![\w-])")
+
+
+OLDER_MODEL_PATTERNS = {old: model_id_pattern(old) for old in OLDER_MODELS}
+
+# Dated first-party IDs (e.g. claude-sonnet-4-5-20250929). The lookbehind skips Bedrock IDs
+# (anthropic.claude-...-v1:0), which legitimately carry dates.
+DATED_MODEL_PATTERN = re.compile(r"(?<![\w.])claude-[a-z0-9.-]+?-\d{8}(?!-v\d)")
+
+# Notebooks that pin an older model on purpose (pricing tables, recorded eval/benchmark results,
+# model-specific billing behaviour). Older-model hits here are reported as info and are
+# never auto-fixed. Keep in sync with TestModelUsage.ALLOWED_LEGACY_MODELS in
+# tests/notebook_tests/test_notebooks.py. The model tables above are also mirrored in
+# .claude/skills/cookbook-audit/validate_notebook.py (single-notebook audit).
+PINNED_LEGACY_NOTEBOOKS = {
+    "cost_optimization/cost_optimization.ipynb",
+    "fable_5_fallback_billing/guide.ipynb",
+    "multimodal/crop_tool.ipynb",
+    "evals/agentic_search/reproduce_agentic_search_benchmarks.ipynb",
+}
+
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+
+
+def is_pinned_legacy_notebook(notebook_path: Path) -> bool:
+    """True when the notebook's path relative to the repo root is in PINNED_LEGACY_NOTEBOOKS
+    (exact match, same keying as TestModelUsage.ALLOWED_LEGACY_MODELS)."""
+    try:
+        rel = Path(notebook_path).resolve().relative_to(REPO_ROOT).as_posix()
+    except ValueError:
+        return False
+    return rel in PINNED_LEGACY_NOTEBOOKS
+
+
 class NotebookValidator:
     """Validates Jupyter notebooks for common issues."""
 
@@ -118,56 +206,54 @@ class NotebookValidator:
                             }
                         )
 
-        # Check for deprecated models
-        deprecated_models = {
-            "claude-3-5-sonnet-20240620": "claude-sonnet-5",
-            "claude-3-5-sonnet-20241022": "claude-sonnet-5",
-            "claude-3-5-sonnet-latest": "claude-sonnet-5",
-            "claude-3-haiku-20240307": "claude-haiku-4-5",
-            "claude-3-5-haiku-20241022": "claude-haiku-4-5",
-            "claude-3-opus-20240229": "claude-opus-4-8",
-            "claude-3-opus-latest": "claude-opus-4-8",
-            "claude-sonnet-4-20250514": "claude-sonnet-5",
-            "claude-opus-4-20250514": "claude-opus-4-8",
-            "claude-opus-4-1": "claude-opus-4-8",
-            "claude-sonnet-4-5-20250929": "claude-sonnet-5",
-            "claude-sonnet-4-5": "claude-sonnet-5",
-            "claude-opus-4-5-20251101": "claude-opus-4-8",
-            "claude-opus-4-5": "claude-opus-4-8",
-        }
-
+        pinned = is_pinned_legacy_notebook(notebook_path)
         for i, cell in enumerate(nb.get("cells", [])):
             if cell.get("cell_type") == "code":
                 source = "".join(cell.get("source", []))
 
                 # Check for dated API model IDs (exclude Bedrock IDs which require dates)
-                dated_pattern = r"(?<!anthropic\.)claude-\w+-[\d.]+-\d{8}"
-                dated_matches = re.findall(dated_pattern, source)
-                for dated_model in dated_matches:
+                for dated_model in DATED_MODEL_PATTERN.findall(source):
                     result["status"] = "warning" if result["status"] == "pass" else result["status"]
                     result["issues"].append(
                         {
                             "type": "dated_model_id",
                             "severity": "warning",
                             "cell": i,
-                            "details": f"Dated model ID '{dated_model}' found. Use non-dated alias instead.",
+                            "details": (
+                                f"Dated model ID '{dated_model}' found. Use a non-dated "
+                                f"alias instead ({', '.join(sorted(LATEST_MODELS))})."
+                            ),
                         }
                     )
 
-                # Check for deprecated models
-                for old_model, new_model in deprecated_models.items():
-                    if old_model in source:
-                        result["status"] = (
-                            "warning" if result["status"] == "pass" else result["status"]
-                        )
+                # Check for superseded (still served) and retired (404) models; whole-ID
+                # match, see model_id_pattern.
+                for old_model, new_model in OLDER_MODELS.items():
+                    if not OLDER_MODEL_PATTERNS[old_model].search(source):
+                        continue
+                    retired = old_model in RETIRED_MODELS
+                    if pinned:
                         result["issues"].append(
                             {
-                                "type": "deprecated_model",
-                                "severity": "warning",
+                                "type": "pinned_legacy_model",
+                                "severity": "info",
                                 "cell": i,
                                 "details": {"current": old_model, "suggested": new_model},
                             }
                         )
+                        continue
+                    if retired:
+                        result["status"] = "error"
+                    elif result["status"] == "pass":
+                        result["status"] = "warning"
+                    result["issues"].append(
+                        {
+                            "type": "retired_model" if retired else "superseded_model",
+                            "severity": "error" if retired else "warning",
+                            "cell": i,
+                            "details": {"current": old_model, "suggested": new_model},
+                        }
+                    )
 
                 # Check for hardcoded API keys
                 if "sk-ant-" in source:
@@ -340,8 +426,11 @@ Overall: {passing}/{total} notebooks passing ({percentage:.1f}%)
         dashboard += "\n" + "─" * 45 + "\n"
         dashboard += "Quick Actions:\n"
 
-        if any(i[1]["type"] == "deprecated_model" for i in warning_issues):
-            dashboard += "  → Run with --auto-fix to update deprecated models\n"
+        if any(
+            i[1]["type"] in ("superseded_model", "retired_model")
+            for i in error_issues + warning_issues
+        ):
+            dashboard += "  → Run with --auto-fix to update superseded and retired model IDs\n"
         if critical_issues:
             dashboard += "  → Fix critical security issues first\n"
         if not has_anthropic_credentials():
@@ -462,7 +551,7 @@ Overall: {passing}/{total} notebooks passing ({percentage:.1f}%)
 
         # Add fix commands
         markdown += "### 🔧 Quick Fix Commands\n\n```bash\n"
-        markdown += "# Auto-fix deprecated models\n"
+        markdown += "# Auto-fix superseded and retired model IDs\n"
         markdown += "python scripts/validate_all_notebooks.py --auto-fix\n\n"
         markdown += "# Run full validation\n"
         markdown += "python scripts/validate_all_notebooks.py --full\n\n"
@@ -623,7 +712,7 @@ Overall: {passing}/{total} notebooks passing ({percentage:.1f}%)
                     break
 
     def auto_fix_issues(self):
-        """Auto-fix safe issues like deprecated models."""
+        """Auto-fix safe issues: superseded and retired model IDs."""
         print("\n🔧 Auto-fixing safe issues...")
         print("─" * 50)
 
@@ -634,20 +723,22 @@ Overall: {passing}/{total} notebooks passing ({percentage:.1f}%)
             if not Path(path).exists():
                 continue
 
-            has_deprecated = any(i["type"] == "deprecated_model" for i in data.get("issues", []))
-            if has_deprecated:
+            has_older_model = any(
+                i["type"] in ("superseded_model", "retired_model") for i in data.get("issues", [])
+            )
+            if has_older_model:
                 fixable_notebooks.append(Path(path))
 
         if not fixable_notebooks:
             print("No auto-fixable issues found!")
             return
 
-        print(f"Found {len(fixable_notebooks)} notebooks with deprecated models\n")
+        print(f"Found {len(fixable_notebooks)} notebooks with superseded or retired models\n")
 
         fixed_count = 0
         for notebook_path in fixable_notebooks:
             print(f"Fixing {notebook_path}...", end=" ")
-            if self.fix_deprecated_models(notebook_path):
+            if self.fix_older_models(notebook_path):
                 print("✅")
                 fixed_count += 1
                 # Re-validate
@@ -663,45 +754,35 @@ Overall: {passing}/{total} notebooks passing ({percentage:.1f}%)
         if fixed_count > 0:
             print("\nRe-run validation to verify all issues are resolved.")
 
-    def fix_deprecated_models(self, notebook_path: Path) -> bool:
-        """Fix deprecated models in a notebook."""
+    def fix_older_models(self, notebook_path: Path) -> bool:
+        """Replace superseded and retired model IDs with the latest model in the same family."""
+        if is_pinned_legacy_notebook(notebook_path):
+            print("(skipped: pins a legacy model on purpose)", end=" ")
+            return False
         try:
             with open(notebook_path) as f:
                 nb = json.load(f)
-
-            replacements = {
-                "claude-3-5-sonnet-20240620": "claude-sonnet-5",
-                "claude-3-5-sonnet-20241022": "claude-sonnet-5",
-                "claude-3-5-sonnet-latest": "claude-sonnet-5",
-                "claude-3-haiku-20240307": "claude-haiku-4-5",
-                "claude-3-5-haiku-20241022": "claude-haiku-4-5",
-                "claude-3-opus-20240229": "claude-opus-4-8",
-                "claude-3-opus-latest": "claude-opus-4-8",
-                "claude-sonnet-4-20250514": "claude-sonnet-5",
-                "claude-opus-4-20250514": "claude-opus-4-8",
-                "claude-opus-4-1": "claude-opus-4-8",
-                "claude-sonnet-4-5-20250929": "claude-sonnet-5",
-                "claude-sonnet-4-5": "claude-sonnet-5",
-                "claude-opus-4-5-20251101": "claude-opus-4-8",
-                "claude-opus-4-5": "claude-opus-4-8",
-            }
 
             modified = False
             for cell in nb.get("cells", []):
                 if cell.get("cell_type") == "code":
                     source = cell.get("source", [])
+                    source_is_str = isinstance(source, str)
+                    lines = [source] if source_is_str else source
                     new_source = []
+                    cell_modified = False
 
-                    for line in source:
+                    for line in lines:
                         new_line = line
-                        for old, new in replacements.items():
-                            if old in line:
-                                new_line = new_line.replace(old, new)
-                                modified = True
+                        for old, new in OLDER_MODELS.items():
+                            new_line, n = OLDER_MODEL_PATTERNS[old].subn(new, new_line)
+                            if n:
+                                cell_modified = True
                         new_source.append(new_line)
 
-                    if modified:
-                        cell["source"] = new_source
+                    if cell_modified:
+                        cell["source"] = new_source[0] if source_is_str else new_source
+                        modified = True
 
             if modified:
                 # Save with nice formatting
@@ -725,7 +806,7 @@ Overall: {passing}/{total} notebooks passing ({percentage:.1f}%)
             print("3. Progressive validation (interactive)")
             print("4. Show dashboard")
             print("5. Export GitHub issue")
-            print("6. Auto-fix deprecated models")
+            print("6. Auto-fix superseded/retired model IDs")
             print("7. Validate specific directory")
             print("8. Clear cache and re-validate")
             print("9. Exit")
@@ -791,7 +872,7 @@ Examples:
   %(prog)s                    # Interactive mode
   %(prog)s --quick           # Quick validation (cached)
   %(prog)s --full            # Full validation with execution
-  %(prog)s --auto-fix        # Fix deprecated models
+  %(prog)s --auto-fix        # Fix superseded/retired model IDs
   %(prog)s --export          # Export GitHub issue markdown
   %(prog)s --dashboard       # Show validation dashboard
         """,
@@ -805,7 +886,9 @@ Examples:
     parser.add_argument(
         "--export", action="store_true", help="Export results as GitHub issue markdown"
     )
-    parser.add_argument("--auto-fix", action="store_true", help="Auto-fix deprecated models")
+    parser.add_argument(
+        "--auto-fix", action="store_true", help="Auto-fix superseded and retired model IDs"
+    )
     parser.add_argument("--dir", metavar="PATH", help="Validate specific directory")
 
     args = parser.parse_args()
