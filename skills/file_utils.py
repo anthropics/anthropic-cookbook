@@ -189,6 +189,7 @@ def download_all_files(
     """
     file_ids = extract_file_ids(response)
     results = []
+    used_names = set()
 
     for i, file_id in enumerate(file_ids, 1):
         # Try to get file metadata for proper filename
@@ -202,6 +203,16 @@ def download_all_files(
         # Add prefix if provided
         if prefix:
             filename = f"{prefix}{filename}"
+
+        # Different file IDs can share a filename; retain each batch result.
+        original_name = Path(filename)
+        suffix = 2
+        while filename in used_names:
+            filename = str(
+                original_name.with_name(f"{original_name.stem}_{suffix}{original_name.suffix}")
+            )
+            suffix += 1
+        used_names.add(filename)
 
         # Construct full output path
         output_path = os.path.join(output_dir, filename)
