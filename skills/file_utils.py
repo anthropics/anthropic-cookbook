@@ -36,8 +36,8 @@ def extract_file_ids(response) -> list[str]:
     file_ids = []
 
     for block in response.content:
-        # Check for bash_code_execution_tool_result (beta API format)
-        if block.type == "bash_code_execution_tool_result":
+        # Both Python and Bash execution results can contain generated files.
+        if block.type in ("code_execution_tool_result", "bash_code_execution_tool_result"):
             try:
                 if hasattr(block, "content") and hasattr(block.content, "content"):
                     # Iterate through content array
@@ -45,7 +45,7 @@ def extract_file_ids(response) -> list[str]:
                         if hasattr(item, "file_id"):
                             file_ids.append(item.file_id)
             except Exception as e:
-                print(f"Warning: Error parsing bash_code_execution_tool_result: {e}")
+                print(f"Warning: Error parsing {block.type}: {e}")
                 continue
 
         # Check for legacy tool_result blocks (for backward compatibility)
