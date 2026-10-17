@@ -34,15 +34,22 @@ def validate_notebook(path: Path) -> list:
 
 
 def main():
-    """Check notebooks passed as arguments."""
+    """Check notebooks passed as arguments, or all repository notebooks."""
     has_issues = False
 
-    # Get notebook paths from command line arguments
-    notebooks = [Path(arg) for arg in sys.argv[1:] if arg.endswith(".ipynb")]
+    if sys.argv[1:]:
+        notebooks = [Path(arg) for arg in sys.argv[1:] if arg.endswith(".ipynb")]
+    else:
+        excluded_directories = {".git", ".venv", "__pycache__", "test_outputs", "execution_outputs"}
+        notebooks = sorted(
+            path
+            for path in Path.cwd().rglob("*.ipynb")
+            if not excluded_directories.intersection(path.parts)
+        )
 
     if not notebooks:
-        print("⚠️ No notebooks to validate")
-        sys.exit(0)
+        print("❌ No notebooks to validate")
+        sys.exit(1)
 
     for notebook in notebooks:
         issues = validate_notebook(notebook)
