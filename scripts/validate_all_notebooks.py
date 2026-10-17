@@ -13,6 +13,12 @@ Features:
 import argparse
 import json
 import os
+import sys
+
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 import re
 import subprocess
 from datetime import datetime
@@ -41,7 +47,7 @@ class NotebookValidator:
         """Load previous validation state if exists."""
         if self.state_file.exists():
             try:
-                with open(self.state_file) as f:
+                with open(self.state_file, encoding="utf-8") as f:
                     return json.load(f)
             except json.JSONDecodeError:
                 print("Warning: Could not parse state file, starting fresh")
@@ -71,7 +77,7 @@ class NotebookValidator:
         # Keep only last 30 days of history
         self.state["history"] = self.state["history"][-30:]
 
-        with open(self.state_file, "w") as f:
+        with open(self.state_file, "w", encoding="utf-8") as f:
             json.dump(self.state, f, indent=2, default=str)
 
     def validate_notebook(self, notebook_path: Path, mode: str = "full") -> dict:
@@ -80,7 +86,7 @@ class NotebookValidator:
 
         # Quick structure check
         try:
-            with open(notebook_path) as f:
+            with open(notebook_path, encoding="utf-8") as f:
                 nb = json.load(f)
         except Exception as e:
             result["status"] = "error"
@@ -666,7 +672,7 @@ Overall: {passing}/{total} notebooks passing ({percentage:.1f}%)
     def fix_deprecated_models(self, notebook_path: Path) -> bool:
         """Fix deprecated models in a notebook."""
         try:
-            with open(notebook_path) as f:
+            with open(notebook_path, encoding="utf-8") as f:
                 nb = json.load(f)
 
             replacements = {
@@ -705,7 +711,7 @@ Overall: {passing}/{total} notebooks passing ({percentage:.1f}%)
 
             if modified:
                 # Save with nice formatting
-                with open(notebook_path, "w") as f:
+                with open(notebook_path, "w", encoding="utf-8") as f:
                     json.dump(nb, f, indent=1, ensure_ascii=False)
 
             return modified
@@ -751,7 +757,7 @@ Overall: {passing}/{total} notebooks passing ({percentage:.1f}%)
                 save = input("\nSave to file? (y/n): ")
                 if save.lower() == "y":
                     filename = f"validation_report_{datetime.now().strftime('%Y%m%d_%H%M')}.md"
-                    with open(filename, "w") as f:
+                    with open(filename, "w", encoding="utf-8") as f:
                         f.write(self.export_github_issue())
                     print(f"✅ Saved to {filename}")
             elif choice == "6":
