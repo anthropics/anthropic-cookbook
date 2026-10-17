@@ -165,7 +165,7 @@ Good:
 ```
 ## Recap of what we did in this guide
 
-In this guide, we explored how to build MCP tools that can be called programatically via the SDK, enabling scalable and fault-tolerant workflows. We covered:
+In this guide, we explored how to build MCP tools that can be called programmatically via the SDK, enabling scalable and fault-tolerant workflows. We covered:
 
 * Setting up the MCP Server
 * An unoptimized example
