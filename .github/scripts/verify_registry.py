@@ -5,6 +5,8 @@ Verify authors.yaml and registry.yaml integrity:
 2. Website and avatar URLs are valid
 3. All registry.yaml authors are defined in authors.yaml
 4. All registry.yaml paths exist
+5. No registry.yaml path is listed twice
+6. Notebooks missing from registry.yaml are reported (warning only)
 
 Usage:
     python verify_registry.py [command]
@@ -19,6 +21,7 @@ Commands:
 
 import json
 import sys
+from collections import Counter
 from pathlib import Path
 
 import requests
@@ -158,6 +161,41 @@ def verify_paths(registry, repo_root):
     return missing_paths
 
 
+def verify_duplicate_paths(registry):
+    """Verify no path appears in registry.yaml more than once."""
+    print("\n=== Verifying Registry Duplicates ===\n")
+    counts = Counter(entry["path"] for entry in registry if "path" in entry)
+    duplicates = sorted(path for path, count in counts.items() if count > 1)
+
+    if duplicates:
+        for path in duplicates:
+            print(f"  ❌ Path listed {counts[path]} times: {path}")
+    else:
+        print("  ✓ No duplicate paths")
+
+    return duplicates
+
+
+def find_unregistered_notebooks(registry, repo_root):
+    """Report notebooks in the repo that have no registry.yaml entry."""
+    print("\n=== Checking for Unregistered Notebooks ===\n")
+    registered = {entry["path"] for entry in registry if "path" in entry}
+    notebooks = (nb.relative_to(repo_root) for nb in repo_root.rglob("*.ipynb"))
+    unregistered = sorted(
+        nb.as_posix()
+        for nb in notebooks
+        if not any(part.startswith(".") for part in nb.parts) and nb.as_posix() not in registered
+    )
+
+    if unregistered:
+        for path in unregistered:
+            print(f"  ⚠️  Not in registry.yaml: {path}")
+    else:
+        print("  ✓ All notebooks are registered")
+
+    return unregistered
+
+
 def verify_schemas(repo_root, authors, registry):
     """Verify YAML files match their JSON schemas."""
     if not HAS_JSONSCHEMA:
@@ -240,6 +278,7 @@ def main():
     failed_urls = []
     missing_authors = []
     missing_paths = []
+    duplicate_paths = []
     schema_errors = []
 
     if command in ["all", "authors"]:
@@ -250,6 +289,8 @@ def main():
 
     if command in ["all", "paths"]:
         missing_paths = verify_paths(registry, repo_root)
+        duplicate_paths = verify_duplicate_paths(registry)
+        find_unregistered_notebooks(registry, repo_root)
 
     if command in ["all", "schema"]:
         schema_errors = verify_schemas(repo_root, authors, registry)
@@ -278,6 +319,12 @@ def main():
     if missing_paths:
         print("\n❌ The following paths in registry.yaml do not exist:")
         for path in missing_paths:
+            print(f"  - {path}")
+        has_failures = True
+
+    if duplicate_paths:
+        print("\n❌ The following paths are listed more than once in registry.yaml:")
+        for path in duplicate_paths:
             print(f"  - {path}")
         has_failures = True
 
