@@ -464,6 +464,16 @@
   date: '2025-05-15'
   categories:
   - Responses
+- title: Shared-context caching across a multi-agent pipeline
+  description: Cache a shared context block across a planner/worker/reviewer pipeline,
+    then map the prefix-mutation crossover where re-writing the cache stops paying.
+  path: misc/multi_agent_prompt_caching.ipynb
+  authors:
+  - hipvlady
+  date: '2026-06-14'
+  categories:
+  - Agent Patterns
+  - Responses
 - title: Citations
   description: Enable Claude to provide detailed source citations when answering document-based
     questions for verification.
