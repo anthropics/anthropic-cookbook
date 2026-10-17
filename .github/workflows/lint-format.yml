@@ -13,6 +13,9 @@ on:
     paths:
       - '**/*.py'
       - '**/*.ipynb'
+  schedule:
+    - cron: "0 0 * * SUN"
+  workflow_dispatch:
 
 permissions:
   contents: read
