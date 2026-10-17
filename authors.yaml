@@ -2,6 +2,10 @@
 # Authors mapping: GitHub username -> Author details
 # This file maps author GitHub usernames (used in registry.yaml) to their full details
 # for display on the website.
+ppradyoth:
+  name: Pradyoth
+  website: https://github.com/ppradyoth
+  avatar: https://avatars.githubusercontent.com/u/ppradyoth?v=4
 
 Adriaan-ANT:
   name: Adriaan Engelbrecht

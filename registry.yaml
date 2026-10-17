@@ -1,4 +1,15 @@
 # yaml-language-server: $schema=./.github/registry_schema.json
+- title: "Secure Claude Code routines: avoiding credential leakage"
+  description: How to write Claude Code routine files safely — using environment
+    variable placeholders instead of hardcoded secrets, with a Python credential
+    scanner and pre-commit hook you can drop into any project.
+  path: misc/secure_claude_code_routines.ipynb
+  authors:
+  - ppradyoth
+  date: '2026-05-25'
+  categories:
+  - Claude Code
+  - Security
 - title: Build a data analyst agent with Claude Managed Agents
   description: Build an analyst that turns a CSV into a narrative HTML report with
     interactive charts, using a sandboxed environment and file mounting.
