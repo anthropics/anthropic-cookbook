@@ -72,7 +72,7 @@ def load_registry() -> list[dict[str, Any]]:
     with open(registry_path, encoding="utf-8") as f:
         data = yaml.safe_load(f)
 
-    return data.get("notebooks", []) if data else []
+    return data or []
 
 
 def get_notebooks_to_test(config: pytest.Config) -> list[Path]:
