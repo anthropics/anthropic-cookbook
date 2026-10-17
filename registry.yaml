@@ -118,6 +118,16 @@
   categories:
   - Tools
   - RAG & Retrieval
+- title: 'Tool search: alternate approaches'
+  description: 'Two ways to do tool discovery without a search index: list tool names
+    in the system prompt and let Claude load definitions on demand, or keep unloaded
+    tools out of the request''s tools list.'
+  path: tool_use/tool_search_alternate_approaches.ipynb
+  authors:
+  - noble-ant
+  date: '2025-11-26'
+  categories:
+  - Tools
 - title: Automatic context compaction
   description: Manage context limits in long-running agentic workflows by automatically
     compressing conversation history.
@@ -883,6 +893,39 @@
   categories:
   - Claude Managed Agents
   - Evals
+- title: 'Managed Agents: ground an agent in an unfamiliar codebase'
+  description: Drop an agent into a repo it has never seen and have it map the real
+    architecture despite a stale ARCHITECTURE.md. Also shows how to add files to a
+    running session with sessions.resources.add.
+  path: managed_agents/CMA_explore_unfamiliar_codebase.ipynb
+  authors:
+  - PedramNavid
+  date: '2026-04-08'
+  categories:
+  - Claude Managed Agents
+  - Agent Patterns
+- title: 'Managed Agents: human-in-the-loop approvals with custom tools'
+  description: Build an expense approver with decide() and escalate() custom tools.
+    Covers the custom-tool round trip, the requires_action idle bounce, and parallel
+    tool call dedupe.
+  path: managed_agents/CMA_gate_human_in_the_loop.ipynb
+  authors:
+  - PedramNavid
+  date: '2026-04-08'
+  categories:
+  - Claude Managed Agents
+  - Tools
+- title: 'Managed Agents: orchestrate an issue through to a merged PR'
+  description: Steer an agent across a multi-turn chain from a vague bug report to
+    a merged PR using a mock gh CLI, recovering from a CI failure and a review comment
+    along the way.
+  path: managed_agents/CMA_orchestrate_issue_to_pr.ipynb
+  authors:
+  - PedramNavid
+  date: '2026-04-08'
+  categories:
+  - Claude Managed Agents
+  - Agent Patterns
 - title: 'Multiagent: watch a curriculum team work in real time'
   description: Stream a coordinator and its subagents live with per-thread event deltas,
     seed the session with initial_events, set model effort per agent, and update agents
