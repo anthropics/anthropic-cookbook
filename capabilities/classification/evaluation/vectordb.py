@@ -39,7 +39,7 @@ class VectorDB:
         # Flatten the embeddings
         self.embeddings = [embedding for batch in result for embedding in batch]
         self.metadata = [item for item in data]
-        # Save the vector database to disk
+        self.save_db()
         print("Vector database loaded and saved.")
 
     def search(self, query, k=5, similarity_threshold=0.85):
@@ -67,8 +67,17 @@ class VectorDB:
 
                 if len(top_examples) >= k:
                     break
-
+        self.save_db()
         return top_examples
+
+    def save_db(self):
+        data = {
+            "embeddings": self.embeddings,
+            "metadata": self.metadata,
+            "query_cache": json.dumps(self.query_cache),
+        }
+        with open(self.db_path, "wb") as file:
+            pickle.dump(data, file)
 
     def load_db(self):
         if not os.path.exists(self.db_path):
