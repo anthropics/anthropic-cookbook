@@ -56,6 +56,7 @@ it introduces every API shape the others build on.
 | [`CMA_cap_session_spend.ipynb`](CMA_cap_session_spend.ipynb) | Enforced spend ceiling on one session. Covers the `budget` field on `sessions.create`, the `session.usage` snapshot events and `usage.list_cost`, the `budget_reached` pause, and raising, lowering, and removing the cap with `sessions.update`. |
 | [`CMA_use_skills_from_a_repo.ipynb`](CMA_use_skills_from_a_repo.ipynb) | Skills discovered from a mounted repository's root `.claude/skills/` at session start, with no `skills` field on the agent. Covers the layout the scanner expects, the read-then-follow protocol, and the lifecycle rules (skill cap, single scan, lazy nested discovery). |
 | [`CMA_pin_inference_geo.ipynb`](CMA_pin_inference_geo.ipynb) | Data residency on the agent definition: `model.inference_geo` pinning, where the pin is enforced, its interplay with the workspace `allowed_inference_geos` policy, and a one-session geography override with `agent_with_overrides`. |
+| [`CMA_agent_security_review.ipynb`](CMA_agent_security_review.ipynb) | After-the-fact security review of finished agent sessions. Describe what each agent may do, turn Managed Agents sessions, Messages API logs or Agent SDK logs into transcripts, flag what looks off with rules in code, then have Claude review each session in a dynamic workflow whose custom tool calls your code checks, and act on a ranked report with quoted evidence. Parts 1 and 2 run offline. |
 
 The streaming event loop is walked through line by line in the
 iterate notebook and then factored into
