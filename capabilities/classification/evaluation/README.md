@@ -24,7 +24,7 @@ The evaluation is orchestrated by the `promptfooconfig.yaml` file. In this file 
 - Providers
     - With Promptfoo you can connect to many different LLMs from different platforms, see [here for more](https://www.promptfoo.dev/docs/providers). In `guide.ipynb` we used Haiku with default temperature 0.0. We will use Promptfoo to experiment with an array of different temperature settings to identify the optimal choice for our use case.
 - Tests
-    - We will use the same data that was used in `guide.ipynb` which can be found in [`dataset.csv`](./dataset.csv).
+    - We will use the same data that was used in `guide.ipynb`, which is available locally in the `dataset.csv` file in this directory.
     - Promptfoo has a wide array of built in tests which can be found [here](https://www.promptfoo.dev/docs/configuration/expected-outputs/deterministic).
     - In this example we will define a test in our `dataset.csv` as the conditions of our evaluation change with each row and a test in the `promptfooconfig.yaml` for conditions that are consistent across all test cases. Read more about this [here](https://www.promptfoo.dev/docs/configuration/parameters/#import-from-csv)
 - Transform
