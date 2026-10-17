@@ -224,7 +224,8 @@ def get_expenses(employee_id: str, quarter: str) -> str:
 
     Args:
         employee_id: The unique employee identifier (e.g., 'ENG001', 'SAL002')
-        quarter: Quarter identifier (e.g., 'Q1', 'Q2', 'Q3', 'Q4')
+        quarter: Case-insensitive quarter identifier (e.g., 'Q1', 'Q2', 'Q3', 'Q4').
+            The same employee and quarter always return the same mock records.
 
     Returns:
         JSON string containing an array of expense objects with fields:
@@ -247,12 +248,6 @@ def get_expenses(employee_id: str, quarter: str) -> str:
 
     time.sleep(DELAY_MULTIPLIER * 0.2)
 
-    # Generate a deterministic but varied number of expenses based on employee_id
-    random.seed(hash(employee_id + quarter))
-    num_expenses = random.randint(
-        EXPENSE_LINE_ITEMS_PER_PERSON_MIN, EXPENSE_LINE_ITEMS_PER_PERSON_MAX
-    )
-
     # Quarter date ranges
     quarter_dates = {
         "Q1": (datetime(2024, 1, 1), datetime(2024, 3, 31)),
@@ -264,7 +259,12 @@ def get_expenses(employee_id: str, quarter: str) -> str:
     if quarter.upper() not in quarter_dates:
         return json.dumps({"error": f"Invalid quarter '{quarter}'. Must be Q1, Q2, Q3, or Q4"})
 
-    start_date, end_date = quarter_dates[quarter.upper()]
+    quarter = quarter.upper()
+    start_date, end_date = quarter_dates[quarter]
+
+    # Keep records stable across processes without changing global random state.
+    rng = random.Random(employee_id + quarter)
+    num_expenses = rng.randint(EXPENSE_LINE_ITEMS_PER_PERSON_MIN, EXPENSE_LINE_ITEMS_PER_PERSON_MAX)
 
     # Expense categories and typical amounts
     expense_categories = [
@@ -398,31 +398,31 @@ def get_expenses(employee_id: str, quarter: str) -> str:
 
     expenses = []
     for i in range(num_expenses):
-        category, desc_template, min_amt, max_amt = random.choice(expense_categories)
+        category, desc_template, min_amt, max_amt = rng.choice(expense_categories)
 
         # Generate random date within quarter
         days_diff = (end_date - start_date).days
-        random_days = random.randint(0, days_diff)
+        random_days = rng.randint(0, days_diff)
         expense_date = start_date + timedelta(days=random_days)
 
         # Generate amount
-        amount = round(random.uniform(min_amt, max_amt), 2)
+        amount = round(rng.uniform(min_amt, max_amt), 2)
 
         # Status (most are approved)
-        status = random.choices(["approved", "pending", "rejected"], weights=[0.85, 0.10, 0.05])[0]
+        status = rng.choices(["approved", "pending", "rejected"], weights=[0.85, 0.10, 0.05])[0]
 
         # Generate additional metadata
-        approved_by = random.choice(managers) if status == "approved" else None
-        store_name = random.choice(merchants.get(category, ["Unknown Merchant"]))
-        store_location = random.choice(cities)
-        payment_method = random.choice(["corporate_card", "personal_reimbursement"])
-        project_code = random.choice(project_codes)
-        notes = random.choice(justifications.get(category, ["Business expense"]))
+        approved_by = rng.choice(managers) if status == "approved" else None
+        store_name = rng.choice(merchants.get(category, ["Unknown Merchant"]))
+        store_location = rng.choice(cities)
+        payment_method = rng.choice(["corporate_card", "personal_reimbursement"])
+        project_code = rng.choice(project_codes)
+        notes = rng.choice(justifications.get(category, ["Business expense"]))
 
         # Reimbursement date is 15-30 days after expense date for approved expenses
         reimbursement_date = None
         if status == "approved" and payment_method == "personal_reimbursement":
-            reimb_days = random.randint(15, 30)
+            reimb_days = rng.randint(15, 30)
             reimbursement_date = (expense_date + timedelta(days=reimb_days)).strftime("%Y-%m-%d")
 
         expenses.append(
