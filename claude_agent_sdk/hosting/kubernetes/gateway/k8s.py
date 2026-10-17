@@ -371,39 +371,46 @@ async def _delete_pod_by_name(pod_name: str) -> None:
 async def _claim_standby_pod(session_id: str) -> str | None:
     """Try to atomically claim a standby pod for a session.  Returns pod IP or None.
 
-    Atomically claim by patching labels.  If two gateways race to claim the
-    same pod, one PATCH will succeed and the other will fail with a conflict
-    error — the loser moves on to the next standby pod.  This is safe without
-    external locking because K8s patches are atomic at the object level.
+    Uses JSON Patch with a 'test' operation to assert pool-status=standby before
+    claiming. If another gateway instance claims the same pod concurrently, the
+    test assertion fails and the API returns 409/422 — the loser skips to the
+    next standby pod. This provides compare-and-swap semantics without external
+    locking.
+
+    Strategic-merge-patch (the default for dict bodies) is last-writer-wins and
+    cannot detect concurrent claims — both gateways would succeed, routing two
+    sessions to one pod (CWE-362 / CWE-863).
     """
     v1 = client.CoreV1Api()
     standby_pods = await _get_standby_pods()
 
     for pod_name in standby_pods:
         try:
-            # Patch the pod's labels to mark it as "active" and associate it
-            # with this session.  This is an atomic operation in the K8s API.
-            body = {
-                "metadata": {
-                    "labels": {
-                        "pool-status": "active",
-                        "session-id": str(session_id),
-                    },
-                },
-            }
+            # JSON Patch: first assert pool-status is still 'standby' (test op),
+            # then flip it to 'active' and stamp session-id.  If another gateway
+            # already claimed this pod the test fails → K8s returns 409/422 and
+            # we move on to the next standby pod instead of double-routing.
+            patch_ops = [
+                {"op": "test", "path": "/metadata/labels/pool-status", "value": "standby"},
+                {"op": "replace", "path": "/metadata/labels/pool-status", "value": "active"},
+                {"op": "add", "path": "/metadata/labels/session-id", "value": str(session_id)},
+            ]
             patched = await asyncio.to_thread(
                 v1.patch_namespaced_pod,
                 name=pod_name,
                 namespace=AGENT_NAMESPACE,
-                body=body,
+                body=patch_ops,
+                content_type="application/json-patch+json",
             )
             pod_ip = patched.status.pod_ip
             logger.info(f"Claimed standby pod {pod_name} for session {session_id} at {pod_ip}")
             return pod_ip
         except kubernetes.client.exceptions.ApiException as e:
-            # Another gateway instance may have claimed this pod first,
-            # or it may have been deleted.  Move on to the next one.
-            logger.warning(f"Failed to claim pod {pod_name}: {e.status}")
+            if e.status in (409, 422):
+                # Test op failed: pod was already claimed by another gateway.
+                logger.debug(f"Pod {pod_name} already claimed (HTTP {e.status}), trying next")
+            else:
+                logger.warning(f"Failed to claim pod {pod_name}: {e.status}")
             continue
 
     return None
