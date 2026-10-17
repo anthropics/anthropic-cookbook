@@ -9,6 +9,7 @@ This module provides helper functions for:
 
 import json
 import os
+import tempfile
 from pathlib import Path
 from typing import Any
 
@@ -125,6 +126,7 @@ def download_file(
         "error": None,
     }
 
+    temporary_path = None
     try:
         # Check if file exists
         file_exists = os.path.exists(output_path)
@@ -140,9 +142,17 @@ def download_file(
         # Download file content from Files API (beta namespace)
         file_content = client.beta.files.download(file_id=file_id)
 
-        # Save to disk
-        with open(output_path, "wb") as f:
-            f.write(file_content.read())
+        # Keep the destination intact until the complete response is saved.
+        try:
+            with tempfile.NamedTemporaryFile(
+                dir=Path(output_path).parent, prefix=".download-", delete=False
+            ) as f:
+                temporary_path = f.name
+                f.write(file_content.read())
+        finally:
+            file_content.close()
+        os.replace(temporary_path, output_path)
+        temporary_path = None
 
         # Get file size
         result["size"] = os.path.getsize(output_path)
@@ -151,6 +161,9 @@ def download_file(
 
     except Exception as e:
         result["error"] = str(e)
+    finally:
+        if temporary_path is not None:
+            Path(temporary_path).unlink(missing_ok=True)
 
     return result
 
