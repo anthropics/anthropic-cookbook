@@ -19,6 +19,7 @@ Exit codes:
 
 import json
 import re
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -86,6 +87,18 @@ class NotebookValidator:
 
     def check_hardcoded_secrets(self):
         """Check for hardcoded API keys and secrets using detect-secrets."""
+        # The command below is run through `sh -c`, so a missing `uvx` fails inside
+        # the shell rather than raising FileNotFoundError here. Check for it up front,
+        # otherwise the `except FileNotFoundError` fallback below is unreachable and a
+        # machine without uv reports every notebook as containing secrets.
+        if shutil.which("uvx") is None:
+            self.warnings.append(
+                "detect-secrets not available (uvx not found) - using basic secret "
+                "detection. Install uv: https://github.com/astral-sh/uv"
+            )
+            self._check_hardcoded_secrets_fallback()
+            return
+
         try:
             # Run detect-secrets on the notebook file
             # Use absolute path to ensure it works regardless of cwd
@@ -131,6 +144,15 @@ class NotebookValidator:
                 text=True,
                 cwd=project_root,  # Run from repo root for scripts/detect-secrets access
             )
+
+            # 127 is the shell's "command not found"; the tool never ran, so there is
+            # nothing to report about the notebook itself.
+            if result.returncode == 127:
+                self.warnings.append(
+                    "detect-secrets could not be run - using basic secret detection."
+                )
+                self._check_hardcoded_secrets_fallback()
+                return
 
             # detect-secrets returns non-zero exit code if secrets found
             if result.returncode != 0:
