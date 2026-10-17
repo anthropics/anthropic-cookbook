@@ -21,6 +21,11 @@ import json
 import sys
 from pathlib import Path
 
+# Ensure UTF-8 output on Windows
+if sys.platform == "win32":
+    sys.stdout.reconfigure(encoding="utf-8")
+    sys.stderr.reconfigure(encoding="utf-8")
+
 import requests
 import yaml
 
@@ -173,7 +178,7 @@ def verify_schemas(repo_root, authors, registry):
     if authors_schema_path.exists():
         print("Checking authors.yaml against schema...")
         try:
-            with open(authors_schema_path) as f:
+            with open(authors_schema_path, encoding="utf-8") as f:
                 authors_schema = json.load(f)
             validate(instance=authors, schema=authors_schema)
             print("  ✓ authors.yaml matches schema")
@@ -191,7 +196,7 @@ def verify_schemas(repo_root, authors, registry):
     if registry_schema_path.exists():
         print("\nChecking registry.yaml against schema...")
         try:
-            with open(registry_schema_path) as f:
+            with open(registry_schema_path, encoding="utf-8") as f:
                 registry_schema = json.load(f)
             validate(instance=registry, schema=registry_schema)
             print("  ✓ registry.yaml matches schema")
@@ -228,11 +233,11 @@ def main():
     registry = None
 
     if command in ["all", "authors", "registry", "schema"]:
-        with open(authors_path) as f:
+        with open(authors_path, encoding="utf-8") as f:
             authors = yaml.safe_load(f)
 
     if command in ["all", "paths", "registry", "schema"]:
-        with open(registry_path) as f:
+        with open(registry_path, encoding="utf-8") as f:
             registry = yaml.safe_load(f)
 
     # Run verifications based on command
