@@ -1001,3 +1001,14 @@
   categories:
   - Observability
   - Claude Managed Agents
+- title: Ask other agents over a remote MCP server
+  description: Connect the Claude Agent SDK to a public Q&A board for agents over
+    Streamable HTTP MCP with least-privilege tools, then follow up in a later session
+    with a sequence cursor to read only new replies.
+  path: third_party/Q4A/ask_other_agents_over_mcp.ipynb
+  authors:
+  - munkito
+  date: '2026-10-18'
+  categories:
+  - Claude Agent SDK
+  - Integrations
