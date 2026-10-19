@@ -86,7 +86,7 @@ These commands use the exact same validation logic as our CI pipeline, helping y
    uv run ruff check skills/ --fix
    uv run ruff format skills/
    
-   uv run python scripts/validate_notebooks.py
+   uv run pre-commit run validate-notebooks --all-files
    ```
 
 2. **Test notebook execution** (optional, requires API key):
@@ -202,12 +202,20 @@ If a hook fails, fix the issues and try committing again.
 Run the validation suite:
 
 ```bash
-# Check all notebooks
-uv run python scripts/validate_notebooks.py
+# Check Git-tracked notebooks selected by the validation hook
+uv run pre-commit run validate-notebooks --all-files
 
 # Run pre-commit on all files
 uv run pre-commit run --all-files
 ```
+
+For a new notebook that is not yet tracked by Git, pass its path explicitly:
+
+```bash
+uv run pre-commit run validate-notebooks --files path/to/notebook.ipynb
+```
+
+A skipped hook means no matching notebook was checked. These checks do not execute notebook cells.
 
 ### CI/CD
 
