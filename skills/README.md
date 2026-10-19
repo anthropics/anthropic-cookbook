@@ -349,6 +349,6 @@ Special thanks to the Anthropic team for developing the Skills feature and provi
 
 ---
 
-**Questions?** Check the [FAQ](docs/FAQ.md) or open an issue.
+**Questions?** Check [GitHub Issues](https://github.com/anthropics/claude-cookbooks/issues) or open an issue.
 
 **Ready to start?** Open [Notebook 1](notebooks/01_skills_introduction.ipynb) and let's build something amazing! 🎉
