@@ -29,7 +29,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/report-tracker.py123"
+            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/report-tracker.py"
           }
         ]
       }
