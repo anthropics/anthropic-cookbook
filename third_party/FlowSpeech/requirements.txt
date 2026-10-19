@@ -1,0 +1,4 @@
+anthropic>=0.109.0
+ipython>=9.0.0
+python-dotenv>=1.2.1
+requests>=2.32.5

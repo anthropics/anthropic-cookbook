@@ -147,6 +147,15 @@
   date: '2025-11-24'
   categories:
   - Integrations
+- title: Create directed narration with FlowSpeech
+  description: Use Claude to write a directed multi-speaker script, then synthesize
+    context-aware narration with the FlowSpeech text-to-speech API.
+  path: third_party/FlowSpeech/claude_directed_narration.ipynb
+  authors:
+  - waeckerlinfederowicz66-sketch
+  date: '2026-08-07'
+  categories:
+  - Integrations
 - title: Prompting for frontend aesthetics
   description: Guide to prompting Claude for distinctive, polished frontend designs
     avoiding generic aesthetics.
