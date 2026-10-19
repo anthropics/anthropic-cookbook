@@ -41,6 +41,7 @@ If you have ideas for new examples or guides, share them on the [issues page](ht
 
 ### Third-Party Integrations
 - [Retrieval augmented generation](https://github.com/anthropics/anthropic-cookbook/tree/main/third_party): Supplement Claude's knowledge with external data sources.
+  - [Zero-Cloud Local Hybrid RAG (SQLite FTS5 + Tool Use)](https://github.com/anthropics/anthropic-cookbook/blob/main/third_party/SQLite/local_hybrid_rag_with_claude_tool_use.ipynb)
   - [Vector databases (Pinecone)](https://github.com/anthropics/anthropic-cookbook/blob/main/third_party/Pinecone/rag_using_pinecone.ipynb)
   - [Wikipedia](https://github.com/anthropics/anthropic-cookbook/blob/main/third_party/Wikipedia/wikipedia-search-cookbook.ipynb/)
   - [Web pages](https://github.com/anthropics/anthropic-cookbook/blob/main/misc/read_web_pages_with_haiku.ipynb)
