@@ -78,6 +78,23 @@
   - Tools
   - Agent Patterns
   - Cybersecurity
+- title: 'Give Claude a wallet: paying for resources with x402'
+  description: Build a tool-using agent that reads an HTTP 402, pays for a resource in
+    USDC over x402 behind SDK-level and session-level spend limits, and verifies the
+    purchase on-chain.
+  path: tool_use/x402_paying_agent.ipynb
+  authors:
+  - serz
+  date: '2026-09-02'
+  categories:
+  - Tools
+  - Agent Patterns
+  - Integrations
+  tags:
+  - x402
+  - payments
+  - agentic-commerce
+  difficulty: intermediate
 - title: Knowledge graph construction with Claude
   description: Build knowledge graphs from unstructured text using Claude for entity
     extraction, relation mining, deduplication, and multi-hop graph querying.

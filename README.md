@@ -37,6 +37,7 @@ If you have ideas for new examples or guides, share them on the [issues page](ht
 - [Tool use](https://github.com/anthropics/anthropic-cookbook/tree/main/tool_use): Learn how to integrate Claude with external tools and functions to extend its capabilities.
   - [Customer service agent](https://github.com/anthropics/anthropic-cookbook/blob/main/tool_use/customer_service_agent.ipynb)
   - [Calculator integration](https://github.com/anthropics/anthropic-cookbook/blob/main/tool_use/calculator_tool.ipynb)
+  - [Paying for resources with x402](https://github.com/anthropics/anthropic-cookbook/blob/main/tool_use/x402_paying_agent.ipynb)
   - [SQL queries](https://github.com/anthropics/anthropic-cookbook/blob/main/misc/how_to_make_sql_queries.ipynb)
 
 ### Third-Party Integrations
