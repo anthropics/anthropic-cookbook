@@ -44,7 +44,8 @@ jobs:
       - name: Validate notebook structure
         id: validate
         run: |
-          uv run python scripts/validate_notebooks.py | tee validation_output.txt
+          mapfile -d '' notebooks < <(find . -name "*.ipynb" -not -path "*/.*" -not -path "*/test_outputs/*" -print0)
+          uv run python scripts/validate_notebooks.py "${notebooks[@]}" | tee validation_output.txt
           # Check if validation found issues
           if grep -q "❌" validation_output.txt; then
             echo "has_issues=true" >> $GITHUB_OUTPUT
