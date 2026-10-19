@@ -2381,6 +2381,28 @@ async def run_shell_command(command: str) -> dict[str, Any]:
                     "isError": True,
                 }
 
+            # "docker compose <verb>" is the modern plugin-syntax equivalent
+            # of docker-compose. Without this check, "docker compose run
+            # --privileged ..." passes the check above unmodified (subcommand
+            # == "compose") and reopens the exact escape this allowlist
+            # exists to prevent.
+            if executable == "docker" and subcommand == "compose":
+                nested_sub = args[2] if len(args) > 2 else ""
+                if nested_sub not in allowed_commands["docker-compose"]:
+                    return {
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": (
+                                    f"Error: 'docker compose {nested_sub}' is"
+                                    " not allowed. Allowed: "
+                                    f"{', '.join(sorted(allowed_commands['docker-compose']))}"
+                                ),
+                            }
+                        ],
+                        "isError": True,
+                    }
+
         # Run using exec (no shell) to prevent injection via metacharacters
         process = await asyncio.create_subprocess_exec(
             *args,
