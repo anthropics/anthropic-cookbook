@@ -168,13 +168,20 @@ jobs:
       # direct-API step needs a separate inline OIDC mint+exchange (or the
       # anthropic SDK's WIF env-var trio). Gracefully skips when the secret
       # is absent (the `[ -z "$ANTHROPIC_API_KEY" ]` guard below).
-      - name: Run notebook execution tests (maintainers only)
+      # Gate on "branch lives in this repo" rather than author_association:
+      # the pull_request event payload renders PRIVATE org membership as
+      # CONTRIBUTOR, so an author_association == MEMBER check never fires for
+      # most org members and this step silently skipped on their PRs. A
+      # same-repo head branch can only contain code pushed by someone with
+      # write access, which preserves the "maintainers only" intent, and it
+      # matches claude-model-check.yml's existing fork guard. Fork PRs still
+      # skip (they get no secrets anyway).
+      - name: Run notebook execution tests (internal branches only)
         id: execution-tests
         if: |
           steps.changed-notebooks.outputs.has_notebooks == 'true' &&
           (github.event_name == 'push' ||
-           github.event.pull_request.author_association == 'MEMBER' ||
-           github.event.pull_request.author_association == 'OWNER')
+           github.event.pull_request.head.repo.full_name == github.repository)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
