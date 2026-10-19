@@ -1,4 +1,13 @@
 # yaml-language-server: $schema=./.github/registry_schema.json
+- title: Evaluate Traditional Chinese content with structured outputs
+  description: Combine deterministic zh-Hant-TW checks with evidence-gated Claude
+    review and minimal revision.
+  path: evals/traditional_chinese_content_quality/guide.ipynb
+  authors:
+  - ting-hong-shieh
+  date: '2026-08-13'
+  categories:
+  - Evals
 - title: Build a data analyst agent with Claude Managed Agents
   description: Build an analyst that turns a CSV into a narrative HTML report with
     interactive charts, using a sandboxed environment and file mounting.
