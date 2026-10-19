@@ -52,6 +52,10 @@ class SensitivityAnalyzer:
         max_val = base_value * (1 + range_pct)
         test_values = np.linspace(min_val, max_val, steps)
 
+        # Calculate this run's baseline at the supplied base-case parameter.
+        model_update_func(base_value)
+        self.base_output = output_func()
+
         results = []
         for value in test_values:
             # Update model
@@ -66,7 +70,7 @@ class SensitivityAnalyzer:
                     "value": value,
                     "pct_change": (value - base_value) / base_value * 100,
                     "output": output,
-                    "output_change": output - self.base_output if self.base_output else 0,
+                    "output_change": output - self.base_output,
                 }
             )
 
