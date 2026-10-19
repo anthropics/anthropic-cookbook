@@ -1,0 +1,14 @@
+# Builds the shared hosting/Dockerfile image and pushes it to Artifact Registry
+# so Cloud Run can deploy it. The build context is claude_agent_sdk/ (the parent
+# of hosting/), because the image needs research_agent/ and utils/ alongside
+# hosting/ — the same context every other tier uses.
+#
+# Invoked by deploy.sh:
+#   gcloud builds submit --config hosting/cloud_run/cloudbuild.yaml \
+#     --substitutions=_IMAGE=<registry>/<image>:latest .
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args: ["build", "-f", "hosting/Dockerfile", "-t", "${_IMAGE}", "."]
+images: ["${_IMAGE}"]
+options:
+  logging: CLOUD_LOGGING_ONLY

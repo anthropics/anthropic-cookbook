@@ -2,7 +2,7 @@
 
 This directory deploys the research agent from
 [`00_The_one_liner_research_agent.ipynb`](../00_The_one_liner_research_agent.ipynb)
-through three tiers: local Docker, Modal, and Kubernetes. The agent, the
+through four tiers: local Docker, Modal, Kubernetes, and Google Cloud Run. The agent, the
 container image, and the HTTP interface are the **same** across all three —
 only the operational machinery around the container changes.
 
@@ -11,7 +11,7 @@ the full narrative.
 
 ## Interface contract
 
-All three tiers conform to this contract. The Kubernetes gateway routes against it.
+All tiers conform to this contract. The Kubernetes gateway routes against it.
 
 ```
 The agent image exposes:
@@ -67,6 +67,7 @@ hosting/
   docker/              ← Tier 1: local Docker / docker-compose
   modal/               ← Tier 2: Modal Sandbox
   kubernetes/          ← Tier 3: pod-per-session on your own k8s cluster
+  cloud_run/           ← Tier 4: Google Cloud Run (serverless, scale-to-zero)
 ```
 
 ## Build
