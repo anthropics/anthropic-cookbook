@@ -147,6 +147,16 @@
   date: '2025-11-24'
   categories:
   - Integrations
+- title: Private audio meeting notes with FunASR and Claude
+  description: Transcribe audio locally with FunASR, then use Claude to create structured
+    meeting notes.
+  path: third_party/FunASR/funasr_claude_meeting_notes.ipynb
+  authors:
+  - LauraGPT
+  date: '2026-07-23'
+  categories:
+  - Integrations
+  - Multimodal
 - title: Prompting for frontend aesthetics
   description: Guide to prompting Claude for distinctive, polished frontend designs
     avoiding generic aesthetics.
