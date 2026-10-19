@@ -85,3 +85,5 @@ jobs:
             --allowedTools "Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),Bash(echo:*),Read,Glob,Grep,WebFetch"
         env:
           PR_NUMBER: ${{ steps.pr-number.outputs.number }}
+          # Request headers the Anthropic CI organization requires on its API calls.
+          ANTHROPIC_CUSTOM_HEADERS: ${{ secrets.ANTHROPIC_CUSTOM_HEADERS }}

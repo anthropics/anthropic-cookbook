@@ -146,6 +146,8 @@ jobs:
             --allowedTools "Bash(gh pr comment:*)"
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
+          # Request headers the Anthropic CI organization requires on its API calls.
+          ANTHROPIC_CUSTOM_HEADERS: ${{ secrets.ANTHROPIC_CUSTOM_HEADERS }}
 
       - name: Fail if issues found
         if: |
