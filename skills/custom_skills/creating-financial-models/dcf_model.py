@@ -462,7 +462,8 @@ def calculate_beta(stock_returns: list[float], market_returns: list[float]) -> f
     Returns:
         Beta coefficient
     """
-    covariance = np.cov(stock_returns, market_returns)[0, 1]
+    # Use the same population normalization for covariance and variance.
+    covariance = np.cov(stock_returns, market_returns, ddof=0)[0, 1]
     market_variance = np.var(market_returns)
     beta = covariance / market_variance if market_variance != 0 else 1.0
     return beta
