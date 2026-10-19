@@ -142,6 +142,11 @@ dmypy.json
 tmp_*
 examples/fine-tuned_qa/local_cache/*
 
+# npm
+.npmrc
+# npmrc files committed intentionally (sandbox templates; contain no auth tokens)
+!managed_agents/**/.npmrc
+
 # CI/CD and testing
 .model_cache.json
 test_outputs/
