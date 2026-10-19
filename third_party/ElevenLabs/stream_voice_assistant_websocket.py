@@ -337,7 +337,7 @@ def stream_claude_and_synthesize_ws(messages, audio_queue):
     with anthropic_client.messages.stream(
         model="claude-haiku-4-5",
         max_tokens=1000,
-        temperature=0,
+        extra_body={"temperature": 0},
         system="""You are a helpful voice assistant. Your responses will be converted to speech using ElevenLabs.
 Do not write in markdown, as it cannot be read aloud properly.""",
         messages=messages,

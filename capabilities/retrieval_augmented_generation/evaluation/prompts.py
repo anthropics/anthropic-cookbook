@@ -117,7 +117,7 @@ def _rerank_results(query: str, results: list[dict], k: int = 5) -> list[dict]:
                 {"role": "user", "content": prompt},
                 {"role": "assistant", "content": "<relevant_indices>"},
             ],
-            temperature=0,
+            extra_body={"temperature": 0},
             stop_sequences=["</relevant_indices>"],
         )
 
