@@ -163,7 +163,7 @@ def validate_no_empty_cells(cells: list[CellInfo]) -> list[str]:
 
 # Patterns for detecting hardcoded API keys
 API_KEY_PATTERNS = [
-    r"sk-ant-[a-zA-Z0-9\-_]+",  # Anthropic API keys
+    r"sk-ant-[a-zA-Z0-9\-_]{20,}",  # Anthropic API keys (at least 20 chars to avoid false positives on prefix checks)
     r"['\"]ANTHROPIC_API_KEY['\"]\s*[=:]\s*['\"][^'\"]+['\"]",  # Hardcoded assignment
 ]
 

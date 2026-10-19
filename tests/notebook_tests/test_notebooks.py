@@ -269,13 +269,16 @@ class TestModelUsage:
 
     # Current supported models
     CURRENT_MODELS = {
+        "claude-sonnet-5",
         "claude-sonnet-4-6",
         "claude-haiku-4-5",
+        "claude-opus-4-8",
         "claude-opus-4-6",
     }
 
-    # Pattern to match Claude model identifiers
-    CLAUDE_MODEL_PATTERN = r"claude-[a-z0-9-]+-\d{8}"
+    # Pattern to match Claude model identifiers with release dates.
+    # Excludes Bedrock model IDs (anthropic.claude-*) which require dated suffixes.
+    CLAUDE_MODEL_PATTERN = r"(?<!anthropic\.)claude-[a-z0-9-]+-\d{8}"
 
     def test_no_deprecated_models(self, notebook_cells: list[CellInfo]) -> None:
         """Test that no deprecated Claude models are used."""
