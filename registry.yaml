@@ -810,6 +810,19 @@
   categories:
   - Multimodal
   - Tools
+- title: 'One tool, many ID formats: let the tool detect the type'
+  description: When one entity is addressed by several ID formats (orders vs. payments
+    vs. checkout sessions), design a single status-lookup tool that routes by ID
+    structure instead of asking the model to declare the type. Compares one-tool-per-ID-space,
+    an explicit id_type parameter, and in-tool auto-detection, with the rule for when
+    each applies.
+  path: tool_use/auto_detect_id_type.ipynb
+  authors:
+  - rgoulartai
+  date: '2026-06-06'
+  categories:
+  - Tools
+  - Agent Patterns
 - title: Build agents that remember your users
   description: Give your Claude Managed Agents a Memory store so they learn and
     remember your users' preferences across multiple interactions.
