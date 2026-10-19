@@ -30,6 +30,8 @@ def evaluate_end_to_end(query, generated_answer, correct_answer):
     <is_correct>true/false</is_correct>
     </content>
     </evaluation>
+
+    Start your response with <evaluation>. Do not write anything before it.
     """
 
     client = Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
@@ -37,10 +39,7 @@ def evaluate_end_to_end(query, generated_answer, correct_answer):
         response = client.messages.create(
             model="claude-sonnet-4-6",
             max_tokens=1500,
-            messages=[
-                {"role": "user", "content": prompt},
-                {"role": "assistant", "content": "<evaluation>"},
-            ],
+            messages=[{"role": "user", "content": prompt}],
             temperature=0,
             stop_sequences=["</evaluation>"],
         )
@@ -49,12 +48,13 @@ def evaluate_end_to_end(query, generated_answer, correct_answer):
 
         # Use regex to extract explanation and is_correct
         explanation_match = re.search(r"<explanation>(.*?)</explanation>", response_text, re.DOTALL)
-        is_correct_match = re.search(r"<is_correct>(.*?)</is_correct>", response_text, re.DOTALL)
+        is_correct_match = re.search(
+            r"<is_correct>\s*(true|false)\s*</is_correct>", response_text, re.IGNORECASE
+        )
 
-        is_correct = True
         if explanation_match and is_correct_match:
             explanation = explanation_match.group(1).strip()
-            is_correct = is_correct_match.group(1).strip().lower() == "true"
+            is_correct = is_correct_match.group(1).lower() == "true"
         else:
             raise ValueError("Could not extract explanation or is_correct from response")
 

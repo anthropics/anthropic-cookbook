@@ -447,8 +447,8 @@
   categories:
   - RAG & Retrieval
 - title: Sampling responses from Claude beyond the max tokens limit
-  description: Generate longer responses beyond max_tokens limit using prefill technique
-    with message continuation.
+  description: Detect responses cut off at max_tokens and complete them with a follow-up
+    continuation turn.
   path: misc/sampling_past_max_tokens.ipynb
   authors:
   - Anthropic

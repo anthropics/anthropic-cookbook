@@ -1,5 +1,6 @@
 import json
 import os
+import re
 from typing import Any
 
 import anthropic
@@ -52,17 +53,21 @@ def llm_eval(summary, input):
 
     Summary to Evaluate: {summary}
 
-    Evaluation (JSON format):"""
+    Respond with only the <json> block, starting your response with <json>."""
 
     response = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=1000,
         temperature=0,
-        messages=[{"role": "user", "content": prompt}, {"role": "assistant", "content": "<json>"}],
+        messages=[{"role": "user", "content": prompt}],
         stop_sequences=["</json>"],
     )
 
-    evaluation = json.loads(response.content[0].text)
+    response_text = response.content[0].text
+    json_match = re.search(r"<json>(.*?)(?:</json>|$)", response_text, re.DOTALL)
+    if json_match is None:
+        raise ValueError(f"No <json> block in grader response: {response_text!r}")
+    evaluation = json.loads(json_match.group(1))
     # Filter out non-numeric values and calculate the average
     numeric_values = [value for key, value in evaluation.items() if isinstance(value, (int, float))]
     avg_score = sum(numeric_values) / len(numeric_values)

@@ -1,5 +1,6 @@
 import json
 import os
+import re
 
 from anthropic import Anthropic
 from vectordb import SummaryIndexedVectorDB, VectorDB
@@ -107,29 +108,24 @@ def _rerank_results(query: str, results: list[dict], k: int = 5) -> list[dict]:
     {joined_summaries}
 
     Output only the indices of {k} most relevant documents in order of relevance, separated by commas, enclosed in XML tags here:
-    <relevant_indices>put the numbers of your indices here, seeparted by commas</relevant_indices>
+    <relevant_indices>put the numbers of your indices here, separated by commas</relevant_indices>
+
+    Start your response with <relevant_indices>. Do not write anything before it.
     """
     try:
         response = client.messages.create(
             model="claude-haiku-4-5",
             max_tokens=50,
-            messages=[
-                {"role": "user", "content": prompt},
-                {"role": "assistant", "content": "<relevant_indices>"},
-            ],
+            messages=[{"role": "user", "content": prompt}],
             temperature=0,
             stop_sequences=["</relevant_indices>"],
         )
 
-        # Extract the indices from the response
-        response_text = response.content[0].text.strip()
-        indices_str = response_text
-        relevant_indices = []
-        for idx in indices_str.split(","):
-            try:
-                relevant_indices.append(int(idx.strip()))
-            except ValueError:
-                continue  # Skip invalid indices
+        # Extract the indices from the response: everything after the opening tag
+        # (the stop sequence removes the closing tag), parsed as integers.
+        response_text = response.content[0].text
+        indices_str = response_text.split("<relevant_indices>")[-1].strip()
+        relevant_indices = [int(idx) for idx in re.findall(r"\d+", indices_str)]
         print(indices_str)
         print(relevant_indices)
         # If we didn't get enough valid indices, fall back to the top k by original order
