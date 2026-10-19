@@ -370,38 +370,44 @@ class DCFModel:
         """
         results = np.zeros((len(range1), len(range2)))
 
-        # Store original values
-        orig_wacc = self.wacc_components.get("wacc", 0.10)
-        orig_growth = self.assumptions.get("terminal_growth", 0.03)
+        # Preserve the base case, including previously calculated equity values.
+        orig_wacc_components = self.wacc_components.copy()
+        orig_assumptions = self.assumptions.copy()
+        orig_projections = self.projections
+        orig_valuation_results = self.valuation_results
         orig_margin = self.assumptions.get("ebitda_margin", [0.20] * 5)
 
-        for i, val1 in enumerate(range1):
-            for j, val2 in enumerate(range2):
-                # Update first variable
-                if variable1 == "wacc":
-                    self.wacc_components["wacc"] = val1
-                elif variable1 == "growth":
-                    self.assumptions["terminal_growth"] = val1
-                elif variable1 == "margin":
-                    self.assumptions["ebitda_margin"] = [val1] * len(orig_margin)
+        try:
+            for i, val1 in enumerate(range1):
+                for j, val2 in enumerate(range2):
+                    # Update first variable
+                    if variable1 == "wacc":
+                        self.wacc_components["wacc"] = val1
+                    elif variable1 == "growth":
+                        self.assumptions["terminal_growth"] = val1
+                    elif variable1 == "margin":
+                        self.assumptions["ebitda_margin"] = [val1] * len(orig_margin)
 
-                # Update second variable
-                if variable2 == "wacc":
-                    self.wacc_components["wacc"] = val2
-                elif variable2 == "growth":
-                    self.assumptions["terminal_growth"] = val2
-                elif variable2 == "margin":
-                    self.assumptions["ebitda_margin"] = [val2] * len(orig_margin)
+                    # Update second variable
+                    if variable2 == "wacc":
+                        self.wacc_components["wacc"] = val2
+                    elif variable2 == "growth":
+                        self.assumptions["terminal_growth"] = val2
+                    elif variable2 == "margin":
+                        self.assumptions["ebitda_margin"] = [val2] * len(orig_margin)
 
-                # Recalculate
-                self.project_cash_flows()
-                valuation = self.calculate_enterprise_value()
-                results[i, j] = valuation["enterprise_value"]
-
-        # Restore original values
-        self.wacc_components["wacc"] = orig_wacc
-        self.assumptions["terminal_growth"] = orig_growth
-        self.assumptions["ebitda_margin"] = orig_margin
+                    # Recalculate
+                    self.project_cash_flows()
+                    valuation = self.calculate_enterprise_value()
+                    results[i, j] = valuation["enterprise_value"]
+        finally:
+            self.wacc_components.clear()
+            self.wacc_components.update(orig_wacc_components)
+            self.assumptions.clear()
+            self.assumptions.update(orig_assumptions)
+            # Projection and valuation calculations replace these dictionaries.
+            self.projections = orig_projections
+            self.valuation_results = orig_valuation_results
 
         return results
 
