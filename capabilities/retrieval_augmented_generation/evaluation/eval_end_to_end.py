@@ -39,7 +39,6 @@ def evaluate_end_to_end(query, generated_answer, correct_answer):
             max_tokens=1500,
             messages=[
                 {"role": "user", "content": prompt},
-                {"role": "assistant", "content": "<evaluation>"},
             ],
             temperature=0,
             stop_sequences=["</evaluation>"],

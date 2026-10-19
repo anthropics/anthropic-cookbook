@@ -73,7 +73,6 @@ def _rerank_results(query: str, results: list[dict], k: int = 3) -> list[dict]:
             max_tokens=50,
             messages=[
                 {"role": "user", "content": prompt},
-                {"role": "assistant", "content": "<relevant_indices>"},
             ],
             temperature=0,
             stop_sequences=["</relevant_indices>"],
@@ -81,7 +80,10 @@ def _rerank_results(query: str, results: list[dict], k: int = 3) -> list[dict]:
 
         # Extract the indices from the response
         response_text = response.content[0].text.strip()
-        indices_str = response_text
+        indices_start = response_text.find("<relevant_indices>")
+        if indices_start != -1:
+            response_text = response_text[indices_start + len("<relevant_indices>"):]
+        indices_str = response_text.strip()
         relevant_indices = []
         for idx in indices_str.split(","):
             try:
