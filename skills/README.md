@@ -29,7 +29,7 @@ Skills are organized packages of instructions, executable code, and resources th
 Learn the fundamentals of Claude's Skills feature with quick-start examples.
 
 - Understanding Skills architecture
-- Setting up the API with beta headers
+- Setting up the API client
 - Creating your first Excel spreadsheet
 - Generating PowerPoint presentations
 - Exporting to PDF format
@@ -125,7 +125,6 @@ skills/
 │   ├── brand_guidelines/
 │   └── report_generator/
 ├── outputs/                      # Generated files
-├── docs/                         # Documentation
 ├── requirements.txt             # Python dependencies
 ├── .env.example                 # Environment template
 └── README.md                    # This file
@@ -133,24 +132,17 @@ skills/
 
 ## API Configuration
 
-Skills require specific beta headers. The notebooks handle this automatically, but here's what's happening behind the scenes:
+Skills, the code execution tool, and the Files API are all generally available, so no `anthropic-beta` header is required. Install `anthropic>=0.124.0` and use the standard client:
 
 ```python
 from anthropic import Anthropic
 
-client = Anthropic(
-    api_key="your-api-key",
-    default_headers={
-        "anthropic-beta": "code-execution-2025-08-25,files-api-2025-04-14,skills-2025-10-02"
-    }
-)
+client = Anthropic(api_key="your-api-key")
+
+# Skills management:   client.skills.*
+# File downloads:      client.files.*
+# Using skills:        client.messages.create(container={"skills": [...]}, tools=[code_execution])
 ```
-
-**Required Beta Headers:**
-
-- `code-execution-2025-08-25` - Enables code execution for Skills
-- `files-api-2025-04-14` - Required for downloading generated files
-- `skills-2025-10-02` - Enables Skills feature
 
 ## Working with Generated Files
 
@@ -173,7 +165,7 @@ client = Anthropic(api_key="your-api-key")
 # Step 1: Use a skill to create a file
 response = client.messages.create(
     model="claude-sonnet-4-6",
-    max_tokens=4096,
+    max_tokens=16384,
     container={
         "skills": [
             {"type": "anthropic", "skill_id": "xlsx", "version": "latest"}
@@ -186,18 +178,19 @@ response = client.messages.create(
     }]
 )
 
-# Step 2: Extract file_id from the response
+# Step 2: Extract file_id from the response. Generated files show up as
+# outputs of bash_code_execution_tool_result blocks.
 file_id = None
 for block in response.content:
-    if block.type == "tool_result" and hasattr(block, 'output'):
-        # Look for file_id in the tool output
-        if 'file_id' in str(block.output):
-            file_id = extract_file_id(block.output)  # Parse the file_id
-            break
+    if block.type == "bash_code_execution_tool_result":
+        for item in getattr(block.content, "content", []) or []:
+            if getattr(item, "file_id", None):
+                file_id = item.file_id
+                break
 
 # Step 3: Download the file using Files API
 if file_id:
-    file_content = client.beta.files.download(file_id=file_id)
+    file_content = client.files.download(file_id)
 
     # Step 4: Save to disk
     with open("outputs/budget.xlsx", "wb") as f:
@@ -210,21 +203,20 @@ if file_id:
 
 ```python
 # Download file content (binary)
-content = client.beta.files.download(file_id="file_abc123...")
+content = client.files.download("file_abc123...")
 with open("output.xlsx", "wb") as f:
     f.write(content.read())  # Use .read() not .content
 
 # Get file metadata
-info = client.beta.files.retrieve_metadata(file_id="file_abc123...")
+info = client.files.retrieve_metadata("file_abc123...")
 print(f"Filename: {info.filename}, Size: {info.size_bytes} bytes")  # Use size_bytes not size
 
-# List all files
-files = client.beta.files.list()
-for file in files.data:
+# List files (auto-paginates)
+for file in client.files.list():
     print(f"{file.filename} - {file.created_at}")
 
 # Delete a file
-client.beta.files.delete(file_id="file_abc123...")
+client.files.delete("file_abc123...")
 ```
 
 **Important Notes:**
@@ -302,13 +294,14 @@ ValueError: ANTHROPIC_API_KEY not found
 
 → Make sure you've copied `.env.example` to `.env` and added your key
 
-**Skills Beta Header Missing**
+**`container` or `client.skills` Not Recognized**
 
 ```
-Error: Skills feature requires beta header
+TypeError: Messages.create() got an unexpected keyword argument 'container'
+AttributeError: 'Anthropic' object has no attribute 'skills'
 ```
 
-→ Ensure you're using the correct beta headers as shown in the notebooks
+→ Upgrade the SDK: `pip install -U "anthropic>=0.124.0"` and restart your kernel
 
 **Token Limit Exceeded**
 
@@ -349,6 +342,6 @@ Special thanks to the Anthropic team for developing the Skills feature and provi
 
 ---
 
-**Questions?** Check the [FAQ](docs/FAQ.md) or open an issue.
+**Questions?** Open an issue on this repository.
 
 **Ready to start?** Open [Notebook 1](notebooks/01_skills_introduction.ipynb) and let's build something amazing! 🎉

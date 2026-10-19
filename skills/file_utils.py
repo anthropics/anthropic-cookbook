@@ -23,20 +23,20 @@ def extract_file_ids(response) -> list[str]:
     in the tool results. This function parses the response to find all file IDs.
 
     Args:
-        response: The response object from client.beta.messages.create()
+        response: The response object from client.messages.create()
 
     Returns:
         List of file IDs found in the response
 
     Example:
-        >>> response = client.beta.messages.create(...)
+        >>> response = client.messages.create(...)
         >>> file_ids = extract_file_ids(response)
         >>> print(f"Found {len(file_ids)} files")
     """
     file_ids = []
 
     for block in response.content:
-        # Check for bash_code_execution_tool_result (beta API format)
+        # Check for bash_code_execution_tool_result (code execution tool format)
         if block.type == "bash_code_execution_tool_result":
             try:
                 if hasattr(block, "content") and hasattr(block.content, "content"):
@@ -137,8 +137,8 @@ def download_file(
         if output_dir:
             Path(output_dir).mkdir(parents=True, exist_ok=True)
 
-        # Download file content from Files API (beta namespace)
-        file_content = client.beta.files.download(file_id=file_id)
+        # Download file content from the Files API
+        file_content = client.files.download(file_id=file_id)
 
         # Save to disk
         with open(output_path, "wb") as f:
@@ -193,7 +193,7 @@ def download_all_files(
     for i, file_id in enumerate(file_ids, 1):
         # Try to get file metadata for proper filename
         try:
-            file_info = client.beta.files.retrieve_metadata(file_id=file_id)
+            file_info = client.files.retrieve_metadata(file_id=file_id)
             filename = file_info.filename
         except Exception:
             # If we can't get metadata, use a generic filename
@@ -232,7 +232,7 @@ def get_file_info(client: Anthropic, file_id: str) -> dict[str, Any] | None:
         ...     print(f"Created: {info['created_at']}")
     """
     try:
-        file_info = client.beta.files.retrieve_metadata(file_id=file_id)
+        file_info = client.files.retrieve_metadata(file_id=file_id)
         return {
             "file_id": file_info.id,
             "filename": file_info.filename,

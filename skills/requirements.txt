@@ -2,7 +2,7 @@
 # Install with: pip install -r requirements.txt
 
 # Core dependencies
-anthropic>=0.71.0                         # Anthropic SDK with Skills support
+anthropic>=0.124.0                        # Anthropic SDK with GA Files and Skills APIs
 python-dotenv>=1.0.0                      # Environment variable management
 ipykernel>=6.25.0                         # Jupyter kernel for notebooks
 jupyter>=1.0.0                            # Jupyter notebook support

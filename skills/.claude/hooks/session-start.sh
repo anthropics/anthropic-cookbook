@@ -18,10 +18,11 @@ fi
 if python -c "import anthropic" 2>/dev/null; then
     SDK_VERSION=$(python -c "import anthropic; print(anthropic.__version__)" 2>/dev/null || echo "unknown")
     echo "✅ Anthropic SDK: $SDK_VERSION"
-    # Check for minimum version for Skills support
-    if [[ "$SDK_VERSION" < "0.71.0" ]]; then
-        echo "⚠️  SDK version $SDK_VERSION may be too old (minimum 0.71.0 for Skills support)"
-        echo "   Run: pip install anthropic>=0.71.0"
+    # Check for minimum version for Skills support (sort -V compares versions, not strings)
+    MIN_SDK_VERSION="0.124.0"
+    if [[ "$(printf '%s\n' "$MIN_SDK_VERSION" "$SDK_VERSION" | sort -V | head -1)" != "$MIN_SDK_VERSION" ]]; then
+        echo "⚠️  SDK version $SDK_VERSION may be too old (minimum 0.124.0 for the GA Skills and Files APIs)"
+        echo "   Run: pip install -U \"anthropic>=0.124.0\""
         echo ""
     fi
 else

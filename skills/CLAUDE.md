@@ -12,7 +12,7 @@ This is a comprehensive Jupyter notebook cookbook demonstrating Claude's Skills 
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-# Install dependencies (MUST use local whl for Skills support)
+# Install dependencies
 pip install -r requirements.txt
 
 # Configure API key
@@ -51,22 +51,22 @@ skills/
 ├── custom_skills/         # Custom skill development area
 ├── outputs/               # Generated files (xlsx, pptx, pdf)
 ├── file_utils.py          # Files API helper functions
-└── docs/                  # Implementation tracking
+└── skill_utils.py         # Skills API helper functions
 ```
 
 ### Key Technical Details
 
-**Beta API Requirements:**
-- All Skills functionality uses `client.beta.*` namespace
-- Required beta headers: `code-execution-2025-08-25`, `files-api-2025-04-14`, `skills-2025-10-02`
-- Must use `client.beta.messages.create()` with `container` parameter
+**API Requirements (all generally available, `anthropic>=0.124.0`):**
+- Skills management uses `client.skills.*`; file downloads use `client.files.*`
+- No `anthropic-beta` header is required for Skills, code execution, or the Files API
+- Use `client.messages.create()` with the `container={"skills": [...]}` parameter
 - Code execution tool (`code_execution_20250825`) is REQUIRED
 - Use pre-built Agent skills by referencing their `skill_id` or create and upload your own via the Skills API
 
 **Files API Integration:**
 - Skills generate files and return `file_id` attributes
-- Must use `client.beta.files.download()` to download files
-- Must use `client.beta.files.retrieve_metadata()` to get file info
+- Use `client.files.download()` to download files
+- Use `client.files.retrieve_metadata()` to get file info
 - Helper functions in `file_utils.py` handle extraction and download
 
 **Built-in Skills:**
@@ -78,44 +78,39 @@ skills/
 ## Development Gotchas
 
 ### 1. SDK Version
-**Important**: Ensure you have the Anthropic SDK version 0.71.0 or later with Skills support
+**Important**: Ensure you have the Anthropic SDK version 0.124.0 or later (GA `client.skills` / `client.files`)
 ```bash
-pip install anthropic>=0.71.0
+pip install -U "anthropic>=0.124.0"
 # Restart Jupyter kernel after installation if upgrading!
 ```
 
-### 2. Beta Namespace Required
-**Problem**: `container` parameter not recognized, files API fails
-**Solution**: Use `client.beta.messages.create()` and `client.beta.files.*`
+### 2. GA Namespaces (no beta headers)
+**Problem**: Code written against `anthropic<0.124.0` uses `client.beta.*` and `betas=[...]`
+**Solution**: Skills, code execution, and the Files API are GA. Use the top-level namespaces.
 ```python
-# ❌ Wrong
-response = client.messages.create(container={...})
-content = client.files.content(file_id)
+# ❌ Old (beta)
+response = client.beta.messages.create(container={...}, betas=["skills-2025-10-02", ...])
+content = client.beta.files.download(file_id)
+skill = client.beta.skills.create(display_title="...", files=...)
 
-# ✅ Correct
-response = client.beta.messages.create(container={...})
-content = client.beta.files.content(file_id)
+# ✅ Current (GA)
+response = client.messages.create(container={...}, tools=[...])
+content = client.files.download(file_id)
+skill = client.skills.create(display_name="...", files=...)
 ```
 
-### 3. Beta Headers Placement
-**Problem**: Setting Skills beta in default_headers requires code_execution on ALL requests
-**Solution**: Use `betas` parameter per-request instead
-```python
-# ❌ Wrong (affects all requests)
-client = Anthropic(default_headers={"anthropic-beta": "skills-2025-10-02"})
-
-# ✅ Correct (per-request)
-response = client.beta.messages.create(
-    betas=["code-execution-2025-08-25", "files-api-2025-04-14", "skills-2025-10-02"],
-    ...
-)
-```
+### 3. GA Skills API Field Names
+**Problem**: Code written against the beta Skills API uses old field names
+**Solution**: `display_title` → `display_name`, `skill.latest_version` → `skill.latest_version_id`,
+`version.version` → `version.id`, `skill.source` is an object (`skill.source.type`).
+Deleting a skill (`client.skills.delete(skill_id)`) removes all its versions; a skill's only
+version cannot be deleted on its own.
 
 ### 4. File ID Extraction
 **Problem**: Response structure differs from standard Messages API
 **Solution**: File IDs in `bash_code_execution_tool_result.content.content[0].file_id`
 ```python
-# Use file_utils.extract_file_ids() - handles beta response structure
+# Use file_utils.extract_file_ids() - handles the code execution response structure
 from file_utils import extract_file_ids, download_all_files
 file_ids = extract_file_ids(response)
 ```
@@ -125,17 +120,17 @@ file_ids = extract_file_ids(response)
 **Solution**: Use `.read()` for file content and `.size_bytes` for file size
 ```python
 # ❌ Wrong
-file_content = client.beta.files.download(file_id)
+file_content = client.files.download(file_id)
 with open(path, 'wb') as f:
     f.write(file_content.content)  # No .content attribute!
 
 # ✅ Correct
-file_content = client.beta.files.download(file_id)
+file_content = client.files.download(file_id)
 with open(path, 'wb') as f:
     f.write(file_content.read())  # Use .read()
 
 # FileMetadata fields: id, filename, size_bytes (not size), mime_type, created_at, type, downloadable
-metadata = client.beta.files.retrieve_metadata(file_id)
+metadata = client.files.retrieve_metadata(file_id)
 print(f"Size: {metadata.size_bytes} bytes")  # Use size_bytes, not size
 ```
 
@@ -171,10 +166,9 @@ Be patient - the cell will show [*] while running!
 
 ### Adding a New Notebook Section
 1. Follow existing structure in `01_skills_introduction.ipynb`
-2. Include setup cell with imports and beta headers
+2. Include setup cell with imports and client initialization
 3. Show API call, response handling, file download
 4. Add error handling examples
-5. Update `docs/skills_cookbook_plan.md` checklist
 
 ### Creating Sample Data
 1. Add realistic financial data to `sample_data/`
@@ -193,8 +187,8 @@ Be patient - the cell will show [*] while running!
 **Note**: Files are overwritten by default. You'll see `[overwritten]` in the download summary when a file already existed. Set `overwrite=False` to prevent this.
 
 ### Debugging API Errors
-1. Check SDK version: `anthropic.__version__` should be `0.69.0`
-2. Verify beta headers are passed per-request
+1. Check SDK version: `anthropic.__version__` should be `0.124.0` or later
+2. Verify you are using `client.messages` / `client.skills` / `client.files` (not `client.beta.*`)
 3. Ensure code_execution tool is included
 4. Check response structure with `print(response)`
 5. Look for error details in `response.stop_reason`
@@ -206,7 +200,6 @@ Before committing notebook changes:
 - [ ] Verify all file downloads work
 - [ ] Check outputs/ for generated files
 - [ ] Validate files open correctly in native apps
-- [ ] Update skills_cookbook_plan.md checklist
 - [ ] Test in fresh virtual environment
 
 ## Resources

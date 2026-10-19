@@ -16,7 +16,7 @@ from anthropic import Anthropic
 from anthropic.lib import files_from_dir
 
 
-def create_skill(client: Anthropic, skill_path: str, display_title: str) -> dict[str, Any]:
+def create_skill(client: Anthropic, skill_path: str, display_name: str) -> dict[str, Any]:
     """
     Create a new custom skill from a directory.
 
@@ -25,24 +25,24 @@ def create_skill(client: Anthropic, skill_path: str, display_title: str) -> dict
     - Optional: scripts, resources, REFERENCE.md
 
     Args:
-        client: Anthropic client instance with Skills beta
+        client: Anthropic client instance
         skill_path: Path to skill directory containing SKILL.md
-        display_title: Human-readable name for the skill
+        display_name: Human-readable name for the skill
 
     Returns:
         Dictionary with skill creation results:
         {
             'success': bool,
             'skill_id': str (if successful),
-            'display_title': str,
-            'latest_version': str,
-            'created_at': str,
+            'display_name': str,
+            'latest_version_id': str,
+            'created_at': datetime,
             'source': str ('custom'),
             'error': str (if failed)
         }
 
     Example:
-        >>> client = Anthropic(api_key="...", default_headers={"anthropic-beta": "skills-2025-10-02"})
+        >>> client = Anthropic(api_key="...")
         >>> result = create_skill(client, "custom_skills/financial_analyzer", "Financial Analyzer")
         >>> if result['success']:
         ...     print(f"Created skill: {result['skill_id']}")
@@ -58,17 +58,15 @@ def create_skill(client: Anthropic, skill_path: str, display_title: str) -> dict
             return {"success": False, "error": f"SKILL.md not found in {skill_path}"}
 
         # Create skill using files_from_dir
-        skill = client.beta.skills.create(
-            display_title=display_title, files=files_from_dir(skill_path)
-        )
+        skill = client.skills.create(display_name=display_name, files=files_from_dir(skill_path))
 
         return {
             "success": True,
             "skill_id": skill.id,
-            "display_title": skill.display_title,
-            "latest_version": skill.latest_version,
+            "display_name": skill.display_name,
+            "latest_version_id": skill.latest_version_id,
             "created_at": skill.created_at,
-            "source": skill.source,
+            "source": skill.source.type,
         }
 
     except Exception as e:
@@ -80,7 +78,7 @@ def list_custom_skills(client: Anthropic) -> list[dict[str, Any]]:
     List all custom skills in the workspace.
 
     Args:
-        client: Anthropic client instance with Skills beta
+        client: Anthropic client instance
 
     Returns:
         List of skill dictionaries with metadata
@@ -88,18 +86,16 @@ def list_custom_skills(client: Anthropic) -> list[dict[str, Any]]:
     Example:
         >>> skills = list_custom_skills(client)
         >>> for skill in skills:
-        ...     print(f"{skill['display_title']}: {skill['skill_id']}")
+        ...     print(f"{skill['display_name']}: {skill['skill_id']}")
     """
     try:
-        skills_response = client.beta.skills.list(source="custom")
-
         skills = []
-        for skill in skills_response.data:
+        for skill in client.skills.list(source="custom"):
             skills.append(
                 {
                     "skill_id": skill.id,
-                    "display_title": skill.display_title,
-                    "latest_version": skill.latest_version,
+                    "display_name": skill.display_name,
+                    "latest_version_id": skill.latest_version_id,
                     "created_at": skill.created_at,
                     "updated_at": skill.updated_at,
                 }
@@ -121,25 +117,19 @@ def get_skill_version(
     Args:
         client: Anthropic client instance
         skill_id: ID of the skill
-        version: Version to retrieve (default: "latest")
+        version: Version ID to retrieve, or "latest" (default) for the newest version
 
     Returns:
         Dictionary with version details or None if not found
     """
     try:
-        # Get latest version if not specified
-        if version == "latest":
-            skill = client.beta.skills.retrieve(skill_id)
-            version = skill.latest_version
-
-        version_info = client.beta.skills.versions.retrieve(skill_id=skill_id, version=version)
+        version_info = client.skills.versions.retrieve(version, skill_id=skill_id)
 
         return {
-            "version": version_info.version,
+            "version_id": version_info.id,
             "skill_id": version_info.skill_id,
             "name": version_info.name,
             "description": version_info.description,
-            "directory": version_info.directory,
             "created_at": version_info.created_at,
         }
 
@@ -161,13 +151,11 @@ def create_skill_version(client: Anthropic, skill_id: str, skill_path: str) -> d
         Dictionary with version creation results
     """
     try:
-        version = client.beta.skills.versions.create(
-            skill_id=skill_id, files=files_from_dir(skill_path)
-        )
+        version = client.skills.versions.create(skill_id, files=files_from_dir(skill_path))
 
         return {
             "success": True,
-            "version": version.version,
+            "version_id": version.id,
             "skill_id": version.skill_id,
             "created_at": version.created_at,
         }
@@ -176,31 +164,23 @@ def create_skill_version(client: Anthropic, skill_id: str, skill_path: str) -> d
         return {"success": False, "error": str(e)}
 
 
-def delete_skill(client: Anthropic, skill_id: str, delete_versions: bool = True) -> bool:
+def delete_skill(client: Anthropic, skill_id: str) -> bool:
     """
-    Delete a custom skill and optionally all its versions.
+    Delete a custom skill along with all of its versions.
 
-    Note: All versions must be deleted before the skill can be deleted.
+    Deleting a skill removes every version. To remove a single older version instead,
+    use `client.skills.versions.delete(version_id, skill_id=...)`; a skill's only
+    remaining version cannot be deleted on its own.
 
     Args:
         client: Anthropic client instance
         skill_id: ID of skill to delete
-        delete_versions: Whether to delete all versions first
 
     Returns:
         True if successful, False otherwise
     """
     try:
-        if delete_versions:
-            # First delete all versions
-            versions = client.beta.skills.versions.list(skill_id=skill_id)
-
-            for version in versions.data:
-                client.beta.skills.versions.delete(skill_id=skill_id, version=version.version)
-                print(f"  Deleted version: {version.version}")
-
-        # Then delete the skill itself
-        client.beta.skills.delete(skill_id)
+        client.skills.delete(skill_id)
         print(f"✓ Deleted skill: {skill_id}")
         return True
 
@@ -245,13 +225,12 @@ def test_skill(
         for anthropic_skill in include_anthropic_skills:
             skills.append({"type": "anthropic", "skill_id": anthropic_skill, "version": "latest"})
 
-    response = client.beta.messages.create(
+    response = client.messages.create(
         model=model,
-        max_tokens=4096,
+        max_tokens=16384,
         container={"skills": skills},
         tools=[{"type": "code_execution_20250825", "name": "code_execution"}],
         messages=[{"role": "user", "content": test_prompt}],
-        betas=["code-execution-2025-08-25", "files-api-2025-04-14", "skills-2025-10-02"],
     )
 
     return response
@@ -269,13 +248,11 @@ def list_skill_versions(client: Anthropic, skill_id: str) -> list[dict[str, Any]
         List of version dictionaries
     """
     try:
-        versions_response = client.beta.skills.versions.list(skill_id=skill_id)
-
         versions = []
-        for version in versions_response.data:
+        for version in client.skills.versions.list(skill_id):
             versions.append(
                 {
-                    "version": version.version,
+                    "version_id": version.id,
                     "skill_id": version.skill_id,
                     "created_at": version.created_at,
                 }
@@ -388,9 +365,9 @@ def print_skill_summary(skill_info: dict[str, Any]) -> None:
     Args:
         skill_info: Dictionary with skill information
     """
-    print(f"📦 Skill: {skill_info.get('display_title', 'Unknown')}")
+    print(f"📦 Skill: {skill_info.get('display_name', 'Unknown')}")
     print(f"   ID: {skill_info.get('skill_id', 'N/A')}")
-    print(f"   Version: {skill_info.get('latest_version', 'N/A')}")
+    print(f"   Version: {skill_info.get('latest_version_id', 'N/A')}")
     print(f"   Source: {skill_info.get('source', 'N/A')}")
     print(f"   Created: {skill_info.get('created_at', 'N/A')}")
 
