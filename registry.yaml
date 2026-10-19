@@ -1,4 +1,14 @@
 # yaml-language-server: $schema=./.github/registry_schema.json
+- title: Autonomous financial analysis and ratio extraction agent with tool use
+  description: Build an equity research analyst agent that uses client-side tools to fetch
+    market data, calculate valuation multiples deterministically, and generate structured memos.
+  path: tool_use/financial_analysis_agent.ipynb
+  authors:
+  - mah54
+  date: '2026-09-21'
+  categories:
+  - Tools
+  - Agent Patterns
 - title: Build a data analyst agent with Claude Managed Agents
   description: Build an analyst that turns a CSV into a narrative HTML report with
     interactive charts, using a sandboxed environment and file mounting.
