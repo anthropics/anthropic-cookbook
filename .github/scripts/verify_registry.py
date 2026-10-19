@@ -178,8 +178,11 @@ def verify_schemas(repo_root, authors, registry):
             validate(instance=authors, schema=authors_schema)
             print("  ✓ authors.yaml matches schema")
         except ValidationError as e:
-            schema_errors.append(f"authors.yaml: {e.message} at {'.'.join(str(p) for p in e.path)}")
+            path_str = ".".join(str(p) for p in e.path) if e.path else "root"
+            schema_errors.append(f"authors.yaml: {e.message} at {path_str}")
             print(f"  ❌ authors.yaml schema validation failed: {e.message}")
+            if e.path:
+                print(f"     at path: {path_str}")
         except json.JSONDecodeError as e:
             schema_errors.append(f"authors_schema.json: Invalid JSON - {e}")
             print(f"  ❌ authors_schema.json is invalid: {e}")
