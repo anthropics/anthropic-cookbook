@@ -52,17 +52,18 @@ def llm_eval(summary, input):
 
     Summary to Evaluate: {summary}
 
-    Evaluation (JSON format):"""
+    Provide your evaluation now, wrapped in <json></json> tags."""
 
     response = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=1000,
         temperature=0,
-        messages=[{"role": "user", "content": prompt}, {"role": "assistant", "content": "<json>"}],
+        messages=[{"role": "user", "content": prompt}],
         stop_sequences=["</json>"],
     )
 
-    evaluation = json.loads(response.content[0].text)
+    # The stop sequence trims the closing tag; strip everything up to the opening tag
+    evaluation = json.loads(response.content[0].text.split("<json>")[-1])
     # Filter out non-numeric values and calculate the average
     numeric_values = [value for key, value in evaluation.items() if isinstance(value, (int, float))]
     avg_score = sum(numeric_values) / len(numeric_values)

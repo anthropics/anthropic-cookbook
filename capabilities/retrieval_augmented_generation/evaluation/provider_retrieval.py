@@ -71,17 +71,15 @@ def _rerank_results(query: str, results: list[dict], k: int = 3) -> list[dict]:
         response = client.messages.create(
             model="claude-sonnet-4-6",
             max_tokens=50,
-            messages=[
-                {"role": "user", "content": prompt},
-                {"role": "assistant", "content": "<relevant_indices>"},
-            ],
+            messages=[{"role": "user", "content": prompt}],
             temperature=0,
             stop_sequences=["</relevant_indices>"],
         )
 
-        # Extract the indices from the response
+        # Extract the indices from the response; the stop sequence trims the
+        # closing tag, so only the opening tag needs to be stripped
         response_text = response.content[0].text.strip()
-        indices_str = response_text
+        indices_str = response_text.split("<relevant_indices>")[-1]
         relevant_indices = []
         for idx in indices_str.split(","):
             try:
