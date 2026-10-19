@@ -295,6 +295,19 @@ class TestMemoryToolHandler(unittest.TestCase):
         self.assertIn("error", result)
         self.assertIn("cannot delete", result["error"].lower())
 
+    def test_delete_cannot_delete_root_via_aliases(self):
+        """Root deletion must be blocked regardless of how the path is spelled."""
+        self.handler.execute(command="create", path="/memories/keep.txt", file_text="content")
+        root_path = Path(self.test_dir) / "memories"
+
+        for alias in ("/memories/", "/memories/.", "/memories/sub/.."):
+            result = self.handler.execute(command="delete", path=alias)
+            self.assertIn("error", result, f"{alias} should be rejected")
+            self.assertIn("cannot delete", result["error"].lower())
+            # The memory store and its contents must remain intact.
+            self.assertTrue(root_path.exists())
+            self.assertTrue((root_path / "keep.txt").exists())
+
     def test_delete_nonexistent_path(self):
         """Test deleting a nonexistent path."""
         result = self.handler.execute(command="delete", path="/memories/notfound.txt")

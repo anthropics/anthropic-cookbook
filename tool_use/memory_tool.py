@@ -279,11 +279,14 @@ class MemoryToolHandler:
         if not path:
             return {"error": "Missing required parameter: path"}
 
-        # Prevent deletion of root memories directory
-        if path == "/memories":
-            return {"error": "Cannot delete the /memories directory itself"}
-
         full_path = self._validate_path(path)
+
+        # Prevent deletion of the root memories directory, regardless of how the
+        # path is spelled. An exact "/memories" check is not enough: "/memories/",
+        # "/memories/." and "/memories/sub/.." all resolve to the root and would
+        # otherwise wipe the entire memory store.
+        if full_path == self.memory_root.resolve():
+            return {"error": "Cannot delete the /memories directory itself"}
 
         # Verify the path is within /memories to prevent accidental deletion outside the memory directory
         # This provides an additional safety check beyond _validate_path
