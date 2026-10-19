@@ -6,7 +6,8 @@ monitoring and CI/CD workflow analysis. It uses the official GitHub MCP server
 to interact with the GitHub API.
 
 Key design decisions:
-- Uses disallowed_tools to ensure MCP tools are used (not Bash with gh CLI)
+- Uses dontAsk with an MCP-only allowlist so built-in tools fail closed
+- Explicitly disallows built-in tools as defense in depth
 - Focused on read-only GitHub operations for observability
 - Supports multi-turn conversations for deep-dive analysis
 """
@@ -35,6 +36,16 @@ DEFAULT_SYSTEM_PROMPT = """You are an observability agent specialized in monitor
 GitHub repositories and CI/CD workflows. Provide concise, actionable insights \
 suitable for on-call engineers. Focus on identifying issues, assessing severity, \
 and recommending next steps."""
+
+MCP_ONLY_DISALLOWED_TOOLS = [
+    "Read",
+    "Edit",
+    "Write",
+    "Bash",
+    "Task",
+    "WebSearch",
+    "WebFetch",
+]
 
 
 def get_github_mcp_server() -> dict[str, McpServerConfig]:
@@ -84,8 +95,9 @@ async def send_query(
         mcp_servers: Custom MCP servers configuration (merged with GitHub if enabled)
         use_github: Include GitHub MCP server (default: True)
         model: Model to use (default: claude-opus-4-6)
-        restrict_to_mcp: If True, disallow Bash/Task to ensure MCP tools are used.
-            Set to False if you want the agent to have fallback options.
+        restrict_to_mcp: If True, allow only configured MCP servers and deny
+            built-in tools without prompting. Set to False if you want the agent
+            to have fallback options.
         display_result: If True, display the response using display_agent_response()
             after completion. Set to False for programmatic use.
 
@@ -104,11 +116,12 @@ async def send_query(
         servers.update(mcp_servers)
 
     # Build allowed tools list based on configured MCP servers
-    allowed_tools = [f"mcp__{name}" for name in servers]
+    allowed_tools = [f"mcp__{name}__*" for name in servers]
 
-    # Configure disallowed tools to ensure MCP usage
-    # Without this, the agent could bypass MCP by using Bash with gh CLI
-    disallowed_tools = ["Bash", "Task", "WebSearch", "WebFetch"] if restrict_to_mcp else []
+    # In dontAsk mode, tools outside allowed_tools are denied instead of prompting.
+    # Keep an explicit built-in denylist as defense in depth.
+    disallowed_tools = MCP_ONLY_DISALLOWED_TOOLS if restrict_to_mcp else []
+    permission_mode = "dontAsk" if restrict_to_mcp else "acceptEdits"
 
     options = ClaudeAgentOptions(
         model=model,
@@ -117,7 +130,7 @@ async def send_query(
         continue_conversation=continue_conversation,
         system_prompt=DEFAULT_SYSTEM_PROMPT,
         mcp_servers=servers,  # Empty dict is valid, no need for None
-        permission_mode="acceptEdits",
+        permission_mode=permission_mode,
     )
 
     result = None
