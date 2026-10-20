@@ -34,6 +34,22 @@ class ValidationResult:
     suggestions: list[str]
 
 
+def normalize_color(color: str) -> str:
+    """Return a color as uppercase #RRGGBB so equivalent notations compare equal.
+
+    Handles #RGB, #RRGGBB and rgb(r, g, b); anything else is returned uppercased.
+    """
+    color = color.strip()
+    if re.fullmatch(r"#[0-9A-Fa-f]{3}", color):
+        return "#" + "".join(ch * 2 for ch in color[1:]).upper()
+    rgb = re.fullmatch(
+        r"rgb\s*\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)", color, re.IGNORECASE
+    )
+    if rgb and all(int(v) <= 255 for v in rgb.groups()):
+        return "#{:02X}{:02X}{:02X}".format(*(int(v) for v in rgb.groups()))
+    return color.upper()
+
+
 class BrandValidator:
     """Validates content against brand guidelines"""
 
@@ -58,8 +74,10 @@ class BrandValidator:
 
         approved_colors = self.guidelines.primary_colors + self.guidelines.secondary_colors
 
+        approved_normalized = {normalize_color(c) for c in approved_colors}
+
         for color in found_colors:
-            if color.upper() not in [c.upper() for c in approved_colors]:
+            if normalize_color(color) not in approved_normalized:
                 violations.append(f"Unapproved color used: {color}")
 
         return violations, warnings
