@@ -173,3 +173,7 @@ capabilities/content_moderation/evaluation/results.json
 # the repo root (a kernel started there).
 /demo_repo/
 /claude_agent_sdk/scheduled_repository_reviewer/demo_repo/
+
+# semantic_code_search: generated embedding index (regenerated each run)
+semantic_code_index.npy
+semantic_code_index.json
