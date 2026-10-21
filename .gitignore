@@ -105,6 +105,10 @@ celerybeat.pid
 # Environments
 .env
 .venv
+# npm auth tokens — ignore .npmrc files that may contain registry auth tokens.
+# Sandbox template .npmrc files (registry-only, no auth) are explicitly re-included below.
+.npmrc
+!managed_agents/**/.npmrc
 env/
 venv/
 myenv/
