@@ -103,6 +103,21 @@ scripts/           # Validation scripts
 .claude/           # Claude Code commands and skills
 ```
 
+## Skill Hub Cross-Reference
+
+Este repo contribui 4 skills para o ecossistema compartilhado:
+- **Education**: API patterns, financial models, cookbook-audit, skills-cookbook
+
+Para o catalogo completo de 73 skills, consulte: `../skill-hub/CATALOG.md`
+
+### Skills complementares de outros repos
+| Precisa de | Repo | Skill |
+|-----------|------|-------|
+| Frontend React | bullcast | frontend-react |
+| Design system | ui-ux-pro-max-skill | ui-ux-pro-max |
+| API design | bullcast | backend-api |
+| Testing | bullcast | testing-patterns |
+
 ## Adding a New Cookbook
 
 1. Create notebook in the appropriate directory
