@@ -1,6 +1,5 @@
 import json
 import os
-import pickle
 
 import numpy as np
 import voyageai
@@ -14,14 +13,14 @@ class VectorDB:
         self.embeddings = []
         self.metadata = []
         self.query_cache = {}
-        self.db_path = "../data/vector_db.pkl"
+        self.db_path = "../data/vector_db.json"
 
     def load_data(self, data):
         # Check if the vector database is already loaded
         if self.embeddings and self.metadata:
             print("Vector database is already loaded. Skipping data loading.")
             return
-        # Check if vector_db.pkl exists
+        # Check if vector_db.json exists
         if os.path.exists(self.db_path):
             print("Loading vector database from disk.")
             self.load_db()
@@ -40,6 +39,7 @@ class VectorDB:
         self.embeddings = [embedding for batch in result for embedding in batch]
         self.metadata = [item for item in data]
         # Save the vector database to disk
+        self.save_db()
         print("Vector database loaded and saved.")
 
     def search(self, query, k=5, similarity_threshold=0.85):
@@ -76,8 +76,25 @@ class VectorDB:
                 "Vector database file not found. Use load_data to create a new database."
             )
 
-        with open(self.db_path, "rb") as file:
-            data = pickle.load(file)
+        with open(self.db_path) as file:
+            data = json.load(file)
         self.embeddings = data["embeddings"]
         self.metadata = data["metadata"]
-        self.query_cache = json.loads(data["query_cache"])
+        self.query_cache = self._load_query_cache(data["query_cache"])
+
+    def save_db(self):
+        with open(self.db_path, "w") as file:
+            json.dump(
+                {
+                    "embeddings": self.embeddings,
+                    "metadata": self.metadata,
+                    "query_cache": self.query_cache,
+                },
+                file,
+            )
+
+    @staticmethod
+    def _load_query_cache(query_cache):
+        if isinstance(query_cache, str):
+            return json.loads(query_cache)
+        return query_cache

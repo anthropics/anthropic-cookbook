@@ -1,25 +1,24 @@
 import json
 import os
-import pickle
 
 import numpy as np
 import voyageai
 
 
 class VectorDB:
-    def __init__(self, db_path="../data/vector_db.pkl"):
+    def __init__(self, db_path="../data/vector_db.json"):
         self.client = voyageai.Client(api_key=os.getenv("VOYAGE_API_KEY"))
         self.db_path = db_path
         self.load_db()
 
     def load_db(self):
         if os.path.exists(self.db_path):
-            with open(self.db_path, "rb") as file:
-                data = pickle.load(file)
+            with open(self.db_path) as file:
+                data = json.load(file)
             self.embeddings, self.metadata, self.query_cache = (
                 data["embeddings"],
                 data["metadata"],
-                json.loads(data["query_cache"]),
+                self._load_query_cache(data["query_cache"]),
             )
         else:
             self.embeddings, self.metadata, self.query_cache = [], [], {}
@@ -52,12 +51,18 @@ class VectorDB:
         ][:k]
 
     def save_db(self):
-        with open(self.db_path, "wb") as file:
-            pickle.dump(
+        with open(self.db_path, "w") as file:
+            json.dump(
                 {
                     "embeddings": self.embeddings,
                     "metadata": self.metadata,
-                    "query_cache": json.dumps(self.query_cache),
+                    "query_cache": self.query_cache,
                 },
                 file,
             )
+
+    @staticmethod
+    def _load_query_cache(query_cache):
+        if isinstance(query_cache, str):
+            return json.loads(query_cache)
+        return query_cache

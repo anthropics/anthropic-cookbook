@@ -1,6 +1,5 @@
 import json
 import os
-import pickle
 
 import numpy as np
 import voyageai
@@ -15,7 +14,7 @@ class VectorDB:
         self.embeddings = []
         self.metadata = []
         self.query_cache = {}
-        self.db_path = f"./data/{name}/vector_db.pkl"
+        self.db_path = f"./data/{name}/vector_db.json"
 
     def load_data(self, data):
         if self.embeddings and self.metadata:
@@ -71,22 +70,28 @@ class VectorDB:
         data = {
             "embeddings": self.embeddings,
             "metadata": self.metadata,
-            "query_cache": json.dumps(self.query_cache),
+            "query_cache": self.query_cache,
         }
         os.makedirs(os.path.dirname(self.db_path), exist_ok=True)
-        with open(self.db_path, "wb") as file:
-            pickle.dump(data, file)
+        with open(self.db_path, "w") as file:
+            json.dump(data, file)
 
     def load_db(self):
         if not os.path.exists(self.db_path):
             raise ValueError(
                 "Vector database file not found. Use load_data to create a new database."
             )
-        with open(self.db_path, "rb") as file:
-            data = pickle.load(file)
+        with open(self.db_path) as file:
+            data = json.load(file)
         self.embeddings = data["embeddings"]
         self.metadata = data["metadata"]
-        self.query_cache = json.loads(data["query_cache"])
+        self.query_cache = self._load_query_cache(data["query_cache"])
+
+    @staticmethod
+    def _load_query_cache(query_cache):
+        if isinstance(query_cache, str):
+            return json.loads(query_cache)
+        return query_cache
 
 
 class SummaryIndexedVectorDB:
@@ -98,7 +103,7 @@ class SummaryIndexedVectorDB:
         self.embeddings = []
         self.metadata = []
         self.query_cache = {}
-        self.db_path = f"./data/{name}/summary_indexed_vector_db.pkl"
+        self.db_path = f"./data/{name}/summary_indexed_vector_db.json"
 
     def load_data(self, data):
         if self.embeddings and self.metadata:
@@ -156,19 +161,25 @@ class SummaryIndexedVectorDB:
         data = {
             "embeddings": self.embeddings,
             "metadata": self.metadata,
-            "query_cache": json.dumps(self.query_cache),
+            "query_cache": self.query_cache,
         }
         os.makedirs(os.path.dirname(self.db_path), exist_ok=True)
-        with open(self.db_path, "wb") as file:
-            pickle.dump(data, file)
+        with open(self.db_path, "w") as file:
+            json.dump(data, file)
 
     def load_db(self):
         if not os.path.exists(self.db_path):
             raise ValueError(
                 "Vector database file not found. Use load_data to create a new database."
             )
-        with open(self.db_path, "rb") as file:
-            data = pickle.load(file)
+        with open(self.db_path) as file:
+            data = json.load(file)
         self.embeddings = data["embeddings"]
         self.metadata = data["metadata"]
-        self.query_cache = json.loads(data["query_cache"])
+        self.query_cache = self._load_query_cache(data["query_cache"])
+
+    @staticmethod
+    def _load_query_cache(query_cache):
+        if isinstance(query_cache, str):
+            return json.loads(query_cache)
+        return query_cache
