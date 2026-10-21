@@ -4,7 +4,7 @@ The Claude Cookbooks provide code and guides designed to help developers build w
 
 ## Prerequisites
 
-To make the most of the examples in this cookbook, you'll need a Claude API key (sign up for free [here](https://www.anthropic.com)).
+To make the most of the examples in this cookbook, you'll need a [Claude API key](https://platform.claude.com/settings/keys).
 
 While the code examples are primarily written in Python, the concepts can be adapted to any programming language that supports interaction with the Claude API.
 
