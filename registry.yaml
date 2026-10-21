@@ -1,4 +1,14 @@
 # yaml-language-server: $schema=./.github/registry_schema.json
+- title: Use TokRepo from Claude Code
+  description: Connect TokRepo's MCP server to Claude Code so projects can discover,
+    verify, and plan installs for reusable agent assets before rebuilding them.
+  path: third_party/TokRepo/use_tokrepo_from_claude_code.md
+  authors:
+  - henu-wang
+  date: '2026-05-19'
+  categories:
+  - Tools
+  - Integrations
 - title: Build a data analyst agent with Claude Managed Agents
   description: Build an analyst that turns a CSV into a narrative HTML report with
     interactive charts, using a sandboxed environment and file mounting.
