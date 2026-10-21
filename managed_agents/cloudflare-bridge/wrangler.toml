@@ -1,0 +1,16 @@
+name = "cma-bridge"
+main = "src/index.ts"
+compatibility_date = "2026-04-01"
+compatibility_flags = ["nodejs_compat"]
+
+[[kv_namespaces]]
+binding = "DEDUPE"
+id = "<run: npx wrangler kv namespace create DEDUPE>"
+
+# Secrets (set via `npx wrangler secret put <NAME>`):
+#   ANTHROPIC_API_KEY
+#   ANTHROPIC_WEBHOOK_SIGNING_KEY
+#   CLAUDE_AGENT_ID
+#   CLAUDE_ENVIRONMENT_ID
+#   SLACK_SIGNING_SECRET
+#   SLACK_BOT_TOKEN
