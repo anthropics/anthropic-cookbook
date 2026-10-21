@@ -1,4 +1,14 @@
 # yaml-language-server: $schema=./.github/registry_schema.json
+- title: Multi-agent pipeline with state handoffs
+  description: Build a sequential multi-agent pipeline where a worker implements
+    tasks and a reviewer acts as a quality gate, routing work back for revision
+    with targeted feedback until approved or max attempts are reached.
+  path: patterns/agents/multi_agent_pipeline.ipynb
+  authors:
+  - tejas-dharani
+  date: '2026-04-09'
+  categories:
+  - Agent Patterns
 - title: Build a data analyst agent with Claude Managed Agents
   description: Build an analyst that turns a CSV into a narrative HTML report with
     interactive charts, using a sandboxed environment and file mounting.
