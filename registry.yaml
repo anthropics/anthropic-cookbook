@@ -43,6 +43,18 @@
   categories:
   - Claude Managed Agents
   - Integrations
+- title: Build an autonomous bug investigator with Claude Managed Agents
+  description: 'Investigate production bugs end-to-end: grep a mounted codebase,
+    run read-only SQL and past-incident search via custom tools, propose a code
+    fix with unified diff, open a pull request, then pause at create_triage_ticket
+    for human approval before filing work.'
+  path: managed_agents/bug_investigator.ipynb
+  authors:
+  - Anthropic
+  date: '2026-04-12'
+  categories:
+  - Agent Patterns
+  - Tools
 - title: Build an SRE incident response agent with Claude Managed Agents
   description: 'Wire Claude into your on-call flow: when an alert fires, the agent
     reads logs and runbooks, pinpoints the root cause, opens a fix PR, and waits

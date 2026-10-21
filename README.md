@@ -55,6 +55,7 @@ If you have ideas for new examples or guides, share them on the [issues page](ht
 - [Generate images with Claude](https://github.com/anthropics/anthropic-cookbook/blob/main/misc/illustrated_responses.ipynb): Use Claude with Stable Diffusion for image generation.
 
 ### Advanced Techniques
+- [Autonomous bug investigator](https://github.com/anthropics/anthropic-cookbook/blob/main/managed_agents/bug_investigator.ipynb): An end-to-end agent that reads code, queries a database, proposes a code fix with PR, and triages production incidents with human-in-the-loop approval (Managed Agents notebook, portable skill, read-only SQL).
 - [Sub-agents](https://github.com/anthropics/anthropic-cookbook/blob/main/multimodal/using_sub_agents.ipynb): Learn how to use Haiku as a sub-agent in combination with Opus.
 - [Upload PDFs to Claude](https://github.com/anthropics/anthropic-cookbook/blob/main/misc/pdf_upload_summarization.ipynb): Parse and pass PDFs as text to Claude.
 - [Automated evaluations](https://github.com/anthropics/anthropic-cookbook/blob/main/misc/building_evals.ipynb): Use Claude to automate the prompt evaluation process.
