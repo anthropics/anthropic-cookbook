@@ -52,6 +52,19 @@ Master the art of creating your own specialized skills.
 - Advanced: Financial modeling suite
 - [Best practices](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices) and security considerations
 
+## Cost Estimate
+
+Running these notebooks calls the Claude API multiple times for document generation. Based on testing, expect approximately:
+
+| Notebook | Estimated Cost |
+|----------|---------------|
+| Notebook 1: Introduction | ~$3-5 USD |
+| Notebook 2: Financial Applications | ~$5-8 USD |
+| Notebook 3: Custom Skills | ~$3-5 USD |
+| **All three notebooks** | **~$11-18 USD** |
+
+Costs depend on the model used and may change over time. Check the [Anthropic pricing page](https://www.anthropic.com/pricing) for current rates.
+
 ## Quick Start
 
 ### Prerequisites
