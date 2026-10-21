@@ -54,6 +54,17 @@
   categories:
   - Claude Managed Agents
   - Observability
+- title: Crafting effective CLAUDE.md files
+  description: Learn how to write, structure, and validate CLAUDE.md files
+    that make Claude Code agents more effective — covering anatomy,
+    anti-patterns, automated validation, and quality scoring.
+  path: misc/crafting_effective_claude_md.ipynb
+  authors:
+  - vamshidhar199
+  date: '2026-04-08'
+  categories:
+  - Agent Patterns
+  - Tools
 - title: 'Managed Agents tutorial: prompt versioning and rollback'
   description: Server-side prompt versioning — create v1, evaluate against a labelled
     test set, ship v2, detect a regression, roll back by pinning sessions to version
