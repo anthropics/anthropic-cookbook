@@ -254,11 +254,14 @@ class MemoryToolHandler:
         try:
             lines = full_path.read_text(encoding="utf-8").splitlines()
 
+            # Convert from 1-based to 0-based indexing
+            insert_line = insert_line - 1
+
             # Validate insert_line
             if insert_line < 0 or insert_line > len(lines):
                 return {
-                    "error": f"Invalid insert_line {insert_line}. "
-                    f"Must be between 0 and {len(lines)}"
+                    "error": f"Invalid insert_line {insert_line + 1}. "
+                    f"Must be between 1 and {len(lines) + 1}"
                 }
 
             # Insert the text
