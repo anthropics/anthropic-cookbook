@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/ThreeMoonsLab/agents-shipgate/main/docs/manifest-v0.1.json
+
+version: "0.1"
+
+project:
+  name: claude-customer-service-cookbook
+
+agent:
+  name: customer-service-agent
+  declared_purpose:
+    - Help customers retrieve account and order information, then cancel eligible demo orders when requested.
+
+environment:
+  target: local
+
+tool_sources:
+  - id: customer_service_tool_inventory
+    type: mcp
+    path: tool-inventory.json
+
+anthropic:
+  tools:
+    - path: anthropic-tools.json
+  policy_rules:
+    - path: anthropic-policy.yaml
+
+permissions:
+  scopes:
+    - customers:read
+    - orders:read
+    - orders:cancel
+  credential_mode: demo
+  notes: "Notebook uses synthetic in-memory customer and order data."

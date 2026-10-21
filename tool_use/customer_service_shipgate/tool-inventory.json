@@ -1,0 +1,25 @@
+{
+  "tools": [
+    {
+      "name": "get_customer_info",
+      "description": "Retrieve demo customer information by customer ID.",
+      "annotations": {"readOnlyHint": true},
+      "auth": {"scopes": ["customers:read"]},
+      "owner": "claude-cookbooks"
+    },
+    {
+      "name": "get_order_details",
+      "description": "Retrieve demo order details by order ID.",
+      "annotations": {"readOnlyHint": true},
+      "auth": {"scopes": ["orders:read"]},
+      "owner": "claude-cookbooks"
+    },
+    {
+      "name": "cancel_order",
+      "description": "Cancel an eligible demo order by order ID.",
+      "annotations": {"destructiveHint": true, "idempotentHint": false},
+      "auth": {"scopes": ["orders:cancel"]},
+      "owner": "claude-cookbooks"
+    }
+  ]
+}

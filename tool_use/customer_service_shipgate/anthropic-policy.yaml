@@ -1,0 +1,6 @@
+approval_required:
+  - cancel_order
+confirmation_required:
+  - cancel_order
+idempotency_required:
+  - cancel_order

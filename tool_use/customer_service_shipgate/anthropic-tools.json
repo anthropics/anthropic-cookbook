@@ -1,0 +1,34 @@
+{
+  "tools": [
+    {
+      "name": "get_customer_info",
+      "description": "Retrieve demo customer information by customer ID, including name, email, and phone number.",
+      "input_schema": {
+        "type": "object",
+        "properties": {"customer_id": {"type": "string", "description": "The unique identifier for the customer."}},
+        "required": ["customer_id"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "get_order_details",
+      "description": "Retrieve demo order details by order ID, including product name, quantity, price, and order status.",
+      "input_schema": {
+        "type": "object",
+        "properties": {"order_id": {"type": "string", "description": "The unique identifier for the order."}},
+        "required": ["order_id"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "cancel_order",
+      "description": "Cancel an eligible demo order by order ID and return a confirmation message.",
+      "input_schema": {
+        "type": "object",
+        "properties": {"order_id": {"type": "string", "description": "The unique identifier for the order to cancel."}},
+        "required": ["order_id"],
+        "additionalProperties": false
+      }
+    }
+  ]
+}
