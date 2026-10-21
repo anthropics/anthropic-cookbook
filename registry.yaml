@@ -147,6 +147,15 @@
   date: '2025-11-24'
   categories:
   - Integrations
+- title: Voice assistant with MiniMax TTS and Claude
+  description: Build a voice assistant using MiniMax text-to-speech API with SSE streaming
+    combined with Claude for intelligent responses.
+  path: third_party/MiniMax/voice_assistant_with_minimax_tts.ipynb
+  authors:
+  - Anthropic
+  date: '2026-04-15'
+  categories:
+  - Integrations
 - title: Prompting for frontend aesthetics
   description: Guide to prompting Claude for distinctive, polished frontend designs
     avoiding generic aesthetics.
