@@ -147,6 +147,15 @@
   date: '2025-11-24'
   categories:
   - Integrations
+- title: Voice assistant with Claude and MiniMax TTS
+  description: Build a voice assistant using MiniMax text-to-speech combined with
+    Claude for natural-sounding speech synthesis in multi-turn conversations.
+  path: third_party/MiniMax/claude_minimax_tts.ipynb
+  authors:
+  - ximi
+  date: '2026-04-29'
+  categories:
+  - Integrations
 - title: Prompting for frontend aesthetics
   description: Guide to prompting Claude for distinctive, polished frontend designs
     avoiding generic aesthetics.
