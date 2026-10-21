@@ -725,6 +725,36 @@
   categories:
   - Integrations
   - Tools
+- title: Basic multi-agent chat with AG2
+  description: Set up a basic two-agent conversation using AG2 multi-agent framework
+    with Claude via Anthropic API.
+  path: third_party/AG2/Basic_Multi_Agent_Chat.ipynb
+  authors:
+  - ag2ai
+  date: '2026-03-30'
+  categories:
+  - Integrations
+  - Agent Patterns
+- title: Tool use with AG2 agents
+  description: Give Claude-powered AG2 agents the ability to call Python functions
+    using decorator-based tool registration.
+  path: third_party/AG2/Tool_Use_With_Agents.ipynb
+  authors:
+  - ag2ai
+  date: '2026-03-30'
+  categories:
+  - Integrations
+  - Tools
+- title: GroupChat orchestration with AG2
+  description: Orchestrate multiple specialized Claude agents in an AG2 GroupChat
+    for complex collaborative tasks.
+  path: third_party/AG2/GroupChat_Orchestration.ipynb
+  authors:
+  - ag2ai
+  date: '2026-03-30'
+  categories:
+  - Integrations
+  - Agent Patterns
 - title: Tool evaluation
   description: Run parallel agent evaluations on tools independently from evaluation
     task files.
