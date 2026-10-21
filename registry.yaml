@@ -1,4 +1,16 @@
 # yaml-language-server: $schema=./.github/registry_schema.json
+- title: Notion as a visual dispatch board for Claude agents
+  description: Build a Kanban-style task board in Notion where humans approve tasks
+    and Claude agents execute them. Covers the full loop — scaffold database, suggest,
+    discuss, approve, dispatch, and close — demonstrating human-in-the-loop control
+    at every step.
+  path: tool_use/notion_task_dispatch.ipynb
+  authors:
+  - AutomateLab-tech
+  date: '2026-05-22'
+  categories:
+  - Tool Use
+  - Integrations
 - title: Build a data analyst agent with Claude Managed Agents
   description: Build an analyst that turns a CSV into a narrative HTML report with
     interactive charts, using a sandboxed environment and file mounting.
