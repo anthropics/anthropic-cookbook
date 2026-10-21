@@ -474,6 +474,16 @@
   categories:
   - Responses
   - RAG & Retrieval
+- title: Getting started with computer use
+  description: Learn how to use Claude's Computer Use API to control desktop environments
+    through screenshots, mouse, and keyboard actions with the agent loop pattern.
+  path: multimodal/computer_use_getting_started.ipynb
+  authors:
+  - harshkatakwar
+  date: '2026-04-21'
+  categories:
+  - Multimodal
+  - Tools
 - title: Best practices for using vision with Claude
   description: Tips and techniques for optimal image processing performance with Claude's
     vision capabilities.
