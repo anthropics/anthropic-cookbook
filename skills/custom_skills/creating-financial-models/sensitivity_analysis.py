@@ -265,6 +265,9 @@ class SensitivityAnalyzer:
         """
         Find breakeven point where output equals target.
 
+        Assumes a continuous, monotonic output with the target in the search range.
+        When iteration is needed, both endpoints are evaluated to determine direction.
+
         Args:
             variable_name: Variable to adjust
             variable_update: Function to update variable
@@ -281,6 +284,12 @@ class SensitivityAnalyzer:
         low = min_search
         high = max_search
 
+        if (high - low) > tolerance:
+            variable_update(low)
+            low_output = output_func()
+            variable_update(high)
+            increasing = output_func() >= low_output
+
         while (high - low) > tolerance:
             mid = (low + high) / 2
             variable_update(mid)
@@ -288,7 +297,7 @@ class SensitivityAnalyzer:
 
             if abs(output - target_value) < tolerance:
                 return mid
-            elif output < target_value:
+            elif (output < target_value) == increasing:
                 low = mid
             else:
                 high = mid
