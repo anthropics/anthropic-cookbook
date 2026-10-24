@@ -7,6 +7,7 @@ from nltk.translate.bleu_score import sentence_bleu
 
 # Download required NLTK data
 nltk.download("punkt", quiet=True)
+nltk.download("punkt_tab", quiet=True)
 
 
 def nltk_bleu_eval(output, ground_truth) -> float:
