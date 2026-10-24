@@ -1,8 +1,8 @@
 """Unit tests for SensitivityAnalyzer in creating-financial-models skill."""
 
 import sys
-from pathlib import Path
 import unittest
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
@@ -16,7 +16,7 @@ SKILL_DIR = (
 )
 sys.path.insert(0, str(SKILL_DIR))
 
-from sensitivity_analysis import SensitivityAnalyzer
+from sensitivity_analysis import SensitivityAnalyzer  # noqa: E402
 
 
 class TestSensitivityAnalyzer(unittest.TestCase):
