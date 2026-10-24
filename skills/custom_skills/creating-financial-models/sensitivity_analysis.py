@@ -160,6 +160,11 @@ class SensitivityAnalyzer:
             impact = high_output - low_output
             low_delta = low_output - self.base_output
             high_delta = high_output - self.base_output
+            impact_pct = (
+                abs(impact) / self.base_output * 100
+                if self.base_output != 0
+                else np.nan
+            )
 
             tornado_data.append(
                 {
@@ -172,7 +177,7 @@ class SensitivityAnalyzer:
                     "low_delta": low_delta,
                     "high_delta": high_delta,
                     "impact": abs(impact),
-                    "impact_pct": abs(impact) / self.base_output * 100,
+                    "impact_pct": impact_pct,
                 }
             )
 
